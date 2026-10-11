@@ -1,0 +1,8 @@
+# Only deploy HORI functions from this checkout. Do NOT run config push against
+# the shared atlas project: its existing authentication settings are independent.
+project_id = "hori"
+
+[functions.hori-news]
+# The handler verifies the bearer token using Supabase Auth before every action.
+# Required for current signing keys; this is not an unauthenticated data endpoint.
+verify_jwt = false

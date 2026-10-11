@@ -1,0 +1,10 @@
+# Local extraction and visual review intermediates
+tmp/
+app/.local/
+app/dist/
+
+# Local dependencies and environment settings
+node_modules/
+.env
+.env.*
+!.env.example

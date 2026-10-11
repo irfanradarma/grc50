@@ -1,0 +1,47 @@
+name: Publish HORI to GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+        working-directory: app
+      - run: npm run build
+        working-directory: app
+        env:
+          VITE_SUPABASE_URL: https://cjtslwxdkxqjechddxbk.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_VlbeoEvMpj9Rce7mbfHe7g_oWLyX3Ee
+          VITE_BASE_PATH: ./
+      - name: Include seminar deck
+        run: |
+          cp -R website/deck app/dist/deck
+          mkdir -p app/dist/assets
+          cp -R website/assets/css app/dist/assets/css
+          cp -R website/assets/js app/dist/assets/js
+          if [ -d website/assets/images ]; then cp -R website/assets/images app/dist/assets/images; fi
+          touch app/dist/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+      - uses: actions/deploy-pages@v4
+        id: deployment
