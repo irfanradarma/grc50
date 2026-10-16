@@ -1,56 +1,38 @@
-# Managing Risk in the Era of AI
+﻿# Beyond Compliance
 
-## Project layout
+Using AI to capture signals for effective risk management: a 60-minute English presentation and progressive mobile workshop.
 
-```text
-HORI/
-  README.md
-  .gitignore
-  docs/
-    seminar-plan.md
-  app/                         React/TypeScript SaaS prototype
-    src/                       Frontend
-    server/                    API, PostgreSQL schema, isolation tests
-    scripts/                   Local database startup and provisioning
-    supabase/                  Cloud migration, Edge Function, hosted RLS tests
-  .github/workflows/pages.yml   Static app and seminar deck deployment
-  website/
-    index.html                 Website entry point
-    deck/
-      index.html               HTML presentation
-    assets/
-      css/deck.css
-      js/deck.js               Slide content and presentation interactions
-  sources/
-    03 - Alat dan Teknik Audit AI.pdf
-  tmp/
-    pdfs/                      Extracted text and source-page previews
+- [Seminar material and running order](docs/seminar-plan.md)
+- [Presenter and LAN setup guide](docs/seminar-workshop.md)
+- `website/deck/index.html`: final 33-slide HTML deck, diagrams, interactions and speaker notes.
+- `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. The Apps switcher also opens the detailed risk/assurance workspace.
+
+## Run locally
+
+```powershell
+& ./app/scripts/start-local-db.ps1
+npm --prefix app run dev
 ```
 
-`website/` contains the static presentation website. `docs/` contains planning material. `sources/` preserves the original reference material. `tmp/` contains local working files and is excluded from version control.
-
-The SaaS prototype now lives in `app/` as a separate development project. See [app/README.md](app/README.md) for startup and isolation details. Its local URL is http://127.0.0.1:5173. The static presentation remains in `website/`; production routing between them can be added later.
-
-Supabase mode and a GitHub Pages workflow are now prepared. The workflow serves the app at the site root and the seminar presentation at `/deck/`. See [cloud setup and deployment](docs/supabase-github-pages.md) for the shared atlas project, authentication prerequisite, and publishing instructions.
-
-## Local preview
-
-From the project root, run:
+In another terminal:
 
 ```powershell
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Visit `http://127.0.0.1:8765/website/` or directly `http://127.0.0.1:8765/website/deck/`. Alternatively, open `website/deck/index.html` directly in a modern browser.
+Open `http://localhost:5173/?mode=presenter` and `http://localhost:8765/website/deck/`. Share the LAN participant URL/QR from presenter controls. Phones need the same reachable network. Keep local `.env` and `.local/` private; they are excluded from Git.
 
-## Presentation controls
+News is collected from actual publisher RSS results. Interpretation currently uses explicit rules. Internal reports, audit extracts and CA inputs are prepared workshop evidence. The workflow records capture/neglect and explicit update/keep decisions; it does not claim a connected language model or live production integrations.
 
-The deck has 42 slides covering the complete seminar narrative. Use arrow keys, Page Up/Down, Home/End, the controls, or Contents to navigate. Press N to toggle speaker notes. Reading view shows all slides. Browser printing produces a landscape handout. Notes are hidden by default but are shipped in the client source, so they are not confidential.
+## Verification
 
-The four embedded scenarios are browser-local, deterministic teaching interactions using synthetic data. They do not call AI services or connect to SIPT/CMCA, selfassess.id, or AMS. Scenario state resets when the demonstration reopens. The dedicated demonstration app and product integration remain future work.
+```powershell
+npm --prefix app test
+npm --prefix app run build
+```
 
-## Source material and hosting
+## Publishing
 
-The local source PDF link resolves from `website/deck/` to the original file in `sources/`. Serve the project root for local access to both. For a later public release, publish the website code from `website/`, then replace that local reference with an approved public resource or explicitly package the approved PDF. Do not publish the entire workspace as the production website.
+GitHub contains the source. The manual **Publish seminar deck** Actions workflow publishes only `website/` to GitHub Pages. The hands-on app needs the local/LAN backend and is not a static-only Pages application. Existing Supabase Atlas settings are not part of this setup.
 
-No hosting or deployment has occurred. The deck uses no remote fonts, packages, or service credentials. The material plan is in [docs/seminar-plan.md](docs/seminar-plan.md).
+Retain [photo and icon credits](website/assets/images/CREDITS.md) with exported/published material.

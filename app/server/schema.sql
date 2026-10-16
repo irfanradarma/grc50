@@ -58,3 +58,28 @@ ALTER TABLE risk_reviews FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS tenant_risk_reviews ON risk_reviews;
 CREATE POLICY tenant_risk_reviews ON risk_reviews USING (workspace_id = nullif(current_setting('app.workspace_id',true),'')::uuid) WITH CHECK (workspace_id = nullif(current_setting('app.workspace_id',true),'')::uuid);
 CREATE INDEX IF NOT EXISTS risk_reviews_workspace_idx ON risk_reviews(workspace_id);
+
+CREATE TABLE IF NOT EXISTS suite_records(id uuid PRIMARY KEY,workspace_id uuid NOT NULL REFERENCES workspaces(id),kind text NOT NULL,data jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX IF NOT EXISTS suite_records_workspace_idx ON suite_records(workspace_id,kind);
+ALTER TABLE suite_records ENABLE ROW LEVEL SECURITY;
+ALTER TABLE suite_records FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS tenant_suite ON suite_records;
+CREATE POLICY tenant_suite ON suite_records USING (workspace_id = nullif(current_setting('app.workspace_id',true),'')::uuid) WITH CHECK (workspace_id = nullif(current_setting('app.workspace_id',true),'')::uuid);
+
+CREATE UNIQUE INDEX IF NOT EXISTS annual_objectives_workspace_id_key ON annual_objectives(workspace_id,id);
+CREATE TABLE IF NOT EXISTS organization_departments(id uuid PRIMARY KEY,workspace_id uuid NOT NULL REFERENCES workspaces(id),parent_id uuid,data jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),UNIQUE(workspace_id,id),FOREIGN KEY(workspace_id,parent_id) REFERENCES organization_departments(workspace_id,id));
+CREATE TABLE IF NOT EXISTS objective_kpis(id uuid PRIMARY KEY,workspace_id uuid NOT NULL REFERENCES workspaces(id),objective_id uuid NOT NULL,department_id uuid NOT NULL,data jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now(),FOREIGN KEY(workspace_id,objective_id) REFERENCES annual_objectives(workspace_id,id),FOREIGN KEY(workspace_id,department_id) REFERENCES organization_departments(workspace_id,id));
+ALTER TABLE organization_departments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE organization_departments FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS tenant_departments ON organization_departments;
+CREATE POLICY tenant_departments ON organization_departments USING(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid) WITH CHECK(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid);
+ALTER TABLE objective_kpis ENABLE ROW LEVEL SECURITY;
+ALTER TABLE objective_kpis FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS tenant_objective_kpis ON objective_kpis;
+CREATE POLICY tenant_objective_kpis ON objective_kpis USING(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid) WITH CHECK(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid);
+CREATE TABLE IF NOT EXISTS seminar_sessions(id uuid PRIMARY KEY,code text UNIQUE NOT NULL,owner_id uuid NOT NULL REFERENCES workspaces(id),data jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS seminar_participants(session_id uuid NOT NULL REFERENCES seminar_sessions(id),workspace_id uuid NOT NULL REFERENCES workspaces(id),data jsonb NOT NULL,updated_at timestamptz NOT NULL DEFAULT now(),PRIMARY KEY(session_id,workspace_id));
+ALTER TABLE seminar_participants ENABLE ROW LEVEL SECURITY;
+ALTER TABLE seminar_participants FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS seminar_participant_owner ON seminar_participants;
+CREATE POLICY seminar_participant_owner ON seminar_participants USING(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid OR EXISTS(SELECT 1 FROM seminar_sessions s WHERE s.id=session_id AND s.owner_id=nullif(current_setting('app.workspace_id',true),'')::uuid)) WITH CHECK(workspace_id=nullif(current_setting('app.workspace_id',true),'')::uuid);

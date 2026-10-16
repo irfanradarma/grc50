@@ -1,0 +1,23 @@
+/* HORI brand foundation shared by the application and seminar. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{
+ --hori-font-body:'DM Sans','Segoe UI',sans-serif;
+ --hori-font-heading:'Manrope','Segoe UI',sans-serif;
+ --hori-primary:#176b57;
+ --hori-primary-hover:#125440;
+ --hori-accent:#5cac8e;
+ --hori-ink:#253536;
+ --hori-dark:#142f2a;
+ --hori-navy:#1d3145;
+ --hori-canvas:#f7f9f9;
+ --hori-surface:#ffffff;
+ --hori-mint:#eaf3ee;
+ --hori-line:#e4e9e8;
+ --hori-muted:#526174;
+ --hori-warning:#aa7217;
+ --hori-warning-soft:#fff0ce;
+ --hori-critical:#a94d3d;
+ --hori-radius:12px;
+ font-family:var(--hori-font-body);
+ font-synthesis:none;
+}

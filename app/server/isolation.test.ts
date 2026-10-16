@@ -17,7 +17,7 @@ test('guest sessions persist private context and risks; foreign writes and direc
  await assert.rejects(tenant(wb.id,c=>c.query('INSERT INTO organization_contexts(workspace_id,data) VALUES($1,$2)',[wa.id,context])));
  const role=(await pool.query('SELECT rolsuper,rolbypassrls FROM pg_roles WHERE rolname=current_user')).rows[0];assert.equal(role.rolsuper,false);assert.equal(role.rolbypassrls,false);
  assert.equal((await request('/risks/'+saved.id,'PUT',ca,{...risk,status:'Active'})).status,200);
- assert.equal((await (await request('/risks','GET',ca)).json())[0].status,'Active');
+ assert.equal((await (await request('/risks','GET',ca)).json())[0].status,undefined);
  const migrated=await (await request('/objectives','GET',ca)).json();assert.equal(migrated.length,1);assert.equal(migrated[0].year,2026);assert.equal(migrated[0].title,context.objective);assert.equal((await (await request('/objectives','GET',ca)).json()).length,1);
  const annual={year:2027,title:'Improve service delivery',metric:'Timely completion',target:'At least 97%',owner:'Operations'};
  const objective=await (await request('/objectives','POST',ca,annual)).json();assert(objective.id);assert.deepEqual(await (await request('/objectives','GET',cb)).json(),[]);

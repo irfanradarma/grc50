@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "tsx watch server/index.ts",
-    "dev:client": "vite --host 127.0.0.1",
+    "dev:client": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "test": "tsx --test server/*.test.ts",
     "db:migrate": "tsx server/migrate.ts"
@@ -19,11 +19,16 @@
     "fast-xml-parser": "^5.11.2",
     "lucide-react": "^1.55.0",
     "pg": "^8.23.1",
+    "qrcode.react": "^4.2.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@babel/generator": "^8.0.6",
+    "@babel/parser": "^8.0.7",
+    "@babel/traverse": "^8.0.7",
+    "@babel/types": "^8.0.6",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/pg": "^8.23.1",

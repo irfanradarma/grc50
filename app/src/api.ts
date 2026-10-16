@@ -22,24 +22,32 @@ async function cloud(path:string,method:string,body:any):Promise<any>{
  if(path==='/generate/context')return randomContext();
  if(path==='/generate/objective'){const profile=await cloud('/context','GET',null);if(!profile)throw new Error('Save your company profile first.');const title=profile.sector==='Education'?'Improve learning platform availability':profile.sector==='Logistics'?'Improve on-time delivery':['Improve service completion time','Strengthen digital service availability'][Math.floor(Math.random()*2)];return {year:body.year,title,metric:title.includes('availability')?'Service uptime':'Requests completed on time',target:title.includes('availability')?'At least 99% during operating hours':'At least 95% within five working days',owner:'Operations lead'};}
  if(path==='/generate/risk'){const profile=await cloud('/context','GET',null),objective=await record('objectives',body.objectiveId);return {...randomRisk({...profile,objective:objective.data.title+' - '+objective.data.target}),objectiveId:objective.id,objectiveYear:objective.year};}
+ if(path==='/departments'&&method==='GET')return rows('departments');
+ if(/^\/departments(?:\/[^/]+)?$/.test(path)){if(body.parentId)await record('departments',body.parentId);const {id:_id,...data}=body;return write('departments',data,{parent_id:body.parentId||null},path.split('/')[2]);}
+ if(path==='/objective-kpis'&&method==='GET')return rows('objective_kpis');
+ if(/^\/objective-kpis(?:\/[^/]+)?$/.test(path)){await record('objectives',body.objectiveId);await record('departments',body.departmentId);const {id:_id,...data}=body;return write('objective_kpis',data,{objective_id:body.objectiveId,department_id:body.departmentId},path.split('/')[2]);}
  if(path==='/objectives'&&method==='GET')return rows('objectives');
- if(/^\/objectives(?:\/[^/]+)?$/.test(path)){const {year,id:_id,...data}=body;return write('objectives',data,{year},path.split('/')[2]);}
+ if(/^\/objectives(?:\/[^/]+)?$/.test(path)){if(body.departmentId)await record('departments',body.departmentId);const {year,id:_id,...data}=body;return write('objectives',data,{year},path.split('/')[2]);}
+ const mitigationMatch=path.match(/^\/risks\/([^/]+)\/mitigations\/([^/]+)$/);if(mitigationMatch&&method==='PUT')return result(db!.rpc('hori_save_mitigation',{risk_id:mitigationMatch[1],plan_id:mitigationMatch[2],plan:body}));if(mitigationMatch&&method==='PATCH')return result(db!.rpc('hori_complete_mitigation',{risk_id:mitigationMatch[1],plan_id:mitigationMatch[2],completion_status:body.status,completion_notes:body.completionNotes||''}));
  if(path==='/risks'&&method==='GET')return rows('risks');
+ if(path==='/risks'&&method==='POST'&&body.originSignalId){const {originSignalId,id:_id,...draft}=body;return result(db!.rpc('hori_identify_from_signal',{signal_id:originSignalId,draft}));}
  if(/^\/risks(?:\/[^/]+)?$/.test(path)){const {id:_id,...data}=body;return write('risks',data,{objective_id:body.objectiveId},path.split('/')[2]);}
  if(path==='/workflow'){const tables=['kris','readings','sources','signals','reviews'];return Object.fromEntries(await Promise.all(tables.map(async t=>[t,await rows(t)])));}
  let match=path.match(/^\/risks\/([^/]+)\/kris$/);if(match)return write('kris',body,{risk_id:match[1]});
  match=path.match(/^\/kris\/([^/]+)$/);if(match)return write('kris',body,{},match[1]);
  match=path.match(/^\/kris\/([^/]+)\/readings$/);if(match)return write('readings',body,{kri_id:match[1]});
  if(/^\/trigger-sources(?:\/[^/]+)?$/.test(path)){const {id:_id,...data}=body;return write('sources',data,{objective_id:body.objectiveId,risk_id:body.riskId||null},path.split('/')[2]);}
- match=path.match(/^\/trigger-sources\/([^/]+)\/reports$/);if(match){const source=await record('sources',match[1]);return write('signals',{...body,sourceId:source.id,kind:source.data.kind,action:source.risk_id?'Reassess':'Identify',status:body.outcome==='Issue'?'Open':'Information'},{source_id:source.id,objective_id:source.objective_id,risk_id:source.risk_id});}
+ match=path.match(/^\/trigger-sources\/([^/]+)\/reports$/);if(match){const source=await record('sources',match[1]);return write('signals',{...body,sourceId:source.id,kind:source.data.kind,action:source.risk_id?'Reassess':'Identify',status:source.data.kind==='news'?'Information':body.outcome==='Issue'?'Open':'Information',...(source.data.kind==='news'?{newsState:'Pending'}:{})},{source_id:source.id,objective_id:source.objective_id,risk_id:source.risk_id});}
  match=path.match(/^\/trigger-sources\/([^/]+)\/capture$/);if(match){const {data,error}=await db!.functions.invoke('hori-news',{body:{sourceId:match[1]}});if(error){const details=await (error as any).context?.json?.().catch(()=>null);throw new Error(details?.error||error.message);}if(data.error)throw new Error(data.error);return data;}
- match=path.match(/^\/signals\/([^/]+)\/review$/);if(match){const signal=await record('signals',match[1]);return write('signals',{...signal.data,...body,status:'Reviewed',reviewedAt:new Date().toISOString()},{},match[1]);}
+ match=path.match(/^\/news\/([^/]+)\/decision$/);if(match)return result(db!.rpc('hori_review_news',{item_id:match[1],verdict:body.decision,rationale:body.notes,target_objective:body.objectiveId||null,target_risk:body.riskId||null}));
+ match=path.match(/^\/signals\/([^/]+)\/review$/);if(match){const signal=await record('signals',match[1]);if(signal.data.kind==='news'&&signal.data.newsState!=='Captured')throw new Error('Review this news in the inbox before escalation.');return write('signals',{...signal.data,...body,status:'Reviewed',reviewedAt:new Date().toISOString()},{},match[1]);}
  match=path.match(/^\/risks\/([^/]+)\/reviews$/);if(match)return write('reviews',body,{risk_id:match[1]});
  throw new Error('This action is not available in cloud mode.');
 }
+function cleanCopy<T>(value:T):T {if(typeof value==='string')return value.replace(/Seluruh data perusahaan dan laporan internal adalah simulasi\./gi,'Data contoh organisasi dan laporan internal.').replace(/\bsimulasi(?: berita)?\s*:?\s*/gi,'') as T;if(Array.isArray(value))return value.map(cleanCopy) as T;if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,cleanCopy(v)])) as T;return value;}
 export async function api<T>(path:string,options:RequestInit={}):Promise<T>{
- if(db)return cloud(path,options.method||'GET',options.body?JSON.parse(String(options.body)):undefined) as Promise<T>;
+ if(db)return cleanCopy(await cloud(path,options.method||'GET',options.body?JSON.parse(String(options.body)):undefined)) as T;
  const response=await fetch('/api'+path,{...options,headers:{'Content-Type':'application/json','x-hori-request':'1',...options.headers}});
  if(!response.ok){const data=await response.json().catch(()=>({}));throw new Error(data.error||'The request could not be completed.');}
- return response.status===204?undefined as T:response.json();
+ return response.status===204?undefined as T:cleanCopy(await response.json());
 }

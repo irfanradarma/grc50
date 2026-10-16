@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {parseNews,publicAddress} from './news.js';
+import {visibleInMonitoring,assessNews} from '../shared/newsReview.js';
 import {severity} from './workflow.js';
 process.env.NODE_ENV='test';
 const {app}=await import('./index.js');
@@ -11,6 +12,9 @@ test('news parsing and public-address restrictions',()=>{
  assert.equal(parseNews('<feed><entry><title>Event</title><link href="https://example.com/event"/></entry></feed>','rss')[0].url,'https://example.com/event');
  assert.equal(parseNews('{"articles":[{"title":"Event","url":"javascript:alert(1)"}]}','json')[0].url,'');
  assert.throws(()=>parseNews('<!DOCTYPE rss><rss/>','rss'));
+ const google=parseNews('<rss><channel><item><title>Logistik &amp; transportasi</title><description>&lt;a href="https://example.com"&gt;Berita logistik&lt;/a&gt;&amp;nbsp;&lt;font&gt;Penerbit&lt;/font&gt;</description></item></channel></rss>','rss')[0];
+ assert.equal(google.title,'Logistik & transportasi');
+ assert.equal(google.details,'Berita logistik Penerbit');
  assert.equal(severity({direction:'Below',warning:95,critical:90},89),'Critical');
 });
 test('KRI monitoring and trigger review persist with tenant isolation',async()=>{
@@ -35,16 +39,52 @@ test('KRI monitoring and trigger review persist with tenant isolation',async()=>
  assert.equal((await req('/trigger-sources/'+saved.id+'/reports','POST',cb,report)).status,404);
  assert.equal((await req('/trigger-sources/'+saved.id+'/reports','POST',ca,report)).status,201);
  await req('/trigger-sources/'+saved.id+'/reports','POST',ca,{...report,title:'Normal report',outcome:'Normal'});
- const assurance=await (await req('/trigger-sources','POST',ca,{...source,name:'Daily delivery assurance',kind:'assurance',riskId:undefined,rule:'Flag late deliveries above 5%',cadence:'Daily'})).json();
+ const assurance=await (await req('/trigger-sources','POST',ca,{...source,name:'Objective-level audit finding',kind:'audit',riskId:undefined,rule:'Flag late deliveries above 5%',cadence:'Daily'})).json();
  await req('/trigger-sources/'+assurance.id+'/reports','POST',ca,report);
  workflow=await (await req('/workflow','GET',ca)).json();assert(workflow.signals.some((s:any)=>s.action==='Identify'));assert(workflow.signals.some((s:any)=>s.status==='Information'));assert.equal(workflow.kris.length,1);
  const signal=workflow.signals.find((s:any)=>s.riskId===risk.id&&s.status==='Open');assert.equal((await req('/signals/'+signal.id+'/review','POST',cb,{decision:'Dismissed',notes:'Invalid'})).status,404);
  await req('/signals/'+signal.id+'/review','POST',ca,{decision:'Reassessment requested',notes:'Investigate supplier resilience'});
  await req('/risks/'+risk.id+'/reviews','POST',ca,{decision:'Further investigation',notes:'Validate alternative suppliers'});
  const news=await (await req('/trigger-sources','POST',ca,{...source,name:'Unsafe endpoint test',kind:'news',format:'json',endpoint:'https://127.0.0.1/private'})).json();
- assert.equal((await req('/trigger-sources/'+news.id+'/capture','POST',ca,{})).status,400);
+ assert.equal((await req('/trigger-sources/'+news.id+'/capture','POST',ca,{})).status,400);const failedWorkflow=await(await req('/workflow','GET',ca)).json();assert.equal(failedWorkflow.sources.find((s:any)=>s.id===news.id).health,'Failed');assert(failedWorkflow.sources.find((s:any)=>s.id===news.id).lastError);
+
+ const collect=async(title:string)=>{await req('/trigger-sources/'+news.id+'/reports','POST',ca,{...report,title});const w=await(await req('/workflow','GET',ca)).json();return w.signals.find((s:any)=>s.title===title);};
+ const pending=await collect('Flood disrupts deliveries');assert.equal(pending.newsState,'Pending');assert.equal(visibleInMonitoring(pending),false);
+ assert.equal((await req('/signals/'+pending.id+'/review','POST',ca,{decision:'Acknowledged',notes:'Bypass'})).status,404);
+ const capture={decision:'Capture',notes:'Affected route verified',objectiveId:objective.id,riskId:risk.id};
+ assert.equal((await req('/news/'+pending.id+'/decision','POST',cb,capture)).status,404);
+ assert.equal((await req('/news/'+pending.id+'/decision','POST',ca,{...capture,objectiveId:wb.id})).status,400);
+ assert.equal((await req('/news/'+pending.id+'/decision','POST',ca,capture)).status,200);
+ assert.equal((await req('/news/'+pending.id+'/decision','POST',ca,capture)).status,409);
+ const irrelevant=await collect('Logistics company wins award');
+ assert.equal((await req('/news/'+irrelevant.id+'/decision','POST',ca,{decision:'Neglect',notes:'Promotional story; no exposure'})).status,200);
+ const racing=await collect('Concurrent reviewer test');const decisions=await Promise.all([req('/news/'+racing.id+'/decision','POST',ca,capture),req('/news/'+racing.id+'/decision','POST',ca,{decision:'Neglect',notes:'Second reviewer'})]);assert.deepEqual(decisions.map(r=>r.status).sort(),[200,409]);
+ const reviewed=await(await req('/workflow','GET',ca)).json();assert.equal(visibleInMonitoring(reviewed.signals.find((s:any)=>s.id===pending.id)),true);const neglected=reviewed.signals.find((s:any)=>s.id===irrelevant.id);assert.equal(neglected.newsState,'Neglected');assert.equal(visibleInMonitoring(neglected),false);assert.equal(neglected.notes,'Promotional story; no exposure');
+ const emerging=await collect('Fuel cost increase needs identification');await req('/news/'+emerging.id+'/decision','POST',ca,{decision:'Capture',notes:'Cost dependency verified for exercise',objectiveId:objective.id});
+ const identifiedDraft={...draft,title:'Fuel cost exposure',originSignalId:emerging.id};
+ assert.equal((await req('/risks','POST',cb,identifiedDraft)).status,409);
+ const creates=await Promise.all([req('/risks','POST',ca,identifiedDraft),req('/risks','POST',ca,identifiedDraft)]);assert.deepEqual(creates.map(r=>r.status).sort(),[201,409]);
+ const linkedWorkflow=await(await req('/workflow','GET',ca)).json();const linked=linkedWorkflow.signals.find((s:any)=>s.id===emerging.id);assert(linked.riskId);assert.equal(linked.action,'Reassess');assert.equal(linked.newsState,'Captured');assert((await(await req('/risks','GET',ca)).json()).some((r:any)=>r.id===linked.riskId));
+ const auditSource=await(await req('/trigger-sources','POST',ca,{name:'Audit findings API',kind:'audit',objectiveId:objective.id,riskId:risk.id,connection:'api',system:'AMS',endpoint:'https://example.com/audit/events',eventTypes:'finding.created,finding.overdue',rule:'Critical or overdue finding requires owner investigation.'})).json();assert(auditSource.id);
+ const event={eventId:'audit-finding-1',eventType:'finding.created',title:'Audit finding',details:'Critical control gap',observedAt:'2026-10-11',evidence:'AUD-001',outcome:'Issue'};
+ assert.equal((await req('/trigger-sources/'+auditSource.id+'/events','POST','',event)).status,401);
+ assert.equal((await req('/trigger-sources/'+auditSource.id+'/events','POST',cb,event)).status,404);
+ assert.equal((await(await req('/trigger-sources/'+auditSource.id+'/events','POST',ca,{...event,eventType:'irrelevant'})).json()).ignored,true);
+ const events=await Promise.all([req('/trigger-sources/'+auditSource.id+'/events','POST',ca,event),req('/trigger-sources/'+auditSource.id+'/events','POST',ca,event)]);const outcomes=await Promise.all(events.map(r=>r.json()));assert.equal(outcomes.filter(r=>r.saved).length,1);assert.equal(outcomes.filter(r=>r.duplicate).length,1);
+ await req('/trigger-sources/'+auditSource.id+'/events','POST',ca,{...event,eventId:'normal',outcome:'Normal'});
+ const eventSignals=(await(await req('/workflow','GET',ca)).json()).signals.filter((s:any)=>s.sourceId===auditSource.id);assert.equal(eventSignals.length,2);assert.equal(eventSignals.find((s:any)=>s.eventId==='audit-finding-1').status,'Open');assert.equal(eventSignals.find((s:any)=>s.eventId==='normal').status,'Information');assert(eventSignals.every((s:any)=>s.riskId===risk.id&&s.kind==='audit'));
+ await req('/trigger-sources/'+auditSource.id,'PUT',ca,{...auditSource,enabled:false});assert.equal((await req('/trigger-sources/'+auditSource.id+'/events','POST',ca,{...event,eventId:'paused'})).status,409);
  const other=await (await req('/workflow','GET',cb)).json();assert.deepEqual(other,{kris:[],readings:[],sources:[],signals:[],reviews:[]});
  assert.equal(await tenant(wb.id,async c=>(await c.query('SELECT * FROM risk_signals')).rowCount),0);
  workflow=await (await req('/workflow','GET',ca)).json();assert.equal(workflow.reviews.length,1);assert.equal(workflow.signals.find((s:any)=>s.id===signal.id).status,'Reviewed');
- }finally{for(const workspace of workspaces){await tenant(workspace,async c=>{for(const table of ['risk_signals','trigger_sources','risk_reviews','kri_readings','risk_kris','risks','annual_objectives','organization_contexts'])await c.query(`DELETE FROM ${table} WHERE workspace_id=$1`,[workspace]);});await pool.query('DELETE FROM guest_sessions WHERE workspace_id=$1',[workspace]);await pool.query('DELETE FROM workspaces WHERE id=$1',[workspace]);}await new Promise<void>(r=>server.close(()=>r()));await pool.end();}
+ }finally{for(const workspace of workspaces){await tenant(workspace,async c=>{for(const table of ['objective_kpis','organization_departments','suite_records','risk_signals','trigger_sources','risk_reviews','kri_readings','risk_kris','risks','annual_objectives','organization_contexts'])await c.query(`DELETE FROM ${table} WHERE workspace_id=$1`,[workspace]);});await pool.query('DELETE FROM guest_sessions WHERE workspace_id=$1',[workspace]);await pool.query('DELETE FROM workspaces WHERE id=$1',[workspace]);}await new Promise<void>(r=>server.close(()=>r()));await pool.end();}
 });
+
+ test('news preview reduces promotional and stale false positives',()=>{
+ const base={id:'n',kind:'news',status:'Information',objectiveId:'o',observedAt:'2026-10-11',details:'',publishedAt:'2026-10-11'};
+ const goals=[{id:'o',title:'Improve delivery reliability',target:'95%'}],risks=[{id:'r',objectiveId:'o',title:'Flood disrupts delivery routes'}],profile={sector:'Logistics',description:'Delivery routes in Semarang'};const now=Date.parse('2026-10-11T12:00:00Z');
+ assert.equal(assessNews({...base,title:'Banjir Semarang menghambat pengiriman'},profile,goals,risks,now).level,'Potential impact');
+ assert.equal(assessNews({...base,title:'Perusahaan logistik raih penghargaan'},profile,goals,risks,now).level,'Context only');
+ assert.notEqual(assessNews({...base,title:'Flood delays delivery',publishedAt:'2026-09-01'},profile,goals,risks,now).level,'Potential impact');
+ assert.equal(assessNews({...base,title:'Celebrity celebrates birthday'},profile,goals,risks,now).level,'Low relevance');
+ });
