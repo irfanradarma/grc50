@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-18",
+  "risk": {
+    "publisher": "NC State University ERM Initiative + AICPA",
+    "title": "2026 State of Risk Oversight",
+    "year": 2026,
+    "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
+    "releaseUrl": "https://on-demand.aicpalearningcenter.org/news/article/rising-risk-complexity-outpaces-organizations-strategic-readiness-finds-new-aicpa-and-north-carolina-state-university-study",
+    "sample": 331,
+    "population": "Executives and board-level leaders across organization types",
+    "fieldwork": "Q2 2026",
+    "metrics": [
+      {"id": "strategic", "value": 11, "label": "Reported unique strategic or competitive advantage from risk management"},
+      {"id": "complexity", "value": 69, "label": "Said risk volume and complexity had increased over five years"},
+      {"id": "maturity", "value": 30, "label": "Described risk oversight as mature or robust"}
+    ],
+    "verification": "Publisher-indexed study summary and AICPA release; figures are separate survey items.",
+    "limits": "Self-reported perceptions, not a test of realized performance or causality. Not Kemenkeu-specific evidence."
+  },
+  "audit": {
+    "publisher": "PwC",
+    "title": "Global Internal Audit Study 2023",
+    "year": 2023,
+    "url": "https://www.pwc.com/gx/en/services/audit-assurance/internal-audit/global-internal-audit-study.html",
+    "pdfUrl": "https://www.pwc.lu/en/internal-audit/docs/pwc-global-interna-auditl-study-2023.pdf",
+    "page": 19,
+    "sample": 4680,
+    "countries": 81,
+    "population": "Internal audit leaders, board/business respondents, and second-line risk/compliance leaders",
+    "value": 49,
+    "metricPopulation": "Business executives in the study",
+    "label": "Believed internal audit lacked strong alignment with other lines on key risks and problems",
+    "verification": "Publisher web study and PDF page 19; overall sample on PDF page 2.",
+    "limits": "The 49% applies to the business-executive subgroup; its item-level denominator is not stated in the public summary. The overall sample is not the denominator for that percentage. Measures perceived alignment, not audit failure."
+  },
+  "paper": {
+    "authors": "Ruchi Agarwal and Sanjay Kallapur",
+    "title": "Four Ways to Improve Risk Reporting",
+    "journal": "California Management Review",
+    "year": 2021,
+    "volume": "63(4)",
+    "pages": "52–65",
+    "url": "https://journals.sagepub.com/doi/10.1177/00081256211019801",
+    "doi": "10.1177/00081256211019801",
+    "quote": "Risk reporting is often unconnected with business strategy and performance",
+    "interviewUrl": "https://discover.isb.edu/all-topics/finance-and-accounting/four-proven-ways-to-make-risk-reporting-more-effective",
+    "interviewYear": 2025,
+    "fieldwork": "2013–2019",
+    "scope": "More than 20 large financial institutions",
+    "verification": "Journal abstract; methodology and observed weaknesses described in the author's 2025 ISB interview. Full paywalled article was not used.",
+    "limits": "Qualitative field evidence explains mechanisms; it does not estimate how common these problems are across all organizations."
+  }
+}

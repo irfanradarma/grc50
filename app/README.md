@@ -2,7 +2,7 @@
 
 React/TypeScript/Vite, Express and PostgreSQL. Follow the [LAN operating guide](../docs/seminar-workshop.md) and [seminar plan](../docs/seminar-plan.md).
 
-The default page is the participant exercise. `?mode=presenter` creates and controls seminar sessions; `?view=dashboard` opens the detailed workspace and its connected incident, audit and assurance modules.
+The default page is the participant exercise. `/admin` creates and controls sessions; `/audience` joins; `/presentation/deck/` serves the HTML presentation through the same local origin. New sessions use the revised three-organization journey. Earlier sessions remain stored.
 
 ## Local setup
 

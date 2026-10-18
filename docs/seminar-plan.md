@@ -1,54 +1,259 @@
-# Beyond Compliance: Using AI to Capture Signals for Effective Risk Management
+# Beyond Compliance
+## Using AI to Capture Signals for Effective Risk Management
 
-Risk management becomes useful when new evidence reaches an accountable decision during the period. Performance, risk, and assurance share objectives, dependencies, and evidence. AI can reduce reading and linking effort; management owns relevance, assessment, and response.
+Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-Discuss disconnected reviews and administrative registers as recognizable diagnoses, not a claim that all Kemenkeu practice is ineffective. Official SPIT/EWS material establishes the direction toward integration.
+This is the narrative baseline for the rebuilt three-organization application and 31-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
 
-## 60-minute running order
+## 1. The argument
 
-| Minutes | Material and activity | Presenter action |
+We already invest in performance management, risk management, and assurance. The practical test is whether evidence from one changes a timely decision in another. When those connections are weak, substantial effort produces records without enough influence on outcomes.
+
+AI can help risk management respond to changing conditions: find signals, relate them to organizational dependencies and objectives, explain why a review may be needed, and propose a response. Management decides relevance, assessment, and action. Assurance tests controls and the effectiveness of the response.
+
+**The seminar's promise:** participants follow a traceable chain from a real event to an objective, a risk review, and an owned mitigation action. A reasoned neglect decision or unchanged score is equally valid.
+
+Beyond Compliance is the headline. GRC 5.0 can remain a supporting concept/brand; do not represent it as a formally recognized regulatory maturity level.
+
+## 2. Theory, diagnostic questions and a documented case
+
+Slides 2–3 introduce performance, risk and assurance as three connected disciplines examined in this seminar. They are not an expansion of the GRC acronym or an exhaustive catalogue. Compliance and integrity remain foundational. Sources: [OCEG critical disciplines](https://www.oceg.org/ideas/critical-disciplines/), [COSO ERM](https://www.coso.org/enterprise-risk-management), and the [IIA current Statements of Position](https://www.theiia.org/en/resources/statements-of-position). The IIA's older 2020 page is explicitly superseded; use the current repository.
+
+Slide 4 asks whether the performance → risk and risk → assurance → risk handoffs influence timely decisions. Its explanations remain static while the paths loop. Treat the Kemenkeu practice gap as a diagnostic question or professional observation, not a proven ministry-wide condition.
+
+Slides 5–7 introduce empirical evidence before the case: strategic usefulness of risk management, perceived internal-audit alignment, and the mechanisms behind compliance-oriented reporting. Primary-source URLs, dates, populations, item qualifiers and interpretation limits are recorded in [seminar-research.json](../website/assets/data/seminar-research.json). Study links also appear on the slides. The original 60-minute schedule is preserved by tightening the diagnostic discussion and case setup.
+
+Slides 8–10 use **Carillion**, a real UK strategic public-service supplier:
+
+- Reported performance and a June 2017 final dividend establish the outward narrative.
+- A November 2016 contract peer review and January 2017 cash warning show contradictory internal signals.
+- Parliament's analysis of internal audit priorities and criticism of challenge connect assurance to the outcome.
+
+Primary evidence: House of Commons, *Carillion*, HC 769 (2018), [business and internal signals, paragraphs 17 and 95](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76905.htm), [assurance, paragraphs 124–125](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76906.htm), and [chronology](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76904.htm). Attribute evaluative findings to the committees. The figures and timeline are editorial visual summaries, not source screenshots. Do not invent a historical risk score or suggest Carillion used BSC. Distinguish the contract peer review, internal audit and financial-statement audit.
+
+Slide 11 draws our design lesson: event-triggered, data-driven risk assessment must challenge assumptions in time to influence decisions. This is an interpretation, not a reconstruction of Carillion's risk register or a claim that AI would have prevented failure.
+
+Slide 12 loops the intended signal → contextual screening → human review → response framework. The workshop score of 12 → 16 is explicitly separate from Carillion data. A new mitigation projects a lower score only after effective implementation and reassessment; the current score remains 16. The app currently uses transparent relevance rules rather than a connected language model.
+
+Slide 13 invites participants into the full cycle using real external news and authored internal exercise evidence. Social listening is a future connector. Kemenkeu's SPIT/SIPT policy context is retained for the institutional closing.
+
+## 3. Frameworks that carry the story visually
+
+### Three disciplines, one objective
+
+Show three lanes: performance (objective/KPI), risk (exposure/control assumptions), and assurance (control evidence/findings). First reveal missing handoffs; then animate explicit links around a shared objective.
+
+```mermaid
+flowchart LR
+    O[Objective and KPI] --> R[Risk and control assumptions]
+    R --> A[Assurance priorities]
+    A --> E[Evidence about control effectiveness]
+    E --> D[Management reassessment and response]
+    D --> R
+    D --> P[Performance outlook and management action]
+    P --> O
+```
+
+This is a decision framework, not a claim that all relationships are linear. Performance information also feeds risk review. Auditors retain independence; management owns assessment and response.
+
+### The signal-to-action loop
+
+```mermaid
+flowchart LR
+    S[External and internal sources] --> C[Capture and preserve source]
+    C --> L[Link objective, dependency, and risk]
+    L --> H[Human relevance decision]
+    H -->|Capture| V[Review exposure and control assumptions]
+    H -->|Neglect with reason| N[Retain decision record]
+    V --> K[Update or retain assessment]
+    K --> M[Choose response, owner, and due date]
+    M --> F[Monitor execution and effectiveness]
+    F --> V
+```
+
+AI's intended role is retrieval, extraction, contextual linking, and proposals. The current workshop uses transparent rules; a model is not connected. Explain this plainly once and keep the suggestion's provenance inspectable. The exercise demonstrates a workflow an AI agent would support; do not call rule-based screening live model reasoning.
+
+| Distinction | Implication |
+|---|---|
+| Signal versus verified exposure | A credible report does not establish our exposure. Check geography, time, assets, suppliers, and dependencies. |
+| Current KPI versus forward-looking risk | Performance actuals and uncertainty about future achievement differ. Risk scores are not numerical KPI forecasts. |
+| Approved plan versus effective protection | Approval creates a commitment. Current risk only decreases after implementation/effectiveness evidence justifies reassessment. |
+| More reports versus more independent evidence | Several articles about one event are corroboration, not several separate reasons to raise a score. |
+
+## 4. The 60-minute experience
+
+| Time | Story and audience activity | Deck/app choreography |
 |---|---|---|
-| 0–8 | Disconnected reviews; annual KPI versus emerging exposure; illustrative Kemenkeu service case; SPIT/EWS | Invite an example of evidence missing from risk review |
-| 8–14 | Objective → risk → protection; capture/connect/propose; human judgment; four evidence rounds | Explain the decision loop |
-| 14–20 | Phone join, company/randomizer, objective, 1–2 risks, starting score | Display session QR and allow setup |
-| 20–32 | Publisher choices; real news; inbox decisions; affected-risk review and objective impact | Release news; discuss a false positive and a retained score |
-| 32–38 | Periodic report / meeting minutes; review and reassessment | Release internal reports |
-| 38–44 | Audit findings challenge control assumptions; scope and risk review | Release audit evidence |
-| 44–50 | Automated operational exceptions; confirmation and reassessment | Release CA evidence |
-| 50–56 | Repeated evidence versus new exposure; history; architecture; future AI evaluation | Ask what was already accounted for |
-| 56–60 | Compare capture/update/keep/neglect; close | Invite contrasting decisions |
+| 00–10 | Theory; diagnostic questions; survey evidence; real Carillion case | Three disciplines left to right, persistent callouts, documented case timeline and assurance priorities |
+| 10–14 | Risk as the connection point; AI's role; source-to-decision loop | Animate an evidence item across the framework |
+| 14–21 | Join; choose an organization; select at least one objective; inspect pre-scored risks | QR, three organizations, participant setup |
+| 21–25 | Inspect Risk Monitoring, existing mitigations, and Risk Trigger | Guided app orientation; enable available news sources |
+| 25–36 | One real news story; predict exposure; release; capture/neglect; assessment; mitigation | Source, three-company contrast, human decision, before/after assessment |
+| 36–43 | Release external batch; participants decide for 3–5 minutes; compare | Countdown; sources openable; aggregate progress |
+| 43–49 | Same logic for minutes/periodic reports, audit evidence, and CA | One connected internal evidence chain; shorter participant review |
+| 49–53 | Dashboard: what changed, why, and who acts? | Participant outcomes and anonymized session summary |
+| 53–57 | Return to Kemenkeu: SPIT, SIPT, and the shared work | Reuse opening diagram with functioning handoffs |
+| 57–60 | Call to action, one commitment, and a final question | One-objective pilot; short Q&A |
 
-## Participant journey
+If setup overruns, shorten the batch debrief. Preserve the first end-to-end decision and closing action. Unfinished participant decisions persist; the session should not require everyone to finish every item before the presenter proceeds.
 
-1. Join the presenter session with a private guest workspace.
-2. Name an Indonesian company, manually or with the randomizer.
-3. Choose one objective: reliable delivery, digital availability, or timely spending/procurement.
-4. Choose 1–2 risks from that objective; retain starting likelihood and impact.
-5. Select/deselect ANTARA, detik, Kompas, and CNN Indonesia.
-6. Inspect released inbox items: observation, source, date, suggested relationship, and rationale.
-7. Capture/link useful evidence or neglect it. Record a reason; rationale fields offer random fill.
-8. Finish the inbox, then inspect affected risks, proposed score, and plausible objective impact.
-9. Explicitly update or retain the score. Save before/after values and reasoning.
-10. Repeat for reports/minutes, audit, and CA.
-11. Download the decision record as JSON.
+## 5. Strategic choices, not operational interruptions
 
-Participants cannot skip required inbox or affected-risk decisions. A slower participant finishes their current round even if the presenter releases the next. Success means justified decisions, not more alerts or higher scores.
+The hands-on exercise asks whether a **growth thesis, market choice, business model or capital commitment** is still credible when new evidence arrives. Daily delivery, backup and warehouse incidents are no longer the selected risks.
 
-## Preparation and language
+All three organizations are fictional Indonesian teaching scenarios. Revenue weights, targets, scores, tolerance, plans and internal documents are exercise assumptions. External news is real and dated. The executable catalog is `app/shared/strategicScenario.ts`.
 
-Follow the [local/LAN guide](seminar-workshop.md). Create a session, capture/inspect news, select the laptop's Wi-Fi address, and paste the participant URL into the QR slide. Test an actual phone on the event Wi-Fi. Failed feeds are not replaced by invented news.
+| Organization | Strategic exposure | Objectives | Risks |
+|---|---|---|---|
+| **PT Nusa Logistik Indonesia** | Export forwarder; US-bound exporters support 45% of revenue; proposed export hub | L1: revenue +15%, contribution margin ≥12%. L2: ≥30% new contracted revenue outside the US corridor; downside approval before hub investment | Trade-policy demand shock 12; corridor profit-model erosion 8; unqualified diversification 8; stranded hub investment 10 |
+| **PT Pangan Ritel Nusantara** | Processed seafood exporter; 60% of export sales to US buyers; product classifications and contract terms must be checked | P1: export revenue +12%, gross margin ≥18%. P2: non-US share ≥40%; qualify two new markets by Q4 | Tariff-driven competitiveness loss 12; currency/pricing assumptions 8; unqualified market entry 8; persistent concentration 9 |
+| **PT Cakrawala Digital Indonesia** | Domestic enterprise/public-sector software; no goods exports, US buyers or verified dependence on US-bound exporters | D1: recurring revenue +20%, key-account retention ≥90%. D2: win three regulated-sector accounts; validate data requirements before commitments | AI commoditization 12; customer budget reprioritization 8; data-governance market constraints 10; model-vendor dependence 9 |
 
-The deck is English. Participant controls/prepared evidence use curated English/Indonesian copy. Publisher text and user rationale retain their original language.
+Participants choose one organization and at least one objective. Recommend the first objective for the common 12 → 16 worked example. The tariff case can also challenge the logistics hub-investment case or the seafood company's market concentration. Their starting scores differ; do not force every participant to obtain 16. Risks, owners, baseline assumption-validation plans and controls are supplied.
 
-## Evidence and implementation boundaries
+## 6. First guided signal: a strategic trade shock
 
-- News is collected from Google News RSS restricted to publisher domains. Links may route through Google News. RSS can be headline-only; the app does not claim full-article analysis when no excerpt is available.
-- Relevance uses selected-risk topics, adverse terms, article age, and a limited foreign-location check for domestic delivery. A model is not connected; users may override links.
-- Internal/audit documents are prepared workshop evidence with company name/reference, not actual Kemenkeu findings or confidential records.
-- CA evaluates configured exercise checks: 11/50 late dispatches, 38-hour backup age, missing acceptance references. Participants confirm before capture; CA is not manual report submission.
-- A one-point likelihood review is a teaching heuristic. Ordinal scores are not probabilities or KPI forecasts. Corroboration does not justify cumulative escalation.
-- Model connection, full-article interpretation, production API/MCP adapters, and internet hosting remain later work. This revision runs locally/LAN; Supabase Atlas is unchanged.
+**ANTARA Jawa Barat, 3 April 2025, 10:03 WIB:** “Indonesia kena kenaikan tarif AS 32 persen” [R9]. The report covers the 2 April announcement, with the country-specific tariff scheduled for 9 April at publication. The exercise is explicitly **as of 8 April 2025**. This is a historical announcement, not a claim about the current tariff rate.
 
-## Principles and visuals
+The shared record is `website/assets/data/seminar-case.json`. Display the original article link, headline, date and attributed article photograph. The deck's article brief is not labelled a browser screenshot. Separate reported facts from fictional company exposure.
 
-References link Kemenkeu SPIT/EWS and risk/objective material, COSO ERM, IIA Global Internal Audit Standards, and NIST AI 600-1. They support principles, not prevalence or measured AI-benefit claims. Editable SVG frameworks, Lucide icons, and credited photography carry the story. Retain [asset credits](../website/assets/images/CREDITS.md) with exports.
+1. Ask: which growth assumptions does this challenge? Does the announcement establish a loss, or a reason to investigate?
+2. Reveal two potentially affected export-dependent strategies and the domestic-software contrast. Tariffs on goods can affect freight customers' demand; do not call them a tax on freight services.
+3. Presenter releases the guided case. Every participant receives it, including those with no suggested link, so a reasoned neglect is possible.
+4. Open the original source. Verify timing, covered products, contracts, customer intentions, revenue concentration and available strategic options.
+5. Capture or neglect with a reason. Capture alone leaves the assessment unchanged.
+6. For the first export-growth risk, consider likelihood 3 → 4 with impact 4, only if the growth case depends on the exposed demand and effective protection is unverified. Keep/customize/accept remain available. The announcement does not imply 32% revenue loss or a measured probability.
+7. Exercise tolerance is ≤12. A proposed 16 prompts an owned response: rebase the forecast, qualify non-US demand, review pricing and approve investment decision gates.
+8. Save a response with owner, deadline, expected effect and evidence requirements. A one-point likelihood reduction projects 12, while current assessment remains 16 until explicitly reassessed against evidence.
+9. Return to the objective: explain the mechanism threatening revenue growth, margin or investment returns. Do not manufacture KPI actuals from a risk score.
+
+For the domestic software company, no established direct goods-tariff exposure is a valid contrast. Indirect exposure remains a question to verify. That company receives its own strategic signals in the next round.
+
+## 7. Wider strategic evidence
+
+### External sources
+
+The default **Load strategic case news** action prepares eight verified articles representing seven events, all published by the 8 April 2025 cutoff:
+
+- Trade-policy response and sector assessment: ANTARA and Kompas corroboration of the guided event.
+- Rupiah pressure: uncertain net effect; inspect receipts, imported inputs and repricing.
+- New export destinations: diversification opportunity, not proof of contracted demand.
+- Trade diversion: a published concern, not a demonstrated market-share loss.
+- Budget efficiency: revalidate funded demand; do not assume all technology contracts are cancelled.
+- DeepSeek: revalidate differentiation and willingness to pay; reported model-training costs are not total ownership costs.
+- Expected PDP implementing rules: assess market-entry requirements; an expected rule is not an enacted obligation.
+
+All source links, dates, summaries and directional screening metadata are in `website/assets/data/strategic-news.json`. ANTARA, detik, Kompas and CNN Indonesia remain selectable. CNN has no verified article in this case pack, so coverage is honestly zero. Publisher selection applies before release; corroborating coverage is grouped as one event. Participants have 3–5 minutes to review useful evidence, not a capture quota.
+
+**Capture current strategic news** is a separate on-demand Google News RSS mode, retaining actual dates and up to 24 unique results. It does not pretend that current headlines occurred in the April 2025 replay. Inspect source coverage and relevance before releasing. The app uses transparent grouped-term relevance rules, not a connected language model. Social listening remains an unconnected future source.
+
+### Internal sources
+
+| Source | Strategic example | Management decision |
+|---|---|---|
+| Strategy minutes / periodic report | Eight forecast deals still assume unchanged US-bound demand | Revalidate the growth case and resource commitments |
+| Audit report | No approved tariff downside sensitivity or key-customer confirmation | Challenge confidence in the forecast and investment gates |
+| Continuous Assurance | 8/20 forecast deals lack updated trade-policy assumptions = 40%, against a 20% review threshold | Confirm the business-case exceptions, then revisit the linked risk |
+
+There are three evidence types for each of 12 risks, with readable source documents. CA uses configured teaching inputs and exposes numerator, denominator, threshold, metric and exception references. It is automated, with human confirmation before capture, and is not a claim of a production connector. Report, audit and CA records challenging the same assumption share an event key to prevent repeated escalation.
+
+Evidence can justify a higher, lower or unchanged assessment. Record the source, reasoning, owner and next review. Measure the quality of decisions and protection, rather than the number of captured items.
+
+## 8. App design contract
+
+### Audience: three main menus
+
+**Dashboard:** selected objectives/KPI targets and actuals if supplied; exposure relative to tolerance; risks awaiting review; actions due/overdue; and decision history. A compact heat map complements the risk list. Distinguish observed current assessment from projected residual assessment. Never infer KPI actuals or completed improvement from approved plans.
+
+**Risk Monitoring**, with two tabs:
+
+- **Risks:** table of risk, objective, current score, tolerance indicator, owner, and pending signals. Row accordion opens evidence review, capture/neglect, reassessment, and response. Keep controls/history visible. Decisions retain evidence, reason, actor, and timestamp.
+- **Mitigation plans:** table of plan, linked risk/objective, owner, due date, status, expected effect, and effectiveness evidence. Accept/customize suggestions. Proposed or approved plans remain separate from verified protection.
+
+**Risk Trigger:** source configuration and capture/triage status. External news/social; periodic/incident reports; audit reports; automated CA. Risk-linked review is accessible from Risk Monitoring without duplicated decisions/queues. Source changes apply at a documented batch boundary, not by silently deleting reviewed evidence.
+
+For phones, use three-item bottom navigation and compact risk/signal rows; use tables on larger screens. Details must be readable without horizontal scrolling. Badges distinguish news, social, report, audit, and CA.
+
+### Admin/presenter
+
+Preserve separate routes: `/admin`, `/admin/sessions/CODE`, `/audience`, and `/audience/sessions/CODE`. QR and deck joins target audience paths. Keep session ownership and private workspaces.
+
+Controls: create/resume; share QR; inspect source coverage; pin/preview news; preview exposure for each organization/objective; release guided item; release external batch; release internal evidence; track aggregate progress; display anonymized outcomes. Releases are idempotent. Slower participants can finish earlier work.
+
+The presenter cannot accept signals or edit assessments/plans for participants. Default session summaries do not expose another participant's private rationale.
+
+Use durable IDs for organizations, objectives, risks, events, signals, sources, decisions, assessments, and plans. A signal may affect several objectives/risks. Relevance scores differ from risk scores. Publication/event/capture/replay timestamps differ.
+
+Acceptance checks: multiple-objective selection; two exposed/one unexposed case; no score update without a human decision; no decrease from plan approval; event grouping; stale-news handling; openable sources; mobile usability; private workspaces; owner-only release; duplicate-release protection; refresh/rejoin persistence; actual-phone LAN access.
+
+## 9. Deck storyboard
+
+31 slides, including research evidence, the strategic case, hands-on guidance and references. Share app typography, color, icons, organization names, and case data.
+
+| Slides | Message | Visual / interaction |
+|---|---|---|
+| 1 | Beyond Compliance | Title and evidence path |
+| 2–3 | Established disciplines; missing connection | Three-track policy timeline with citations; diagnostic questions |
+| 4–5 | Green KPI, weakening protection | Kemenkeu service example; missing handoff revealed |
+| 6–7 | Risk connects changing context to objectives | Objective-risk-control-assurance framework; animated signal loop |
+| 8 | Different sources and evidential strength | External/internal map; news/social/report/audit/CA icons |
+| 9–10 | Become the decision-maker | QR; three organizations; objective/dependency selection |
+| 11 | Starting position | Actual risk list, existing plans, enabled sources |
+| 12–13 | One event, different exposure | Dated real news and link; predict/reveal dependencies |
+| 14–16 | Evidence → review → response | Guided release; decision; before/after risk; mitigation |
+| 17 | Current exposure versus expected protection | 16 current versus 12 projected; effectiveness checkpoint |
+| 18 | A busier information environment | External batch; visible 3–5 minute timer with pause |
+| 19–20 | Internal evidence closes another gap | Minutes/audit/CA excerpt; dependency and response |
+| 21–22 | What changed, and why? | Actual session outcomes; contrasting decisions; dashboard |
+| 23 | Kemenkeu's direction | SPIT, SIPT; opening diagram now connected |
+| 24–25 | Start with one objective | Role-specific commitment; closing question |
+
+Use editable SVG frameworks and the existing icon system. Favor diagrams over paragraphs or decorative stock images. Put longer source details/qualifications in notes; keep dates, source links, and essential uncertainty visible. Progressive reveals explain relationships. Support keyboard navigation and reduced motion.
+
+The featured story and dashboard must use the same session/case data or an explicitly dated replay state. Never present fabricated counts or preset success statistics as live results.
+
+## 10. Institutional bridge and call to action
+
+### Kemenkeu close
+
+“We are not starting from zero. PMK 83/2024 and the implementation guidance establish the direction toward integrated internal control. SIPT is the information-system support for that direction. Our exercise illustrates a practical contribution: evidence reaching the right owner, challenging an assumption, and leading to a decision we can trace.” [R6–R8, R10]
+
+SPIT is the framework; SIPT supports it. BaTii's published strategy expands SIPT as **Sistem Informasi Pengendalian Terintegrasi** [R10, printed page 10]. Use that sourced form; confirm approved internal nomenclature before publication if the speaker's programme uses a longer form. The instruments do not by themselves establish that the demonstrated AI news workflow is mandated or deployed. This app is not represented as deployed SIPT. The speaker can describe work they personally lead, distinguishing implemented, developing, and proposed capabilities.
+
+### Closing script
+
+“Today you followed a small chain of decisions. You examined an event, connected it to an objective, reviewed a risk, and decided what to do. Some changed an assessment; some kept it; some rejected the signal. The value was the reason you could show and the action you could own.
+
+“Take one important objective back to your unit. Bring the performance owner, risk owner, internal compliance team, and assurance together around the same evidence. Which changes would threaten that objective? Where would we see them first? Who must decide, and how quickly?
+
+“Start with a small, measurable pilot: one external source, one internal report, and one relevant assurance finding. Test whether they reach the right person and improve a decision. Review the noise as seriously as the useful alerts. Expand when the connection works.
+
+“Management brings context and owns the response. UKI helps make monitoring useful. Assurance tests whether protection works. Technology teams make evidence accessible and traceable. This needs all of us.
+
+“For the objective you own, what signal should reach you earlier—and what would you do differently when it arrives?”
+
+### A 30-day commitment
+
+| Period | Work | Evidence of progress |
+|---|---|---|
+| Week 1 | Choose one objective/owner; map risks, controls, and review cadence | Shared dependency map and response expectations |
+| Week 2 | Connect a few permitted sources and a relevant assurance output | Source records, timestamps, initial relevance examples |
+| Week 3 | Review signals and record assessment/action decisions | Useful/rejected signals; reasons; owners/deadlines |
+| Week 4 | Review decisions and effectiveness evidence before expansion | Time to review/action; false positives; missed material signals; overdue actions; verified protection |
+
+Evaluate usefulness and response timeliness. Establish a baseline. Do not claim a small pilot alone proves improved KPI outcomes or AI accuracy.
+
+## References and claim boundaries
+
+Sources checked online on 18 October 2026. Historical instruments establish longevity and are not all represented as currently operative. English descriptions are paraphrases, not official translations. This is a seminar evidence base, not a comprehensive current-law opinion.
+
+- **[R1]** [DJKN, Realistisnya Timeline Pencapaian Bantu Target Terlampaui](https://www.djkn.kemenkeu.go.id/berita/baca/5203/Realistisnya-Timeline-Pencapaian-Bantu-Target-Terlampaui.html). Official 2014 coverage records e-performance use; does not establish first launch or complete ministry-wide coverage.
+- **[R2]** [DJKN, Manajemen Kinerja berdasarkan KMK 300/KMK.01/2022](https://www.djkn.kemenkeu.go.id/kanwil-aceh/baca-artikel/15808/Manajemen-Kinerja-di-Lingkungan-Kementerian-Keuangan-berdasarkan-KMK-300KMK012022.html). Official explanation of performance management and its framework.
+- **[R3]** [JDIH, PMK 191/PMK.09/2008](https://jdih.kemenkeu.go.id/dok/191-pmk-09-2008). Historical risk-management instrument; existence does not prove consistent implementation since 2008.
+- **[R4]** [DJKN, Pengelolaan Risiko](https://www.djkn.kemenkeu.go.id/kanwil-jakarta/baca-artikel/14069/Pengelolaan-Risiko-). Official explanation of KMK 577/KMK.01/2019 and its objective/performance connection.
+- **[R5]** [JDIH, PMK 109/PMK.09/2021, original text](https://jdih.kemenkeu.go.id/api/download/0bba2ab5-08ea-4f7e-8296-cfc5457bfa37/109~PMK.09~2021Per.pdf). Articles 1, 2, 4, 9, and 12 support the assurance-risk-objective relationship; the preamble identifies its 2016 predecessor. Does not establish effectiveness in practice.
+- **[R6]** [JDIH, PMK 83 Tahun 2024](https://jdih.kemenkeu.go.id/dok/pmk-83-tahun-2024). Official SPIT metadata: established 18 October 2024; effective 1 January 2025.
+- **[R7]** [DJPb official listing of KMK 1/KM.9/2025](https://djpb.kemenkeu.go.id/kppn/mukomuko/id/data-publikasi/daftar-peraturan/3108-keputusan-menteri-keuangan-republik-indonesia-nomor-1-km-9-2025-tentang-petunjuk-pelaksanaan-sistem-pengendalian-intern-terintegrasi-di-lingkungan-kementerian-keuangan.html). Supports identification/title. Check its linked original before adding article-specific quotations.
+- **[R8]** [DJKN, SPIT dalam rangka membangun EWS yang lebih efektif](https://www.djkn.kemenkeu.go.id/kanwil-rsk/baca-artikel/17762/Sistem-Pengendalian-Intern-Terintegrasi-SPIT-Dalam-Rangka-Membangun-Sistem-Peringatan-Dini-EWS-yang-lebih-efektif.html). Discusses objectives/KPIs, risk profiles, oversight-based reassessment, and three-line integration. Supports direction, not deployed AI functionality.
+- **[R9]** [ANTARA Jawa Barat, Indonesia kena kenaikan tarif AS 32 persen](https://jabar.antaranews.com/berita/594405/indonesia-kena-kenaikan-tarif-as-32-persen), 3 April 2025, 10:03 WIB. Original announcement replayed as of 8 April 2025; not the current tariff rate. Company exposure and scores are exercise assumptions.
+- **[R10]** [BaTii, KEP-39/TI/2025: Renstra 2025–2029](https://batii.kemenkeu.go.id/api/Medias/68f3f086-ae7c-40c1-8acb-251c0e16dacd), printed page 10 (PDF page 10). Explicitly describes SIPT as supporting SPIT; does not establish operational status or the demonstrated AI workflow.

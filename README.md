@@ -4,8 +4,8 @@ Using AI to capture signals for effective risk management: a 60-minute English p
 
 - [Seminar material and running order](docs/seminar-plan.md)
 - [Presenter and LAN setup guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: final 33-slide HTML deck, diagrams, interactions and speaker notes.
-- `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. The Apps switcher also opens the detailed risk/assurance workspace.
+- `website/deck/index.html`: 31-slide English deck with policy references, diagrams, a shared news case, QR joining, countdown and actual session outcomes.
+- `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. Admin and audience use separate route paths.
 
 ## Run locally
 
@@ -14,15 +14,9 @@ Using AI to capture signals for effective risk management: a 60-minute English p
 npm --prefix app run dev
 ```
 
-In another terminal:
+Open `http://localhost:5173/admin` and `http://localhost:5173/presentation/deck/`. Audience entry is `http://localhost:5173/audience`. Create a new session for this version and share its LAN audience URL/QR. Phones need the same reachable network. Keep local `.env` and `.local/` private; they are excluded from Git.
 
-```powershell
-python -m http.server 8765 --bind 127.0.0.1
-```
-
-Open `http://localhost:5173/?mode=presenter` and `http://localhost:8765/website/deck/`. Share the LAN participant URL/QR from presenter controls. Phones need the same reachable network. Keep local `.env` and `.local/` private; they are excluded from Git.
-
-News is collected from actual publisher RSS results. Interpretation currently uses explicit rules. Internal reports, audit extracts and CA inputs are prepared workshop evidence. The workflow records capture/neglect and explicit update/keep decisions; it does not claim a connected language model or live production integrations.
+Participants choose from three Indonesian organizations and one or more objectives, then use Dashboard, Risk Monitoring and Risk Trigger. Guided news, live publisher RSS, internal documents and CA exceptions lead to explicit capture/neglect, assessment and mitigation decisions. Current and projected residual risk remain separate. Interpretation uses explicit rules; a language model and social connector are not connected. Internal sources use teaching evidence.
 
 ## Verification
 
@@ -33,6 +27,12 @@ npm --prefix app run build
 
 ## Publishing
 
-GitHub contains the source. The manual **Publish seminar deck** Actions workflow publishes only `website/` to GitHub Pages. The hands-on app needs the local/LAN backend and is not a static-only Pages application. Existing Supabase Atlas settings are not part of this setup.
+GitHub contains the source. The manual **Publish seminar deck** Actions workflow publishes only `website/` to GitHub Pages. The hands-on app needs the local/LAN backend and is not a static-only Pages application.
 
 Retain [photo and icon credits](website/assets/images/CREDITS.md) with exported/published material.
+
+## Strategic hands-on case
+
+Create a new session in `/admin` for scenario version 3. The three companies now face strategic growth, market concentration, capital allocation and business-model risks. The shared case is ANTARA's 3 April 2025 US tariff-announcement report, explicitly replayed as of 8 April 2025. It is not a current-rate claim. Use **Load strategic case news** for the verified eight-article pack; **Capture current strategic news** remains a separate RSS mode. Earlier sessions remain preserved.
+
+The current deck uses nine read-only mobile views built from the audience app components. See [the presenter guide](docs/seminar-workshop.md) for the full sequence and evidence boundaries.

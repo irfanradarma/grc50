@@ -1,5 +1,32 @@
-﻿(()=>{
- const input=document.querySelector('[data-workshop-url]'),button=document.querySelector('[data-workshop-connect]'),frame=document.querySelector('[data-workshop-qr]'),status=document.querySelector('[data-workshop-url-status]');
- if(input&&button&&frame){input.value=localStorage.getItem('hori-workshop-join-url')||'';const update=()=>{try{const url=new URL(input.value);if(!['http:','https:'].includes(url.protocol)||url.username||url.password)throw new Error('Use an HTTP/HTTPS participant link without embedded credentials.');const base=new URL(frame.src);frame.src=base.origin+base.pathname+'?mode=qr&join='+encodeURIComponent(url.href);localStorage.setItem('hori-workshop-join-url',url.href);document.querySelectorAll('[data-workshop-launch]').forEach(a=>a.href=url.href);status.textContent=['localhost','127.0.0.1'].includes(url.hostname)?'Use the LAN address from presenter controls so phones can connect.':'QR updated. Phones need network access to '+url.hostname+'.';}catch{status.textContent='Paste the participant link copied from presenter controls.';}};button.addEventListener('click',update);if(input.value)update();}
- document.querySelectorAll('[data-workshop-score]').forEach(root=>{const range=root.querySelector('input'),value=root.querySelector('[data-workshop-score-value]'),equation=root.querySelector('[data-workshop-score-equation]'),output=root.querySelector('output');range.addEventListener('input',()=>{value.textContent=Number(range.value)*4;equation.textContent='Likelihood '+range.value+' × impact 4';output.textContent=range.value;});});
-})();
+const app=window.horiWorkshopApp;
+const input=document.querySelector('[data-workshop-url]'),button=document.querySelector('[data-workshop-connect]'),frame=document.querySelector('[data-workshop-qr]'),status=document.querySelector('[data-workshop-url-status]');
+let sessionCode='';
+function connect(){
+ try{
+ const url=new URL(input.value);if(!['http:','https:'].includes(url.protocol)||url.username||url.password||!/^\/audience\/sessions\/[A-Z0-9]{6}\/?$/i.test(url.pathname))throw Error('Use the audience session link.');
+ sessionCode=url.pathname.split('/')[3].toUpperCase();
+ frame.src=app+'/join-qr?join='+encodeURIComponent(url.href);
+ localStorage.setItem('hori-workshop-join-url-v3',url.href);
+ document.querySelectorAll('[data-workshop-launch]').forEach(a=>a.href=url.href);
+ status.textContent=['localhost','127.0.0.1'].includes(url.hostname)?'Use a reachable LAN address for audience phones.':'Connected to session '+sessionCode+'. Phones need access to '+url.hostname+'.';
+ }catch{status.textContent='Paste /audience/sessions/CODE from presenter controls.';}
+}
+input.value=localStorage.getItem('hori-workshop-join-url-v3')||'';
+button.addEventListener('click',connect);if(input.value)connect();
+document.querySelector('[data-reveal-exposure]').addEventListener('click',e=>{const root=e.target.closest('.slide').querySelector('.d-exposure');root.classList.toggle('revealed');e.target.textContent=root.classList.contains('revealed')?'Hide the exposure check':'Reveal the exposure check';e.target.setAttribute('aria-expanded',String(root.classList.contains('revealed')));});
+document.querySelector('[data-residual-range]').addEventListener('input',e=>{document.querySelector('[data-residual]').textContent='Projected score: '+((4-Number(e.target.value))*4);});
+let remaining=300,timer=null;
+const display=document.querySelector('[data-countdown]'),start=document.querySelector('[data-timer-start]'),duration=document.querySelector('[data-timer-duration]');
+function paint(){display.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');}
+function pause(){clearInterval(timer);timer=null;start.textContent='Start / resume';}
+start.addEventListener('click',()=>{if(timer){pause();return;}if(remaining<=0)return;start.textContent='Pause';let end=Date.now()+remaining*1000;timer=setInterval(()=>{remaining=Math.max(0,Math.ceil((end-Date.now())/1000));paint();if(!remaining)pause();},250);});
+document.querySelector('[data-timer-reset]').addEventListener('click',()=>{pause();remaining=Number(duration.value);paint();});
+duration.addEventListener('change',()=>{pause();remaining=Number(duration.value);paint();});
+document.querySelector('[data-session-stats]').addEventListener('click',async e=>{
+ const message=document.querySelector('[data-session-status]');if(!sessionCode){message.textContent='Connect the audience session on the QR slide first.';return;}
+ e.target.disabled=true;message.textContent='Loading owner-authorized session summaryâ€¦';
+ try{const response=await fetch(app+'/api/workshop/host/'+sessionCode,{credentials:'include'});if(!response.ok)throw Error('Owner session unavailable');const d=await response.json();const sum=k=>d.progress.reduce((n,p)=>n+Number(p[k]||0),0);const vals=[sum('decided'),sum('reviews'),sum('plans')];document.querySelectorAll('[data-live-stats] strong').forEach((el,i)=>el.textContent=vals[i]);message.textContent='Session '+sessionCode+' Â· '+d.progress.length+' participants Â· updated '+new Date().toLocaleTimeString()+'. Aggregate counts reflect recorded decisions, not KPI improvement.';}catch{message.textContent='Open this deck through the app at /presentation/deck/ in the presenter browser, and connect your owned session.';}finally{e.target.disabled=false;}
+});
+
+await import('./seminar-framework.js?v=signal-10');
+await import('./seminar-motion.js?v=strategy-7');

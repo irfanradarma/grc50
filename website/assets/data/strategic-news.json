@@ -1,0 +1,122 @@
+[
+  {
+    "id": "trade-response",
+    "eventId": "us-tariff-announcement-2025",
+    "sourceId": "antara",
+    "publisher": "ANTARA Jawa Timur",
+    "title": "Indonesia siapkan langkah strategis respons kebijakan tarif resiprokal AS",
+    "url": "https://jatim.antaranews.com/berita/902409/indonesia-siapkan-langkah-strategis-respons-kebijakan-tarif-resiprokal-as",
+    "publishedAt": "2025-04-03T22:00:00+07:00",
+    "summary": {
+      "en": "Officials described a response to the US tariff announcement and the need to assess export competitiveness. Verify affected product classifications and customer commitments.",
+      "id": "Pemerintah menjelaskan respons atas pengumuman tarif AS dan kebutuhan menilai daya saing ekspor. Verifikasi klasifikasi produk dan komitmen pelanggan."
+    },
+    "direction": "adverse",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "trade-scope",
+    "eventId": "us-tariff-announcement-2025",
+    "sourceId": "kompas",
+    "publisher": "Kompas",
+    "title": "Indonesia Masih Hitung-hitungan Kala Negara Lain Protes Tarif Trump",
+    "url": "https://nasional.kompas.com/read/2025/04/04/18151101/indonesia-masih-hitung-hitungan-kala-negara-lain-protes-tarif-trump",
+    "publishedAt": "2025-04-04T18:15:00+07:00",
+    "summary": {
+      "en": "The report describes assessment of the tariff announcement across export sectors. Product-level effects require further review rather than one uniform loss assumption.",
+      "id": "Berita menjelaskan kajian pengumuman tarif pada sektor ekspor. Dampak per produk memerlukan penelaahan, bukan asumsi kerugian yang seragam."
+    },
+    "direction": "adverse",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "fx-pressure",
+    "eventId": "fx-pressure-april-2025",
+    "sourceId": "antara",
+    "publisher": "ANTARA Kalimantan Tengah",
+    "title": "Akibat kebijakan tarif AS, Rupiah alami tekanan berat",
+    "url": "https://kalteng.antaranews.com/berita/752545/akibat-kebijakan-tarif-as-rupiah-alami-tekanan-berat",
+    "publishedAt": "2025-04-03T13:06:00+07:00",
+    "summary": {
+      "en": "The report records rupiah pressure amid trade-policy uncertainty. Review net export receipts, imported-input costs and repricing terms; currency movement is not a uniform loss.",
+      "id": "Berita mencatat tekanan rupiah di tengah ketidakpastian kebijakan dagang. Tinjau penerimaan ekspor bersih, biaya input impor, dan ketentuan harga; perubahan kurs bukan kerugian yang seragam."
+    },
+    "direction": "uncertain",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "market-diversification",
+    "eventId": "alternative-export-markets-2025",
+    "sourceId": "antara",
+    "publisher": "ANTARA",
+    "title": "Presiden sebut Indonesia cari pasar baru setelah kena tarif Trump",
+    "url": "https://www.antaranews.com/berita/4757529/presiden-sebut-indonesia-cari-pasar-baru-setelah-kena-tarif-trump",
+    "publishedAt": "2025-04-08T16:08:00+07:00",
+    "summary": {
+      "en": "The President called for new export destinations. This may support diversification options; an announcement is not proof of qualified customers or revenues.",
+      "id": "Presiden mendorong pencarian pasar ekspor baru. Ini dapat mendukung opsi diversifikasi; pengumuman belum membuktikan pelanggan terverifikasi atau pendapatan."
+    },
+    "direction": "opportunity",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "import-competition",
+    "eventId": "trade-diversion-competition-2025",
+    "sourceId": "kompas",
+    "publisher": "Kompas",
+    "title": "DPR Minta Pemerintah Antisipasi Banjir Produk Impor Imbas Kebijakan Tarif Trump",
+    "url": "https://nasional.kompas.com/read/2025/04/07/17241831/dpr-minta-pemerintah-antisipasi-banjir-produk-impor-imbas-kebijakan-tarif",
+    "publishedAt": "2025-04-07T17:24:00+07:00",
+    "summary": {
+      "en": "A legislator warned about possible trade diversion into Indonesia. This is a concern to assess, not evidence that a specific company has lost market share.",
+      "id": "Legislator memperingatkan potensi pengalihan perdagangan ke Indonesia. Ini kekhawatiran untuk ditelaah, bukan bukti perusahaan tertentu kehilangan pangsa pasar."
+    },
+    "direction": "uncertain",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "budget-priorities",
+    "eventId": "indonesia-budget-efficiency-2025",
+    "sourceId": "antara",
+    "publisher": "ANTARA",
+    "title": "Prabowo instruksikan efisiensi Rp306 triliun untuk stabilitas fiskal",
+    "url": "https://www.antaranews.com/berita/4603830/prabowo-instruksikan-efisiensi-rp306-triliun-untuk-stabilitas-fiskal",
+    "publishedAt": "2025-01-23T16:13:00+07:00",
+    "summary": {
+      "en": "The budget-efficiency instruction reprioritizes public expenditure. A domestic software growth plan should revalidate funded customer demand; this does not establish cancellation of every technology purchase.",
+      "id": "Instruksi efisiensi anggaran mengubah prioritas belanja publik. Rencana pertumbuhan perangkat lunak domestik perlu memvalidasi permintaan pelanggan beranggaran; ini tidak membuktikan pembatalan semua pembelian teknologi."
+    },
+    "direction": "adverse",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "ai-competition",
+    "eventId": "deepseek-competition-2025",
+    "sourceId": "detik",
+    "publisher": "detikInet",
+    "title": "DeepSeek AI Murah Meriah Asal China Bikin Saham Nvidia Anjlok",
+    "url": "https://inet.detik.com/business/d-7752709/deepseek-ai-murah-meriah-asal-china-bikin-saham-nvidia-anjlok",
+    "publishedAt": "2025-01-28T08:23:00+07:00",
+    "summary": {
+      "en": "Reporting on lower-cost AI alternatives prompted debate over model economics and competitive advantage. Revalidate product differentiation and willingness to pay; reported training-cost claims are not a total-cost comparison.",
+      "id": "Pemberitaan alternatif AI berbiaya lebih rendah memicu perdebatan ekonomi model dan daya saing. Validasi diferensiasi produk serta kesediaan membayar; klaim biaya pelatihan bukan perbandingan biaya menyeluruh."
+    },
+    "direction": "adverse",
+    "mode": "Historical case replay"
+  },
+  {
+    "id": "data-policy",
+    "eventId": "pdp-implementation-policy-2025",
+    "sourceId": "antara",
+    "publisher": "ANTARA Maluku",
+    "title": "Harmonisasi Perpres Pelaksana UU PDP diharapkan rampung akhir Februari",
+    "url": "https://ambon.antaranews.com/berita/249462/harmonisasi-perpres-pelaksana-uu-pdp-diharapkan-rampung-akhir-februari",
+    "publishedAt": "2025-01-17T14:24:00+07:00",
+    "summary": {
+      "en": "Officials discussed expected implementation-rule work on personal-data protection. Review regulated-customer entry requirements; an expected rule is not proof of enacted obligations.",
+      "id": "Pejabat membahas harapan penyelesaian aturan pelaksana pelindungan data pribadi. Tinjau persyaratan masuk pasar pelanggan teregulasi; perkiraan aturan bukan bukti kewajiban yang sudah berlaku."
+    },
+    "direction": "uncertain",
+    "mode": "Historical case replay"
+  }
+]
