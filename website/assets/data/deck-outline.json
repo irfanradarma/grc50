@@ -38,6 +38,26 @@
       "chapter": null
     },
     {
+      "key": "ai-and-supervision",
+      "section": "AI AND SUPERVISION",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "supervisory-technology",
+      "section": "SUPERVISORY TECHNOLOGY",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "suptech-in-practice",
+      "section": "SUPTECH IN PRACTICE",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "risk-management-use-case",
+      "section": "OUR USE CASE / RISK",
+      "chapter": "disconnect"
+    },
+    {
       "key": "the-foundation",
       "section": "THE FOUNDATION",
       "chapter": "disconnect"

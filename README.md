@@ -1,10 +1,10 @@
-﻿# SIGNAL | Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi
+ï»¿# SIGNAL | Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi
 
 Using AI to capture signals for effective risk management: an English presentation and progressive mobile workshop.
 
 - [Seminar material and running order](docs/seminar-plan.md)
 - [Presenter and LAN setup guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: 28-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
+- `website/deck/index.html`: 32-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
 - `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. Admin and audience use separate route paths.
 
 ## Run locally
