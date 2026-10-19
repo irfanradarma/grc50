@@ -1,5 +1,5 @@
 // SIGNAL is the seminar working model; it is not attributed to an external standard.
-window.horiSignalFramework=function(){
+window.signalSignalFramework=function(){
  const phases=[['sense','S','SENSE','#245bb2'],['interpret','I','INTERPRET','#087d88'],['guide','G','GUIDE','#7460a9'],['navigate','N','NAVIGATE','#a86d0d'],['act','A','ACT','#bd5638'],['learn','L','LEARN','#32754f']];
  const point=(r,a)=>{const t=a*Math.PI/180;return [330+r*Math.cos(t),300+r*Math.sin(t)].map(v=>Number(v.toFixed(2)));};
  const shapes=phases.map(([key,letter,name,color],i)=>{
@@ -30,6 +30,6 @@ window.horiSignalFramework=function(){
  </div>
  <div class="sf-controls"><span class="sf-position" data-framework-position>01 / 06</span><button type="button" data-framework-prev aria-label="Previous SIGNAL phase">&larr;</button><button type="button" data-framework-loop aria-pressed="true">Pause cycle</button><button type="button" data-framework-next aria-label="Next SIGNAL phase">&rarr;</button><span class="sf-control-hint">Select a phase to hold. Play to continue.</span></div>
  <div class="sf-accountability"><span><i class="sf-ai-dot"></i><b>AI supports</b> Sense &middot; Interpret &middot; Guide</span><span><i class="sf-human-dot"></i><b>People remain accountable</b> Navigate &middot; Act &middot; Learn</span></div>
- <small class="sf-attribution">SIGNAL / A working model for this seminar</small>
+ <small class="sf-attribution">SIGNAL / Evidence to accountable action</small>
  </div>`;
 };

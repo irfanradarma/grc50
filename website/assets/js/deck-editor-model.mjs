@@ -1,9 +1,9 @@
 ﻿// Only declarative text and bounded appearance values may be imported.
-export const schema='hori-deck-edits/v1';
+export const schema='signal-deck-edits/v1';
 const ranges={fontSize:[8,160],x:[-100,100],y:[-100,100],width:[1,100],height:[1,100],opacity:[.1,1]};
 const colors=['color','backgroundColor','fill','stroke'];
 export function validateEdits(input){
- if(!input||input.schema!==schema||!input.objects||typeof input.objects!=='object'||Array.isArray(input.objects))throw Error('Choose a HORI deck edits JSON file.');
+ if(!input||![schema,'hori-deck-edits/v1'].includes(input.schema)||!input.objects||typeof input.objects!=='object'||Array.isArray(input.objects))throw Error('Choose a SIGNAL deck edits JSON file.');
  if(Object.keys(input.objects).length>5000)throw Error('Too many edited objects.');
  if(input.version!==undefined&&!/^[0-9a-f]{8}$/.test(input.version))throw Error('Invalid deck version.');
  const objects={};

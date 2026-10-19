@@ -25,7 +25,7 @@ function syncLoops(){
 document.querySelectorAll('[data-loop-toggle]').forEach(button=>button.addEventListener('click',()=>{
  const root=button.closest('[data-evidence-loop]'),enabled=root.dataset.enabled!=='true';root.dataset.enabled=String(enabled);button.setAttribute('aria-pressed',String(enabled));button.textContent=enabled?'Pause the loop':'Start the evidence loop';syncLoops();
 }));
-const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 
 const frames=Array.from(document.querySelectorAll('[data-live-tour]'));
 function syncFrames(){
@@ -33,19 +33,19 @@ function syncFrames(){
  const gallery=frame.closest('[data-tour-gallery]'),active=frame.closest('.slide').classList.contains('active')&&document.visibilityState!=='hidden';
  const editing=document.body.classList.contains('deck-editing'),paused=gallery.dataset.userPaused==='true'||editing;
  if(active){if(!frame.getAttribute('src')||frame.getAttribute('src')==='about:blank')frame.src=frame.dataset.src;
- frame.contentWindow?.postMessage({type:'hori-tour',paused},new URL(frame.dataset.src).origin);
+ frame.contentWindow?.postMessage({type:'signal-tour',paused},new URL(frame.dataset.src).origin);
  }else if(frame.getAttribute('src')&&frame.getAttribute('src')!=='about:blank')frame.src='about:blank';
  gallery.querySelector('[data-tour-pause]').textContent=paused?'Play guide':'Pause guide';
  });
 }
 function sync(){syncLoops();syncFrames();}
 frames.forEach(frame=>{
- const gallery=frame.closest('[data-tour-gallery]');if(reducedMotion)gallery.dataset.userPaused='true';
+ const gallery=frame.closest('[data-tour-gallery]');gallery.dataset.userPaused='false';
  const resize=()=>{frame.style.transform='scale('+(frame.parentElement.clientWidth/390)+')';};new ResizeObserver(resize).observe(frame.parentElement);resize();
  frame.addEventListener('load',syncFrames);
  gallery.querySelector('[data-tour-pause]').addEventListener('click',()=>{gallery.dataset.userPaused=String(gallery.dataset.userPaused!=='true');syncFrames();});
 });
-document.addEventListener('hori:slidechange',sync);
-document.addEventListener('hori:editmode',sync);
+document.addEventListener('signal:slidechange',sync);
+document.addEventListener('signal:editmode',sync);
 document.addEventListener('visibilitychange',sync);
 sync();

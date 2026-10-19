@@ -3,7 +3,7 @@
 
 Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-This is the narrative baseline for the rebuilt three-organization application and 31-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
+This is the narrative baseline for the rebuilt three-organization application and 32-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
 
 ## 1. The argument
 
@@ -188,29 +188,42 @@ Acceptance checks: multiple-objective selection; two exposed/one unexposed case;
 
 ## 9. Deck storyboard
 
-31 slides, including research evidence, the strategic case, hands-on guidance and references. Share app typography, color, icons, organization names, and case data.
+32 slides. The agenda follows the cover; subsequent slide numbers are one higher than the prior version. Four persistent section markers show the current part of the narrative.
 
-| Slides | Message | Visual / interaction |
+| Slide | Section | Content |
 |---|---|---|
-| 1 | Beyond Compliance | Title and evidence path |
-| 2–3 | Established disciplines; missing connection | Three-track policy timeline with citations; diagnostic questions |
-| 4–5 | Green KPI, weakening protection | Kemenkeu service example; missing handoff revealed |
-| 6–7 | Risk connects changing context to objectives | Objective-risk-control-assurance framework; animated signal loop |
-| 8 | Different sources and evidential strength | External/internal map; news/social/report/audit/CA icons |
-| 9–10 | Become the decision-maker | QR; three organizations; objective/dependency selection |
-| 11 | Starting position | Actual risk list, existing plans, enabled sources |
-| 12–13 | One event, different exposure | Dated real news and link; predict/reveal dependencies |
-| 14–16 | Evidence → review → response | Guided release; decision; before/after risk; mitigation |
-| 17 | Current exposure versus expected protection | 16 current versus 12 projected; effectiveness checkpoint |
-| 18 | A busier information environment | External batch; visible 3–5 minute timer with pause |
-| 19–20 | Internal evidence closes another gap | Minutes/audit/CA excerpt; dependency and response |
-| 21–22 | What changed, and why? | Actual session outcomes; contrasting decisions; dashboard |
-| 23 | Kemenkeu's direction | SPIT, SIPT; opening diagram now connected |
-| 24–25 | Start with one objective | Role-specific commitment; closing question |
-
-Use editable SVG frameworks and the existing icon system. Favor diagrams over paragraphs or decorative stock images. Put longer source details/qualifications in notes; keep dates, source links, and essential uncertainty visible. Progressive reveals explain relationships. Support keyboard navigation and reduced motion.
-
-The featured story and dashboard must use the same session/case data or an explicitly dated replay state. Never present fabricated counts or preset success statistics as live results.
+| 1 | Opening | Beyond Compliance |
+| 2 | Opening | Our route from evidence to action |
+| 3 | The disconnect | Three disciplines. One purpose. |
+| 4 | The disconnect | Can evidence cross the boundaries? |
+| 5 | The disconnect | Shared goals. Disconnected decisions? |
+| 6 | The disconnect | 89% did not report a unique strategic advantage. |
+| 7 | The disconnect | 49% of business executives see an assurance alignment gap. |
+| 8 | The disconnect | Risk reporting can become a compliance exercise. |
+| 9 | The disconnect | Case deep dive: Carillion. Confidence before the collapse. |
+| 10 | The disconnect | The contradictory signals were already inside the organization. |
+| 11 | The disconnect | Assurance activity did not deliver effective challenge. |
+| 12 | The SIGNAL model | A timely decision about exposure. Not another periodic record. |
+| 13 | The SIGNAL model | SIGNAL: from evidence to action |
+| 14 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
+| 15 | Lead the decision | Join the session |
+| 16 | Lead the decision | Which organization will you lead? |
+| 17 | Lead the decision | The risk and the response are already connected |
+| 18 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
+| 19 | Lead the decision | Which organization is affected by this news? |
+| 20 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
+| 21 | Lead the decision | A changed assumption can move the assessment |
+| 22 | Lead the decision | The action follows the exposed dependency |
+| 23 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
+| 24 | Lead the decision | Now review a wider set of signals |
+| 25 | Lead the decision | The same review works inside the organization |
+| 26 | Lead the decision | An exception needs confirmation before it informs a risk decision |
+| 27 | Lead the decision | The dashboard shows decisions and commitments |
+| 28 | Lead the decision | Different decisions can both be well supported |
+| 29 | Put it to work | SPIT sets the direction. SIPT supports the information flow. |
+| 30 | Put it to work | One objective is enough to start testing the connection |
+| 31 | Put it to work | What signal should reach you earlier? |
+| 32 | Put it to work | Sources behind the argument |
 
 ## 10. Institutional bridge and call to action
 

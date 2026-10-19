@@ -1,18 +1,30 @@
 {
-  "checkedAt": "2026-10-18",
+  "checkedAt": "2026-10-19",
   "risk": {
     "publisher": "NC State University ERM Initiative + AICPA",
     "title": "2026 State of Risk Oversight",
     "year": 2026,
     "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
-    "releaseUrl": "https://on-demand.aicpalearningcenter.org/news/article/rising-risk-complexity-outpaces-organizations-strategic-readiness-finds-new-aicpa-and-north-carolina-state-university-study",
+    "releaseUrl": "https://www.aicpa-cima.com/news/article/rising-risk-complexity-outpaces-organizations-strategic-readiness-finds-new-aicpa-and-north-carolina-state-university-study",
     "sample": 331,
     "population": "Executives and board-level leaders across organization types",
     "fieldwork": "Q2 2026",
     "metrics": [
-      {"id": "strategic", "value": 11, "label": "Reported unique strategic or competitive advantage from risk management"},
-      {"id": "complexity", "value": 69, "label": "Said risk volume and complexity had increased over five years"},
-      {"id": "maturity", "value": 30, "label": "Described risk oversight as mature or robust"}
+      {
+        "id": "strategic",
+        "value": 11,
+        "label": "Reported unique strategic or competitive advantage from risk management"
+      },
+      {
+        "id": "complexity",
+        "value": 69,
+        "label": "Said risk volume and complexity had increased over five years"
+      },
+      {
+        "id": "maturity",
+        "value": 30,
+        "label": "Described risk oversight as mature or robust"
+      }
     ],
     "verification": "Publisher-indexed study summary and AICPA release; figures are separate survey items.",
     "limits": "Self-reported perceptions, not a test of realized performance or causality. Not Kemenkeu-specific evidence."

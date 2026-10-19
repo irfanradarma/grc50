@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {resolveSeminarRoute,sessionPath} from '../shared/seminarRoutes.js';
+import {resolveSeminarRoute,sessionPath,presentationLinks} from '../shared/seminarRoutes.js';
 const route=(path:string)=>resolveSeminarRoute(new URL(path,'http://localhost:5173'));
 
 test('mobile walkthroughs use dedicated read-only routes, separate from session roles',()=>{
@@ -22,4 +22,11 @@ test('root entry uses the audience route; query flags do not open admin controls
  assert.equal(route('/?mode=presenter&session=ABC234').canonical,'/audience/sessions/ABC234');
  assert.equal(route('/?view=dashboard').canonical,'/audience');
  assert.equal(route('/join-qr?join=https%3A%2F%2Fexample.com%2Faudience').kind,'qr');
+});
+
+test('presenter links retain Admin cookies while audience links use the reachable LAN host',()=>{
+ const links=presentationLinks('http://localhost:5173','http://192.168.0.190:5173','ABC234');
+ assert.equal(new URL(links.presenter).origin,'http://localhost:5173');assert.equal(new URL(links.presenter).searchParams.get('present'),'1');
+ assert.equal(new URL(links.presenter).searchParams.get('join'),'http://192.168.0.190:5173/audience/sessions/ABC234');
+ assert.equal(new URL(links.audience).origin,'http://192.168.0.190:5173');assert.equal(new URL(links.audience).searchParams.get('present'),null);
 });

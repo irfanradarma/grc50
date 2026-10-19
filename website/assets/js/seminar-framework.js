@@ -9,7 +9,7 @@ const phases=[
 const root=document.querySelector('[data-signal-framework]');
 if(root){
  const loop=root.querySelector('[data-framework-loop]'),more=root.querySelector('[data-framework-more]'),panel=root.querySelector('[data-framework-panel]');
- let playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,selected=0,timer=null;
+ let playing=true,selected=0,timer=null;
  const field=(key,value)=>root.querySelector('[data-framework-'+key+']').textContent=value;
  function paint(index){
   selected=(index+phases.length)%phases.length;const item=phases[selected];
@@ -38,8 +38,8 @@ if(root){
  root.querySelector('[data-framework-next]').addEventListener('click',()=>select(selected+1));
  loop.addEventListener('click',()=>{playing=!playing;sync();});
  more.addEventListener('toggle',()=>{if(more.open){playing=false;sync();}});
- document.addEventListener('hori:slidechange',sync);
- document.addEventListener('hori:editmode',sync);
+ document.addEventListener('signal:slidechange',sync);
+ document.addEventListener('signal:editmode',sync);
  document.addEventListener('visibilitychange',sync);
  paint(0);sync();
 }

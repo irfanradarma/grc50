@@ -1,5 +1,5 @@
 ﻿// Content-rich teaching layouts. All figures below are workshop examples unless attributed.
-window.horiEnrichSlide=function(section,title,html,note,type=''){
+window.signalEnrichSlide=function(section,title,html,note,type=''){
  const icon=name=>'<img class="d-icon" src="../assets/icons/'+name+'.svg" alt="" aria-hidden="true">';
  const band=(label,body)=>'<div class="d-teaching-band"><b>'+label+'</b><p>'+body+'</p></div>';
  const table=(headers,rows)=>'<table class="d-teaching-table"><thead><tr>'+headers.map(v=>'<th>'+v+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
@@ -7,7 +7,7 @@ window.horiEnrichSlide=function(section,title,html,note,type=''){
  switch(section){
  case 'BEYOND COMPLIANCE':
   title='Beyond Compliance';
-  html='<div class="d-simple-cover"><p class="d-cover-subtitle">Utilizing AI to capture more signals<br>for effective risk management</p><div class="d-cover-rule"></div><p class="d-cover-format">A seminar and hands-on experience</p></div>';
+  html='<img class="d-cover-photo" src="../assets/images/jakarta-cover.jpg" alt="Jakarta skyline at sunset"><div class="d-cover-wash" aria-hidden="true"></div><div class="d-simple-cover"><p class="d-cover-subtitle">Utilizing AI to capture more signals<br>for effective risk management</p><div class="d-cover-rule"></div><p class="d-cover-format">SIGNAL / Evidence. Judgment. Action.</p></div><a class="d-cover-credit" href="https://commons.wikimedia.org/wiki/File:JakartaSkyline.jpg" target="_blank" rel="noreferrer">Jakarta / Georgi Kovachev / CC BY-SA 4.0</a>';
   type='d-cover-slide d-simple-cover-slide';
   break;
  case 'THE FOUNDATION': {
@@ -17,10 +17,10 @@ window.horiEnrichSlide=function(section,title,html,note,type=''){
   break;
  }
  case 'THE PRACTICAL TEST':
-  html=html.replace('<p class="d-takeaway">',table(['Shared objective','Risk assumption','Assurance evidence','Management decision'],[['Profitable export growth','US-bound demand supports the forecast','Has the growth case been stressed against new trade policy?','Rebase the forecast and gate investment commitments']])+'<p class="d-takeaway">');
+  html='<div class="d-boundary-chain"><article><small>01 / PERFORMANCE</small><h3>Protect the target</h3><strong>Revenue +15%</strong><p>A growth plan depends on continued US-bound demand.</p></article><span class="d-boundary-arrow" aria-hidden="true">&#8594;</span><article><small>02 / RISK</small><h3>Challenge the assumption</h3><strong>Demand changes</strong><p>A new trade-policy signal challenges the growth forecast.</p></article><span class="d-boundary-arrow" aria-hidden="true">&#8594;</span><article><small>03 / ASSURANCE</small><h3>Test the protection</h3><strong>Evidence returns</strong><p>Audit tests whether the downside case and customer commitments are supported.</p></article></div><div class="d-boundary-question"><b>THE INTEGRATION TEST</b><p>Does the evidence change a forecast, a risk decision or an owned response?</p></div><small class="d-boundary-caption">Illustrative strategic example / the same objective passes through all three disciplines.</small>';
+  type='d-practical-slide';
   break;
  case 'OUR PAIN POINT':
-  html=html.replace('</div><button data-loop-toggle', '</div>'+band('What should travel across the handoff?','The affected objective, the challenged assumption, the evidence, the accountable owner and the next decision date.')+'<button data-loop-toggle');
   break;
  case 'REAL CASE / CARILLION / 1 OF 3':
   html=html.replace('<p>Its 2016 accounts', '<div class="d-service-strip"><span>'+icon('route')+'Roads</span><span>'+icon('landmark')+'Hospitals</span><span>'+icon('user-round-check')+'Public services</span></div><p>Its 2016 accounts');
@@ -64,6 +64,7 @@ window.horiEnrichSlide=function(section,title,html,note,type=''){
   html='<div class="d-closing-work"><div><p class="d-closing-question">Think of one decision that could improve<br>if the evidence reached you earlier.</p><p>Start with an objective you own. Choose a signal you can access. Agree who will review it and what should happen next.</p><div class="d-commitment-line">Your first pilot can begin with one useful connection.</div></div><div class="d-commitment-sheet"><small>YOUR COMMITMENT</small><div><b>Our objective</b><p>What result are we protecting?</p></div><div><b>The signal we need earlier</b><p>Which change or control failure matters?</p></div><div><b>Our review and response</b><p>Who decides, by when, using what evidence?</p></div><div><b>How we will know it helped</b><p>What decision or protection improved?</p></div></div></div>';
   break;
  }
+ if(section.includes('REAL CASE / CARILLION')){const current=Number(section.match(/(\d) OF 3/)[1]);html='<div class="d-case-ribbon"><b>CASE DEEP DIVE / CARILLION</b><div>'+['Performance story','Internal warnings','Assurance challenge'].map((label,i)=>'<span class="'+(i+1===current?'active':'')+'">'+label+'</span>').join('')+'</div></div>'+html;}
  const guides={
  'CHOOSE YOUR CONTEXT':['WHAT YOUR CHOICE CHANGES','The objective determines which risks and dependencies are supplied. The same news may be relevant to another company and irrelevant to yours.'],
  'YOUR STARTING POSITION':['WHAT TO NOTICE','Risks describe exposure. Mitigation plans are commitments to act. Each needs an owner and a due date that you can follow up.'],
@@ -78,5 +79,5 @@ window.horiEnrichSlide=function(section,title,html,note,type=''){
  if(section==='WHAT CHANGED?')html=html.replace('<span class="d-status"', '<span class="d-dashboard-question">Ask: did a useful signal lead to a justified decision and an action we can verify?</span><span class="d-status"');
  const exempt=['EVIDENCE / RISK MANAGEMENT','EVIDENCE / ASSURANCE','EVIDENCE / HOW THE GAP HAPPENS','ONE REAL EVENT','THE SOLUTION FRAMEWORK','REFERENCE / DISCUSSION'];
  if(section!=='BEYOND COMPLIANCE'&&!exempt.includes(section))type+=' d-content-rich';
- return {section:section==='BEYOND COMPLIANCE'?'SEMINAR / 60 MINUTES':section,title,html,note,type};
+ return {section:section==='BEYOND COMPLIANCE'?'OPENING / 60 MINUTES':section,title,html,note,type};
 };

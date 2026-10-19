@@ -10,7 +10,7 @@
 .d-teaching-table td:first-child{font-weight:800;color:#285c45}
 .d-teaching-table tbody tr:nth-child(even){background:#f5f8f5}
 .d-teaching-band{display:flex;align-items:flex-start;gap:25px;border-left:4px solid #c49945;background:#f8f3e8;padding:14px 18px;width:100%}
-.d-teaching-band>b{flex:0 0 190px;color:#815d23;font:800 17px/1.4 var(--hori-font-heading)}
+.d-teaching-band>b{flex:0 0 190px;color:#815d23;font:800 17px/1.4 var(--signal-font-heading)}
 .editorial .d-teaching-band>p{font-size:18px;line-height:1.45;margin:0;color:#4e5e51}
 .d-pillar-record{display:grid;grid-template-columns:90px 1fr;gap:9px 14px;border-top:1px solid #c4d7ca;padding-top:15px;margin:18px 0 0}
 .d-pillar-record dt{font-size:12px;font-weight:700;line-height:1.4;color:#6b8173}

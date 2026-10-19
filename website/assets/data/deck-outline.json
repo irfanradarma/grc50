@@ -1,0 +1,195 @@
+{
+  "deckId": "beyond-compliance-2026-10-v2",
+  "chapters": [
+    {
+      "id": "disconnect",
+      "title": "The disconnect",
+      "caption": "The promise, the evidence and a real case",
+      "minutes": "13 min",
+      "icon": "shield-alert"
+    },
+    {
+      "id": "model",
+      "title": "The SIGNAL model",
+      "caption": "From changing evidence to timely decisions",
+      "minutes": "7 min",
+      "icon": "radar"
+    },
+    {
+      "id": "practice",
+      "title": "Lead the decision",
+      "caption": "Hands-on: review, reassess and respond",
+      "minutes": "32 min",
+      "icon": "user-round-check"
+    },
+    {
+      "id": "action",
+      "title": "Put it to work",
+      "caption": "Connect the approach to your organization",
+      "minutes": "8 min",
+      "icon": "target"
+    }
+  ],
+  "slides": [
+    {
+      "key": "cover",
+      "section": "OPENING / 60 MINUTES",
+      "chapter": null
+    },
+    {
+      "key": "agenda",
+      "section": "THE ROUTE AHEAD",
+      "chapter": null
+    },
+    {
+      "key": "the-foundation",
+      "section": "THE FOUNDATION",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "the-practical-test",
+      "section": "THE PRACTICAL TEST",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "our-pain-point",
+      "section": "OUR PAIN POINT",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-risk-management",
+      "section": "EVIDENCE / RISK MANAGEMENT",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-assurance",
+      "section": "EVIDENCE / ASSURANCE",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-how-the-gap-happens",
+      "section": "EVIDENCE / HOW THE GAP HAPPENS",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "real-case-carillion-1-of-3",
+      "section": "REAL CASE / CARILLION / 1 OF 3",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "real-case-carillion-2-of-3",
+      "section": "REAL CASE / CARILLION / 2 OF 3",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "real-case-carillion-3-of-3",
+      "section": "REAL CASE / CARILLION / 3 OF 3",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "what-was-missing",
+      "section": "WHAT WAS MISSING?",
+      "chapter": "model"
+    },
+    {
+      "key": "the-solution-framework",
+      "section": "THE SOLUTION FRAMEWORK",
+      "chapter": "model"
+    },
+    {
+      "key": "now-you-take-the-decisions",
+      "section": "NOW YOU TAKE THE DECISIONS",
+      "chapter": "practice"
+    },
+    {
+      "key": "your-turn",
+      "section": "YOUR TURN",
+      "chapter": "practice"
+    },
+    {
+      "key": "choose-your-context",
+      "section": "CHOOSE YOUR CONTEXT",
+      "chapter": "practice"
+    },
+    {
+      "key": "your-starting-position",
+      "section": "YOUR STARTING POSITION",
+      "chapter": "practice"
+    },
+    {
+      "key": "one-real-event",
+      "section": "ONE REAL EVENT",
+      "chapter": "practice"
+    },
+    {
+      "key": "same-event-different-exposure",
+      "section": "SAME EVENT, DIFFERENT EXPOSURE",
+      "chapter": "practice"
+    },
+    {
+      "key": "the-first-human-decision",
+      "section": "THE FIRST HUMAN DECISION",
+      "chapter": "practice"
+    },
+    {
+      "key": "reassessment",
+      "section": "REASSESSMENT",
+      "chapter": "practice"
+    },
+    {
+      "key": "a-response-you-can-own",
+      "section": "A RESPONSE YOU CAN OWN",
+      "chapter": "practice"
+    },
+    {
+      "key": "expected-protection",
+      "section": "EXPECTED PROTECTION",
+      "chapter": "practice"
+    },
+    {
+      "key": "a-busier-information-environment",
+      "section": "A BUSIER INFORMATION ENVIRONMENT",
+      "chapter": "practice"
+    },
+    {
+      "key": "internal-evidence",
+      "section": "INTERNAL EVIDENCE",
+      "chapter": "practice"
+    },
+    {
+      "key": "continuous-assurance",
+      "section": "CONTINUOUS ASSURANCE",
+      "chapter": "practice"
+    },
+    {
+      "key": "what-changed",
+      "section": "WHAT CHANGED?",
+      "chapter": "practice"
+    },
+    {
+      "key": "compare-the-reasons",
+      "section": "COMPARE THE REASONS",
+      "chapter": "practice"
+    },
+    {
+      "key": "back-to-kemenkeu",
+      "section": "BACK TO KEMENKEU",
+      "chapter": "action"
+    },
+    {
+      "key": "the-next-30-days",
+      "section": "THE NEXT 30 DAYS",
+      "chapter": "action"
+    },
+    {
+      "key": "your-commitment",
+      "section": "YOUR COMMITMENT",
+      "chapter": "action"
+    },
+    {
+      "key": "reference-discussion",
+      "section": "REFERENCE / DISCUSSION",
+      "chapter": "action"
+    }
+  ]
+}

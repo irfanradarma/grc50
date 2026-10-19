@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {setupParticipant,guidedSignals,internalEvidence,materialize,proposed,projection,featured,organizations,screenArticle,scenarioVersion} from '../shared/workshop.js';
 process.env.NODE_ENV='test';
 import strategicNews from '../../website/assets/data/strategic-news.json';
+import deckOutline from '../../website/assets/data/deck-outline.json';
 const {app}=await import('./index.js');
 const {pool,tenant,migrate}=await import('./db.js');
 await migrate();
@@ -57,11 +58,15 @@ test('three contexts, selected objectives and non-cumulative assessment proposal
 });
 test('complete workshop: private organizations, guided case, mitigation, external/internal evidence, sources and ownership',async()=>{
  const server=app.listen(0,'127.0.0.1');await new Promise<void>(r=>server.once('listening',r));const address=server.address();assert(address&&typeof address==='object');const base='http://127.0.0.1:'+address.port+'/api';const workspaces:string[]=[];let sessionId='';
- async function req(path:string,method='GET',cookie='',body?:unknown){return fetch(base+path,{method,headers:{Cookie:cookie,'x-hori-request':'1','Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});}
+ async function req(path:string,method='GET',cookie='',body?:unknown){return fetch(base+path,{method,headers:{Cookie:cookie,'x-signal-request':'1','Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});}
  try{
  assert.equal((await req('/auth/me')).status,401);
  assert.equal((await fetch(base+'/auth/guest',{method:'POST'})).status,403);
  const guests=await Promise.all([0,1,2,3].map(()=>req('/auth/guest','POST')));const cookies=guests.map(r=>r.headers.get('set-cookie')!.split(';')[0]);for(const r of guests)workspaces.push((await r.json()).id);
+ assert(cookies[0].startsWith('signal_session='));
+ const legacyCookie=await req('/auth/me','GET',cookies[0].replace('signal_session=','hori_session='));
+ assert.equal(legacyCookie.status,200);assert.equal((await legacyCookie.json()).id,workspaces[0]);
+ assert(legacyCookie.headers.get('set-cookie')?.startsWith('signal_session='));
  const [host,a,b,d]=cookies;const {code}=await(await req('/workshop/sessions','POST',host)).json();sessionId=(await pool.query('SELECT id FROM seminar_sessions WHERE code=$1',[code])).rows[0].id;
  const original=(await pool.query('SELECT data FROM seminar_sessions WHERE id=$1',[sessionId])).rows[0].data;
  const legacy={...original,version:2};await pool.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[legacy,sessionId]);
@@ -70,6 +75,18 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.deepEqual((await pool.query('SELECT data FROM seminar_sessions WHERE id=$1',[sessionId])).rows[0].data,legacy);
  await pool.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[original,sessionId]);
  assert.equal((await req('/workshop/host/'+code,'GET',a)).status,404);
+ // Read-only deck viewers need no guest account, but only this session owner can lead.
+ const liveState=()=>req('/presentation/'+code);
+ assert.equal((await liveState()).status,200);assert.equal((await(await liveState()).json()).published,false);
+ const publish=(cookie:string,slideKey:string,deckId=deckOutline.deckId)=>req('/workshop/host/'+code+'/presentation','PUT',cookie,{slideKey,deckId});
+ assert.equal((await publish(a,'agenda')).status,404);assert.equal((await publish('','agenda')).status,401);
+ assert.equal((await publish(host,'unknown-slide')).status,400);assert.equal((await publish(host,'agenda','old-deck')).status,409);
+ assert.equal((await publish(host,'agenda')).status,200);
+ assert.equal((await(await liveState()).json()).slideKey,'agenda');
+ assert.equal((await publish(host,'the-foundation')).status,200);
+ const publicDeck=await(await liveState()).json();assert.equal(publicDeck.slideKey,'the-foundation');assert.equal(publicDeck.published,true);
+ assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','published','slideKey','updatedAt']);
+
  for(const cookie of [a,b,d])assert.equal((await req('/workshop/join','POST',cookie,{code})).status,200);
  const privateRows=await tenant(workspaces[1],c=>c.query('SELECT workspace_id FROM seminar_participants WHERE session_id=$1',[sessionId]));assert.equal(privateRows.rowCount,1);assert.equal(privateRows.rows[0].workspace_id,workspaces[1]);
  const setup=(cookie:string,organizationId:string,objectiveIds:string[])=>req('/workshop/'+code+'/setup','PUT',cookie,{organizationId,objectiveIds,company:'',sourceIds:['antara','detik','cnn','kompas']});
@@ -77,6 +94,7 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await setup(a,'logistics',['L1','L2'])).status,200);assert.equal((await setup(b,'food',['P1'])).status,200);assert.equal((await setup(d,'digital',['D1'])).status,200);
  const release=(stage:string,cookie=host)=>req('/workshop/host/'+code+'/release','POST',cookie,{stage});
  assert.equal((await release('guided',a)).status,404);assert.equal((await release('internal')).status,409);assert.equal((await release('guided')).status,200);assert.equal((await release('guided')).status,200);
+ assert.equal((await(await liveState()).json()).slideKey,'the-foundation','Signal releases must preserve live presentation state');
  const state=async(cookie:string)=>(await(await req('/workshop/'+code+'/state','GET',cookie)).json()).participant;
  const pa=await state(a),pb=await state(b),pd=await state(d);assert.equal(pa.signals.length,1);assert.equal(pa.risks.length,4);assert.equal(pb.risks.length,2);assert.deepEqual(pd.signals[0].riskIds,[]);
  const signal=pa.signals[0];const decide=(cookie:string,id:string,riskIds:string[],decision='Capture',confirmed=false)=>req('/workshop/'+code+'/signals/'+id+'/decision','POST',cookie,{decision,riskIds,confirmed,notes:'Verify recorded dependency and protection.'});

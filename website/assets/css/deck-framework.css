@@ -6,7 +6,7 @@
 .sf-framework{width:100%;display:flex;flex-direction:column;gap:10px;min-height:0;--phase-color:#245bb2}
 .sf-model-layout{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:36px;align-items:center;min-height:0}
 .sf-model-map{min-width:0;display:flex;flex-direction:column;align-items:center}
-.sf-diagram{display:block;width:100%;height:auto;max-height:51dvh;overflow:visible;font-family:var(--hori-font-body)}
+.sf-diagram{display:block;width:100%;height:auto;max-height:51dvh;overflow:visible;font-family:var(--signal-font-body)}
 .sf-orbit{fill:none;stroke:#e5eae7;stroke-width:1.3;stroke-dasharray:3 7}
 .sf-phase{cursor:pointer;outline:none}
 .sf-petal{stroke:#fff;stroke-width:2.5;transition:filter .25s,stroke .25s;opacity:1}

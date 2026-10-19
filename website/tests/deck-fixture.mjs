@@ -12,6 +12,6 @@ export async function buildSlides(){
  }};
  vm.createContext(context);
  for(const file of ['seminar-depth.js','seminar-research.js','seminar-framework-content.js','seminar-workshop.js'])vm.runInContext(fs.readFileSync(path.join(root,'website/assets/js',file),'utf8'),context);
- await context.window.buildHoriSeminar({add:(section,title,html,note,type)=>slides.push({section,title,html,note,type})});
+ await context.window.buildSignalSeminar({add:(section,title,html,note,type)=>slides.push({section,title,html,note,type})});
  return slides;
 }

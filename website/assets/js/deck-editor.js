@@ -1,6 +1,6 @@
-﻿import {schema,validateEdits,createHistory} from './deck-editor-model.mjs?v=editor-5';
+﻿import {schema,validateEdits,createHistory} from './deck-editor-model.mjs?v=signal-editor-6';
 const deck=document.querySelector('#deck'),toggle=document.querySelector('#editDeck');
-const storageKey='hori-deck-edits-v1',selector='h1,h2,h3,p,li,dt,dd,th,td,figcaption,.eyebrow,.foot,a,img,[data-edit-object],svg,svg text,svg rect,svg circle,svg path';
+const storageKey='signal-deck-edits-v1',selector='h1,h2,h3,p,li,dt,dd,th,td,figcaption,.eyebrow,.foot,a,img,[data-edit-object],svg,svg text,svg rect,svg circle,svg path';
 const objects=new Map(),originals=new Map();
 const live='[data-framework-panel],[data-framework-position],[data-loop-title],[data-loop-detail],[data-live-stats],[data-session-status],[data-workshop-url-status],[data-countdown],[data-residual]';
 for(const slide of deck.querySelectorAll('.slide')){
@@ -36,7 +36,7 @@ panel.innerHTML=`<div class="de-head"><h2>Deck editor</h2><button type="button" 
 <button data-export-previous hidden>Export previous revision edits</button><p class="de-help">Click to select. Double-click text to type. Drag the top handle to move; drag the corner to resize. Edits save in this browser. Export a JSON backup to transfer them. Links, clips and slide controls work in Presentation mode.</p>`;
 document.body.append(panel);
 const outline=document.createElement('div');outline.id='deckSelection';outline.hidden=true;outline.innerHTML='<button class="de-move" aria-label="Move selected object">Move</button><button class="de-resize" aria-label="Resize selected object"></button>';document.body.append(outline);
-const previousButton=panel.querySelector('[data-export-previous]');previousButton.hidden=!previousEdits;previousButton.onclick=()=>{const url=URL.createObjectURL(new Blob([previousEdits],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='hori-deck-edits-previous-revision.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+const previousButton=panel.querySelector('[data-export-previous]');previousButton.hidden=!previousEdits;previousButton.onclick=()=>{const url=URL.createObjectURL(new Blob([previousEdits],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='signal-deck-edits-previous-revision.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 const status=message=>panel.querySelector('.de-status').textContent=message;
 function isText(element){return !['img','svg','rect','circle','path'].includes(element.localName)&&!element.querySelector('img,svg,video,iframe,input,button,a,[data-edit-id]');}
 function isShape(element){return element.namespaceURI==='http://www.w3.org/2000/svg'&&element.localName!=='svg';}
@@ -95,7 +95,7 @@ function setEditing(on){
  if(on&&document.body.classList.contains('reading'))document.querySelector('#reading').click();
  document.querySelector('#reading').disabled=on;document.querySelector('#notes').disabled=on;
  if(on){listObjects();inspect();status(loadMessage);}else{select(null);if(dirty)save();}
- document.dispatchEvent(new CustomEvent('hori:editmode'));requestAnimationFrame(()=>{for(const [id,patch] of Object.entries(edits.objects))apply(id,patch);locate();});
+ document.dispatchEvent(new CustomEvent('signal:editmode'));requestAnimationFrame(()=>{for(const [id,patch] of Object.entries(edits.objects))apply(id,patch);locate();});
 }
 toggle.addEventListener('click',()=>setEditing(!editing));panel.querySelector('[data-done]').onclick=()=>setEditing(false);
 deck.addEventListener('click',event=>{if(!editing)return;if(event.target.closest('[contenteditable="true"]')){event.stopImmediatePropagation();return;}event.preventDefault();event.stopImmediatePropagation();const element=event.target.closest('[data-edit-id]');if(element)select(element);},true);
@@ -110,7 +110,7 @@ panel.querySelector('[data-slide-background]').onclick=()=>select(deck.querySele
 panel.querySelector('[data-save]').onclick=()=>{finishTyping();commit();};
 panel.querySelector('[data-undo]').onclick=()=>{finishTyping();edits=history.undo();applyAll();save();inspect();};panel.querySelector('[data-redo]').onclick=()=>{finishTyping();edits=history.redo();applyAll();save();inspect();};
 panel.querySelector('[data-reset-object]').onclick=()=>{if(!selected)return;const id=selected.dataset.editId;restore(id);delete edits.objects[id];commit();inspect();locate();};
-panel.querySelector('[data-export]').onclick=()=>{finishTyping();commit();const blob=new Blob([JSON.stringify(edits,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='hori-deck-edits.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Exported edits. Keep this JSON file with your seminar materials.');};
+panel.querySelector('[data-export]').onclick=()=>{finishTyping();commit();const blob=new Blob([JSON.stringify(edits,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='signal-deck-edits.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status('Exported edits. Keep this JSON file with your seminar materials.');};
 panel.querySelector('[data-import]').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{if(file.size>2000000)throw Error('Choose an edits file smaller than 2 MB.');const imported=validateEdits(JSON.parse(await file.text()));if(imported.version!==version)throw Error('This file belongs to a different deck revision.');const unknown=Object.keys(imported.objects).filter(id=>!objects.has(id));if(unknown.length)throw Error('This file contains objects from a different deck version.');finishTyping();edits=imported;commit();applyAll();inspect();status('Imported and saved in this browser. Undo is available.');}catch(error){status('Import failed: '+error.message);}event.target.value='';});
 for(const handle of outline.querySelectorAll('button'))handle.addEventListener('pointerdown',event=>{
  if(!selected)return;event.preventDefault();finishTyping();const rect=selected.getBoundingClientRect(),slide=selected.closest('.slide'),patch=edits.objects[selected.dataset.editId]||{};
@@ -119,7 +119,7 @@ for(const handle of outline.querySelectorAll('button'))handle.addEventListener('
 outline.addEventListener('pointermove',event=>{if(!drag||event.pointerId!==drag.pointer)return;const dx=event.clientX-drag.clientX,dy=event.clientY-drag.clientY,clamp=(value,min,max)=>Math.min(max,Math.max(min,value));update(drag.resize?{width:clamp((drag.width+dx)/drag.slideWidth*100,1,100),height:clamp((drag.height+dy)/drag.slideHeight*100,1,100)}:{x:clamp(drag.x+dx/drag.slideWidth*100,-100,100),y:clamp(drag.y+dy/drag.slideHeight*100,-100,100)},false);dirty=true;});
 function endDrag(){if(!drag)return;drag=null;commit();inspect();}outline.addEventListener('pointerup',endDrag);outline.addEventListener('pointercancel',endDrag);
 document.addEventListener('keydown',event=>{if(!editing)return;if(event.key==='Escape'){finishTyping();select(null);return;}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='s'){event.preventDefault();finishTyping();commit();}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='z'&&!event.target.isContentEditable&&!/INPUT|TEXTAREA/.test(event.target.tagName)){event.preventDefault();panel.querySelector(event.shiftKey?'[data-redo]':'[data-undo]').click();}});
-document.addEventListener('hori:slidechange',()=>{if(editing){finishTyping();select(null);listObjects();}for(const [id,patch] of Object.entries(edits.objects))apply(id,patch);requestAnimationFrame(locate);});
+document.addEventListener('signal:slidechange',()=>{if(editing){finishTyping();select(null);listObjects();}for(const [id,patch] of Object.entries(edits.objects))apply(id,patch);requestAnimationFrame(locate);});
 window.addEventListener('resize',()=>{for(const [id,patch] of Object.entries(edits.objects))apply(id,patch);requestAnimationFrame(locate);});document.addEventListener('scroll',locate,true);
 applyAll();inspect();
 

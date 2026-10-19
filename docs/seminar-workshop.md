@@ -1,6 +1,6 @@
-# HORI seminar: strategic risk hands-on
+# SIGNAL seminar: strategic risk hands-on
 
-The 31-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
+The 32-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
 
 ## Start locally
 
@@ -22,17 +22,17 @@ Vite listens on LAN and proxies the loopback API and presentation. Phones need t
 ## Presenter sequence
 
 1. Create a **new session** in /admin. This is scenario version 3; earlier operational sessions remain preserved and are not mixed into the new catalog.
-2. Open the deck in the owner browser. On slide 14, paste the new audience session link and show the QR.
+2. Open the deck in the owner browser. On slide 15, paste the new audience session link and show the QR.
 3. Participants choose an organization and at least one objective. Recommend its first growth objective for the shared 12 → 16 example. Each company has two objectives and four strategic risks.
 4. Orient to Dashboard, Risk Monitoring (Risks / Mitigation plans) and Risk Trigger. All four publishers start enabled.
-5. Slide 17 presents the real ANTARA tariff announcement dated 3 April 2025. The exercise is as of **8 April 2025**; 32% is the historical announced rate, not today's rate. Slide 18 reveals the strategic exposure contrast.
+5. Slide 18 presents the real ANTARA tariff announcement dated 3 April 2025. The exercise is as of **8 April 2025**; 32% is the historical announced rate, not today's rate. Slide 19 reveals the strategic exposure contrast.
 6. Release **Guided case**. Export logistics and seafood exports may be exposed; domestic software has no established direct goods-tariff exposure. Participants verify scope, capture/neglect, then explicitly keep/update the assessment.
 7. For the first export-growth risk, consider 12 → 16. Review the strategic response, owner, deadline and expected protection. Saving a plan does not reduce current risk. Other selected risks can have different starting/proposed scores.
 8. Choose **Load strategic case news** for the dated, verified eight-article pack. Inspect headlines, source coverage and organization previews. CNN has no article in this verified pack; zero is displayed. Do not imply every enabled publisher returned news.
 9. Alternatively choose **Capture current strategic news** for on-demand live RSS results. Dates and live labels remain explicit. Inspect before release; do not narrate current articles as April 2025 events.
-10. Release the external batch, then start the 3–5 minute review timer on slide 23. Participants assess trade, currency, diversification, AI competition, budget priorities and expected data rules according to their objectives. Some signals are uncertain or opportunities; relevance does not automatically mean higher risk.
-11. Release internal evidence. Slides 24–25 show strategy reports, audit findings and automated planning indicators. CA requires confirmation before capture. Every risk has three source-linked teaching records, sharing its underlying assumption event.
-12. Review dashboards on slide 26; load actual aggregate outcomes in the owner browser. A justified neglect or unchanged assessment is valid. Close with the SPIT/SIPT direction and a one-objective pilot.
+10. Release the external batch, then start the 3–5 minute review timer on slide 24. Participants assess trade, currency, diversification, AI competition, budget priorities and expected data rules according to their objectives. Some signals are uncertain or opportunities; relevance does not automatically mean higher risk.
+11. Release internal evidence. Slides 25–26 show strategy reports, audit findings and automated planning indicators. CA requires confirmation before capture. Every risk has three source-linked teaching records, sharing its underlying assumption event.
+12. Review dashboards on slide 27; load actual aggregate outcomes in the owner browser. A justified neglect or unchanged assessment is valid. Close with the SPIT/SIPT direction and a one-objective pilot.
 
 Releases do not require every participant to finish. Decisions persist. Source changes apply to unreleased batches, never silently deleting reviewed evidence.
 
@@ -42,7 +42,7 @@ Nine read-only mobile guides at `/audience/walkthrough/<key>` render the **same 
 
 Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Reduced-motion users start paused. The original-news slide uses an attributed source photograph and transcribed headline, not a claimed browser screenshot.
 
-Slide 4 loops the evidence paths with static handoff questions. Slide 12 loops evidence → human review → score → response. Fullscreen retains the slide footer while hiding navigation controls. The cover remains simple; the research slides and Carillion case remain intact.
+Slide 5 loops the evidence paths with static handoff questions. Slide 13 loops evidence → human review → score → response. Fullscreen retains the slide footer while hiding navigation controls. The cover remains simple; the research slides and Carillion case remain intact.
 
 ## Evidence boundaries
 
@@ -85,3 +85,14 @@ The quantitative findings concern strategic usefulness and alignment, not the pe
 The primary evidence includes NC State University/AICPA's 2026 study summary and release, PwC's 2023 web study and original PDF (alignment: page 19; overall sample: page 2), and Agarwal and Kallapur's 2021 journal abstract supplemented by the author's 2025 ISB interview. Paywalled full text was not used. These are separate evidence types; the current-source ledger identifies how each was verified.
 
 If browser edits belong to an earlier deck structure, they are archived locally rather than applied to different objects. Edit mode exposes **Export previous revision edits** to retain a backup. New edits can then be made on the revised deck.
+
+## Live slide following
+
+1. In `/admin`, create or resume your session and select the audience-reachable server address.
+2. Under **Live presentation**, open **Presenter deck** in the same browser that owns the session. This link stays on the Admin origin so its authentication cookie works even when audience links use the LAN address.
+3. Share **Audience deck link**. No guest account is needed to view slides. Viewer links include the session code; the plain deck URL remains independent.
+4. The presenter deck broadcasts its active slide. Audience decks follow by default and display the presenter's current slide and title.
+5. Next/previous, contents, chapter buttons or a direct hash change switch that viewer to independent browsing. **Browse independently** also holds the current slide. **Return to live** jumps to the latest presenter slide and resumes following.
+6. The four section markers and numbered slide footer remain visible in fullscreen. The live bar remains visible; presentation navigation stays hidden in fullscreen as before.
+
+Updates use short polling, approximately every 1.5 seconds. Disconnects retain the last known slide and indicate interrupted connectivity. Only the session owner can publish; the public endpoint returns only deck ID, slide key, publication state and timestamp. It exposes no participant records or private rationale. New content uses semantic slide keys so adding the agenda does not reinterpret a saved numeric cursor.
