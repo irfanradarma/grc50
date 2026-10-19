@@ -5,7 +5,7 @@ import path from 'node:path';
 import {buildSlides,root} from './deck-fixture.mjs';
 
 test('the final seminar retains its story, research and strategic exercise',async()=>{
- const slides=await buildSlides();assert.equal(slides.length,28);
+ const slides=await buildSlides();assert.equal(slides.length,32);
  assert.equal(slides[0].title,'Beyond Compliance');assert(slides[0].html.includes('d-simple-cover'));
  assert.equal(slides.filter(s=>s.type.includes('d-research-slide')).length,3);
  assert(!slides.some(s=>/CARILLION|WHAT WAS MISSING/.test(s.section)));

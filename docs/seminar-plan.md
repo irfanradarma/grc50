@@ -3,7 +3,7 @@
 
 Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-This is the narrative baseline for the rebuilt three-organization application and 28-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
+This is the narrative baseline for the rebuilt three-organization application and 32-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
 
 ## 1. The argument
 
@@ -17,9 +17,15 @@ Beyond Compliance is the headline. GRC 5.0 can remain a supporting concept/brand
 
 ## 2. Theory, diagnostic questions and research evidence
 
-Slides 3-4 introduce performance, risk and assurance as connected disciplines, supported by OCEG, COSO ERM and the IIA Three Lines Model. Slide 5 asks whether the handoffs actually influence decisions. Its explanations remain static while the paths loop.
+Slides 3–4 introduce AI oversight and AI-enabled supervision (SupTech), with sources from OECD (2026) and BIS FSI Insights 37 (2021). AI can be both the object of oversight and a tool supporting it. Internal oversight is presented as an adaptation of financial-sector SupTech; human judgment and accountability remain essential.
 
-Slides 6-8 present strategic-usefulness, assurance-alignment and risk-reporting evidence. Source populations and limitations remain explicit. The research transitions directly to the SIGNAL framework on slide 9. No corporate-collapse case is included.
+Slide 5 compares authority use cases: ECB Athena/Heimdall, PRA cognitive search and the FINMA GenAI desk-review proof of concept. Each card links to a primary authority source and identifies status and publication date.
+
+Slide 6 narrows the scope to SIGNAL as a risk-management use case: protect an objective, connect changing evidence to risk assumptions, and retain human ownership of assessment and response.
+
+Slides 7–8 introduce performance, risk and assurance as connected disciplines, supported by OCEG, COSO ERM and the IIA Three Lines Model. Slide 9 asks whether the handoffs actually influence decisions. Its explanations remain static while the paths loop.
+
+Slides 10–12 present strategic-usefulness, assurance-alignment and risk-reporting evidence. Source populations and limitations remain explicit. The research transitions directly to the SIGNAL framework on slide 13. No corporate-collapse case is included.
 
 SIGNAL illustrates timely evidence, contextual screening, human review, reassessment and an owned response. A score is an ordinal judgment, not a numerical KPI forecast. The app currently uses transparent relevance rules rather than a connected language model.
 
