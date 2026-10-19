@@ -74,3 +74,11 @@
 .w-brand{letter-spacing:-.045em;white-space:nowrap;flex-shrink:0}
 @media(max-width:760px){.w-header .w-brand{font-size:22px;gap:6px!important}.w-brand>span:first-child{width:30px;height:30px}.w-tools{min-width:0}.w-tools select{width:112px}.w-header .w-role{display:none}}
 @media(max-width:380px){.w-header{gap:6px;padding-left:12px;padding-right:12px}.w-header .w-brand{font-size:20px}.w-tools{gap:4px}.w-tools select{width:100px;font-size:11px}.w-view-deck{font-size:11px}}
+
+/* Signal-to-decision handoffs and high-contrast risk alerts. */
+.workshop .w-alert-count.has-alerts{background:#fff0df;border:2px solid #d76816;color:#893700;font-weight:900;padding:9px 12px;box-shadow:0 0 0 3px #fff7ec;white-space:normal}
+.w-signal.has-new-signal{border-left:4px solid #d76816;background:#fffcf6}.w-signal{cursor:pointer}.w-signal-detail{cursor:default}
+.w-map-proposal{border:1px solid #cddfd4;padding:16px;border-radius:9px;margin:12px 0;background:#f6faf7}.w-map-proposal p{font-size:13px}.w-map-proposal button{min-height:44px}
+.workshop button.w-declined{background:#fbece9;border-color:#c97b69;color:#843927}
+.w-next-step{padding:18px;border-left:4px solid #176b57;background:#edf6f0;border-radius:6px;margin:14px 0}.w-next-step p{margin:7px 0}.w-response-prompt{border-color:#d76816;background:#fff6e9}
+.w-expanded{scroll-margin-top:100px}.workshop .w-matrix button.suggested{outline:3px dashed #183c76;outline-offset:-4px;position:relative}.w-map-suggestion{display:flex;align-items:center;justify-content:center;gap:3px;font-weight:900;color:#142f55;font-size:15px;background:#fff;border-radius:5px;padding:2px 5px}

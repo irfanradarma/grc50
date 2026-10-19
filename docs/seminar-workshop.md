@@ -1,6 +1,6 @@
 # SIGNAL seminar: strategic risk hands-on
 
-The 32-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
+The 28-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
 
 ## Start locally
 
@@ -30,9 +30,9 @@ Vite listens on LAN and proxies the loopback API and presentation. Phones need t
 7. For the first export-growth risk, consider 12 → 16. Review the strategic response, owner, deadline and expected protection. Saving a plan does not reduce current risk. Other selected risks can have different starting/proposed scores.
 8. Choose **Load strategic case news** for the dated, verified eight-article pack. Inspect headlines, source coverage and organization previews. CNN has no article in this verified pack; zero is displayed. Do not imply every enabled publisher returned news.
 9. Alternatively choose **Capture current strategic news** for on-demand live RSS results. Dates and live labels remain explicit. Inspect before release; do not narrate current articles as April 2025 events.
-10. Release the external batch, then start the 3–5 minute review timer on slide 24. Participants assess trade, currency, diversification, AI competition, budget priorities and expected data rules according to their objectives. Some signals are uncertain or opportunities; relevance does not automatically mean higher risk.
-11. Release internal evidence. Slides 25–26 show strategy reports, audit findings and automated planning indicators. CA requires confirmation before capture. Every risk has three source-linked teaching records, sharing its underlying assumption event.
-12. Review dashboards on slide 27; load actual aggregate outcomes in the owner browser. A justified neglect or unchanged assessment is valid. Close with the SPIT/SIPT direction and a one-objective pilot.
+10. Release the external batch. Participants assess trade, currency, diversification, AI competition, budget priorities and expected data rules according to their objectives. Some signals are uncertain or opportunities; relevance does not automatically mean higher risk.
+11. Release internal evidence. Slides 21–22 show strategy reports, audit findings and automated planning indicators. CA requires confirmation before capture. Every risk has three source-linked teaching records, sharing its underlying assumption event.
+12. Review dashboards on slide 23; load actual aggregate outcomes in the owner browser. A justified neglect or unchanged assessment is valid. Close with the SPIT/SIPT direction and a one-objective pilot.
 
 Releases do not require every participant to finish. Decisions persist. Source changes apply to unreleased batches, never silently deleting reviewed evidence.
 
@@ -40,9 +40,9 @@ Releases do not require every participant to finish. Decisions persist. Source c
 
 Nine read-only mobile guides at `/audience/walkthrough/<key>` render the **same React components and strategic scenario data** as the audience app. They create no guest session or database records. The deck embeds them in portrait phone frames, with looping steps and automatic scroll to the relevant fields. Keys: context, menus, capture, assessment, mitigation, protection, internal, ca, dashboard.
 
-Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Reduced-motion users start paused. The original-news slide uses an attributed source photograph and transcribed headline, not a claimed browser screenshot.
+Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Loops start by default; CSS respects reduced-motion preferences for decorative effects. The original-news slide uses an attributed source photograph and transcribed headline, not a claimed browser screenshot.
 
-Slide 5 loops the evidence paths with static handoff questions. Slide 13 loops evidence → human review → score → response. Fullscreen retains the slide footer while hiding navigation controls. The cover remains simple; the research slides and Carillion case remain intact.
+Slide 5 loops the evidence paths with static handoff questions. Slide 9 presents the looping SIGNAL framework. Fullscreen retains the slide footer while hiding navigation controls. The deck has no timing estimates or countdown, and no corporate-collapse case.
 
 ## Evidence boundaries
 
@@ -78,7 +78,7 @@ The editor is intended for desktop authoring. Object offsets and dimensions are 
 
 ## Survey evidence and research slides
 
-Three research slides precede Carillion. `seminar-research.json` records the primary sources, checked date, methods and construct limitations. `seminar-research.js` creates the statistic graphics and research mechanism diagram; `deck-research.css` controls their layout. Each slide offers source links and an expandable study-scope explanation. The opening stays within its prior time allocation.
+Three research slides lead directly into SIGNAL. `seminar-research.json` records the primary sources, checked date, methods and construct limitations. `seminar-research.js` creates the statistic graphics and research mechanism diagram; `deck-research.css` controls their layout. Each slide offers source links and an expandable study-scope explanation.
 
 The quantitative findings concern strategic usefulness and alignment, not the percentage of organizations doing meaningless work. The qualitative paper and author interview describe how reporting can become compliance-oriented. None of these studies estimates Kemenkeu's performance, proves that AI improves outcomes, or establishes that all risk and assurance work is clerical. Mixed survey populations and dates are not presented as a trend. The PwC item is explicitly labeled as a business-executive subgroup result, separately from the full study sample.
 
@@ -96,3 +96,7 @@ If browser edits belong to an earlier deck structure, they are archived locally 
 6. The four section markers and numbered slide footer remain visible in fullscreen. The live bar remains visible; presentation navigation stays hidden in fullscreen as before.
 
 Updates use short polling, approximately every 1.5 seconds. Disconnects retain the last known slide and indicate interrupted connectivity. Only the session owner can publish; the public endpoint returns only deck ID, slide key, publication state and timestamp. It exposes no participant records or private rationale. New content uses semantic slide keys so adding the agenda does not reinterpret a saved numeric cursor.
+
+## Signal review and response
+
+Click a signal summary to expand it. Approve or decline the proposed risk links; capture notes are optional. Capture opens the affected risk assessment. The suggested map cell stays marked while users explore alternatives. Accepting a suggestion records its rationale; custom scores and retained scores require a user rationale. Above-tolerance assessments prompt an owned mitigation proposal. Declines persist for that assessment, and saved actions retain projected protection separately from current exposure.

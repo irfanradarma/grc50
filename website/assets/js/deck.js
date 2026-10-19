@@ -1,4 +1,4 @@
-import {connectLiveDeck} from './deck-live.js?v=signal-12';
+import {connectLiveDeck} from './deck-live.js?v=signal-13';
 const slides=[];
 function add(section,title,html,note,type=''){slides.push({section,title,html,note,type});}
 await window.buildSignalSeminar({add});
@@ -38,6 +38,6 @@ deck.addEventListener('touchstart',e=>{if(e.target.closest('button,a,input,selec
 deck.addEventListener('touchend',e=>{if(!touchStart||!document.body.classList.contains('immersive'))return;const dx=e.changedTouches[0].clientX-touchStart.x,dy=e.changedTouches[0].clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.5)go(current+(dx<0?1:-1));},{passive:true});
 const toc=document.getElementById('toc');document.getElementById('tocList').innerHTML=slides.map((s,i)=>`<button data-slide="${i}"><span>${String(i+1).padStart(2,'0')}</span>${s.title.replace(/<br>/g,' ')}</button>`).join('');document.getElementById('contents').onclick=()=>toc.showModal();document.getElementById('closeToc').onclick=()=>toc.close();toc.addEventListener('click',e=>{const b=e.target.closest('[data-slide]');if(b){toc.close();go(Number(b.dataset.slide));}});
 document.addEventListener('keydown',e=>{if(document.body.classList.contains('deck-editing'))return;if(document.querySelector('dialog[open]')||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key===' '&&/BUTTON|A|SUMMARY/.test(document.activeElement.tagName))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(current+1);}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(current-1);}if(e.key==='Home'){e.preventDefault();go(0);}if(e.key==='End'){e.preventDefault();go(slides.length-1);}if(e.key==='Escape'&&document.body.classList.contains('immersive')){setImmersive(false);return;}if(e.key.toLowerCase()==='f'){e.preventDefault();toggleFullscreen();}if(e.key.toLowerCase()==='n'&&!document.body.classList.contains('immersive'))document.getElementById('notes').click();});
-await import('./seminar-workshop-interactions.js?v=signal-12');
+await import('./seminar-workshop-interactions.js?v=signal-13');
 
-await import('./deck-editor.js?v=signal-12');
+await import('./deck-editor.js?v=signal-13');

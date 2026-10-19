@@ -14,7 +14,7 @@ presentationPublic.get('/presentation/:code',async(req,res)=>{
  const code=sessionCode.parse(req.params.code);
  const row=(await pool.query("SELECT data->'presentation' AS presentation FROM seminar_sessions WHERE code=$1 AND data->>'version'=$2",[code,String(scenarioVersion)])).rows[0];
  if(!row)return res.status(404).json({error:'Presentation session not found.'});
- res.json({deckId:outline.deckId,slideKey:row.presentation?.slideKey||'cover',updatedAt:row.presentation?.updatedAt||null,published:!!row.presentation});
+ res.json({deckId:outline.deckId,slideKey:slideKeys.has(row.presentation?.slideKey)?row.presentation.slideKey:'cover',updatedAt:row.presentation?.updatedAt||null,published:!!row.presentation});
 });
 
 // Mounted after authentication; the query enforces session ownership independently of UI flags.

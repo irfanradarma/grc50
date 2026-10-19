@@ -99,11 +99,14 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  const pa=await state(a),pb=await state(b),pd=await state(d);assert.equal(pa.signals.length,1);assert.equal(pa.risks.length,4);assert.equal(pb.risks.length,2);assert.deepEqual(pd.signals[0].riskIds,[]);
  const signal=pa.signals[0];const decide=(cookie:string,id:string,riskIds:string[],decision='Capture',confirmed=false)=>req('/workshop/'+code+'/signals/'+id+'/decision','POST',cookie,{decision,riskIds,confirmed,notes:'Verify recorded dependency and protection.'});
  assert.equal((await decide(d,signal.id,['L1-R1'])).status,409);
- assert.equal((await decide(a,signal.id,['L1-R1'])).status,200);assert.equal((await decide(a,signal.id,['L1-R1'])).status,409);
+ assert.equal((await decide(a,signal.id,['L1-R2'])).status,409,'Cannot approve an unsuggested risk mapping');
+ assert.equal((await req('/workshop/'+code+'/signals/'+signal.id+'/decision','POST',a,{decision:'Capture',riskIds:['L1-R1']})).status,200,'Capture notes are optional');assert.equal((await decide(a,signal.id,['L1-R1'])).status,409);
  assert.equal((await decide(d,pd.signals[0].id,[],'Neglect')).status,200);
  assert.equal((await state(a)).risks[0].likelihood,3);
  const reassess=(cookie:string,riskId:string,choice='Update',likelihood=4)=>req('/workshop/'+code+'/reassess','POST',cookie,{riskId,choice,likelihood,impact:4,notes:'New evidence challenges our strategic growth assumption.'});
  assert.equal((await reassess(a,'L1-R1')).status,200);assert.equal((await reassess(a,'L1-R1')).status,409);
+ assert.equal((await req('/workshop/'+code+'/risks/L1-R1/response-decision','POST',a,{choice:'Decline'})).status,200);
+ assert((await state(a)).risks[0].responseDeclinedFor,'A declined mitigation suggestion survives refresh');
  const plan={riskId:'L1-R1',title:'Rebase the export growth case',owner:'Commercial Director',dueDate:'2025-04-22',likelihoodReduction:.5,impactReduction:0,notes:'Validate customer commitments and downside forecast.'};
  assert.equal((await req('/workshop/'+code+'/plans','POST',b,plan)).status,409);
  assert.equal((await req('/workshop/'+code+'/plans','POST',a,plan)).status,200);

@@ -66,10 +66,10 @@ workshop.post('/workshop/host/:code/release',async(req,res)=>{
  }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
 });
 workshop.post('/workshop/:code/signals/:id/decision',async(req,res)=>{
- const input=z.object({decision:z.enum(['Capture','Neglect']),riskIds:z.array(text).max(4),notes:text,confirmed:z.boolean().optional()}).parse(req.body);
+ const input=z.object({decision:z.enum(['Capture','Neglect']),riskIds:z.array(text).max(4),notes:z.string().trim().max(1500).optional().default(''),confirmed:z.boolean().optional()}).parse(req.body);
  respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{
  const signal=p.signals.find(s=>s.id===req.params.id);if(!signal||signal.decision)return {error:'Signal unavailable or already decided.'};
- if(input.decision==='Capture'&&(!input.riskIds.length||input.riskIds.some(id=>!p.risks.some(r=>r.id===id))))return {error:'Link capture to your registered risks.'};
+ if(input.decision==='Capture'&&(!input.riskIds.length||input.riskIds.some(id=>!p.risks.some(r=>r.id===id)||!signal.riskIds.includes(id))))return {error:'Approve at least one suggested risk link before capture.'};
  if(input.decision==='Capture'&&signal.type==='ca'&&!input.confirmed)return {error:'Confirm the strategic indicator exception before capture.'};
  Object.assign(signal,{decision:input.decision,notes:input.notes,...(input.decision==='Capture'?{riskIds:[...new Set(input.riskIds)]}:{}),decidedAt:new Date().toISOString(),actor:res.locals.workspace.id,...(signal.type==='ca'?{confirmation:input.confirmed?'Confirmed':'Not confirmed'}:{})});return {saved:true};
  }));
@@ -82,6 +82,15 @@ workshop.post('/workshop/:code/reassess',async(req,res)=>{
  const before={likelihood:r.likelihood,impact:r.impact},after=input.choice==='Update'?{likelihood:input.likelihood,impact:input.impact}:before;
  p.reviews.push({id:randomUUID(),riskId:r.id,choice:input.choice,before,after,signalIds:pr.signalIds,eventIds:pr.eventIds,notes:input.notes,at:new Date().toISOString(),actor:res.locals.workspace.id});
  Object.assign(r,after);r.reviewed.push(...pr.signalIds);return {saved:true};
+ }));
+});
+// A declined response proposal is retained against the reviewed evidence, not silently forgotten.
+workshop.post('/workshop/:code/risks/:id/response-decision',async(req,res)=>{
+ z.object({choice:z.literal('Decline')}).parse(req.body);
+ respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{
+  const risk=p.risks.find(r=>r.id===req.params.id),review=p.reviews.filter(v=>v.riskId===req.params.id).at(-1);
+  if(!risk||!review||risk.likelihood*risk.impact<=12)return {error:'Review an above-tolerance risk before deciding its response.'};
+  risk.responseDeclinedFor=review.id;return {saved:true};
  }));
 });
 const planInput=z.object({riskId:text,title:text,owner:text,dueDate:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=>Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v),likelihoodReduction:z.number().min(0).max(4).multipleOf(.5),impactReduction:z.number().min(0).max(4).multipleOf(.5),notes:z.string().max(1500)});

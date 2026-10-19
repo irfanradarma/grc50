@@ -21,6 +21,7 @@ test('SIGNAL migrates browser sessions and edit backups without overwriting newe
 test('SIGNAL branding reaches the deck and loops are enabled on first entry',async()=>{
  const slides=await buildSlides();
  assert(slides[0].html.includes('SIGNAL / Evidence. Judgment. Action.'));
+ assert(slides[0].html.includes('Memaksimalkan Potensi AI dalam<br>Mengawal Strategi dan Risiko Organisasi'));
  const pain=slides.find(s=>s.section==='OUR PAIN POINT');
  assert(pain.html.includes('data-enabled="true"'));assert(pain.html.includes('Pause the loop'));
  const framework=fs.readFileSync(path.join(root,'website/assets/js/seminar-framework.js'),'utf8');

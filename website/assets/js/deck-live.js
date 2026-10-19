@@ -1,4 +1,4 @@
-import {createFollowState} from './deck-follow-model.mjs?v=signal-12';
+import {createFollowState} from './deck-follow-model.mjs?v=signal-13';
 
 export function connectLiveDeck({slides,outline,current,showRemote}){
  const params=new URLSearchParams(location.search),code=(params.get('session')||'').toUpperCase();

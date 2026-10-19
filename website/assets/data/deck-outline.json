@@ -1,39 +1,35 @@
 {
-  "deckId": "beyond-compliance-2026-10-v2",
+  "deckId": "signal-beyond-compliance-v3",
   "chapters": [
     {
       "id": "disconnect",
       "title": "The disconnect",
-      "caption": "The promise, the evidence and a real case",
-      "minutes": "13 min",
+      "caption": "The promise, the evidence and the disconnect",
       "icon": "shield-alert"
     },
     {
       "id": "model",
       "title": "The SIGNAL model",
       "caption": "From changing evidence to timely decisions",
-      "minutes": "7 min",
       "icon": "radar"
     },
     {
       "id": "practice",
       "title": "Lead the decision",
       "caption": "Hands-on: review, reassess and respond",
-      "minutes": "32 min",
       "icon": "user-round-check"
     },
     {
       "id": "action",
       "title": "Put it to work",
       "caption": "Connect the approach to your organization",
-      "minutes": "8 min",
       "icon": "target"
     }
   ],
   "slides": [
     {
       "key": "cover",
-      "section": "OPENING / 60 MINUTES",
+      "section": "OPENING",
       "chapter": null
     },
     {
@@ -70,26 +66,6 @@
       "key": "evidence-how-the-gap-happens",
       "section": "EVIDENCE / HOW THE GAP HAPPENS",
       "chapter": "disconnect"
-    },
-    {
-      "key": "real-case-carillion-1-of-3",
-      "section": "REAL CASE / CARILLION / 1 OF 3",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "real-case-carillion-2-of-3",
-      "section": "REAL CASE / CARILLION / 2 OF 3",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "real-case-carillion-3-of-3",
-      "section": "REAL CASE / CARILLION / 3 OF 3",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "what-was-missing",
-      "section": "WHAT WAS MISSING?",
-      "chapter": "model"
     },
     {
       "key": "the-solution-framework",

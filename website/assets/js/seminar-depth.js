@@ -7,7 +7,7 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
  switch(section){
  case 'BEYOND COMPLIANCE':
   title='Beyond Compliance';
-  html='<img class="d-cover-photo" src="../assets/images/jakarta-cover.jpg" alt="Jakarta skyline at sunset"><div class="d-cover-wash" aria-hidden="true"></div><div class="d-simple-cover"><p class="d-cover-subtitle">Utilizing AI to capture more signals<br>for effective risk management</p><div class="d-cover-rule"></div><p class="d-cover-format">SIGNAL / Evidence. Judgment. Action.</p></div><a class="d-cover-credit" href="https://commons.wikimedia.org/wiki/File:JakartaSkyline.jpg" target="_blank" rel="noreferrer">Jakarta / Georgi Kovachev / CC BY-SA 4.0</a>';
+  html='<img class="d-cover-photo" src="../assets/images/jakarta-cover.jpg" alt="Jakarta skyline at sunset"><div class="d-cover-wash" aria-hidden="true"></div><div class="d-simple-cover"><p class="d-cover-subtitle">Memaksimalkan Potensi AI dalam<br>Mengawal Strategi dan Risiko Organisasi</p><div class="d-cover-rule"></div><p class="d-cover-format">SIGNAL / Evidence. Judgment. Action.</p></div><a class="d-cover-credit" href="https://commons.wikimedia.org/wiki/File:JakartaSkyline.jpg" target="_blank" rel="noreferrer">Jakarta / Georgi Kovachev / CC BY-SA 4.0</a>';
   type='d-cover-slide d-simple-cover-slide';
   break;
  case 'THE FOUNDATION': {
@@ -21,22 +21,6 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
   type='d-practical-slide';
   break;
  case 'OUR PAIN POINT':
-  break;
- case 'REAL CASE / CARILLION / 1 OF 3':
-  html=html.replace('<p>Its 2016 accounts', '<div class="d-service-strip"><span>'+icon('route')+'Roads</span><span>'+icon('landmark')+'Hospitals</span><span>'+icon('user-round-check')+'Public services</span></div><p>Its 2016 accounts');
-  html=html.replace('<strong>What would challenge', '<div class="d-case-lens"><b>Performance lens</b><span>Delivery commitments depend on cash and sustainable contract assumptions.</span></div><strong>What would challenge');
-  break;
- case 'REAL CASE / CARILLION / 2 OF 3': {
-  let i=0;const prompts=['Which contract assumptions need to be reopened?','What does cash pressure mean for continued delivery?','Who must reconcile the warning with the payout decision?'];
-  html=html.replace(/<\/article>/g,()=>decision('DECISION QUESTION',prompts[i++])+'</article>');
-  break;
- }
- case 'REAL CASE / CARILLION / 3 OF 3':
-  html=html.replace('<div class="d-collapse-line">', '<div class="d-case-lens"><b>Assurance-to-risk handoff</b><span>Testing should challenge management’s confidence in the controls protecting delivery.</span></div><div class="d-collapse-line">');
-  html+=band('Our lesson from the case','A system needs both relevant evidence and leaders willing to challenge assumptions, escalate exposure and act. AI can assist the first task. Accountability remains essential.');
-  break;
- case 'WHAT WAS MISSING?':
-  html=html.replace('<p class="d-takeaway">',table(['Review dimension','Periodic record alone','Dynamic risk assessment'],[['Timing','Next scheduled reporting cycle','When material evidence changes'],['Focus','Maintain the documented rating','Revisit the assumption and exposure'],['Result','Completed assessment record','Reasoned decision, owned action and follow-up']])+'<p class="d-takeaway">');
   break;
  case 'NOW YOU TAKE THE DECISIONS':
   html=html.replace('<b>Different exposure',decision('FIRST QUESTION','Does the event affect a market, customer segment, business model or investment assumption that your selected objective depends on?')+'<b>Different exposure');
@@ -64,7 +48,6 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
   html='<div class="d-closing-work"><div><p class="d-closing-question">Think of one decision that could improve<br>if the evidence reached you earlier.</p><p>Start with an objective you own. Choose a signal you can access. Agree who will review it and what should happen next.</p><div class="d-commitment-line">Your first pilot can begin with one useful connection.</div></div><div class="d-commitment-sheet"><small>YOUR COMMITMENT</small><div><b>Our objective</b><p>What result are we protecting?</p></div><div><b>The signal we need earlier</b><p>Which change or control failure matters?</p></div><div><b>Our review and response</b><p>Who decides, by when, using what evidence?</p></div><div><b>How we will know it helped</b><p>What decision or protection improved?</p></div></div></div>';
   break;
  }
- if(section.includes('REAL CASE / CARILLION')){const current=Number(section.match(/(\d) OF 3/)[1]);html='<div class="d-case-ribbon"><b>CASE DEEP DIVE / CARILLION</b><div>'+['Performance story','Internal warnings','Assurance challenge'].map((label,i)=>'<span class="'+(i+1===current?'active':'')+'">'+label+'</span>').join('')+'</div></div>'+html;}
  const guides={
  'CHOOSE YOUR CONTEXT':['WHAT YOUR CHOICE CHANGES','The objective determines which risks and dependencies are supplied. The same news may be relevant to another company and irrelevant to yours.'],
  'YOUR STARTING POSITION':['WHAT TO NOTICE','Risks describe exposure. Mitigation plans are commitments to act. Each needs an owner and a due date that you can follow up.'],
@@ -79,5 +62,5 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
  if(section==='WHAT CHANGED?')html=html.replace('<span class="d-status"', '<span class="d-dashboard-question">Ask: did a useful signal lead to a justified decision and an action we can verify?</span><span class="d-status"');
  const exempt=['EVIDENCE / RISK MANAGEMENT','EVIDENCE / ASSURANCE','EVIDENCE / HOW THE GAP HAPPENS','ONE REAL EVENT','THE SOLUTION FRAMEWORK','REFERENCE / DISCUSSION'];
  if(section!=='BEYOND COMPLIANCE'&&!exempt.includes(section))type+=' d-content-rich';
- return {section:section==='BEYOND COMPLIANCE'?'OPENING / 60 MINUTES':section,title,html,note,type};
+ return {section:section==='BEYOND COMPLIANCE'?'OPENING':section,title,html,note,type};
 };

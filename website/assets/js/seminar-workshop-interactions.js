@@ -17,18 +17,11 @@ input.value=providedJoin||(linkedSession&&/^[A-Z0-9]{6}$/i.test(linkedSession)?a
 button.addEventListener('click',connect);if(input.value)connect();
 document.querySelector('[data-reveal-exposure]').addEventListener('click',e=>{const root=e.target.closest('.slide').querySelector('.d-exposure');root.classList.toggle('revealed');e.target.textContent=root.classList.contains('revealed')?'Hide the exposure check':'Reveal the exposure check';e.target.setAttribute('aria-expanded',String(root.classList.contains('revealed')));});
 document.querySelector('[data-residual-range]').addEventListener('input',e=>{document.querySelector('[data-residual]').textContent='Projected score: '+((4-Number(e.target.value))*4);});
-let remaining=300,timer=null;
-const display=document.querySelector('[data-countdown]'),start=document.querySelector('[data-timer-start]'),duration=document.querySelector('[data-timer-duration]');
-function paint(){display.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');}
-function pause(){clearInterval(timer);timer=null;start.textContent='Start / resume';}
-start.addEventListener('click',()=>{if(timer){pause();return;}if(remaining<=0)return;start.textContent='Pause';let end=Date.now()+remaining*1000;timer=setInterval(()=>{remaining=Math.max(0,Math.ceil((end-Date.now())/1000));paint();if(!remaining)pause();},250);});
-document.querySelector('[data-timer-reset]').addEventListener('click',()=>{pause();remaining=Number(duration.value);paint();});
-duration.addEventListener('change',()=>{pause();remaining=Number(duration.value);paint();});
 document.querySelector('[data-session-stats]').addEventListener('click',async e=>{
  const message=document.querySelector('[data-session-status]');if(!sessionCode){message.textContent='Connect the audience session on the QR slide first.';return;}
  e.target.disabled=true;message.textContent='Loading owner-authorized session summaryâ€¦';
  try{const response=await fetch(app+'/api/workshop/host/'+sessionCode,{credentials:'include'});if(!response.ok)throw Error('Owner session unavailable');const d=await response.json();const sum=k=>d.progress.reduce((n,p)=>n+Number(p[k]||0),0);const vals=[sum('decided'),sum('reviews'),sum('plans')];document.querySelectorAll('[data-live-stats] strong').forEach((el,i)=>el.textContent=vals[i]);message.textContent='Session '+sessionCode+' Â· '+d.progress.length+' participants Â· updated '+new Date().toLocaleTimeString()+'. Aggregate counts reflect recorded decisions, not KPI improvement.';}catch{message.textContent='Open this deck through the app at /presentation/deck/ in the presenter browser, and connect your owned session.';}finally{e.target.disabled=false;}
 });
 
-await import('./seminar-framework.js?v=signal-12');
+await import('./seminar-framework.js?v=signal-13');
 await import('./seminar-motion.js?v=strategy-7');

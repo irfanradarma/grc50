@@ -1,9 +1,9 @@
-# Beyond Compliance
+# Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi
 ## Using AI to Capture Signals for Effective Risk Management
 
 Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-This is the narrative baseline for the rebuilt three-organization application and 32-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
+This is the narrative baseline for the rebuilt three-organization application and 28-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
 
 ## 1. The argument
 
@@ -15,27 +15,13 @@ AI can help risk management respond to changing conditions: find signals, relate
 
 Beyond Compliance is the headline. GRC 5.0 can remain a supporting concept/brand; do not represent it as a formally recognized regulatory maturity level.
 
-## 2. Theory, diagnostic questions and a documented case
+## 2. Theory, diagnostic questions and research evidence
 
-Slides 2–3 introduce performance, risk and assurance as three connected disciplines examined in this seminar. They are not an expansion of the GRC acronym or an exhaustive catalogue. Compliance and integrity remain foundational. Sources: [OCEG critical disciplines](https://www.oceg.org/ideas/critical-disciplines/), [COSO ERM](https://www.coso.org/enterprise-risk-management), and the [IIA current Statements of Position](https://www.theiia.org/en/resources/statements-of-position). The IIA's older 2020 page is explicitly superseded; use the current repository.
+Slides 3-4 introduce performance, risk and assurance as connected disciplines, supported by OCEG, COSO ERM and the IIA Three Lines Model. Slide 5 asks whether the handoffs actually influence decisions. Its explanations remain static while the paths loop.
 
-Slide 4 asks whether the performance → risk and risk → assurance → risk handoffs influence timely decisions. Its explanations remain static while the paths loop. Treat the Kemenkeu practice gap as a diagnostic question or professional observation, not a proven ministry-wide condition.
+Slides 6-8 present strategic-usefulness, assurance-alignment and risk-reporting evidence. Source populations and limitations remain explicit. The research transitions directly to the SIGNAL framework on slide 9. No corporate-collapse case is included.
 
-Slides 5–7 introduce empirical evidence before the case: strategic usefulness of risk management, perceived internal-audit alignment, and the mechanisms behind compliance-oriented reporting. Primary-source URLs, dates, populations, item qualifiers and interpretation limits are recorded in [seminar-research.json](../website/assets/data/seminar-research.json). Study links also appear on the slides. The original 60-minute schedule is preserved by tightening the diagnostic discussion and case setup.
-
-Slides 8–10 use **Carillion**, a real UK strategic public-service supplier:
-
-- Reported performance and a June 2017 final dividend establish the outward narrative.
-- A November 2016 contract peer review and January 2017 cash warning show contradictory internal signals.
-- Parliament's analysis of internal audit priorities and criticism of challenge connect assurance to the outcome.
-
-Primary evidence: House of Commons, *Carillion*, HC 769 (2018), [business and internal signals, paragraphs 17 and 95](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76905.htm), [assurance, paragraphs 124–125](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76906.htm), and [chronology](https://publications.parliament.uk/pa/cm201719/cmselect/cmworpen/769/76904.htm). Attribute evaluative findings to the committees. The figures and timeline are editorial visual summaries, not source screenshots. Do not invent a historical risk score or suggest Carillion used BSC. Distinguish the contract peer review, internal audit and financial-statement audit.
-
-Slide 11 draws our design lesson: event-triggered, data-driven risk assessment must challenge assumptions in time to influence decisions. This is an interpretation, not a reconstruction of Carillion's risk register or a claim that AI would have prevented failure.
-
-Slide 12 loops the intended signal → contextual screening → human review → response framework. The workshop score of 12 → 16 is explicitly separate from Carillion data. A new mitigation projects a lower score only after effective implementation and reassessment; the current score remains 16. The app currently uses transparent relevance rules rather than a connected language model.
-
-Slide 13 invites participants into the full cycle using real external news and authored internal exercise evidence. Social listening is a future connector. Kemenkeu's SPIT/SIPT policy context is retained for the institutional closing.
+SIGNAL illustrates timely evidence, contextual screening, human review, reassessment and an owned response. A score is an ordinal judgment, not a numerical KPI forecast. The app currently uses transparent relevance rules rather than a connected language model.
 
 ## 3. Frameworks that carry the story visually
 
@@ -80,22 +66,19 @@ AI's intended role is retrieval, extraction, contextual linking, and proposals. 
 | Approved plan versus effective protection | Approval creates a commitment. Current risk only decreases after implementation/effectiveness evidence justifies reassessment. |
 | More reports versus more independent evidence | Several articles about one event are corroboration, not several separate reasons to raise a score. |
 
-## 4. The 60-minute experience
+## 4. Progressive experience
 
-| Time | Story and audience activity | Deck/app choreography |
-|---|---|---|
-| 00–10 | Theory; diagnostic questions; survey evidence; real Carillion case | Three disciplines left to right, persistent callouts, documented case timeline and assurance priorities |
-| 10–14 | Risk as the connection point; AI's role; source-to-decision loop | Animate an evidence item across the framework |
-| 14–21 | Join; choose an organization; select at least one objective; inspect pre-scored risks | QR, three organizations, participant setup |
-| 21–25 | Inspect Risk Monitoring, existing mitigations, and Risk Trigger | Guided app orientation; enable available news sources |
-| 25–36 | One real news story; predict exposure; release; capture/neglect; assessment; mitigation | Source, three-company contrast, human decision, before/after assessment |
-| 36–43 | Release external batch; participants decide for 3–5 minutes; compare | Countdown; sources openable; aggregate progress |
-| 43–49 | Same logic for minutes/periodic reports, audit evidence, and CA | One connected internal evidence chain; shorter participant review |
-| 49–53 | Dashboard: what changed, why, and who acts? | Participant outcomes and anonymized session summary |
-| 53–57 | Return to Kemenkeu: SPIT, SIPT, and the shared work | Reuse opening diagram with functioning handoffs |
-| 57–60 | Call to action, one commitment, and a final question | One-objective pilot; short Q&A |
+1. Establish the three disciplines, their weak handoffs and the research evidence.
+2. Introduce the SIGNAL source-to-decision framework.
+3. Join, choose an organization and select objectives.
+4. Inspect risks, starting mitigations and news sources.
+5. Review the shared real news event. Approve or decline each suggested risk link; capture notes are optional.
+6. Capture opens the affected risk. Accept the suggested map position or choose a custom score with your own rationale. Keeping a score also requires a reason.
+7. An above-tolerance assessment prompts a mitigation decision. Declining the suggestion is saved; approving a plan records its owner, deadline and expected protection.
+8. Repeat with the external batch and internal evidence, then review dashboards.
+9. Close with the institutional direction and an objective-led pilot.
 
-If setup overruns, shorten the batch debrief. Preserve the first end-to-end decision and closing action. Unfinished participant decisions persist; the session should not require everyone to finish every item before the presenter proceeds.
+Slide timing estimates and the participant countdown are omitted. Participants can work at their own pace.
 
 ## 5. Strategic choices, not operational interruptions
 
@@ -143,7 +126,7 @@ The default **Load strategic case news** action prepares eight verified articles
 - DeepSeek: revalidate differentiation and willingness to pay; reported model-training costs are not total ownership costs.
 - Expected PDP implementing rules: assess market-entry requirements; an expected rule is not an enacted obligation.
 
-All source links, dates, summaries and directional screening metadata are in `website/assets/data/strategic-news.json`. ANTARA, detik, Kompas and CNN Indonesia remain selectable. CNN has no verified article in this case pack, so coverage is honestly zero. Publisher selection applies before release; corroborating coverage is grouped as one event. Participants have 3–5 minutes to review useful evidence, not a capture quota.
+All source links, dates, summaries and directional screening metadata are in `website/assets/data/strategic-news.json`. ANTARA, detik, Kompas and CNN Indonesia remain selectable. CNN has no verified article in this case pack, so coverage is honestly zero. Publisher selection applies before release; corroborating coverage is grouped as one event. Participants review useful evidence at their own pace, without a capture quota.
 
 **Capture current strategic news** is a separate on-demand Google News RSS mode, retaining actual dates and up to 24 unique results. It does not pretend that current headlines occurred in the April 2025 replay. Inspect source coverage and relevance before releasing. The app uses transparent grouped-term relevance rules, not a connected language model. Social listening remains an unconnected future source.
 
@@ -188,7 +171,7 @@ Acceptance checks: multiple-objective selection; two exposed/one unexposed case;
 
 ## 9. Deck storyboard
 
-32 slides. The agenda follows the cover; subsequent slide numbers are one higher than the prior version. Four persistent section markers show the current part of the narrative.
+Four section markers orient the audience.
 
 | Slide | Section | Content |
 |---|---|---|
@@ -200,30 +183,26 @@ Acceptance checks: multiple-objective selection; two exposed/one unexposed case;
 | 6 | The disconnect | 89% did not report a unique strategic advantage. |
 | 7 | The disconnect | 49% of business executives see an assurance alignment gap. |
 | 8 | The disconnect | Risk reporting can become a compliance exercise. |
-| 9 | The disconnect | Case deep dive: Carillion. Confidence before the collapse. |
-| 10 | The disconnect | The contradictory signals were already inside the organization. |
-| 11 | The disconnect | Assurance activity did not deliver effective challenge. |
-| 12 | The SIGNAL model | A timely decision about exposure. Not another periodic record. |
-| 13 | The SIGNAL model | SIGNAL: from evidence to action |
-| 14 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
-| 15 | Lead the decision | Join the session |
-| 16 | Lead the decision | Which organization will you lead? |
-| 17 | Lead the decision | The risk and the response are already connected |
-| 18 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
-| 19 | Lead the decision | Which organization is affected by this news? |
-| 20 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
-| 21 | Lead the decision | A changed assumption can move the assessment |
-| 22 | Lead the decision | The action follows the exposed dependency |
-| 23 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
-| 24 | Lead the decision | Now review a wider set of signals |
-| 25 | Lead the decision | The same review works inside the organization |
-| 26 | Lead the decision | An exception needs confirmation before it informs a risk decision |
-| 27 | Lead the decision | The dashboard shows decisions and commitments |
-| 28 | Lead the decision | Different decisions can both be well supported |
-| 29 | Put it to work | SPIT sets the direction. SIPT supports the information flow. |
-| 30 | Put it to work | One objective is enough to start testing the connection |
-| 31 | Put it to work | What signal should reach you earlier? |
-| 32 | Put it to work | Sources behind the argument |
+| 9 | The SIGNAL model | SIGNAL: from evidence to action |
+| 10 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
+| 11 | Lead the decision | Join the session |
+| 12 | Lead the decision | Which organization will you lead? |
+| 13 | Lead the decision | The risk and the response are already connected |
+| 14 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
+| 15 | Lead the decision | Which organization is affected by this news? |
+| 16 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
+| 17 | Lead the decision | A changed assumption can move the assessment |
+| 18 | Lead the decision | The action follows the exposed dependency |
+| 19 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
+| 20 | Lead the decision | Now review a wider set of signals |
+| 21 | Lead the decision | The same review works inside the organization |
+| 22 | Lead the decision | An exception needs confirmation before it informs a risk decision |
+| 23 | Lead the decision | The dashboard shows decisions and commitments |
+| 24 | Lead the decision | Different decisions can both be well supported |
+| 25 | Put it to work | SPIT sets the direction. SIPT supports the information flow. |
+| 26 | Put it to work | One objective is enough to start testing the connection |
+| 27 | Put it to work | What signal should reach you earlier? |
+| 28 | Put it to work | Sources behind the argument |
 
 ## 10. Institutional bridge and call to action
 
