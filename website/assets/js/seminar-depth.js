@@ -32,21 +32,7 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
  case 'SAME EVENT, DIFFERENT EXPOSURE':
   html=html.replace('<button data-reveal-exposure', band('Test the dependency before the score','Same headline ≠ same exposure. Confirm the market, revenue concentration, planning horizon and available strategic options before judging severity.')+'<button data-reveal-exposure');
   break;
- case 'A BUSIER INFORMATION ENVIRONMENT':
-  html=html.replace('<p>Open original sources. Capture useful evidence.<br>Keep or change assessments with reasons.</p>', '<div class="d-review-sprint">'+table(['During the review','What to check','Decision to record'],[['1. Open the source','Event date, location, reliability and scope','Is the event established?'],['2. Check the dependency','Selected objective, risk and existing controls','Capture or neglect, with a reason'],['3. Review the assessment','What changed since the last decision?','Keep or update the score'],['4. Choose the response','Owner, due date and expected protection','Agree or customize the mitigation']])+'<aside>'+icon('clock')+'<b>Work on useful decisions</b><p>Several headlines can describe one event. Read them together and avoid counting the same exposure repeatedly.</p><small>A justified neglect decision is a valid result.</small></aside></div>');
-  break;
- case 'COMPARE THE REASONS':
-  html=html.replace('<p class="d-takeaway">', table(['Question for the room','What a strong explanation contains'],[['Why was the signal relevant?','A source-supported connection to a dependency or control assumption'],['Why did the score change or stay?','New evidence compared with what was already reflected'],['What action will protect the objective?','An owner, deadline, plausible effect and evidence to verify it']])+'<p class="d-takeaway">');
-  break;
- case 'BACK TO KEMENKEU':
-  html=html.replace(/(<p class="d-source">)/, '<div class="d-institution-path"><div><b>Management</b><span>Own objectives, assess exposure and respond</span></div><div><b>UKI / monitoring</b><span>Connect evidence and escalate exceptions</span></div><div><b>Assurance</b><span>Test protection and communicate conclusions</span></div><div><b>Information flow</b><span>Link sources, decisions, actions and follow-up</span></div></div>'+band('The implementation question','Can one significant finding or operational signal be traced to the affected objective, a risk decision and evidence of an effective response?')+'$1');
-  break;
- case 'THE NEXT 30 DAYS':
-  html=html.replace('<p class="d-takeaway">', table(['Pilot checkpoint','Deliverable to review','Evidence of usefulness'],[['Week 1','One objective, risk owner and dependency map','Agreed context and review criteria'],['Week 2','A few permitted, traceable sources','Source coverage and data-quality issues'],['Week 3','Human-reviewed signals and responses','Reasons, owners, deadlines and review time'],['Week 4','Review of the pilot’s decisions','False positives, missed signals and verified protection']])+'<p class="d-takeaway">');
-  break;
- case 'YOUR COMMITMENT':
-  html='<div class="d-closing-work"><div><p class="d-closing-question">Think of one decision that could improve<br>if the evidence reached you earlier.</p><p>Start with an objective you own. Choose a signal you can access. Agree who will review it and what should happen next.</p><div class="d-commitment-line">Your first pilot can begin with one useful connection.</div></div><div class="d-commitment-sheet"><small>YOUR COMMITMENT</small><div><b>Our objective</b><p>What result are we protecting?</p></div><div><b>The signal we need earlier</b><p>Which change or control failure matters?</p></div><div><b>Our review and response</b><p>Who decides, by when, using what evidence?</p></div><div><b>How we will know it helped</b><p>What decision or protection improved?</p></div></div></div>';
-  break;
+
  }
  const guides={
  'CHOOSE YOUR CONTEXT':['WHAT YOUR CHOICE CHANGES','The objective determines which risks and dependencies are supplied. The same news may be relevant to another company and irrelevant to yours.'],

@@ -11,7 +11,7 @@ export async function buildSlides(){
   return {ok:true,json:async()=>JSON.parse(fs.readFileSync(target,'utf8'))};
  }};
  vm.createContext(context);
- for(const file of ['seminar-depth.js','seminar-research.js','seminar-framework-content.js','seminar-workshop.js'])vm.runInContext(fs.readFileSync(path.join(root,'website/assets/js',file),'utf8'),context);
+ for(const file of ['seminar-depth.js','seminar-research.js','seminar-framework-content.js','seminar-sipt.js','seminar-workshop.js'])vm.runInContext(fs.readFileSync(path.join(root,'website/assets/js',file),'utf8'),context);
  await context.window.buildSignalSeminar({add:(section,title,html,note,type)=>slides.push({section,title,html,note,type})});
  return slides;
 }

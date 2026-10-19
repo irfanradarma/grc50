@@ -1,0 +1,59 @@
+/* Institutional direction: shared risk context -> evidence -> human decision. */
+.editorial .d-sipt-slide>.body{gap:20px;justify-content:flex-start!important;overflow:auto;min-height:0}
+.editorial .d-sipt-slide>h2{max-width:1200px}
+.sipt-direction{display:block;font-size:10px;color:#6d8074;line-height:1.5;margin-top:auto}
+.sipt-arrow{font-size:35px;color:#7aa18c;text-align:center}
+.sipt-definition{display:grid;grid-template-columns:1fr 45px 1.2fr;gap:20px;align-items:stretch}
+.sipt-definition article{border:1px solid #d8e4dc;border-radius:12px;padding:25px 30px;background:#f5f8f5}
+.sipt-definition .sipt-feature{background:#e9f3ee;border-top:4px solid #176b57}
+.sipt-definition .sipt-arrow{align-self:center}
+.d-sipt-slide small:not(.sipt-direction){font-size:10px;letter-spacing:1.1px;color:#678474;font-weight:800}
+.editorial .sipt-definition h3{font-size:52px;margin:15px 0 10px;color:#176b57;line-height:1}
+.sipt-definition b{font-size:18px;line-height:1.4;display:block}
+.editorial .sipt-definition p{font-size:20px;line-height:1.5;margin:13px 0}
+.sipt-legal{border-top:1px solid #d3e1d7;margin-top:18px;padding-top:12px;font-size:14px;color:#5c7865;line-height:1.6}
+.sipt-repository{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1.4fr) 36px minmax(0,1fr);gap:17px;align-items:center}
+.sipt-units,.sipt-views{display:flex;flex-direction:column;gap:13px}
+.sipt-units>div,.sipt-views>div{border:1px solid #d5e2d9;border-radius:7px;background:#f4f8f5;padding:17px 15px;font-size:17px;font-weight:650;line-height:1.4}
+.sipt-rp{border:2px solid #176b57;border-radius:12px;background:#eaf4ee;padding:28px 26px;text-align:center}
+.sipt-rp>.d-icon{width:50px;height:50px;display:block;margin:0 auto 17px}
+.sipt-rp>small{display:block}.editorial .sipt-rp h3{font-size:29px;margin:16px 0;line-height:1.2}.editorial .sipt-rp p{font-size:19px;line-height:1.5;margin:12px 0}.sipt-rp>b{font-size:14px;color:#176b57}
+.sipt-principle{display:grid;grid-template-columns:230px 1fr;gap:26px;border-left:4px solid #176b57;padding:17px 22px;background:#f0f6f2;border-radius:0 7px 7px 0;align-items:center}
+.sipt-principle>b{font-size:20px;line-height:1.4}.editorial .sipt-principle p{font-size:19px;line-height:1.5;margin:0}
+.sipt-cmca-chain{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:20px;align-items:stretch}
+.sipt-cmca-chain>article{padding:25px 23px;border:1px solid #d9e5dc;border-top:4px solid #176b57;border-radius:8px;background:#f3f8f5}
+.sipt-cmca-chain>.sipt-arrow,.sipt-cmca-chain>span{align-self:center;color:#8ba897;font-size:28px}
+.sipt-cmca-chain .d-icon{display:block;width:35px;height:35px;margin-bottom:18px}.sipt-cmca-chain small{display:block}
+.editorial .sipt-cmca-chain h3{font-size:27px;line-height:1.2;margin:18px 0 13px}.editorial .sipt-cmca-chain p{font-size:19px;line-height:1.5;margin:0}
+.sipt-cmca-result{padding:20px 25px;background:#edf4fb;border-radius:8px;border-left:4px solid #456d9c}.sipt-cmca-result>b{font-size:21px;color:#2a4e76}.editorial .sipt-cmca-result p{font-size:19px;line-height:1.5;margin:10px 0 0}
+.sipt-architecture{display:block;width:100%;max-height:57dvh;flex:1;min-height:280px;font-family:var(--signal-font-body)}
+.sipt-architecture rect{fill:#f1f6f2;stroke:#cddfd3;stroke-width:1.5}.sipt-architecture .sipt-svg-rp{fill:#e3f0e8;stroke:#176b57}.sipt-architecture .sipt-svg-ai{fill:#eaf1fb;stroke:#5e83af}.sipt-architecture .sipt-svg-human{fill:#fff6e6;stroke:#c4a769}.sipt-architecture .sipt-svg-feedback{fill:#f4f7f3;stroke:#bbd0bf}
+.sipt-svg-label{font-size:16px;fill:#244f3b;font-weight:850;letter-spacing:.5px}.sipt-svg-body{font-size:18px;fill:#3f5c4e;font-weight:550}.sipt-svg-small{font-size:15px;fill:#71867b}
+.sipt-architecture .sipt-flow-line{fill:none;stroke:#729687;stroke-width:2;marker-end:url(#sipt-arrowhead);stroke-dasharray:8 8}
+.slide.active .sipt-architecture .sipt-flow-line{animation:sipt-flow 3s linear infinite}
+@keyframes sipt-flow{to{stroke-dashoffset:-32}}
+.sipt-example-context{background:#eaf3ed;border-left:4px solid #176b57;padding:19px 24px;border-radius:0 7px 7px 0}
+.editorial .sipt-example-context h3{font-size:25px;line-height:1.3;margin:12px 0}.editorial .sipt-example-context p{font-size:19px;line-height:1.4;margin:8px 0 0}
+.sipt-example-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+.sipt-example-grid article{border:1px solid #d8e5da;padding:20px 24px;border-radius:8px}
+.editorial .sipt-example-grid h3{font-size:24px;margin:11px 0;line-height:1.2}.editorial .sipt-example-grid p{font-size:18px;line-height:1.5;margin:0}
+.sipt-ews-loop{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:17px}
+.sipt-ews-loop article{position:relative;padding:22px 18px;background:#f1f7f3;border:1px solid #d5e4d9;border-radius:9px}
+.sipt-ews-loop article:not(:last-child):after{content:'\2192';position:absolute;right:-15px;top:43%;z-index:1;color:#6c967d;font-size:24px}
+.sipt-ews-loop article>span{display:block;font-size:12px;color:#759482;font-weight:850;margin-bottom:19px}.sipt-ews-loop .d-icon{width:34px;height:34px;display:block;margin-bottom:19px}
+.editorial .sipt-ews-loop h3{font-size:25px;line-height:1.2;margin:0 0 13px}.editorial .sipt-ews-loop p{font-size:18px;line-height:1.45;margin:0}
+.sipt-ews-outcome{display:flex;gap:20px;justify-content:space-between;padding:20px 0;border-top:1px solid #d8e5dc}.sipt-ews-outcome>b{font-size:16px;line-height:1.5;color:#176b57;flex:1}
+.sipt-accountability{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:27px}
+.sipt-accountability article{border-top:3px solid #176b57;padding:24px;background:#f0f6f2;border-radius:0 0 8px 8px}
+.editorial .sipt-accountability h3{font-size:29px;line-height:1.25;margin:21px 0 16px}.editorial .sipt-accountability p{font-size:21px;line-height:1.5;margin:0}
+.editorial .sipt-closing{font-size:clamp(24px,2.6vw,36px);line-height:1.4;color:#176b57;font-weight:750;margin-top:15px;text-align:center}
+.sipt-parallel-flow{display:grid;grid-template-columns:1fr 1fr;gap:30px}.sipt-parallel-flow article{padding:29px;border:1px solid #d5e3d9;border-radius:10px;background:#f1f7f3}.sipt-parallel-flow article:nth-child(2){background:#edf3fb;border-color:#d4deec}.sipt-parallel-flow .d-icon{display:block;width:38px;height:38px;margin-bottom:24px}.sipt-parallel-flow small{display:block}
+.editorial .sipt-parallel-flow h3{font-size:30px;line-height:1.2;margin:20px 0}.editorial .sipt-parallel-flow p{font-size:22px;line-height:1.5;margin:16px 0}.sipt-parallel-flow b{font-size:17px;color:#176b57}
+@media(max-height:820px) and (min-width:900px){.editorial .d-sipt-slide>.body{gap:14px}.sipt-definition article{padding:18px 23px}.editorial .sipt-definition h3{font-size:40px}.editorial .sipt-definition p,.editorial .sipt-rp p,.editorial .sipt-cmca-chain p,.editorial .sipt-accountability p{font-size:17px}.sipt-cmca-chain>article{padding:20px}.sipt-principle{padding:14px 18px}.sipt-rp{padding:21px}.sipt-ews-loop article{padding:18px 14px}.editorial .sipt-ews-loop p{font-size:16px}.editorial .sipt-example-grid p{font-size:16px}.sipt-example-grid article{padding:15px 20px}.sipt-example-context{padding:14px 20px}.editorial .sipt-parallel-flow p{font-size:19px}.sipt-parallel-flow article{padding:23px}}
+@media(max-width:850px){.sipt-definition,.sipt-repository,.sipt-cmca-chain{grid-template-columns:1fr}.sipt-arrow,.sipt-cmca-chain>span{transform:rotate(90deg)}.sipt-principle{grid-template-columns:1fr;gap:10px}.sipt-example-grid,.sipt-accountability,.sipt-parallel-flow{grid-template-columns:1fr}.sipt-ews-loop{grid-template-columns:1fr 1fr}.sipt-ews-loop article:after{display:none}.sipt-ews-outcome{flex-direction:column}.sipt-architecture{min-height:250px;flex:none}.sipt-direction{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.sipt-architecture .sipt-flow-line{animation:none!important}}
+
+.sipt-architecture-mobile{display:none}
+@media(max-width:760px){.sipt-architecture{display:none}.sipt-architecture-mobile{display:grid;gap:16px}.sipt-architecture-mobile article{padding:20px;border:1px solid #cbded2;border-left:4px solid #176b57;background:#f0f6f2;border-radius:6px}.editorial .sipt-architecture-mobile h3{font-size:24px;margin:12px 0}.editorial .sipt-architecture-mobile p{font-size:18px;line-height:1.5;margin:0}}
+
+.sipt-architecture .sipt-svg-source{font-size:16px}

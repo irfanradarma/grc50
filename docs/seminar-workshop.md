@@ -1,6 +1,6 @@
 # SIGNAL seminar: strategic risk hands-on
 
-The 28-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
+The 41-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
 
 ## Start locally
 
@@ -21,24 +21,24 @@ Vite listens on LAN and proxies the loopback API and presentation. Phones need t
 
 ## Presenter sequence
 
-1. Create a **new session** in /admin. This is scenario version 3; earlier operational sessions remain preserved and are not mixed into the new catalog.
-2. Open the deck in the owner browser. On slide 15, paste the new audience session link and show the QR.
-3. Participants choose an organization and at least one objective. Recommend its first growth objective for the shared 12 → 16 example. Each company has two objectives and four strategic risks.
-4. Orient to Dashboard, Risk Monitoring (Risks / Mitigation plans) and Risk Trigger. All four publishers start enabled.
-5. Slide 18 presents the real ANTARA tariff announcement dated 3 April 2025. The exercise is as of **8 April 2025**; 32% is the historical announced rate, not today's rate. Slide 19 reveals the strategic exposure contrast.
-6. Release **Guided case**. Export logistics and seafood exports may be exposed; domestic software has no established direct goods-tariff exposure. Participants verify scope, capture/neglect, then explicitly keep/update the assessment.
-7. For the first export-growth risk, consider 12 → 16. Review the strategic response, owner, deadline and expected protection. Saving a plan does not reduce current risk. Other selected risks can have different starting/proposed scores.
-8. Choose **Load strategic case news** for the dated, verified eight-article pack. Inspect headlines, source coverage and organization previews. CNN has no article in this verified pack; zero is displayed. Do not imply every enabled publisher returned news.
-9. Alternatively choose **Capture current strategic news** for on-demand live RSS results. Dates and live labels remain explicit. Inspect before release; do not narrate current articles as April 2025 events.
-10. Release the external batch. Participants assess trade, currency, diversification, AI competition, budget priorities and expected data rules according to their objectives. Some signals are uncertain or opportunities; relevance does not automatically mean higher risk.
-11. Release internal evidence. Slides 21–22 show strategy reports, audit findings and automated planning indicators. CA requires confirmation before capture. Every risk has three source-linked teaching records, sharing its underlying assumption event.
-12. Review dashboards on slide 23; load actual aggregate outcomes in the owner browser. A justified neglect or unchanged assessment is valid. Close with the SPIT/SIPT direction and a one-objective pilot.
+1. Create or resume a session in `/admin`. Share its LAN audience link or QR.
+2. Introduce AI in audit and assurance, the GRC disconnect and SIGNAL.
+3. Ask participants to choose an organization and objective. Inspect initial risks, plans and source selection.
+4. Show the real ANTARA tariff announcement and compare organizational exposure.
+5. Release the guided news item. Walk through link approval/decline, optional capture notes, explicit score review and an owned mitigation decision.
+6. Show the first-case dashboard. Do not wait for everyone to complete the flow.
+7. Prepare the wider external batch. The verified strategic pack is the dependable default; live RSS remains a separate inspected option.
+8. Release External, then Internal evidence. The app permits this immediately after the preceding stage is released; no participant-completion gate applies.
+9. On **Keep exploring. We continue with SIPT.**, let participants review at their own pace. Proceed directly to the SIPT section. No timed work period or group debrief.
+10. Explain SPIT/SIPT, RP as the shared risk-register reference, CMCA as a mainstream continuous-monitoring route, and AI-assisted evidence review with human authority.
+11. Use the CA and internal-evidence mobile guides as presenter-led illustrations. Do not stop for a second audience exercise. These show the SIGNAL review pattern, not actual Kemenkeu platform screens.
+12. Explain the integrated information flow, the illustrative institutional case and the effective-early-warning outcome. Close on contributions from management, UKI, Itjen and data/technology teams.
 
-Releases do not require every participant to finish. Decisions persist. Source changes apply to unreleased batches, never silently deleting reviewed evidence.
+Participants may keep working during or after the talk. Decisions persist; releases do not require every participant to finish. Capture never changes a score automatically, and approving a plan does not establish effective protection.
 
 ## Mobile walkthrough and deck
 
-Nine read-only mobile guides at `/audience/walkthrough/<key>` render the **same React components and strategic scenario data** as the audience app. They create no guest session or database records. The deck embeds them in portrait phone frames, with looping steps and automatic scroll to the relevant fields. Keys: context, menus, capture, assessment, mitigation, protection, internal, ca, dashboard.
+Nine read-only mobile guides at `/audience/walkthrough/<key>` render the **same React components and strategic scenario data** as the audience app. They create no guest session or database records. The deck embeds them in portrait phone frames, with four deliberately paced scenes, highlighted controls and animated tap cues. Keys: context, menus, capture, assessment, mitigation, protection, internal, ca, dashboard.
 
 Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Loops start by default; CSS respects reduced-motion preferences for decorative effects. The original-news slide uses an attributed source photograph and transcribed headline, not a claimed browser screenshot.
 
@@ -93,10 +93,26 @@ If browser edits belong to an earlier deck structure, they are archived locally 
 3. Share **Audience deck link**. No guest account is needed to view slides. Viewer links include the session code; the plain deck URL remains independent.
 4. The presenter deck broadcasts its active slide. Audience decks follow by default and display the presenter's current slide and title.
 5. Next/previous, contents, chapter buttons or a direct hash change switch that viewer to independent browsing. **Browse independently** also holds the current slide. **Return to live** jumps to the latest presenter slide and resumes following.
-6. The four section markers and numbered slide footer remain visible in fullscreen. The live bar remains visible; presentation navigation stays hidden in fullscreen as before.
+6. The five section markers and numbered slide footer remain visible in fullscreen. The live bar remains visible; presentation navigation stays hidden in fullscreen as before.
 
 Updates use short polling, approximately every 1.5 seconds. Disconnects retain the last known slide and indicate interrupted connectivity. Only the session owner can publish; the public endpoint returns only deck ID, slide key, publication state and timestamp. It exposes no participant records or private rationale. New content uses semantic slide keys so adding the agenda does not reinterpret a saved numeric cursor.
 
 ## Signal review and response
 
 Click a signal summary to expand it. Approve or decline the proposed risk links; capture notes are optional. Capture opens the affected risk assessment. The suggested map cell stays marked while users explore alternatives. Accepting a suggestion records its rationale; custom scores and retained scores require a user rationale. Above-tolerance assessments prompt an owned mitigation proposal. Declines persist for that assessment, and saved actions retain projected protection separately from current exposure.
+
+## Opening agenda and guided demonstrations
+
+The five agenda sections are: AI in audit & assurance; The disconnect; The SIGNAL model; Lead the decision; SIPT: Kemenkeu's direction. The four SupTech opening slides belong to the first section; the GRC foundations and research begin the second. Chapter buttons jump to each section and track the active section throughout the deck.
+
+The nine walkthroughs use the real mobile components in a read-only route. Each has four focused scenes defined in `app/shared/walkthrough.ts`. Targeted framing replaces arbitrary pixel scrolling; a blue outline and tap cue show the control or evidence being discussed. The phone viewport is larger and captions state the current action. Pause, previous, next and replay controls sit outside the phone. Manual stepping pauses playback; Replay restarts the loop. Only the active slide loads its demonstration. These are guided live views, not prerecorded video files, and require the running local app. No participant records are created or modified.
+
+The speaker introduction is slide 2, between the cover and agenda. Reza Rizky Pratama appears on the left and Teuku Raja Irfan Radarma on the right. Both portraits use transparent backgrounds with distinct colored halos; Reza's cutout is a separate derivative, with the original retained. No biographies or professional titles were supplied. Agenda is now slide 3; semantic live-following keys remain stable.
+
+Each of the five agenda sections now begins with a numbered separator, with its own color, icon and transition question. Agenda/chapter buttons land on these separators. Semantic keys preserve live following when slide numbers change. The deck now contains 41 slides.
+
+## SIPT narrative and source boundaries
+
+The last chapter replaces the generic pilot section. RP/CMCA functions and their intended AI-enabled relationship come from the presenter's briefing. RP is the single risk-register reference; CMCA supplies continuous evidence linked to registered risks; internal and external sources complement it. AI relates and explains signals and drafts review options; the risk owner approves assessments and actions. Feedback supports the next monitoring cycle. This is the intended institutional direction, not an assertion that these AI integrations are already in production.
+
+SIPT is expanded as Sistem Informasi Pengendalian Terintegrasi in BaTii's 2025-2029 strategy, printed page 10. PMK 83/2024 establishes the SPIT framework. The DJKN article dated 28 July 2025 provides public context for early warning, current risk profiles and integrated oversight. The worked institutional example is illustrative, not an actual incident, official score or deployed check.

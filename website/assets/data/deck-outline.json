@@ -2,6 +2,12 @@
   "deckId": "signal-beyond-compliance-v3",
   "chapters": [
     {
+      "id": "ai-assurance",
+      "title": "AI in audit & assurance",
+      "caption": "The broader landscape: AI oversight, AI-assisted work and SupTech",
+      "icon": "brain-circuit"
+    },
+    {
       "id": "disconnect",
       "title": "The disconnect",
       "caption": "The promise, the evidence and the disconnect",
@@ -21,9 +27,9 @@
     },
     {
       "id": "action",
-      "title": "Put it to work",
-      "caption": "Connect the approach to your organization",
-      "icon": "target"
+      "title": "SIPT: Kemenkeu's direction",
+      "caption": "Shared risk context, continuous monitoring and AI-assisted early warning",
+      "icon": "network"
     }
   ],
   "slides": [
@@ -33,28 +39,43 @@
       "chapter": null
     },
     {
+      "key": "speakers",
+      "section": "YOUR SPEAKERS",
+      "chapter": null
+    },
+    {
       "key": "agenda",
       "section": "THE ROUTE AHEAD",
       "chapter": null
     },
     {
+      "key": "section-ai-assurance",
+      "section": "SECTION 01 OF 05",
+      "chapter": "ai-assurance"
+    },
+    {
       "key": "ai-and-supervision",
       "section": "AI AND SUPERVISION",
-      "chapter": "disconnect"
+      "chapter": "ai-assurance"
     },
     {
       "key": "supervisory-technology",
       "section": "SUPERVISORY TECHNOLOGY",
-      "chapter": "disconnect"
+      "chapter": "ai-assurance"
     },
     {
       "key": "suptech-in-practice",
       "section": "SUPTECH IN PRACTICE",
-      "chapter": "disconnect"
+      "chapter": "ai-assurance"
     },
     {
       "key": "risk-management-use-case",
       "section": "OUR USE CASE / RISK",
+      "chapter": "ai-assurance"
+    },
+    {
+      "key": "section-disconnect",
+      "section": "SECTION 02 OF 05",
       "chapter": "disconnect"
     },
     {
@@ -88,9 +109,19 @@
       "chapter": "disconnect"
     },
     {
+      "key": "section-model",
+      "section": "SECTION 03 OF 05",
+      "chapter": "model"
+    },
+    {
       "key": "the-solution-framework",
       "section": "THE SOLUTION FRAMEWORK",
       "chapter": "model"
+    },
+    {
+      "key": "section-practice",
+      "section": "SECTION 04 OF 05",
+      "chapter": "practice"
     },
     {
       "key": "now-you-take-the-decisions",
@@ -143,29 +174,19 @@
       "chapter": "practice"
     },
     {
-      "key": "a-busier-information-environment",
-      "section": "A BUSIER INFORMATION ENVIRONMENT",
-      "chapter": "practice"
-    },
-    {
-      "key": "internal-evidence",
-      "section": "INTERNAL EVIDENCE",
-      "chapter": "practice"
-    },
-    {
-      "key": "continuous-assurance",
-      "section": "CONTINUOUS ASSURANCE",
-      "chapter": "practice"
-    },
-    {
       "key": "what-changed",
       "section": "WHAT CHANGED?",
       "chapter": "practice"
     },
     {
-      "key": "compare-the-reasons",
-      "section": "COMPARE THE REASONS",
+      "key": "a-busier-information-environment",
+      "section": "A BUSIER INFORMATION ENVIRONMENT",
       "chapter": "practice"
+    },
+    {
+      "key": "section-action",
+      "section": "SECTION 05 OF 05",
+      "chapter": "action"
     },
     {
       "key": "back-to-kemenkeu",
@@ -173,13 +194,43 @@
       "chapter": "action"
     },
     {
-      "key": "the-next-30-days",
-      "section": "THE NEXT 30 DAYS",
+      "key": "risk-platform",
+      "section": "RISK PLATFORM",
       "chapter": "action"
     },
     {
-      "key": "your-commitment",
-      "section": "YOUR COMMITMENT",
+      "key": "cmca-platform",
+      "section": "CMCA PLATFORM",
+      "chapter": "action"
+    },
+    {
+      "key": "continuous-assurance",
+      "section": "CONTINUOUS ASSURANCE",
+      "chapter": "action"
+    },
+    {
+      "key": "internal-evidence",
+      "section": "INTERNAL EVIDENCE",
+      "chapter": "action"
+    },
+    {
+      "key": "ai-powered-sipt",
+      "section": "AI-POWERED SIPT",
+      "chapter": "action"
+    },
+    {
+      "key": "sipt-worked-example",
+      "section": "SIPT / WORKED EXAMPLE",
+      "chapter": "action"
+    },
+    {
+      "key": "early-warning-system",
+      "section": "EARLY WARNING SYSTEM",
+      "chapter": "action"
+    },
+    {
+      "key": "shared-responsibility",
+      "section": "SHARED RESPONSIBILITY",
       "chapter": "action"
     },
     {

@@ -4,7 +4,7 @@ Using AI to capture signals for effective risk management: an English presentati
 
 - [Seminar material and running order](docs/seminar-plan.md)
 - [Presenter and LAN setup guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: 32-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
+- `website/deck/index.html`: 41-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
 - `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. Admin and audience use separate route paths.
 
 ## Run locally
@@ -36,3 +36,7 @@ Retain [photo and icon credits](website/assets/images/CREDITS.md) with exported/
 Create a new session in `/admin` for scenario version 3. The three companies now face strategic growth, market concentration, capital allocation and business-model risks. The shared case is ANTARA's 3 April 2025 US tariff-announcement report, explicitly replayed as of 8 April 2025. It is not a current-rate claim. Use **Load strategic case news** for the verified eight-article pack; **Capture current strategic news** remains a separate RSS mode. Earlier sessions remain preserved.
 
 The current deck uses nine read-only mobile views built from the audience app components. See [the presenter guide](docs/seminar-workshop.md) for the full sequence and evidence boundaries.
+
+The agenda begins with AI in audit and assurance, then narrows to the SIGNAL risk-management exercise. Mobile demonstrations include focused scenes, tap cues, progress, pause, step and replay controls.
+
+After the guided ANTARA case, release the external and internal signals and continue immediately into SIPT. Participants explore in parallel; there is no timed review break. The final section explains RP, CMCA, AI-assisted human review and the intended early-warning direction described by the presenter.

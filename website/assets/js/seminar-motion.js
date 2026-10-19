@@ -28,22 +28,35 @@ document.querySelectorAll('[data-loop-toggle]').forEach(button=>button.addEventL
 
 
 const frames=Array.from(document.querySelectorAll('[data-live-tour]'));
+function send(frame,data){frame.contentWindow?.postMessage({type:'signal-tour',...data},new URL(frame.dataset.src).origin);}
 function syncFrames(){
  frames.forEach(frame=>{
- const gallery=frame.closest('[data-tour-gallery]'),active=frame.closest('.slide').classList.contains('active')&&document.visibilityState!=='hidden';
- const editing=document.body.classList.contains('deck-editing'),paused=gallery.dataset.userPaused==='true'||editing;
- if(active){if(!frame.getAttribute('src')||frame.getAttribute('src')==='about:blank')frame.src=frame.dataset.src;
- frame.contentWindow?.postMessage({type:'signal-tour',paused},new URL(frame.dataset.src).origin);
- }else if(frame.getAttribute('src')&&frame.getAttribute('src')!=='about:blank')frame.src='about:blank';
- gallery.querySelector('[data-tour-pause]').textContent=paused?'Play guide':'Pause guide';
+  const gallery=frame.closest('[data-tour-gallery]'),active=frame.closest('.slide').classList.contains('active')&&document.visibilityState!=='hidden';
+  const paused=gallery.dataset.userPaused==='true'||document.body.classList.contains('deck-editing');
+  if(active){if(!frame.getAttribute('src')||frame.getAttribute('src')==='about:blank'){gallery.dataset.ready='false';gallery.querySelector('.d-demo-loading').hidden=false;frame.src=frame.dataset.src;}send(frame,{paused});}
+  else if(frame.getAttribute('src')&&frame.getAttribute('src')!=='about:blank'){frame.src='about:blank';gallery.dataset.ready='false';}
+  gallery.querySelector('[data-tour-pause]').textContent=paused?'Play guide':'Pause guide';
  });
 }
+window.addEventListener('message',event=>{
+ if(event.data?.type!=='signal-tour-state')return;
+ const frame=frames.find(frame=>frame.contentWindow===event.source&&new URL(frame.dataset.src).origin===event.origin);
+ if(!frame)return;
+ const {step,total,title,paused}=event.data;
+ if(!Number.isInteger(step)||!Number.isInteger(total)||step<0||step>=total||total>12||typeof title!=='string')return;
+ const gallery=frame.closest('[data-tour-gallery]');gallery.dataset.ready='true';gallery.querySelector('.d-demo-loading').hidden=true;
+ gallery.querySelector('[data-tour-status]').textContent=String(step+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')+' / '+title;
+ const progress=gallery.querySelector('[data-tour-progress]');progress.innerHTML=Array.from({length:total},(_,i)=>'<i class="'+(i===step?'active':'')+'"></i>').join('');
+ progress.setAttribute('aria-label','Step '+(step+1)+' of '+total);
+ const desired=gallery.dataset.userPaused==='true'||document.body.classList.contains('deck-editing');if(paused!==desired)send(frame,{paused:desired});
+});
 function sync(){syncLoops();syncFrames();}
 frames.forEach(frame=>{
  const gallery=frame.closest('[data-tour-gallery]');gallery.dataset.userPaused='false';
  const resize=()=>{frame.style.transform='scale('+(frame.parentElement.clientWidth/390)+')';};new ResizeObserver(resize).observe(frame.parentElement);resize();
  frame.addEventListener('load',syncFrames);
  gallery.querySelector('[data-tour-pause]').addEventListener('click',()=>{gallery.dataset.userPaused=String(gallery.dataset.userPaused!=='true');syncFrames();});
+ for(const [selector,command] of [['[data-tour-prev]','previous'],['[data-tour-next]','next'],['[data-tour-replay]','replay']])gallery.querySelector(selector).addEventListener('click',()=>{gallery.dataset.userPaused=String(command!=='replay');send(frame,{command});syncFrames();});
 });
 document.addEventListener('signal:slidechange',sync);
 document.addEventListener('signal:editmode',sync);

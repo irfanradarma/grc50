@@ -3,7 +3,7 @@
 
 Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-This is the narrative baseline for the rebuilt three-organization application and 32-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). AI Auditing and separate assurance applications are outside this seminar.
+This is the narrative baseline for the rebuilt three-organization application and 41-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). The opening covers the broader use of AI in audit and assurance; the hands-on narrows to SIGNAL risk decisions. Separate assurance applications are outside this exercise.
 
 ## 1. The argument
 
@@ -81,8 +81,8 @@ AI's intended role is retrieval, extraction, contextual linking, and proposals. 
 5. Review the shared real news event. Approve or decline each suggested risk link; capture notes are optional.
 6. Capture opens the affected risk. Accept the suggested map position or choose a custom score with your own rationale. Keeping a score also requires a reason.
 7. An above-tolerance assessment prompts a mitigation decision. Declining the suggestion is saved; approving a plan records its owner, deadline and expected protection.
-8. Repeat with the external batch and internal evidence, then review dashboards.
-9. Close with the institutional direction and an objective-led pilot.
+8. Show the first-case dashboard, then release the wider external and internal signals. Participants may continue independently; presentation proceeds without a review break.
+9. Explain the SIPT direction: one risk register through RP, continuous evidence through CMCA, AI-assisted human review and effective early warning.
 
 Slide timing estimates and the participant countdown are omitted. Participants can work at their own pace.
 
@@ -177,69 +177,74 @@ Acceptance checks: multiple-objective selection; two exposed/one unexposed case;
 
 ## 9. Deck storyboard
 
-Four section markers orient the audience.
+Five section markers orient the audience.
 
 | Slide | Section | Content |
 |---|---|---|
 | 1 | Opening | Beyond Compliance |
-| 2 | Opening | Our route from evidence to action |
-| 3 | The disconnect | Three disciplines. One purpose. |
-| 4 | The disconnect | Can evidence cross the boundaries? |
-| 5 | The disconnect | Shared goals. Disconnected decisions? |
-| 6 | The disconnect | 89% did not report a unique strategic advantage. |
-| 7 | The disconnect | 49% of business executives see an assurance alignment gap. |
-| 8 | The disconnect | Risk reporting can become a compliance exercise. |
-| 9 | The SIGNAL model | SIGNAL: from evidence to action |
-| 10 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
-| 11 | Lead the decision | Join the session |
-| 12 | Lead the decision | Which organization will you lead? |
-| 13 | Lead the decision | The risk and the response are already connected |
-| 14 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
-| 15 | Lead the decision | Which organization is affected by this news? |
-| 16 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
-| 17 | Lead the decision | A changed assumption can move the assessment |
-| 18 | Lead the decision | The action follows the exposed dependency |
-| 19 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
-| 20 | Lead the decision | Now review a wider set of signals |
-| 21 | Lead the decision | The same review works inside the organization |
-| 22 | Lead the decision | An exception needs confirmation before it informs a risk decision |
-| 23 | Lead the decision | The dashboard shows decisions and commitments |
-| 24 | Lead the decision | Different decisions can both be well supported |
-| 25 | Put it to work | SPIT sets the direction. SIPT supports the information flow. |
-| 26 | Put it to work | One objective is enough to start testing the connection |
-| 27 | Put it to work | What signal should reach you earlier? |
-| 28 | Put it to work | Sources behind the argument |
+| 2 | Opening | Meet your speakers |
+| 3 | Opening | Our route from evidence to action |
+| 4 | AI in audit & assurance | AI in audit & assurance |
+| 5 | AI in audit & assurance | Two roles for AI in supervision |
+| 6 | AI in audit & assurance | SupTech: from more data to focused supervision |
+| 7 | AI in audit & assurance | SupTech in practice: authorities using AI |
+| 8 | AI in audit & assurance | Our use case: AI for risk management |
+| 9 | The disconnect | The disconnect |
+| 10 | The disconnect | Three disciplines. One purpose. |
+| 11 | The disconnect | Can evidence cross the boundaries? |
+| 12 | The disconnect | Shared goals. Disconnected decisions? |
+| 13 | The disconnect | 89% did not report a unique strategic advantage. |
+| 14 | The disconnect | 49% of business executives see an assurance alignment gap. |
+| 15 | The disconnect | Risk reporting can become a compliance exercise. |
+| 16 | The SIGNAL model | The SIGNAL model |
+| 17 | The SIGNAL model | SIGNAL: from evidence to action |
+| 18 | Lead the decision | Lead the decision |
+| 19 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
+| 20 | Lead the decision | Join the session |
+| 21 | Lead the decision | Which organization will you lead? |
+| 22 | Lead the decision | The risk and the response are already connected |
+| 23 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
+| 24 | Lead the decision | Which organization is affected by this news? |
+| 25 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
+| 26 | Lead the decision | A changed assumption can move the assessment |
+| 27 | Lead the decision | The action follows the exposed dependency |
+| 28 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
+| 29 | Lead the decision | The dashboard shows decisions and commitments |
+| 30 | Lead the decision | Keep exploring. We continue with SIPT. |
+| 31 | SIPT: Kemenkeu's direction | SIPT: Kemenkeu's direction |
+| 32 | SIPT: Kemenkeu's direction | SIPT: connecting control information across Kemenkeu |
+| 33 | SIPT: Kemenkeu's direction | One risk register. One view of risk. |
+| 34 | SIPT: Kemenkeu's direction | From periodic snapshots to continuous risk evidence |
+| 35 | SIPT: Kemenkeu's direction | The review pattern: exception → confirmation → risk decision |
+| 36 | SIPT: Kemenkeu's direction | CMCA is one signal stream. Reports and assurance add context. |
+| 37 | SIPT: Kemenkeu's direction | AI connects the evidence. People own the decision. |
+| 38 | SIPT: Kemenkeu's direction | Follow one risk across the information flow |
+| 39 | SIPT: Kemenkeu's direction | A warning is effective when it changes a timely decision |
+| 40 | SIPT: Kemenkeu's direction | One view of risk. Shared evidence. Owned decisions. |
+| 41 | SIPT: Kemenkeu's direction | Sources behind the argument |
 
-## 10. Institutional bridge and call to action
+## 10. SIPT: the institutional direction
 
-### Kemenkeu close
+### Presenter-supplied platform direction
 
-“We are not starting from zero. PMK 83/2024 and the implementation guidance establish the direction toward integrated internal control. SIPT is the information-system support for that direction. Our exercise illustrates a practical contribution: evidence reaching the right owner, challenging an assumption, and leading to a decision we can trace.” [R6–R8, R10]
+- **Risk Platform:** the single source of the risk register, enabling one view of risk. Objectives, risk context, owners, assessments and response history provide a shared reference; management retains ownership.
+- **CMCA Platform:** a mainstream route for continuous monitoring of risk events. Checks and exception evidence link to registered risks so monitoring and assurance can use the same context.
+- **AI assistance:** relate internal/external evidence to the shared objectives and risks, explain relevance and uncertainty, and suggest assessment/response options. A human validates the signal and approves any change.
+- **Feedback:** approved reviews and response evidence return to the register and inform monitoring. An alert alone is not assurance, a score change or a verified outcome.
 
-SPIT is the framework; SIPT supports it. BaTii's published strategy expands SIPT as **Sistem Informasi Pengendalian Terintegrasi** [R10, printed page 10]. Use that sourced form; confirm approved internal nomenclature before publication if the speaker's programme uses a longer form. The instruments do not by themselves establish that the demonstrated AI news workflow is mandated or deployed. This app is not represented as deployed SIPT. The speaker can describe work they personally lead, distinguishing implemented, developing, and proposed capabilities.
+These platform relationships are the direction described by the presenter. Public references support SPIT/SIPT terminology and the institutional early-warning objective, not the live deployment of the demonstrated AI flow.
 
-### Closing script
+### Public source basis
 
-“Today you followed a small chain of decisions. You examined an event, connected it to an objective, reviewed a risk, and decided what to do. Some changed an assessment; some kept it; some rejected the signal. The value was the reason you could show and the action you could own.
+PMK 83/2024 establishes SPIT. BaTii's strategy defines **SIPT ? Sistem Informasi Pengendalian Terintegrasi** as information-system support for SPIT [R6, R10, printed page 10]. DJKN?s public explanation links integrated control to effective early warning, current risk profiles and cross-line oversight [R8]. These sources were rechecked on 19 October 2026.
 
-“Take one important objective back to your unit. Bring the performance owner, risk owner, internal compliance team, and assurance together around the same evidence. Which changes would threaten that objective? Where would we see them first? Who must decide, and how quickly?
+### Closing message
 
-“Start with a small, measurable pilot: one external source, one internal report, and one relevant assurance finding. Test whether they reach the right person and improve a decision. Review the noise as seriously as the useful alerts. Expand when the connection works.
+The first ANTARA case shows the decision pattern at a small scale. The institutional direction connects that pattern across Kemenkeu: RP provides shared risk context, CMCA supplies continuous evidence, AI supports relevance review, and accountable people decide and act.
 
-“Management brings context and owns the response. UKI helps make monitoring useful. Assurance tests whether protection works. Technology teams make evidence accessible and traceable. This needs all of us.
+Management maintains risk context and owns the response. UKI supports useful monitoring and escalation. Itjen independently challenges control and response effectiveness. Technology and data teams enable dependable access, references and traceability. Ask what evidence each unit can contribute to protect a shared objective.
 
-“For the objective you own, what signal should reach you earlier—and what would you do differently when it arrives?”
-
-### A 30-day commitment
-
-| Period | Work | Evidence of progress |
-|---|---|---|
-| Week 1 | Choose one objective/owner; map risks, controls, and review cadence | Shared dependency map and response expectations |
-| Week 2 | Connect a few permitted sources and a relevant assurance output | Source records, timestamps, initial relevance examples |
-| Week 3 | Review signals and record assessment/action decisions | Useful/rejected signals; reasons; owners/deadlines |
-| Week 4 | Review decisions and effectiveness evidence before expansion | Time to review/action; false positives; missed material signals; overdue actions; verified protection |
-
-Evaluate usefulness and response timeliness. Establish a baseline. Do not claim a small pilot alone proves improved KPI outcomes or AI accuracy.
+No generic 30-day pilot or audience waiting period is part of this closing section. Participants can continue exploring their inboxes as the presentation proceeds or after it ends.
 
 ## References and claim boundaries
 
