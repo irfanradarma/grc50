@@ -4,7 +4,7 @@ Using AI to capture signals for effective risk management: an English presentati
 
 - [Seminar material and running order](docs/seminar-plan.md)
 - [Presenter and LAN setup guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: 42-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
+- `website/deck/index.html`: 44-slide English deck with policy references, diagrams, a shared news case, QR joining and actual session outcomes.
 - `app/`: participant journey, presenter controls, PostgreSQL persistence and automated tests. Admin and audience use separate route paths.
 
 ## Run locally

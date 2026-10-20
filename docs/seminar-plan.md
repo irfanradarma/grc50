@@ -186,43 +186,45 @@ Five section markers orient the audience.
 | 3 | Opening | Our route from evidence to action |
 | 4 | AI in audit & assurance | AI in audit & assurance |
 | 5 | AI in audit & assurance | Two roles for AI in supervision |
-| 6 | AI in audit & assurance | SupTech: from more data to focused supervision |
-| 7 | AI in audit & assurance | SupTech in practice: authorities using AI |
-| 8 | AI in audit & assurance | Our use case: AI for risk management |
-| 9 | The disconnect | The disconnect |
-| 10 | The disconnect | Three disciplines. One purpose. |
-| 11 | The disconnect | Can evidence cross the boundaries? |
-| 12 | The disconnect | Shared goals. Disconnected decisions? |
-| 13 | The disconnect | 89% did not report a unique strategic advantage. |
-| 14 | The disconnect | 49% of business executives see an assurance alignment gap. |
-| 15 | The disconnect | Risk reporting can become a compliance exercise. |
-| 16 | The SIGNAL model | The SIGNAL model |
-| 17 | The SIGNAL model | SIGNAL: from evidence to action |
-| 18 | Lead the decision | Lead the decision |
-| 19 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
-| 20 | Lead the decision | Join the session |
-| 21 | Lead the decision | Which organization will you lead? |
-| 22 | Lead the decision | The risk and the response are already connected |
-| 23 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
-| 24 | Lead the decision | Which organization is affected by this news? |
-| 25 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
-| 26 | Lead the decision | A changed assumption can move the assessment |
-| 27 | Lead the decision | The action follows the exposed dependency |
-| 28 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
-| 29 | Lead the decision | The dashboard shows decisions and commitments |
-| 30 | Lead the decision | Keep exploring. We continue with SIPT. |
-| 31 | SIPT: Kemenkeu's direction | SIPT: Kemenkeu's direction |
-| 32 | SIPT: Kemenkeu's direction | SIPT: connecting control information across Kemenkeu |
-| 33 | SIPT: Kemenkeu's direction | Integrated Internal Control Framework (SPIT) |
-| 34 | SIPT: Kemenkeu's direction | One risk register. One view of risk. |
-| 35 | SIPT: Kemenkeu's direction | From periodic snapshots to continuous risk evidence |
-| 36 | SIPT: Kemenkeu's direction | The review pattern: exception → confirmation → risk decision |
-| 37 | SIPT: Kemenkeu's direction | CMCA is one signal stream. Reports and assurance add context. |
-| 38 | SIPT: Kemenkeu's direction | AI connects the evidence. People own the decision. |
-| 39 | SIPT: Kemenkeu's direction | Follow one risk across the information flow |
-| 40 | SIPT: Kemenkeu's direction | A warning is effective when it changes a timely decision |
-| 41 | SIPT: Kemenkeu's direction | One view of risk. Shared evidence. Owned decisions. |
-| 42 | SIPT: Kemenkeu's direction | Sources behind the argument |
+| 6 | AI in audit & assurance | Three layers of frontier AI risk |
+| 7 | AI in audit & assurance | Supervise AI: what must we examine? |
+| 8 | AI in audit & assurance | SupTech: from more data to focused supervision |
+| 9 | AI in audit & assurance | SupTech in practice: authorities using AI |
+| 10 | AI in audit & assurance | Our use case: AI for risk management |
+| 11 | The disconnect | The disconnect |
+| 12 | The disconnect | Three disciplines. One purpose. |
+| 13 | The disconnect | Can evidence cross the boundaries? |
+| 14 | The disconnect | Shared goals. Disconnected decisions? |
+| 15 | The disconnect | 89% did not report a unique strategic advantage. |
+| 16 | The disconnect | 49% of business executives see an assurance alignment gap. |
+| 17 | The disconnect | Risk reporting can become a compliance exercise. |
+| 18 | The SIGNAL model | The SIGNAL model |
+| 19 | The SIGNAL model | SIGNAL: from evidence to action |
+| 20 | Lead the decision | Lead the decision |
+| 21 | Lead the decision | One organization. Two signal streams. A complete decision cycle. |
+| 22 | Lead the decision | Join the session |
+| 23 | Lead the decision | Which organization will you lead? |
+| 24 | Lead the decision | The risk and the response are already connected |
+| 25 | Lead the decision | A trade-policy shock. Which growth plans are exposed? |
+| 26 | Lead the decision | Which organization is affected by this news? |
+| 27 | Lead the decision | The alert reaches your risk. You decide whether to capture it. |
+| 28 | Lead the decision | A changed assumption can move the assessment |
+| 29 | Lead the decision | The action follows the exposed dependency |
+| 30 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
+| 31 | Lead the decision | The dashboard shows decisions and commitments |
+| 32 | Lead the decision | Keep exploring. We continue with SIPT. |
+| 33 | SIPT: Kemenkeu's direction | SIPT: Kemenkeu's direction |
+| 34 | SIPT: Kemenkeu's direction | SIPT: connecting control information across Kemenkeu |
+| 35 | SIPT: Kemenkeu's direction | Integrated Internal Control Framework (SPIT) |
+| 36 | SIPT: Kemenkeu's direction | One risk register. One view of risk. |
+| 37 | SIPT: Kemenkeu's direction | From periodic snapshots to continuous risk evidence |
+| 38 | SIPT: Kemenkeu's direction | The review pattern: exception → confirmation → risk decision |
+| 39 | SIPT: Kemenkeu's direction | CMCA is one signal stream. Reports and assurance add context. |
+| 40 | SIPT: Kemenkeu's direction | AI connects the evidence. People own the decision. |
+| 41 | SIPT: Kemenkeu's direction | Follow one risk across the information flow |
+| 42 | SIPT: Kemenkeu's direction | A warning is effective when it changes a timely decision |
+| 43 | SIPT: Kemenkeu's direction | One view of risk. Shared evidence. Owned decisions. |
+| 44 | SIPT: Kemenkeu's direction | Sources behind the argument |
 
 ## 10. SIPT: the institutional direction
 
@@ -261,3 +263,7 @@ Sources checked online on 18 October 2026. Historical instruments establish long
 - **[R8]** [DJKN, SPIT dalam rangka membangun EWS yang lebih efektif](https://www.djkn.kemenkeu.go.id/kanwil-rsk/baca-artikel/17762/Sistem-Pengendalian-Intern-Terintegrasi-SPIT-Dalam-Rangka-Membangun-Sistem-Peringatan-Dini-EWS-yang-lebih-efektif.html). Discusses objectives/KPIs, risk profiles, oversight-based reassessment, and three-line integration. Supports direction, not deployed AI functionality.
 - **[R9]** [ANTARA Jawa Barat, Indonesia kena kenaikan tarif AS 32 persen](https://jabar.antaranews.com/berita/594405/indonesia-kena-kenaikan-tarif-as-32-persen), 3 April 2025, 10:03 WIB. Original announcement replayed as of 8 April 2025; not the current tariff rate. Company exposure and scores are exercise assumptions.
 - **[R10]** [BaTii, KEP-39/TI/2025: Renstra 2025–2029](https://batii.kemenkeu.go.id/api/Medias/68f3f086-ae7c-40c1-8acb-251c0e16dacd), printed page 10 (PDF page 10). Explicitly describes SIPT as supporting SPIT; does not establish operational status or the demonstrated AI workflow.
+
+### Supervise AI teaching source
+
+Two slides after the AI supervision bridge adapt the presenter's `Understanding Frontier AI - IHT OJK 2026.pptx`, displayed slides 26 and 48-50 / 64. The first explains why oversight is needed through model, misuse, and operational/systemic risk. The second covers system scope, accountability, data, authority and monitoring. The approval-gate example has been removed. The original SPIT artwork is unchanged and appears on slide 35 of 44.

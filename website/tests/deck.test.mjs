@@ -5,7 +5,7 @@ import path from 'node:path';
 import {buildSlides,root} from './deck-fixture.mjs';
 
 test('the final seminar retains its story, research and strategic exercise',async()=>{
- const slides=await buildSlides();assert.equal(slides.length,42);
+ const slides=await buildSlides();assert.equal(slides.length,44);
  assert.equal(slides[1].section,'YOUR SPEAKERS');
  assert(slides[1].html.indexOf('alt="Reza Rizky Pratama"')<slides[1].html.indexOf('alt="Teuku Raja Irfan Radarma"'));
  assert(slides[1].html.includes('reza-rizky-pratama-cutout.png'));
@@ -17,11 +17,11 @@ test('the final seminar retains its story, research and strategic exercise',asyn
  const framework=slides.find(slide=>slide.section==='THE SOLUTION FRAMEWORK');assert(framework.html.includes('data-signal-framework'));
  assert.equal((framework.html.match(/data-framework-select=/g)||[]).length,6);
  assert(!framework.html.includes('<dialog'));
- for(const image of ['antara-news-headline.jpg','antara-news-body.jpg'])assert(slides[22].html.includes(image));
+ for(const image of ['antara-news-headline.jpg','antara-news-body.jpg'])assert(slides.find(s=>s.section==='ONE REAL EVENT').html.includes(image));
  assert(slides.find(slide=>slide.section==='SAME EVENT, DIFFERENT EXPOSURE').html.includes('45%')&&slides.find(slide=>slide.section==='SAME EVENT, DIFFERENT EXPOSURE').html.includes('60%'));
  assert.equal(slides.filter(s=>s.html.includes('data-live-tour')).length,9);
- assert(slides[32].html.includes('spit-framework-static.jpg'));
- assert(!slides[32].html.includes('Adapted from'));
+ assert(slides.find(s=>s.section==='SPIT / INTEGRATED CONTROL FRAMEWORK').html.includes('spit-framework-original.png'));
+ assert(!slides.find(s=>s.section==='SPIT / INTEGRATED CONTROL FRAMEWORK').html.includes('Adapted from'));
  for(const slide of slides.filter(s=>s.html.includes('data-live-tour')))assert(slide.html.includes('Desktop app walkthrough:'));
  for(const slide of slides.filter(s=>s.html.includes('data-live-tour')))for(const control of ['data-tour-prev','data-tour-next','data-tour-replay','data-tour-progress'])assert(slide.html.includes(control));
  for(const slide of slides){assert(!/undefined|NaN|\[object Object\]/.test(slide.html),slide.title);assert(!/Bekasi|late dispatch|data-tour-video/.test(slide.html),slide.title);}

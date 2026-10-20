@@ -140,3 +140,27 @@ body.editorial .d-visual-slide.active,body.editorial.reading .d-visual-slide{gri
 body.editorial .d-visual-slide.active,body.editorial.reading .d-visual-slide{padding:24px 30px!important;row-gap:7px}
 .d-tour-figure{gap:4px!important}.d-visual-slide .d-margin-example p{font-size:16px!important;line-height:1.35!important}
 @media(max-width:850px){.d-phone-video{width:100%!important}}
+
+/* AI oversight and an evidence-based control test. */
+.editorial .d-supervise-slide>.body{gap:18px;justify-content:flex-start!important}
+.editorial .d-supervise-intro{font-size:24px;line-height:1.4;margin:0}
+.d-supervise-table{width:100%;border-collapse:collapse;text-align:left;font-size:21px;line-height:1.4}
+.d-supervise-table th,.d-supervise-table td{padding:18px 20px;border-bottom:1px solid #cfded4;vertical-align:top}
+.d-supervise-table thead{color:#176b57;background:#edf4ef}
+.d-supervise-table tbody th{width:25%;color:#244f3b;font-weight:750}
+.d-supervise-source{font-size:12px;color:#647b6c;line-height:1.4}
+@media(max-height:820px) and (min-width:850px){.editorial .d-supervise-slide>.body{gap:12px}.d-supervise-table{font-size:18px}.d-supervise-table th,.d-supervise-table td{padding:12px 16px}.editorial .d-supervise-intro{font-size:21px}}
+@media(max-width:700px){.d-supervise-table{font-size:16px}.d-supervise-table th,.d-supervise-table td{padding:10px 8px}.d-supervise-table tbody th{width:30%}.editorial .d-supervise-intro{font-size:20px}}
+
+.d-supervise-risks .d-supervise-table th,.d-supervise-risks .d-supervise-table td{padding-top:12px;padding-bottom:12px}
+
+.d-risk-infographic{display:grid;gap:16px;flex:1;min-height:0}
+.d-risk-layer{display:grid;grid-template-columns:95px minmax(210px,.8fr) 2fr;align-items:center;gap:24px;padding:20px 26px;border-left:5px solid var(--risk-color);background:var(--risk-bg)}
+.d-risk-model{--risk-color:#176b57;--risk-bg:#edf5f0}.d-risk-misuse{--risk-color:#a77525;--risk-bg:#fcf6e9}.d-risk-system{--risk-color:#496c9a;--risk-bg:#edf2f9}
+.d-risk-symbol{position:relative;display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:50%;background:#fff;color:var(--risk-color)}
+.d-risk-symbol .d-icon{width:44px;height:44px;margin:0}.d-risk-symbol span{position:absolute;bottom:-4px;right:-3px;background:var(--risk-color);color:#fff;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-size:12px;font-weight:800}
+.d-risk-name small{font-size:11px;font-weight:800;letter-spacing:1.4px;color:var(--risk-color)}
+.editorial .d-risk-name h3{font-size:27px;line-height:1.16;margin:8px 0 0}
+.d-risk-explanation b{font-size:21px;line-height:1.35}.editorial .d-risk-explanation p{font-size:19px;line-height:1.4;margin:8px 0 0}
+@media(max-height:820px) and (min-width:851px){.d-risk-layer{padding:12px 20px;gap:18px;grid-template-columns:80px minmax(190px,.8fr) 2fr}.d-risk-symbol{width:64px;height:64px}.d-risk-symbol .d-icon{width:36px;height:36px}.editorial .d-risk-name h3{font-size:24px}.d-risk-explanation b{font-size:19px}.editorial .d-risk-explanation p{font-size:17px}.d-risk-infographic{gap:12px}}
+@media(max-width:850px){.d-risk-layer{grid-template-columns:64px 1fr;padding:16px;gap:16px}.d-risk-explanation{grid-column:1/-1}.d-risk-symbol{width:60px;height:60px}.d-risk-symbol .d-icon{width:34px;height:34px}.d-risk-infographic{flex:none}.editorial .d-risk-name h3{font-size:24px}}
