@@ -19,6 +19,7 @@ test('only configured cross-origin frontends pass preflight; bearer authenticati
   const good=await fetch(`http://127.0.0.1:${port}/test`,{method:'OPTIONS',headers:{Origin:origin,'Access-Control-Request-Headers':'authorization,x-signal-request'}});
   assert.equal(good.status,204);assert.equal(good.headers.get('access-control-allow-origin'),origin);
   assert.match(good.headers.get('access-control-allow-headers')||'',/Authorization/);
+  assert.match(good.headers.get('access-control-allow-methods')||'',/PATCH/);
   const bad=await fetch(`http://127.0.0.1:${port}/test`,{headers:{Origin:'https://untrusted.example'}});assert.equal(bad.status,403);
   assert.equal(sessionToken({get:()=> 'Bearer private-session',cookies:{signal_session:'different-cookie'}} as any),'private-session');
  }finally{allowedOrigins.delete(origin);server.close();}

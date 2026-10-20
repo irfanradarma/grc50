@@ -1,10 +1,20 @@
 import 'dotenv/config';
 import pg from 'pg';
 import {readFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
 const schema=process.env.DATABASE_SCHEMA||'public';
 if(!/^[a-z_][a-z0-9_]*$/.test(schema))throw Error('Invalid database schema');
 if(process.env.NODE_ENV==='production'&&schema!=='signal')throw Error('Production must use the isolated signal schema');
-const rawPool=new pg.Pool({connectionString:process.env.DATABASE_URL,max:Number(process.env.DB_POOL_MAX||3),connectionTimeoutMillis:15000,idleTimeoutMillis:30000});
+let connectionString=process.env.DATABASE_URL;
+if(process.env.NODE_ENV==='production'){
+ if(!connectionString)throw Error('DATABASE_URL must be configured for SIGNAL');
+ const uri=new URL(connectionString);
+ // Trust Supabase's published root CA while retaining certificate and hostname checks.
+ uri.searchParams.set('sslmode','verify-full');
+ uri.searchParams.set('sslrootcert',fileURLToPath(new URL('./certs/supabase-prod-ca-2021.crt',import.meta.url)));
+ connectionString=uri.toString();
+}
+const rawPool=new pg.Pool({connectionString,max:Number(process.env.DB_POOL_MAX||3),connectionTimeoutMillis:15000,idleTimeoutMillis:30000});
 // Set an explicit, non-public search path before handing out every connection.
 // Production uses Supabase's session pooler; no session can fall back to Atlas public tables.
 export const pool={
