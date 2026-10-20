@@ -1,4 +1,6 @@
 import {connectLiveDeck} from './deck-live.js?v=speakers-17';
+import {setupAudienceView} from './deck-audience.js?v=audience-1';
+const audienceView=setupAudienceView();
 const slides=[];
 function add(section,title,html,note,type=''){slides.push({section,title,html,note,type});}
 await window.buildSignalSeminar({add});
@@ -32,14 +34,15 @@ document.getElementById('notes').onclick=e=>{const on=document.body.classList.to
 document.getElementById('reading').onclick=e=>{const on=document.body.classList.toggle('reading');e.currentTarget.setAttribute('aria-pressed',String(on));e.currentTarget.textContent=on?'Presentation view':'Reading view';show(current);};
 let savedView=null;
 function setImmersive(on){
- document.body.classList.toggle('immersive',on);
- const control=document.getElementById('fullscreen');control.textContent=on?'Exit fullscreen':'Fullscreen';control.setAttribute('aria-pressed',String(on));
+ document.body.classList.toggle('immersive',audienceView||on);
+ const full=audienceView?!!document.fullscreenElement:on;
+ const control=document.getElementById('fullscreen');control.textContent=full?'Exit fullscreen':'Fullscreen';control.setAttribute('aria-pressed',String(full));
  if(on&&!savedView){savedView={reading:document.body.classList.contains('reading'),notes:document.body.classList.contains('with-notes')};document.body.classList.remove('reading','with-notes');document.getElementById('notesPanel').hidden=true;}
  else if(!on&&savedView){document.body.classList.toggle('reading',savedView.reading);document.body.classList.toggle('with-notes',savedView.notes);document.getElementById('notesPanel').hidden=!savedView.notes;savedView=null;}
  show(current);
 }
 async function toggleFullscreen(){
- const on=!document.body.classList.contains('immersive');setImmersive(on);
+ const on=audienceView?!document.fullscreenElement:!document.body.classList.contains('immersive');setImmersive(on);
  try{if(on)await document.documentElement.requestFullscreen();else if(document.fullscreenElement)await document.exitFullscreen();}catch{/* Immersive viewport remains available when native fullscreen is restricted. */}
 }
 document.getElementById('fullscreen').onclick=toggleFullscreen;
@@ -51,4 +54,4 @@ const toc=document.getElementById('toc');document.getElementById('tocList').inne
 document.addEventListener('keydown',e=>{if(document.body.classList.contains('deck-editing'))return;if(document.querySelector('dialog[open]')||/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key===' '&&/BUTTON|A|SUMMARY/.test(document.activeElement.tagName))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(current+1);}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(current-1);}if(e.key==='Home'){e.preventDefault();go(0);}if(e.key==='End'){e.preventDefault();go(slides.length-1);}if(e.key==='Escape'&&document.body.classList.contains('immersive')){setImmersive(false);return;}if(e.key.toLowerCase()==='f'){e.preventDefault();toggleFullscreen();}if(e.key.toLowerCase()==='n'&&!document.body.classList.contains('immersive'))document.getElementById('notes').click();});
 await import('./seminar-workshop-interactions.js?v=speakers-17');
 
-await import('./deck-editor.js?v=speakers-17');
+if(!audienceView)await import('./deck-editor.js?v=speakers-17');
