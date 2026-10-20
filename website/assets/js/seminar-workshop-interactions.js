@@ -23,5 +23,5 @@ document.querySelector('[data-session-stats]').addEventListener('click',async e=
  try{const response=await fetch(app+'/api/workshop/host/'+sessionCode,{credentials:'include'});if(!response.ok)throw Error('Owner session unavailable');const d=await response.json();const sum=k=>d.progress.reduce((n,p)=>n+Number(p[k]||0),0);const vals=[sum('decided'),sum('reviews'),sum('plans')];document.querySelectorAll('[data-live-stats] strong').forEach((el,i)=>el.textContent=vals[i]);message.textContent='Session '+sessionCode+' Â· '+d.progress.length+' participants Â· updated '+new Date().toLocaleTimeString()+'. Aggregate counts reflect recorded decisions, not KPI improvement.';}catch{message.textContent='Open this deck through the app at /presentation/deck/ in the presenter browser, and connect your owned session.';}finally{e.target.disabled=false;}
 });
 
-await import('./seminar-framework.js?v=speakers-17');
-await import('./seminar-motion.js?v=speakers-17');
+await import('./seminar-framework.js?v=desktop-21');
+await import('./seminar-motion.js?v=desktop-21');

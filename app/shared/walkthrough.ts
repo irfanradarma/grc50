@@ -46,4 +46,4 @@ export const tours:Record<string,TourStep[]>={
   {title:'Inspect current exposure',instruction:'The heat map shows the approved score, not projected protection.',target:'.w-riskmap'},
   {title:'Trace the decision',instruction:'The history links evidence, judgment and the recorded score.',target:'.w-history'}]
 };
-export const tourBeatMs=5200;
+export const tourBeatMs=2800;

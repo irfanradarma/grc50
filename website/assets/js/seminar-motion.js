@@ -53,7 +53,7 @@ window.addEventListener('message',event=>{
 function sync(){syncLoops();syncFrames();}
 frames.forEach(frame=>{
  const gallery=frame.closest('[data-tour-gallery]');gallery.dataset.userPaused='false';
- const resize=()=>{frame.style.transform='scale('+(frame.parentElement.clientWidth/390)+')';};new ResizeObserver(resize).observe(frame.parentElement);resize();
+ const resize=()=>{frame.style.transform='scale('+(frame.parentElement.clientWidth/1280)+')';};new ResizeObserver(resize).observe(frame.parentElement);resize();
  frame.addEventListener('load',syncFrames);
  gallery.querySelector('[data-tour-pause]').addEventListener('click',()=>{gallery.dataset.userPaused=String(gallery.dataset.userPaused!=='true');syncFrames();});
  for(const [selector,command] of [['[data-tour-prev]','previous'],['[data-tour-next]','next'],['[data-tour-replay]','replay']])gallery.querySelector(selector).addEventListener('click',()=>{gallery.dataset.userPaused=String(command!=='replay');send(frame,{command});syncFrames();});

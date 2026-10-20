@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {tours,tourBeatMs} from '../shared/walkthrough.js';
 import {resolveSeminarRoute} from '../shared/seminarRoutes.js';
 
-test('every mobile guide has a paced sequence and explicit focus targets',()=>{
+test('every desktop guide has a paced sequence and explicit focus targets',()=>{
  assert.equal(Object.keys(tours).length,9);
- assert(tourBeatMs>=4500);
+ assert.equal(tourBeatMs,2800);
  for(const [key,steps] of Object.entries(tours)){
   assert.equal(resolveSeminarRoute(new URL('http://localhost:5173/audience/walkthrough/'+key)).kind,'tour');
   assert.equal(steps.length,4,key);

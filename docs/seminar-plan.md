@@ -3,7 +3,7 @@
 
 Seminar narrative and deck/app design baseline · 18 October 2026 · 60 minutes · English deck
 
-This is the narrative baseline for the rebuilt three-organization application and 41-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). The opening covers the broader use of AI in audit and assurance; the hands-on narrows to SIGNAL risk decisions. Separate assurance applications are outside this exercise.
+This is the narrative baseline for the rebuilt three-organization application and 42-slide HTML deck. Current operating instructions and implementation boundaries are in [seminar-workshop.md](seminar-workshop.md). The opening covers the broader use of AI in audit and assurance; the hands-on narrows to SIGNAL risk decisions. Separate assurance applications are outside this exercise.
 
 ## 1. The argument
 
@@ -180,7 +180,7 @@ Acceptance checks: multiple-objective selection; two exposed/one unexposed case;
 Five section markers orient the audience.
 
 | Slide | Section | Content |
-|---|---|---|
+| --- | --- | --- |
 | 1 | Opening | Beyond Compliance |
 | 2 | Opening | Meet your speakers |
 | 3 | Opening | Our route from evidence to action |
@@ -213,15 +213,16 @@ Five section markers orient the audience.
 | 30 | Lead the decision | Keep exploring. We continue with SIPT. |
 | 31 | SIPT: Kemenkeu's direction | SIPT: Kemenkeu's direction |
 | 32 | SIPT: Kemenkeu's direction | SIPT: connecting control information across Kemenkeu |
-| 33 | SIPT: Kemenkeu's direction | One risk register. One view of risk. |
-| 34 | SIPT: Kemenkeu's direction | From periodic snapshots to continuous risk evidence |
-| 35 | SIPT: Kemenkeu's direction | The review pattern: exception → confirmation → risk decision |
-| 36 | SIPT: Kemenkeu's direction | CMCA is one signal stream. Reports and assurance add context. |
-| 37 | SIPT: Kemenkeu's direction | AI connects the evidence. People own the decision. |
-| 38 | SIPT: Kemenkeu's direction | Follow one risk across the information flow |
-| 39 | SIPT: Kemenkeu's direction | A warning is effective when it changes a timely decision |
-| 40 | SIPT: Kemenkeu's direction | One view of risk. Shared evidence. Owned decisions. |
-| 41 | SIPT: Kemenkeu's direction | Sources behind the argument |
+| 33 | SIPT: Kemenkeu's direction | Integrated Internal Control Framework (SPIT) |
+| 34 | SIPT: Kemenkeu's direction | One risk register. One view of risk. |
+| 35 | SIPT: Kemenkeu's direction | From periodic snapshots to continuous risk evidence |
+| 36 | SIPT: Kemenkeu's direction | The review pattern: exception → confirmation → risk decision |
+| 37 | SIPT: Kemenkeu's direction | CMCA is one signal stream. Reports and assurance add context. |
+| 38 | SIPT: Kemenkeu's direction | AI connects the evidence. People own the decision. |
+| 39 | SIPT: Kemenkeu's direction | Follow one risk across the information flow |
+| 40 | SIPT: Kemenkeu's direction | A warning is effective when it changes a timely decision |
+| 41 | SIPT: Kemenkeu's direction | One view of risk. Shared evidence. Owned decisions. |
+| 42 | SIPT: Kemenkeu's direction | Sources behind the argument |
 
 ## 10. SIPT: the institutional direction
 

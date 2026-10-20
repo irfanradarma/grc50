@@ -57,3 +57,9 @@
 @media(max-width:760px){.sipt-architecture{display:none}.sipt-architecture-mobile{display:grid;gap:16px}.sipt-architecture-mobile article{padding:20px;border:1px solid #cbded2;border-left:4px solid #176b57;background:#f0f6f2;border-radius:6px}.editorial .sipt-architecture-mobile h3{font-size:24px;margin:12px 0}.editorial .sipt-architecture-mobile p{font-size:18px;line-height:1.5;margin:0}}
 
 .sipt-architecture .sipt-svg-source{font-size:16px}
+/* A single static artwork preserves the reference framework layout. */
+.editorial .d-spit-static-slide{padding:18px!important;background:#f8fbfc}
+.d-spit-static-slide>.eyebrow,.d-spit-static-slide>h2{display:none!important}
+.editorial .d-spit-static-slide>.body{min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden!important}
+.spit-static-artwork{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+.d-spit-static-slide>.foot{flex-shrink:0;padding-top:8px!important}

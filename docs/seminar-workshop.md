@@ -1,6 +1,6 @@
 # SIGNAL seminar: strategic risk hands-on
 
-The 41-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
+The 42-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
 
 ## Start locally
 
@@ -31,16 +31,16 @@ Vite listens on LAN and proxies the loopback API and presentation. Phones need t
 8. Release External, then Internal evidence. The app permits this immediately after the preceding stage is released; no participant-completion gate applies.
 9. On **Keep exploring. We continue with SIPT.**, let participants review at their own pace. Proceed directly to the SIPT section. No timed work period or group debrief.
 10. Explain SPIT/SIPT, RP as the shared risk-register reference, CMCA as a mainstream continuous-monitoring route, and AI-assisted evidence review with human authority.
-11. Use the CA and internal-evidence mobile guides as presenter-led illustrations. Do not stop for a second audience exercise. These show the SIGNAL review pattern, not actual Kemenkeu platform screens.
+11. Use the CA and internal-evidence desktop guides as presenter-led illustrations. Do not stop for a second audience exercise. These show the SIGNAL review pattern, not actual Kemenkeu platform screens.
 12. Explain the integrated information flow, the illustrative institutional case and the effective-early-warning outcome. Close on contributions from management, UKI, Itjen and data/technology teams.
 
 Participants may keep working during or after the talk. Decisions persist; releases do not require every participant to finish. Capture never changes a score automatically, and approving a plan does not establish effective protection.
 
-## Mobile walkthrough and deck
+## Desktop walkthrough and deck
 
-Nine read-only mobile guides at `/audience/walkthrough/<key>` render the **same React components and strategic scenario data** as the audience app. They create no guest session or database records. The deck embeds them in portrait phone frames, with four deliberately paced scenes, highlighted controls and animated tap cues. Keys: context, menus, capture, assessment, mitigation, protection, internal, ca, dashboard.
+Nine read-only desktop guides at `/audience/walkthrough/<key>` render the **same React components and strategic scenario data** as the audience app. They create no guest session or database records. The deck embeds them in desktop frames, with four deliberately paced scenes, highlighted controls and animated tap cues. Keys: context, menus, capture, assessment, mitigation, protection, internal, ca, dashboard.
 
-Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Loops start by default; CSS respects reduced-motion preferences for decorative effects. The original-news slide uses an attributed source photograph and transcribed headline, not a claimed browser screenshot.
+Guides run only on their active slide, can pause manually and pause during editing or hidden tabs. Loops start by default; CSS respects reduced-motion preferences for decorative effects. The original-news slide shows cropped screenshots of the original ANTARA headline/photo and opening article paragraphs.
 
 Slide 5 loops the evidence paths with static handoff questions. Slide 9 presents the looping SIGNAL framework. Fullscreen retains the slide footer while hiding navigation controls. The deck has no timing estimates or countdown, and no corporate-collapse case.
 
@@ -109,10 +109,16 @@ The nine walkthroughs use the real mobile components in a read-only route. Each 
 
 The speaker introduction is slide 2, between the cover and agenda. Reza Rizky Pratama appears on the left and Teuku Raja Irfan Radarma on the right. Both portraits use transparent backgrounds with distinct colored halos; Reza's cutout is a separate derivative, with the original retained. No biographies or professional titles were supplied. Agenda is now slide 3; semantic live-following keys remain stable.
 
-Each of the five agenda sections now begins with a numbered separator, with its own color, icon and transition question. Agenda/chapter buttons land on these separators. Semantic keys preserve live following when slide numbers change. The deck now contains 41 slides.
+Each of the five agenda sections now begins with a numbered separator, with its own color, icon and transition question. Agenda/chapter buttons land on these separators. Semantic keys preserve live following when slide numbers change. The deck now contains 42 slides.
 
 ## SIPT narrative and source boundaries
 
 The last chapter replaces the generic pilot section. RP/CMCA functions and their intended AI-enabled relationship come from the presenter's briefing. RP is the single risk-register reference; CMCA supplies continuous evidence linked to registered risks; internal and external sources complement it. AI relates and explains signals and drafts review options; the risk owner approves assessments and actions. Feedback supports the next monitoring cycle. This is the intended institutional direction, not an assertion that these AI integrations are already in production.
 
 SIPT is expanded as Sistem Informasi Pengendalian Terintegrasi in BaTii's 2025-2029 strategy, printed page 10. PMK 83/2024 establishes the SPIT framework. The DJKN article dated 28 July 2025 provides public context for early warning, current risk profiles and integrated oversight. The worked institutional example is illustrative, not an actual incident, official score or deployed check.
+
+### Institutional framework overview
+
+Slide 33 displays a static image of the redrawn presenter-supplied SPIT framework after the SPIT/SIPT definition and before Risk Platform. It retains the foundation/principles, three-line roles, operational systems, Tigalini applications and intended outcomes. English labels are explanatory. CMCA and Risk Platform are highlighted for the next slides. The abbreviated KMK 6/2025 reference follows the supplied graphic; no additional legal interpretation is asserted. The deck has 42 slides, with semantic keys retained for live following.
+
+Slide 33 now uses a single static framework image without a visible adaptation caption. The nine read-only walkthroughs render at 1280 x 800 with desktop navigation and run at 2.8 seconds per step (formerly 5.2). The participant app remains responsive on phones and desktops.
