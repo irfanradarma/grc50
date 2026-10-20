@@ -16,7 +16,7 @@ Required non-secret settings: `NODE_ENV=production`, `DATABASE_SCHEMA=signal`, `
 
 Production uses the public Supabase root CA in `app/server/certs/supabase-prod-ca-2021.crt` with `verify-full`, retaining hostname verification. Source: https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt . SHA-256 fingerprint: `807025AD50D4ED219D2C9C7D299C004F824EB00CF7F65AFEF607D07B72E6CAFA`; expires 26 April 2031. This is a public trust certificate, not a credential.
 
-Deployment checkpoint, 20 October 2026: GitHub Pages run `39414910981` succeeded. Render reached Supabase with verified TLS, but authentication returned `EAUTHQUERY`. A read-only role check confirmed `signal_app` had no password and was not expired. User completion of the SIGNAL-only password query is still required before API verification; do not treat this checkpoint as a live backend release.
+Deployment verified on 20 October 2026: GitHub Pages run `39416130648` succeeded; Render is live on commit `c8d4452`. Verified TLS and SIGNAL-only password authentication both succeeded. Public API smoke checks passed for three independent guests, presenter ownership, guided relevance, capture without notes, reassessment, mitigation creation and completion, external/internal releases, private evidence documents and live slide publication. Browser checks confirmed the public admin, audience entry, cover and looping desktop walkthrough. All 25 repository tests and the production build passed. A presenter session was created in the user's browser for immediate use.
 
 Render Free sleeps after inactivity. Open and test the service ahead of the webinar. Data persists in Supabase, not the Render filesystem.
 
