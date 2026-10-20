@@ -63,3 +63,27 @@
 .editorial .d-spit-static-slide>.body{min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden!important}
 .spit-static-artwork{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
 .d-spit-static-slide>.foot{display:none!important}
+/* Exercise -> SIGNAL value -> institutional segue. */
+.editorial .d-signal-value-slide>.body{display:flex;flex-direction:column;gap:18px;justify-content:space-between!important;overflow:visible}
+.editorial .d-signal-value-slide>h2{font-size:clamp(33px,3.4vw,52px);margin-bottom:20px}
+.signal-value-exercise{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:20px 26px;background:#edf5f0;border-left:5px solid #207257}
+.signal-value-exercise small,.signal-value-heading small{display:block;color:#176b57;font-size:11px;font-weight:850;letter-spacing:1.4px}
+.editorial .signal-value-exercise h3{font-size:25px;margin:8px 0;line-height:1.2}.editorial .signal-value-exercise p{font-size:18px;line-height:1.4;margin:0}
+.signal-value-exercise .d-launch{flex-shrink:0;margin:0;white-space:nowrap}
+.signal-value-sources{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}.signal-value-sources span{font-size:12px;font-weight:750;border:1px solid #c2d7ca;padding:5px 10px;background:white;color:#385c49;border-radius:4px}
+.signal-value-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px}.editorial .signal-value-heading p{font-size:20px;font-weight:700;margin:0}
+.signal-value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;padding:3px 0 12px}
+.signal-value-grid article{border-top:3px solid var(--value-color,#176b57);padding-top:15px;display:flex;flex-direction:column;align-items:flex-start}.signal-value-grid article:nth-child(2){--value-color:#2c70a5}.signal-value-grid article:nth-child(3){--value-color:#716091}.signal-value-grid article:nth-child(4){--value-color:#a17b37}
+.signal-value-grid .d-icon{width:35px;height:35px;margin:0 0 12px}.editorial .signal-value-grid h3{font-size:28px;line-height:1.1;margin:0 0 12px;color:var(--value-color,#176b57)}.editorial .signal-value-grid p{font-size:19px;line-height:1.4;margin:0 0 16px}.signal-value-grid b{font-size:12px;line-height:1.4;margin-top:auto;color:#587062}
+.signal-value-bridge{display:grid;grid-template-columns:130px 1fr 230px;gap:25px;align-items:center;padding:22px 26px;background:#143e30;color:white;border-radius:7px}.signal-value-bridge>span{font-size:11px;letter-spacing:1px;font-weight:800;color:#acd6bc}.editorial .signal-value-bridge h3{font-size:26px;margin:0 0 8px;color:#fff}.editorial .signal-value-bridge p{font-size:17px;line-height:1.4;margin:0;color:#deebe2}.signal-value-bridge>b{font-size:16px;line-height:1.5;color:#c7dfcd;border-left:1px solid #527262;padding-left:24px}
+@media(max-height:800px) and (min-width:1000px){.editorial .d-signal-value-slide>h2{font-size:37px;margin-bottom:12px}.editorial .d-signal-value-slide>.body{gap:12px}.signal-value-exercise{padding:14px 20px}.editorial .signal-value-exercise h3{font-size:21px}.editorial .signal-value-exercise p{font-size:16px}.signal-value-grid{gap:22px;padding-bottom:0}.signal-value-grid .d-icon{width:27px;height:27px;margin-bottom:7px}.editorial .signal-value-grid h3{font-size:24px;margin-bottom:8px}.editorial .signal-value-grid p{font-size:16px;margin-bottom:10px}.signal-value-bridge{padding:16px 20px;grid-template-columns:110px 1fr 190px}.editorial .signal-value-bridge h3{font-size:22px}.editorial .signal-value-bridge p{font-size:15px}.signal-value-bridge>b{font-size:14px}}
+@media(max-width:850px){.signal-value-exercise{flex-direction:column;align-items:flex-start}.signal-value-grid{grid-template-columns:repeat(2,1fr)}.signal-value-heading{display:block}.signal-value-bridge{grid-template-columns:1fr}.signal-value-bridge>b{border:0;padding:0}.editorial .d-signal-value-slide>.body{overflow:auto}}
+/* Keep the complete transition visible in presentation view. */
+.editorial .d-signal-value-slide>.body{overflow:visible!important;gap:12px!important}
+.editorial .d-signal-value-slide .signal-value-exercise{padding:14px 22px}
+.editorial .d-signal-value-slide .signal-value-exercise h3{font-size:23px;margin:6px 0}
+.editorial .d-signal-value-slide .signal-value-exercise p{font-size:16px}
+.signal-value-sources{margin-top:10px}.signal-value-grid{padding:0;gap:26px}.signal-value-grid article{padding-top:11px}.signal-value-grid .d-icon{width:28px;height:28px;margin-bottom:8px}
+.editorial .d-signal-value-slide .signal-value-grid h3{font-size:26px;margin-bottom:9px}.editorial .d-signal-value-slide .signal-value-grid p{font-size:17px;margin-bottom:11px}
+.signal-value-bridge{padding:16px 22px}.editorial .d-signal-value-slide .signal-value-bridge h3{font-size:23px;margin-bottom:6px}.editorial .d-signal-value-slide .signal-value-bridge p{font-size:16px}
+@media(max-width:850px){.editorial .d-signal-value-slide>.body{overflow:auto!important}}

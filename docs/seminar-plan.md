@@ -212,7 +212,7 @@ Five section markers orient the audience.
 | 29 | Lead the decision | The action follows the exposed dependency |
 | 30 | Lead the decision | Approval creates a commitment. Effectiveness needs evidence. |
 | 31 | Lead the decision | The dashboard shows decisions and commitments |
-| 32 | Lead the decision | Keep exploring. We continue with SIPT. |
+| 32 | Lead the decision | More signals. Better risk decisions. |
 | 33 | SIPT: Kemenkeu's direction | SIPT: Kemenkeu's direction |
 | 34 | SIPT: Kemenkeu's direction | SIPT: connecting control information across Kemenkeu |
 | 35 | SIPT: Kemenkeu's direction | Integrated Internal Control Framework (SPIT) |

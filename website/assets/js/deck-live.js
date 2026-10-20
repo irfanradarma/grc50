@@ -9,7 +9,9 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
  const model=createFollowState(slides[current()].key),indexOf=key=>slides.findIndex(slide=>slide.key===key);
  let connected=false,hasPublished=false,lastSent='',queued=null,sending=false,polling=false,ownerDenied=false;
  if(!/^[A-Z0-9]{6}$/.test(code)){label.textContent='Invalid session link';detail.textContent='Open a deck link shared from Admin.';control.hidden=true;return;}
- const api='/api/presentation/'+code,write='/api/workshop/host/'+code+'/presentation';
+ const apiBase=window.SIGNAL_HOSTING?.apiOrigin||'';
+ const api=apiBase+'/api/presentation/'+code,write=apiBase+'/api/workshop/host/'+code+'/presentation';
+ const token=localStorage.getItem('signal-api-session'),auth=token?{Authorization:'Bearer '+token}:{};
  const cleanTitle=slide=>slide.title.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
  function paint(){
   bar.dataset.state=connected?'connected':'offline';
@@ -30,7 +32,7 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
   if(sending||ownerDenied||!queued)return;
   sending=true;const key=queued;queued=null;
   try{
-   const response=await fetch(write,{method:'PUT',headers:{'Content-Type':'application/json','x-signal-request':'1'},body:JSON.stringify({deckId:outline.deckId,slideKey:key}),signal:AbortSignal.timeout(5000)});
+   const response=await fetch(write,{method:'PUT',headers:{'Content-Type':'application/json','x-signal-request':'1',...auth},body:JSON.stringify({deckId:outline.deckId,slideKey:key}),signal:AbortSignal.timeout(5000)});
    if(!response.ok){if([401,403,404].includes(response.status))ownerDenied=true;throw Error('Publish failed');}
    lastSent=key;connected=true;
   }catch{connected=false;}

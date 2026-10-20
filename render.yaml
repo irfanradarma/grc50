@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: signal-grc50-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci --prefix app --include=dev
+    startCommand: npm --prefix app start
+    healthCheckPath: /api/health
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_SCHEMA
+        value: signal
+      - key: DB_POOL_MAX
+        value: 3
+      - key: FRONTEND_ORIGINS
+        value: https://irfanradarma.github.io
+      - key: PUBLIC_FRONTEND_URL
+        value: https://irfanradarma.github.io/grc50
+      - key: DATABASE_URL
+        sync: false

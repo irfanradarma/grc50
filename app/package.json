@@ -10,7 +10,8 @@
     "build": "tsc --noEmit && vite build",
     "test": "tsx --test server/*.test.ts && npm run test:deck",
     "db:migrate": "tsx server/migrate.ts",
-    "test:deck": "node --test ../website/tests/*.test.mjs ../website/assets/js/*.test.mjs"
+    "test:deck": "node --test ../website/tests/*.test.mjs ../website/assets/js/*.test.mjs",
+    "start": "tsx server/index.ts"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
@@ -35,5 +36,8 @@
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

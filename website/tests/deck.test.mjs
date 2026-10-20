@@ -10,7 +10,7 @@ test('the final seminar retains its story, research and strategic exercise',asyn
  assert(slides[1].html.indexOf('alt="Reza Rizky Pratama"')<slides[1].html.indexOf('alt="Teuku Raja Irfan Radarma"'));
  assert(slides[1].html.includes('reza-rizky-pratama-cutout.png'));
  assert(slides[1].html.includes('Teuku Raja')&&slides[1].html.includes('Irfan Radarma')&&slides[1].html.includes('Reza Rizky')&&slides[1].html.includes('Pratama'));
- assert.equal(slides[0].title,'Beyond Compliance');assert(slides[0].html.includes('d-simple-cover'));
+ assert.equal(slides[0].title,'Beyond Compliance');assert(slides[0].html.includes('d-simple-cover'));assert(slides[0].html.includes('https://s.kemenkeu.go.id/signal'));assert(slides[0].html.includes('HORI) KE-80'));assert(slides[0].html.includes('Living Side by Side with AI:'));assert(slides[0].html.includes('The Good and The Bad'));
  assert.equal(slides.filter(s=>s.type.includes('d-research-slide')).length,3);
  assert(!slides.some(s=>/CARILLION|WHAT WAS MISSING/.test(s.section)));
  for(const slide of slides)assert(!/Carillion|\b\d+[-\u2013]?\d* (minutes?|min)\b|data-countdown/i.test(slide.html+slide.section+slide.note));
@@ -65,7 +65,9 @@ test('release continues directly to SIPT without a timed audience break',async()
  const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline.json'),'utf8'));
  const release=slides.findIndex(s=>s.section==='A BUSIER INFORMATION ENVIRONMENT');
  assert.equal(slides[release-1].section,'WHAT CHANGED?');assert.equal(slides[release+1].section,'SECTION 05 OF 05');assert.equal(slides[release+2].section,'BACK TO KEMENKEU');
- assert(slides[release].title.includes('We continue with SIPT'));
+ assert.equal(release,31);
+ assert.equal(slides[release].title,'More signals. Better risk decisions.');
+ for(const phrase of ['YOUR ROLE / RISK MANAGER','Dynamic','Responsive','Connected','Accountable','This is the direction of SPIT.'])assert(slides[release].html.includes(phrase));
  assert(!slides.some(s=>['THE NEXT 30 DAYS','YOUR COMMITMENT','COMPARE THE REASONS'].includes(s.section)));
  assert(outline.chapters.at(-1).title.includes('SIPT'));
  for(const section of ['SPIT / INTEGRATED CONTROL FRAMEWORK','RISK PLATFORM','CMCA PLATFORM','AI-POWERED SIPT','EARLY WARNING SYSTEM','SHARED RESPONSIBILITY'])assert(slides.some(s=>s.section===section));

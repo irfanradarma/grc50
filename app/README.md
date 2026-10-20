@@ -10,6 +10,6 @@ Install dependencies with `npm ci` from this directory. On an existing configure
 
 `npm test` runs persistence, tenant-isolation, evidence-review and assessment tests against local PostgreSQL. `npm run build` verifies TypeScript and creates the frontend bundle. The frontend bundle alone does not provide the seminar backend.
 
-The app starts on port 5173, its loopback API on 3001 and the app-local database on 5433. Guest sessions retain each participant's own setup and decisions. Read the guide before using the app with an audience.
+The app starts on port 80, its loopback API on 3001 and the app-local database on 5433. Guest sessions retain each participant's own setup and decisions. Read the guide before using the app with an audience.
 
 SIGNAL preserves pre-rebrand browser sessions and slide-edit backups. Existing local PostgreSQL database and role names are retained for compatibility; they are infrastructure identifiers, not product branding.

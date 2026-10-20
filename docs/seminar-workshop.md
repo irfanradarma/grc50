@@ -11,13 +11,13 @@ npm --prefix app run dev
 
 | Purpose | Address |
 |---|---|
-| Presenter | http://localhost:5173/admin |
-| Audience | http://localhost:5173/audience |
-| Deck | http://localhost:5173/presentation/deck/ |
+| Presenter | http://localhost/admin |
+| Audience | http://localhost/audience |
+| Deck | http://localhost/presentation/deck/ |
 | Owned session | /admin/sessions/CODE |
 | Private participant session | /audience/sessions/CODE |
 
-Vite listens on LAN and proxies the loopback API and presentation. Phones need the laptop's reachable Wi-Fi address on port 5173. No firewall/cloud changes are made automatically.
+Vite listens on LAN and proxies the loopback API and presentation. Phones need the laptop's reachable Wi-Fi address on port 80. No firewall/cloud changes are made automatically.
 
 ## Presenter sequence
 
@@ -122,3 +122,5 @@ SIPT is expanded as Sistem Informasi Pengendalian Terintegrasi in BaTii's 2025-2
 Slide 33 displays a static image of the redrawn presenter-supplied SPIT framework after the SPIT/SIPT definition and before Risk Platform. It retains the foundation/principles, three-line roles, operational systems, Tigalini applications and intended outcomes. English labels are explanatory. CMCA and Risk Platform are highlighted for the next slides. The abbreviated KMK 6/2025 reference follows the supplied graphic; no additional legal interpretation is asserted. The deck has 42 slides, with semantic keys retained for live following.
 
 Slide 33 now uses a single static framework image without a visible adaptation caption. The nine read-only walkthroughs render at 1280 x 800 with desktop navigation and run at 2.8 seconds per step (formerly 5.2). The participant app remains responsive on phones and desktops.
+
+Slide 32 invites continued risk-manager role-play after the wider signals are released. It explains SIGNAL value through dynamic assessment, responsive action, connected objective/risk evidence and accountable human judgment, then bridges to Kemenkeu's SPIT direction without a timed audience break.

@@ -1,4 +1,4 @@
-﻿name: Publish seminar deck
+﻿name: Publish SIGNAL app and deck
 on:
   workflow_dispatch:
 permissions:
@@ -11,14 +11,39 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: signal_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci --prefix app
+      - run: npm --prefix app test
+        env:
+          DATABASE_URL: postgresql://postgres:ci-only-password@127.0.0.1:5432/signal_ci
+      - run: npm --prefix app run build
+      - run: node app/scripts/build-pages.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: website
+          path: app/.local/pages
       - uses: actions/deploy-pages@v4
         id: deployment

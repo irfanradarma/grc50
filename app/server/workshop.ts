@@ -18,7 +18,7 @@ async function participant(c:string,w:string,fn:(p:Participant,s:any)=>any){
 }
 const payload=(p:Participant,s:any)=>({participant:p,session:{code:s.code,released:s.data.released,exerciseDate:s.data.exerciseDate,mode:'Historical case replay',preparedAt:s.data.preparedAt,sourceHealth:s.data.sourceHealth||[],externalMode:s.data.externalMode||'curated'},organizations,publishers,featured});
 const respond=(res:any,out:any)=>!out?res.status(404).json({error:'Session or private workspace not found. Join a current session.'}):res.status(out.error?409:200).json(out);
-workshop.get('/workshop/access',(_req,res)=>res.json({addresses:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address+':5173')}));
+workshop.get('/workshop/access',(_req,res)=>res.json({addresses:process.env.PUBLIC_FRONTEND_URL?[process.env.PUBLIC_FRONTEND_URL]:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address)}));
 workshop.post('/workshop/sessions',async(_req,res)=>{
  const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<6;i++)c+=alphabet[randomInt(alphabet.length)];
  await pool.query('INSERT INTO seminar_sessions(id,code,owner_id,data) VALUES($1,$2,$3,$4)',[randomUUID(),c,res.locals.workspace.id,{version:scenarioVersion,title:'Beyond Compliance',exerciseDate:featured.exerciseDate,released:[],news:[],sourceHealth:[]}]);res.status(201).json({code:c});

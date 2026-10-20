@@ -20,7 +20,8 @@ test('SIGNAL migrates browser sessions and edit backups without overwriting newe
 
 test('SIGNAL branding reaches the deck and loops are enabled on first entry',async()=>{
  const slides=await buildSlides();
- assert(slides[0].html.includes('SIGNAL / Evidence. Judgment. Action.'));
+ assert(slides[0].html.includes('Reza Rizky Pratama &amp; Teuku Raja Irfan Radarma'));assert(!slides[0].html.includes('commons.wikimedia.org'));
+ assert(fs.readFileSync(path.join(root,'website/assets/js/deck.js'),'utf8').includes('26 Oktober 2026'));
  assert(slides[0].html.includes('Memaksimalkan Potensi AI dalam<br>Mengawal Strategi dan Risiko Organisasi'));
  const pain=slides.find(s=>s.section==='OUR PAIN POINT');
  assert(pain.html.includes('data-enabled="true"'));assert(pain.html.includes('Pause the loop'));
@@ -28,5 +29,6 @@ test('SIGNAL branding reaches the deck and loops are enabled on first entry',asy
  assert(framework.includes('let playing=true'));
  const motion=fs.readFileSync(path.join(root,'website/assets/js/seminar-motion.js'),'utf8');
  assert(motion.includes("gallery.dataset.userPaused='false'"));assert(motion.includes("type:'signal-tour'"));
- for(const slide of slides)assert(!/\bHORI\b|\bhori\./.test(slide.html));
+ // HORI is the event series on the cover; SIGNAL remains the product brand.
+ for(const slide of slides){const productHtml=slide.html.replace('HARI OEANG REPUBLIK INDONESIA (HORI) KE-80','');assert(!/\bHORI\b|\bhori\./.test(productHtml));}
 });

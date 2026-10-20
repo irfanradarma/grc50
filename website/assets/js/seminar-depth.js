@@ -7,7 +7,7 @@ window.signalEnrichSlide=function(section,title,html,note,type=''){
  switch(section){
  case 'BEYOND COMPLIANCE':
   title='Beyond Compliance';
-  html='<img class="d-cover-photo" src="../assets/images/jakarta-cover.jpg" alt="Jakarta skyline at sunset"><div class="d-cover-wash" aria-hidden="true"></div><div class="d-simple-cover"><p class="d-cover-subtitle">Memaksimalkan Potensi AI dalam<br>Mengawal Strategi dan Risiko Organisasi</p><div class="d-cover-rule"></div><p class="d-cover-format">SIGNAL / Evidence. Judgment. Action.</p></div><a class="d-cover-credit" href="https://commons.wikimedia.org/wiki/File:JakartaSkyline.jpg" target="_blank" rel="noreferrer">Jakarta / Georgi Kovachev / CC BY-SA 4.0</a>';
+  html='<img class="d-cover-photo" src="../assets/images/jakarta-cover.jpg" alt="Jakarta skyline at sunset"><div class="d-cover-wash" aria-hidden="true"></div><div class="d-cover-series"><span>HARI OEANG REPUBLIK INDONESIA (HORI) KE-80</span><b>Seminar Series</b><p>Living Side by Side with AI:<br><strong>The Good and The Bad</strong></p></div><div class="d-simple-cover"><p class="d-cover-subtitle">Memaksimalkan Potensi AI dalam<br>Mengawal Strategi dan Risiko Organisasi</p><div class="d-cover-rule"></div><p class="d-cover-format">Reza Rizky Pratama &amp; Teuku Raja Irfan Radarma</p></div><p class="d-cover-access"><span>Access the presentation</span><a href="https://s.kemenkeu.go.id/signal" target="_blank" rel="noreferrer">s.kemenkeu.go.id/signal</a></p>';
   type='d-cover-slide d-simple-cover-slide';
   break;
  case 'THE FOUNDATION': {

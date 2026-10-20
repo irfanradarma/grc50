@@ -10,10 +10,12 @@ export function resolveSeminarRoute(url:URL):SeminarRoute{
  return {kind:'audience',code:sessionCode(url.searchParams.get('session')),canonical:sessionPath('audience',sessionCode(url.searchParams.get('session')))};
 }
 
+export function audienceLink(base:string,code:string){const root=new URL(base.replace(/\/$/,'')+'/');const path=root.pathname==='/'?sessionPath('audience',code):'audience/?session='+code;return new URL(path,root).href;}
+
 // The presenter stays on the Admin origin so its host-only session cookie is retained.
 export function presentationLinks(adminOrigin:string,audienceBase:string,code:string){
- const join=new URL(sessionPath('audience',code),audienceBase).href;
- const presenter=new URL('/presentation/deck/',adminOrigin);presenter.searchParams.set('session',code);presenter.searchParams.set('present','1');presenter.searchParams.set('join',join);
- const audience=new URL('/presentation/deck/',audienceBase);audience.searchParams.set('session',code);
+ const join=audienceLink(audienceBase,code);
+ const presenter=new URL('presentation/deck/',adminOrigin.replace(/\/$/,'')+'/');presenter.searchParams.set('session',code);presenter.searchParams.set('present','1');presenter.searchParams.set('join',join);
+ const audience=new URL('presentation/deck/',audienceBase.replace(/\/$/,'')+'/');audience.searchParams.set('session',code);
  return {presenter:presenter.href,audience:audience.href};
 }

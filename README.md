@@ -14,7 +14,7 @@ Using AI to capture signals for effective risk management: an English presentati
 npm --prefix app run dev
 ```
 
-Open `http://localhost:5173/admin` and `http://localhost:5173/presentation/deck/`. Audience entry is `http://localhost:5173/audience`. Create a new session for this version and share its LAN audience URL/QR. Phones need the same reachable network. Keep local `.env` and `.local/` private; they are excluded from Git.
+Open `http://localhost/admin` and `http://localhost/presentation/deck/`. Audience entry is `http://localhost/audience`. Create a new session for this version and share its LAN audience URL/QR. Phones need the same reachable network. Keep local `.env` and `.local/` private; they are excluded from Git.
 
 Participants choose from three Indonesian organizations and one or more objectives, then use Dashboard, Risk Monitoring and Risk Trigger. Guided news, live publisher RSS, internal documents and CA exceptions lead to explicit capture/neglect, assessment and mitigation decisions. Current and projected residual risk remain separate. Interpretation uses explicit rules; a language model and social connector are not connected. Internal sources use teaching evidence.
 
