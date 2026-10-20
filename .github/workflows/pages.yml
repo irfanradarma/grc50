@@ -36,9 +36,14 @@ jobs:
           cache: npm
           cache-dependency-path: app/package-lock.json
       - run: npm ci --prefix app
+      - name: Create restricted CI database role
+        run: >-
+          psql postgresql://postgres:ci-only-password@127.0.0.1:5432/signal_ci
+          -v ON_ERROR_STOP=1
+          -c "CREATE ROLE signal_ci_app LOGIN PASSWORD 'ci-only-app-password' NOSUPERUSER NOCREATEDB NOCREATEROLE; GRANT USAGE,CREATE ON SCHEMA public TO signal_ci_app;"
       - run: npm --prefix app test
         env:
-          DATABASE_URL: postgresql://postgres:ci-only-password@127.0.0.1:5432/signal_ci
+          DATABASE_URL: postgresql://signal_ci_app:ci-only-app-password@127.0.0.1:5432/signal_ci
       - run: npm --prefix app run build
       - run: node app/scripts/build-pages.mjs
       - uses: actions/configure-pages@v5
