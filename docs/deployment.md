@@ -14,6 +14,10 @@ Use the repository-root build/start commands in `render.yaml`. Set the new SIGNA
 
 Required non-secret settings: `NODE_ENV=production`, `DATABASE_SCHEMA=signal`, `DB_POOL_MAX=3`, `FRONTEND_ORIGINS=https://irfanradarma.github.io`, `PUBLIC_FRONTEND_URL=https://irfanradarma.github.io/grc50`. Render supplies `PORT`; the API binds to `0.0.0.0`. Health check: `/api/health`. Automatic backend deploy is off so updates can be checked before release.
 
+Production uses the public Supabase root CA in `app/server/certs/supabase-prod-ca-2021.crt` with `verify-full`, retaining hostname verification. Source: https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt . SHA-256 fingerprint: `807025AD50D4ED219D2C9C7D299C004F824EB00CF7F65AFEF607D07B72E6CAFA`; expires 26 April 2031. This is a public trust certificate, not a credential.
+
+Deployment checkpoint, 20 October 2026: GitHub Pages run `39414910981` succeeded. Render reached Supabase with verified TLS, but authentication returned `EAUTHQUERY`. A read-only role check confirmed `signal_app` had no password and was not expired. User completion of the SIGNAL-only password query is still required before API verification; do not treat this checkpoint as a live backend release.
+
 Render Free sleeps after inactivity. Open and test the service ahead of the webinar. Data persists in Supabase, not the Render filesystem.
 
 ## Frontend and deck
