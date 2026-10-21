@@ -4,14 +4,14 @@
  body.audience-deck.immersive #deck{height:100dvh;width:100%;padding:0}
  body.audience-deck.immersive .toolbar,body.audience-deck.immersive .controls{display:flex!important}
  body.audience-deck .toolbar,body.audience-deck .controls,body.audience-deck #liveDeckBar{
-  position:fixed;left:0;right:0;z-index:110;visibility:hidden;pointer-events:none;
-  transition:transform .25s ease,visibility .25s;box-shadow:0 4px 24px #092a2526;
+  position:fixed;left:0;right:0;z-index:110;visibility:hidden;pointer-events:none;opacity:0;
+  transition:transform .3s ease,opacity .65s ease,visibility .65s;box-shadow:0 4px 24px #092a2526;
  }
  body.audience-deck .toolbar{top:0;height:64px;min-height:64px;flex-wrap:nowrap;transform:translateY(-105%)}
  body.audience-deck .controls{bottom:0;transform:translateY(105%)}
  body.audience-deck #liveDeckBar{top:64px;transform:translateY(calc(-100% - 64px))}
- body.audience-deck.audience-chrome-visible .toolbar,body.audience-deck.audience-chrome-visible .controls,
- body.audience-deck.audience-chrome-visible #liveDeckBar{transform:translateY(0);visibility:visible;pointer-events:auto}
+ body.audience-deck.audience-top-visible .toolbar,body.audience-deck.audience-top-visible #liveDeckBar,
+ body.audience-deck.audience-bottom-visible .controls{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
  body.audience-deck #editDeck,body.audience-deck #reading,body.audience-deck #notes,
  body.audience-deck #notesPanel,body.audience-deck #deckEditor,body.audience-deck #deckSelection{display:none!important}
  @media(max-width:760px){body.audience-deck .toolbar .brand-topic{display:none}body.audience-deck .toolbar nav{flex-wrap:nowrap}}

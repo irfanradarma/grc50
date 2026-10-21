@@ -1,5 +1,5 @@
 import {connectLiveDeck} from './deck-live.js?v=speakers-17';
-import {setupAudienceView} from './deck-audience.js?v=audience-1';
+import {setupAudienceView} from './deck-audience.js?v=audience-edge-2';
 const audienceView=setupAudienceView();
 const slides=[];
 function add(section,title,html,note,type=''){slides.push({section,title,html,note,type});}
