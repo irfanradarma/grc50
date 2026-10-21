@@ -2,33 +2,27 @@
   "deckId": "signal-beyond-compliance-v4-keynote",
   "chapters": [
     {
-      "id": "ai-assurance",
-      "title": "AI in audit & assurance",
-      "caption": "The broader landscape: AI oversight, AI-assisted work and SupTech",
-      "icon": "brain-circuit"
-    },
-    {
       "id": "disconnect",
-      "title": "Rethinking risk",
-      "caption": "AI across the risk cycle, human authority and the integration gap",
+      "title": "Rethinking Risk & Assurance",
+      "caption": "The GRC integration gap: foundations, survey evidence and the opportunity for AI",
       "icon": "shield-alert"
     },
     {
       "id": "model",
-      "title": "The SIGNAL model",
-      "caption": "From changing evidence to timely decisions",
+      "title": "AI in Risk Management",
+      "caption": "The SIGNAL framework and hands-on: capture, reassess and respond",
       "icon": "radar"
     },
     {
-      "id": "practice",
-      "title": "Lead the decision",
-      "caption": "Hands-on: review, reassess and respond",
-      "icon": "user-round-check"
+      "id": "ai-assurance",
+      "title": "AI in Assurance",
+      "caption": "AI-assisted assurance, AI oversight and supervisory technology",
+      "icon": "brain-circuit"
     },
     {
       "id": "action",
-      "title": "SIPT: Kemenkeu's direction",
-      "caption": "Shared risk context, continuous monitoring and AI-assisted early warning",
+      "title": "SIPT",
+      "caption": "Kemenkeu's direction through SPIT: shared risk context and early warning",
       "icon": "network"
     }
   ],
@@ -49,8 +43,128 @@
       "chapter": null
     },
     {
+      "key": "section-disconnect",
+      "section": "SECTION 01 OF 04",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "the-foundation",
+      "section": "THE FOUNDATION",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "the-practical-test",
+      "section": "THE PRACTICAL TEST",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "our-pain-point",
+      "section": "OUR PAIN POINT",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-risk-management",
+      "section": "EVIDENCE / RISK MANAGEMENT",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-assurance",
+      "section": "EVIDENCE / ASSURANCE",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "evidence-how-the-gap-happens",
+      "section": "EVIDENCE / HOW THE GAP HAPPENS",
+      "chapter": "disconnect"
+    },
+    {
+      "key": "section-model",
+      "section": "SECTION 02 OF 04",
+      "chapter": "model"
+    },
+    {
+      "key": "ai-risk-cycle",
+      "section": "AI ACROSS THE RISK CYCLE",
+      "chapter": "model"
+    },
+    {
+      "key": "automation-is-not-integration",
+      "section": "AUTOMATION IS NOT INTEGRATION",
+      "chapter": "model"
+    },
+    {
+      "key": "risk-management-use-case",
+      "section": "OUR USE CASE / RISK",
+      "chapter": "model"
+    },
+    {
+      "key": "the-solution-framework",
+      "section": "THE SOLUTION FRAMEWORK",
+      "chapter": "model"
+    },
+    {
+      "key": "now-you-take-the-decisions",
+      "section": "NOW YOU TAKE THE DECISIONS",
+      "chapter": "model"
+    },
+    {
+      "key": "your-turn",
+      "section": "YOUR TURN",
+      "chapter": "model"
+    },
+    {
+      "key": "choose-your-context",
+      "section": "CHOOSE YOUR CONTEXT",
+      "chapter": "model"
+    },
+    {
+      "key": "your-starting-position",
+      "section": "YOUR STARTING POSITION",
+      "chapter": "model"
+    },
+    {
+      "key": "one-real-event",
+      "section": "ONE REAL EVENT",
+      "chapter": "model"
+    },
+    {
+      "key": "same-event-different-exposure",
+      "section": "SAME EVENT, DIFFERENT EXPOSURE",
+      "chapter": "model"
+    },
+    {
+      "key": "the-first-human-decision",
+      "section": "THE FIRST HUMAN DECISION",
+      "chapter": "model"
+    },
+    {
+      "key": "reassessment",
+      "section": "REASSESSMENT",
+      "chapter": "model"
+    },
+    {
+      "key": "a-response-you-can-own",
+      "section": "A RESPONSE YOU CAN OWN",
+      "chapter": "model"
+    },
+    {
+      "key": "expected-protection",
+      "section": "EXPECTED PROTECTION",
+      "chapter": "model"
+    },
+    {
+      "key": "what-changed",
+      "section": "WHAT CHANGED?",
+      "chapter": "model"
+    },
+    {
+      "key": "a-busier-information-environment",
+      "section": "A BUSIER INFORMATION ENVIRONMENT",
+      "chapter": "model"
+    },
+    {
       "key": "section-ai-assurance",
-      "section": "SECTION 01 OF 05",
+      "section": "SECTION 03 OF 04",
       "chapter": "ai-assurance"
     },
     {
@@ -89,133 +203,8 @@
       "chapter": "ai-assurance"
     },
     {
-      "key": "risk-management-use-case",
-      "section": "OUR USE CASE / RISK",
-      "chapter": "ai-assurance"
-    },
-    {
-      "key": "section-disconnect",
-      "section": "SECTION 02 OF 05",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "ai-risk-cycle",
-      "section": "AI ACROSS THE RISK CYCLE",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "automation-is-not-integration",
-      "section": "AUTOMATION IS NOT INTEGRATION",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "the-foundation",
-      "section": "THE FOUNDATION",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "the-practical-test",
-      "section": "THE PRACTICAL TEST",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "our-pain-point",
-      "section": "OUR PAIN POINT",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "evidence-risk-management",
-      "section": "EVIDENCE / RISK MANAGEMENT",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "evidence-assurance",
-      "section": "EVIDENCE / ASSURANCE",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "evidence-how-the-gap-happens",
-      "section": "EVIDENCE / HOW THE GAP HAPPENS",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "section-model",
-      "section": "SECTION 03 OF 05",
-      "chapter": "model"
-    },
-    {
-      "key": "the-solution-framework",
-      "section": "THE SOLUTION FRAMEWORK",
-      "chapter": "model"
-    },
-    {
-      "key": "section-practice",
-      "section": "SECTION 04 OF 05",
-      "chapter": "practice"
-    },
-    {
-      "key": "now-you-take-the-decisions",
-      "section": "NOW YOU TAKE THE DECISIONS",
-      "chapter": "practice"
-    },
-    {
-      "key": "your-turn",
-      "section": "YOUR TURN",
-      "chapter": "practice"
-    },
-    {
-      "key": "choose-your-context",
-      "section": "CHOOSE YOUR CONTEXT",
-      "chapter": "practice"
-    },
-    {
-      "key": "your-starting-position",
-      "section": "YOUR STARTING POSITION",
-      "chapter": "practice"
-    },
-    {
-      "key": "one-real-event",
-      "section": "ONE REAL EVENT",
-      "chapter": "practice"
-    },
-    {
-      "key": "same-event-different-exposure",
-      "section": "SAME EVENT, DIFFERENT EXPOSURE",
-      "chapter": "practice"
-    },
-    {
-      "key": "the-first-human-decision",
-      "section": "THE FIRST HUMAN DECISION",
-      "chapter": "practice"
-    },
-    {
-      "key": "reassessment",
-      "section": "REASSESSMENT",
-      "chapter": "practice"
-    },
-    {
-      "key": "a-response-you-can-own",
-      "section": "A RESPONSE YOU CAN OWN",
-      "chapter": "practice"
-    },
-    {
-      "key": "expected-protection",
-      "section": "EXPECTED PROTECTION",
-      "chapter": "practice"
-    },
-    {
-      "key": "what-changed",
-      "section": "WHAT CHANGED?",
-      "chapter": "practice"
-    },
-    {
-      "key": "a-busier-information-environment",
-      "section": "A BUSIER INFORMATION ENVIRONMENT",
-      "chapter": "practice"
-    },
-    {
       "key": "section-action",
-      "section": "SECTION 05 OF 05",
+      "section": "SECTION 04 OF 04",
       "chapter": "action"
     },
     {
@@ -239,11 +228,6 @@
       "chapter": "action"
     },
     {
-      "key": "internal-evidence",
-      "section": "INTERNAL EVIDENCE",
-      "chapter": "action"
-    },
-    {
       "key": "continuous-assurance",
       "section": "CONTINUOUS ASSURANCE",
       "chapter": "action"
@@ -251,11 +235,6 @@
     {
       "key": "ai-powered-sipt",
       "section": "AI-POWERED SIPT",
-      "chapter": "action"
-    },
-    {
-      "key": "sipt-worked-example",
-      "section": "SIPT / WORKED EXAMPLE",
       "chapter": "action"
     },
     {
