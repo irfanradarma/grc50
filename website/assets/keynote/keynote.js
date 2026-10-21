@@ -93,7 +93,7 @@ const slides={
  'reference-discussion':{title:'Evidence behind the ideas.',html:`${title(`Evidence behind<br>${mark('the ideas.')}`)}<div class="reference-columns"><div><h2>The foundations</h2><p>OCEG · COSO ERM · IIA</p><h2>The research</h2><p>NC State + AICPA · PwC<br>Agarwal & Kallapur</p></div><div><h2>The institutional direction</h2><p>PMK 83/2024 · KMK 1/KM.9/2025<br>BaTii strategy · presenter-supplied RP / CMCA direction</p><h2>The worked case</h2><p>ANTARA · 3 April 2025<br>Historical replay / 8 April 2025</p></div></div><button class="primary" data-details>Read source links and notes ↗</button>`}
 };
 
-slides.cover.html+='<a class="cover-access" href="https://s.kemenkeu.go.id/signal" target="_blank" rel="noreferrer">s.kemenkeu.go.id/signal ↗</a>';
+slides.cover.html+='<a class="cover-access" href="https://s.kemenkeu.go.id/signal" target="_blank" rel="noreferrer"><span>Access the slides</span><strong>s.kemenkeu.go.id/signal &#8599;</strong></a>';
 slides['your-turn'].html=slides['your-turn'].html.replace('href="'+app+'/audience/"','href="'+esc(joinHref)+'"').replace('<p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>',`<p class="micro">${/^[A-Z0-9]{6}$/.test(session)?'SESSION / '+session:'Join the presenter’s session'}<span>Your organization. Your decisions. Your private workspace.</span></p>`);
 if(/^[A-Z0-9]{6}$/.test(session))slides['your-turn'].html=slides['your-turn'].html.replace(/<div class="join-orb">[\s\S]*?<\/div>/,`<div class="join-code"><iframe title="Audience join QR" src="${app}/join-qr/?join=${encodeURIComponent(joinHref)}" loading="lazy"></iframe><b>${session}</b></div>`);
 

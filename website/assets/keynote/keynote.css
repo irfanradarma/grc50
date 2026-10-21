@@ -110,3 +110,11 @@ dialog{position:fixed;inset:0 0 0 auto;width:min(680px,95vw);max-width:none;heig
 @media(prefers-reduced-motion:reduce){.edge-contents,#liveDeckBar{transition:none}}
 @media print{.edge-contents,#liveDeckBar{display:none!important}}
 @media screen and (min-width:651px){.demo .frame-content{padding-top:30px;padding-bottom:65px;gap:14px}.demo .heading h1{font-size:clamp(32px,3.3vw,54px);line-height:1.05}.desktop{width:min(1100px,86vw,calc((100dvh - 270px)*1.6))}}
+
+/* Keep the audience access address prominent on the opening slide. */
+.cover-access{display:flex;flex-direction:column;gap:8px;color:#edf7f0;letter-spacing:0}
+.cover-access span{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a7c6b5}
+.cover-access strong{font-size:clamp(20px,2vw,30px);font-weight:550;letter-spacing:-.5px}
+.cover-access:hover strong{text-decoration:underline;text-underline-offset:6px}
+@media(max-width:900px){.cover-access strong{font-size:20px}.cover-access span{font-size:9px}}
+@media(max-width:650px){.cover-access{gap:6px}.cover-access strong{font-size:18px}.cover-access span{font-size:8px}}
