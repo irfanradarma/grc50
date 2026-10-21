@@ -1,0 +1,762 @@
+{
+  "deckId": "signal-beyond-compliance-v4-keynote",
+  "chapters": [
+    {
+      "id": "ai-assurance",
+      "title": "AI in audit & assurance",
+      "caption": "The broader landscape: AI oversight, AI-assisted work and SupTech",
+      "icon": "brain-circuit"
+    },
+    {
+      "id": "disconnect",
+      "title": "Rethinking risk",
+      "caption": "AI across the risk cycle, human authority and the integration gap",
+      "icon": "shield-alert"
+    },
+    {
+      "id": "model",
+      "title": "The SIGNAL model",
+      "caption": "From changing evidence to timely decisions",
+      "icon": "radar"
+    },
+    {
+      "id": "practice",
+      "title": "Lead the decision",
+      "caption": "Hands-on: review, reassess and respond",
+      "icon": "user-round-check"
+    },
+    {
+      "id": "action",
+      "title": "SIPT: Kemenkeu's direction",
+      "caption": "Shared risk context, continuous monitoring and AI-assisted early warning",
+      "icon": "network"
+    }
+  ],
+  "research": {
+    "checkedAt": "2026-10-19",
+    "risk": {
+      "publisher": "NC State University ERM Initiative + AICPA",
+      "title": "2026 State of Risk Oversight",
+      "year": 2026,
+      "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
+      "releaseUrl": "https://www.aicpa-cima.com/news/article/rising-risk-complexity-outpaces-organizations-strategic-readiness-finds-new-aicpa-and-north-carolina-state-university-study",
+      "sample": 331,
+      "population": "Executives and board-level leaders across organization types",
+      "fieldwork": "Q2 2026",
+      "metrics": [
+        {
+          "id": "strategic",
+          "value": 11,
+          "label": "Reported unique strategic or competitive advantage from risk management"
+        },
+        {
+          "id": "complexity",
+          "value": 69,
+          "label": "Said risk volume and complexity had increased over five years"
+        },
+        {
+          "id": "maturity",
+          "value": 30,
+          "label": "Described risk oversight as mature or robust"
+        }
+      ],
+      "verification": "Publisher-indexed study summary and AICPA release; figures are separate survey items.",
+      "limits": "Self-reported perceptions, not a test of realized performance or causality. Not Kemenkeu-specific evidence."
+    },
+    "audit": {
+      "publisher": "PwC",
+      "title": "Global Internal Audit Study 2023",
+      "year": 2023,
+      "url": "https://www.pwc.com/gx/en/services/audit-assurance/internal-audit/global-internal-audit-study.html",
+      "pdfUrl": "https://www.pwc.lu/en/internal-audit/docs/pwc-global-interna-auditl-study-2023.pdf",
+      "page": 19,
+      "sample": 4680,
+      "countries": 81,
+      "population": "Internal audit leaders, board/business respondents, and second-line risk/compliance leaders",
+      "value": 49,
+      "metricPopulation": "Business executives in the study",
+      "label": "Believed internal audit lacked strong alignment with other lines on key risks and problems",
+      "verification": "Publisher web study and PDF page 19; overall sample on PDF page 2.",
+      "limits": "The 49% applies to the business-executive subgroup; its item-level denominator is not stated in the public summary. The overall sample is not the denominator for that percentage. Measures perceived alignment, not audit failure."
+    },
+    "paper": {
+      "authors": "Ruchi Agarwal and Sanjay Kallapur",
+      "title": "Four Ways to Improve Risk Reporting",
+      "journal": "California Management Review",
+      "year": 2021,
+      "volume": "63(4)",
+      "pages": "52–65",
+      "url": "https://journals.sagepub.com/doi/10.1177/00081256211019801",
+      "doi": "10.1177/00081256211019801",
+      "quote": "Risk reporting is often unconnected with business strategy and performance",
+      "interviewUrl": "https://discover.isb.edu/all-topics/finance-and-accounting/four-proven-ways-to-make-risk-reporting-more-effective",
+      "interviewYear": 2025,
+      "fieldwork": "2013–2019",
+      "scope": "More than 20 large financial institutions",
+      "verification": "Journal abstract; methodology and observed weaknesses described in the author's 2025 ISB interview. Full paywalled article was not used.",
+      "limits": "Qualitative field evidence explains mechanisms; it does not estimate how common these problems are across all organizations."
+    }
+  },
+  "slides": [
+    {
+      "key": "cover",
+      "section": "OPENING",
+      "chapter": null,
+      "index": 1,
+      "title": "Beyond Compliance",
+      "note": "Open with the decision question. Participants will use their own phones. Risk management is the connection point between performance and assurance. Begin with the broader AI audit and assurance landscape, then narrow to the SIGNAL risk-management use case.",
+      "links": [
+        {
+          "url": "https://s.kemenkeu.go.id/signal",
+          "label": "s.kemenkeu.go.id/signal"
+        }
+      ],
+      "originalIndex": 1
+    },
+    {
+      "key": "speakers",
+      "section": "YOUR SPEAKERS",
+      "chapter": null,
+      "index": 2,
+      "title": "Meet your speakers",
+      "note": "Introduce Reza Rizky Pratama on the left and Teuku Raja Irfan Radarma on the right. Names are confirmed by the presenter. Both portraits use transparent assets; Reza has a separate background-extracted cutout. No titles or biographies have been inferred.",
+      "links": [],
+      "originalIndex": 2
+    },
+    {
+      "key": "agenda",
+      "section": "THE ROUTE AHEAD",
+      "chapter": null,
+      "index": 3,
+      "title": "Our route from evidence to action",
+      "note": "Click a section to jump to its opening. Section markers on subsequent slides keep the audience oriented.",
+      "links": [],
+      "originalIndex": 3
+    },
+    {
+      "key": "section-ai-assurance",
+      "section": "SECTION 01 OF 05",
+      "chapter": "ai-assurance",
+      "index": 4,
+      "title": "AI in audit & assurance",
+      "note": "Introduce the next section: AI in audit & assurance. What changes when AI becomes part of assurance?",
+      "links": [],
+      "originalIndex": 4
+    },
+    {
+      "key": "ai-and-supervision",
+      "section": "AI AND SUPERVISION",
+      "chapter": "ai-assurance",
+      "index": 5,
+      "title": "Two roles for AI in supervision",
+      "note": "Bridge before the technical detail. Mengawasi AI means examining AI as a source of risk: intended use, data, validation, fairness, security, access, monitoring, vendor dependencies and a named accountable owner. Mengawasi dengan AI means using AI to assist oversight of activities and risks, including activities that do not use AI. These are complementary roles, not interchangeable terms. An AI supervisory tool itself belongs within AI governance. The next two slides explain the three layers of frontier AI risk and the scope of AI oversight before returning to SupTech.",
+      "links": [
+        {
+          "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+          "label": "Explore the AI oversight survey ↗"
+        },
+        {
+          "url": "https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2023/html/ssm.nl231115_2.en.html",
+          "label": "Explore Athena ↗"
+        },
+        {
+          "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/01/supervision-of-artificial-intelligence-in-finance_1295e5e2/92743dc1-en.pdf",
+          "label": "OECD / Supervision of Artificial Intelligence in Finance (2026) ↗"
+        }
+      ],
+      "originalIndex": 5
+    },
+    {
+      "key": "supervise-ai-risks",
+      "section": "SUPERVISE AI / RISKS",
+      "chapter": "ai-assurance",
+      "index": 6,
+      "title": "Three layers of frontier AI risk",
+      "note": "Source: presenter-supplied Understanding Frontier AI - IHT OJK 2026.pptx, displayed slide 26 / 64, Tiga layer risiko frontier AI. This training taxonomy distinguishes model behavior, malicious use of capabilities, and deployment or shared-dependency risk. The layers can overlap: a prompt-injection attack is malicious use that exploits the deployed system. Herding refers to correlated behavior when institutions rely on similar models or signals. This slide explains why AI is an object of oversight. Next: examine purpose, accountability, data, authority and monitoring across the system.",
+      "links": [],
+      "originalIndex": 6
+    },
+    {
+      "key": "supervise-ai-oversight",
+      "section": "SUPERVISE AI / OVERSIGHT",
+      "chapter": "ai-assurance",
+      "index": 7,
+      "title": "Supervise AI: what must we examine?",
+      "note": "Source: presenter-supplied Understanding Frontier AI - IHT OJK 2026.pptx, displayed slides 48-50 / 64. This is a training synthesis, not a regulatory checklist. Human-in-the-loop: a person approves each consequential decision. Human-on-the-loop: a person monitors and can override within defined limits. Human-in-command: people set the permitted autonomy, guardrails and stop conditions; this can coexist with the other arrangements. The use-case owner owns outcomes and controls, risk/compliance challenges and monitors, and internal audit independently assesses governance and control effectiveness. Examine the deployed system, including vendor components, rather than model accuracy alone. Transition: AI used for supervision also needs this oversight. Continue to SupTech.",
+      "links": [],
+      "originalIndex": 7
+    },
+    {
+      "key": "supervisory-technology",
+      "section": "SUPERVISORY TECHNOLOGY",
+      "chapter": "ai-assurance",
+      "index": 8,
+      "title": "SupTech: from more data to focused supervision",
+      "note": "Pengawasan menggunakan AI is an AI-enabled part of SupTech, not the definition of all SupTech. Financial authorities use the term for technology supporting supervision, including data collection and analytics; the organizational example here is an illustrative adaptation, not a regulatory classification. Potential uses include document extraction, anomaly detection, thematic analysis and prioritization. Outputs support rather than replace supervisory judgment: a flag is not proof of a violation or an automatic risk-score change. Require traceable sources, permitted data access, validation and monitoring of false positives and missed signals. Transition: what objectives, risks and controls give these signals meaning? That leads into performance, risk and assurance. SIGNAL demonstrates this decision workflow with transparent rules; no language model is connected.",
+      "links": [
+        {
+          "url": "https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2023/html/ssm.nl231115_2.en.html",
+          "label": "Read the ECB use case ↗"
+        },
+        {
+          "url": "https://www.bis.org/publications/fsi-insight-37-suptech-tools-prudential-supervision-and-their-use-during-pandemic",
+          "label": "BIS / FSI Insights 37 (2021) ↗"
+        }
+      ],
+      "originalIndex": 8
+    },
+    {
+      "key": "suptech-in-practice",
+      "section": "SUPTECH IN PRACTICE",
+      "chapter": "ai-assurance",
+      "index": 9,
+      "title": "SupTech in practice: authorities using AI",
+      "note": "Use this concrete bridge after the SupTech introduction and before narrowing to risk management. ECB is the authority for European banking supervision, not the European Union as a single national regulator. Its November 2023 account describes Athena and Heimdall among live tools; do not infer that later LLM features were already operational then. PRA cognitive search is described as successfully introduced in Box 3 of DP5/22 (2022). FINMA describes its local GenAI pre-inspection tool as a proof of concept in June 2026, so do not present it as a fully deployed supervisory system. These examples establish actual authority practice and experimentation, not evidence that AI makes autonomous supervisory decisions. The supplied reference image guides the comparative card format; unverified claims and its survey statistic are not reproduced.",
+      "links": [
+        {
+          "url": "https://www.bankingsupervision.europa.eu/press/supervisory-newsletters/newsletter/2023/html/ssm.nl231115_2.en.html",
+          "label": "ECB / tools and use cases ↗"
+        },
+        {
+          "url": "https://www.bankofengland.co.uk/prudential-regulation/publication/2022/october/artificial-intelligence",
+          "label": "BoE / DP5/22, Box 3 ↗"
+        },
+        {
+          "url": "https://www.finma.ch/en/documentation/finma-publications/addresses-and-specialist-articles/referate-folder/20260623-rede-marlene-amstad-pzf/",
+          "label": "FINMA / Point Zero Forum 2026 ↗"
+        }
+      ],
+      "originalIndex": 9
+    },
+    {
+      "key": "risk-management-use-case",
+      "section": "OUR USE CASE / RISK",
+      "chapter": "ai-assurance",
+      "index": 10,
+      "title": "Our use case: AI for risk management",
+      "note": "This is the scope-setting bridge: we have introduced the two roles of AI and the broader SupTech concept; now we narrow to a risk-management use case. This is an organizational adaptation of the supervisory logic, not a claim that all risk management is formally classified as SupTech. AI would assist evidence capture, relevance screening and review suggestions. The accountable risk owner decides whether to capture a signal, whether the assessment should change and which response to own. Assurance provides evidence on controls and response effectiveness. The workshop demonstrates that workflow using transparent rules; it does not connect to a live language model. Transition to the next slide: to make this work, we need to connect performance, risk and assurance around the same objective.",
+      "links": [
+        {
+          "url": "https://www.bis.org/publications/project-aurora-power-data-technology-and-collaboration-combat-money-laundering-across-institutions-and-borders",
+          "label": "Explore the Aurora proof of concept ↗"
+        }
+      ],
+      "originalIndex": 10
+    },
+    {
+      "key": "section-disconnect",
+      "section": "SECTION 02 OF 05",
+      "chapter": "disconnect",
+      "index": 11,
+      "title": "Rethink risk management.",
+      "note": "Introduce the next section: The disconnect. Does evidence change the next management decision?",
+      "links": [],
+      "originalIndex": 11
+    },
+    {
+      "key": "ai-risk-cycle",
+      "section": "AI ACROSS THE RISK CYCLE",
+      "chapter": "disconnect",
+      "title": "AI can assist the whole risk cycle.",
+      "note": "AI can assist identification, assessment, treatment and monitoring: reading context, drafting risks, bringing evidence together, proposing scores and responses, and watching change. This is a capability argument, not a claim that the deployed seminar app uses a language model. Human review is mandatory at each material judgment: validate evidence and relevance, authorize the assessment and response, assign ownership, and verify effectiveness. Autonomy must remain within explicitly approved boundaries. The next slide distinguishes task automation from the organizational integration needed to protect objectives.",
+      "links": [
+        {
+          "url": "https://www.coso.org/enterprise-risk-management",
+          "label": "COSO / ERM and performance"
+        }
+      ],
+      "originalIndex": null,
+      "index": 12
+    },
+    {
+      "key": "automation-is-not-integration",
+      "section": "AUTOMATION IS NOT INTEGRATION",
+      "chapter": "disconnect",
+      "title": "Better tools. Still disconnected?",
+      "note": "AI can improve individual tasks without fixing disconnected performance, risk and assurance processes. The meaningful test is whether evidence changes a forecast, assessment or owned response in time to protect the objective. This bridges the broad AI risk-cycle capability to the three disciplines and their practical handoffs, then to the SIGNAL framework. This is a design proposition and diagnostic question, not a measured universal failure rate.",
+      "links": [
+        {
+          "url": "https://www.coso.org/enterprise-risk-management",
+          "label": "COSO / ERM and performance"
+        }
+      ],
+      "originalIndex": null,
+      "index": 13
+    },
+    {
+      "key": "the-foundation",
+      "section": "THE FOUNDATION",
+      "chapter": "disconnect",
+      "index": 14,
+      "title": "Three disciplines. One purpose.",
+      "note": "These are three connected GRC disciplines selected for this seminar, not the expansion of the GRC acronym or an exhaustive list. Compliance and integrity remain foundational. Definitions are concise paraphrases: OCEG connects disciplines; COSO integrates risk with strategy and performance; the IIA distinguishes management responsibility from independent assurance. Balanced Scorecard and KPI practices operationalize performance; no claim that the three are a formal new standard.",
+      "links": [
+        {
+          "url": "https://www.oceg.org/ideas/critical-disciplines/",
+          "label": "OCEG / critical disciplines ↗"
+        },
+        {
+          "url": "https://www.coso.org/enterprise-risk-management",
+          "label": "COSO / ERM, strategy and performance ↗"
+        },
+        {
+          "url": "https://www.theiia.org/en/resources/statements-of-position",
+          "label": "IIA / Three Lines Model ↗"
+        }
+      ],
+      "originalIndex": 12
+    },
+    {
+      "key": "the-practical-test",
+      "section": "THE PRACTICAL TEST",
+      "chapter": "disconnect",
+      "index": 15,
+      "title": "Can evidence cross the boundaries?",
+      "note": "Read left to right: objective, exposure, confidence in protection. Ask participants for the last occasion an audit finding changed a risk assessment and an action protecting a KPI. These questions diagnose practice; they do not establish that every Kemenkeu unit is disconnected.",
+      "links": [],
+      "originalIndex": 13
+    },
+    {
+      "key": "our-pain-point",
+      "section": "OUR PAIN POINT",
+      "chapter": "disconnect",
+      "index": 16,
+      "title": "Shared goals. Disconnected decisions?",
+      "note": "The moving paths represent the recurring exchange that should take place, not evidence that it already does. Static callouts stay attached to the two relationships. The evidence loop starts automatically; pause it to discuss a relationship. Leaving the slide stops it. The pain point is a weak evidence-to-decision handoff, rather than the absence of systems or professional effort.",
+      "links": [],
+      "originalIndex": 14
+    },
+    {
+      "key": "evidence-risk-management",
+      "section": "EVIDENCE / RISK MANAGEMENT",
+      "chapter": "disconnect",
+      "index": 17,
+      "title": "89% did not report a unique strategic advantage.",
+      "note": "Read the displayed response level precisely. These are perceptions and separate survey questions, not an objective failure rate. Ask for a recent decision influenced by the risk process. Avoid turning the contrast into a causal or paired statistical test. International research motivates the local diagnostic question; it does not measure Kemenkeu. For a ministry, apply the question to public-service objective delivery rather than market competition.",
+      "links": [
+        {
+          "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
+          "label": "NC State University ERM Initiative + AICPA · 2026 State of Risk Oversight ↗"
+        },
+        {
+          "url": "https://www.aicpa-cima.com/news/article/rising-risk-complexity-outpaces-organizations-strategic-readiness-finds-new-aicpa-and-north-carolina-state-university-study",
+          "label": "AICPA study release ↗"
+        }
+      ],
+      "originalIndex": 15
+    },
+    {
+      "key": "evidence-assurance",
+      "section": "EVIDENCE / ASSURANCE",
+      "chapter": "disconnect",
+      "index": 18,
+      "title": "49% of business executives see an assurance alignment gap.",
+      "note": "Read the subgroup qualifier before the percentage. This item concerns perceived coordination with other lines. It is not a failure rate and does not show that a finding never influenced management. The three questions on the right are our proposed application, not questions asked by PwC.",
+      "links": [
+        {
+          "url": "https://www.pwc.com/gx/en/services/audit-assurance/internal-audit/global-internal-audit-study.html",
+          "label": "PwC · Global Internal Audit Study 2023 · section 3 ↗"
+        },
+        {
+          "url": "https://www.pwc.lu/en/internal-audit/docs/pwc-global-interna-auditl-study-2023.pdf",
+          "label": "Original PDF · page 19 ↗"
+        }
+      ],
+      "originalIndex": 16
+    },
+    {
+      "key": "evidence-how-the-gap-happens",
+      "section": "EVIDENCE / HOW THE GAP HAPPENS",
+      "chapter": "disconnect",
+      "index": 19,
+      "title": "Risk reporting can become a compliance exercise.",
+      "note": "This is the clearest direct support for the compliance-exercise concern, while the surveys establish strategic-use and alignment gaps. Treat the field evidence as explanation, not population prevalence. The safeguards and response prompts are our design recommendations. Introduce the SIGNAL framework next.",
+      "links": [
+        {
+          "url": "https://journals.sagepub.com/doi/10.1177/00081256211019801",
+          "label": "Ruchi Agarwal and Sanjay Kallapur · Four Ways to Improve Risk Reporting (2021) ↗"
+        },
+        {
+          "url": "https://discover.isb.edu/all-topics/finance-and-accounting/four-proven-ways-to-make-risk-reporting-more-effective",
+          "label": "ISB · author interview (2025) ↗"
+        }
+      ],
+      "originalIndex": 17
+    },
+    {
+      "key": "section-model",
+      "section": "SECTION 03 OF 05",
+      "chapter": "model",
+      "index": 20,
+      "title": "The SIGNAL model",
+      "note": "Introduce the next section: The SIGNAL model. How does a signal become an accountable action?",
+      "links": [],
+      "originalIndex": 18
+    },
+    {
+      "key": "the-solution-framework",
+      "section": "THE SOLUTION FRAMEWORK",
+      "chapter": "model",
+      "index": 21,
+      "title": "SIGNAL: from evidence to action",
+      "note": "SIGNAL is our seminar working model: Sense sources, Interpret relevance, Guide the owner, Navigate through human judgment, Act through an owned response, and Learn from effectiveness. A white canvas and six colored arrow segments surround shared objectives, targets, risks and tolerance. The selected phase has a separate explanation panel; no modal obscures the cycle. The cycle advances every 14 seconds. Click or keyboard-select a phase to hold it; Play cycle resumes. Explore the method expands comprehensive details inline and holds playback. AI supports capture, screening and assistance; people remain accountable for all decisions. This workshop demonstrates transparent rules rather than a connected language model. Scores do not predict KPI percentages; projected protection is separate from current risk.",
+      "links": [],
+      "originalIndex": 19
+    },
+    {
+      "key": "section-practice",
+      "section": "SECTION 04 OF 05",
+      "chapter": "practice",
+      "index": 22,
+      "title": "Lead the decision",
+      "note": "Introduce the next section: Lead the decision. You lead the organization. You make the next decision.",
+      "links": [],
+      "originalIndex": 20
+    },
+    {
+      "key": "now-you-take-the-decisions",
+      "section": "NOW YOU TAKE THE DECISIONS",
+      "chapter": "practice",
+      "index": 23,
+      "title": "One organization. Two signal streams. A complete decision cycle.",
+      "note": "Invite participants to act as the organization leader. First examine risks and initial mitigation commitments, then activate news sources. Work one guided news item together before the independent review. Participants can reject a signal, retain a score, or customize a response with reasons. We then repeat with internal sources. Dashboard closes the loop. Participants use phones or computers; presenter uses separate admin controls.",
+      "links": [],
+      "originalIndex": 21
+    },
+    {
+      "key": "your-turn",
+      "section": "YOUR TURN",
+      "chapter": "practice",
+      "index": 24,
+      "title": "Join the session",
+      "note": "Presenter opens /admin in the same browser, creates a session, and pastes its LAN audience link here. All phones must reach the laptop. Participants need no account. If setup overruns, shorten the batch debrief rather than the first end-to-end decision.",
+      "links": [],
+      "originalIndex": 22
+    },
+    {
+      "key": "choose-your-context",
+      "section": "CHOOSE YOUR CONTEXT",
+      "chapter": "practice",
+      "index": 25,
+      "title": "Which organization will you lead?",
+      "note": "These are fictional Indonesian organizations with strategic exposure. Logistics: export growth, corridor diversification and hub investment. Seafood exporter: export competitiveness and market concentration. Digital: AI differentiation, funded enterprise demand and regulated-market entry. All revenue weights and targets are exercise assumptions. Each objective has two supplied risks. Participants can rename their company and use random-fill aids.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Continue in your workspace ↗"
+        }
+      ],
+      "originalIndex": 23
+    },
+    {
+      "key": "your-starting-position",
+      "section": "YOUR STARTING POSITION",
+      "chapter": "practice",
+      "index": 26,
+      "title": "The risk and the response are already connected",
+      "note": "Guide participants through all three menus. Initial risk scores, controls, owners, and plans are supplied. Risk Monitoring uses risk rows with expandable detail; mitigation plans have deadlines. Risk Trigger offers publisher activation. Source changes affect future unreleased batches. The shared guided item is shown to all.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Continue in your workspace ↗"
+        }
+      ],
+      "originalIndex": 24
+    },
+    {
+      "key": "one-real-event",
+      "section": "ONE REAL EVENT",
+      "chapter": "practice",
+      "index": 27,
+      "title": "A trade-policy shock. Which growth plans are exposed?",
+      "note": "Show the original headline and opening article paragraphs side by side. Ask which strategic assumptions need review. This is the 2 April announcement as reported 3 April, replayed with an 8 April knowledge cutoff. Verify product coverage, timing, contracts and customers. Do not assume 32% equals a company revenue loss or applies to freight services. These are cropped screenshots of the original webpage, not a reconstructed article.",
+      "links": [
+        {
+          "url": "https://jabar.antaranews.com/berita/594405/indonesia-kena-kenaikan-tarif-as-32-persen",
+          "label": "Read the full report &#8599;"
+        }
+      ],
+      "originalIndex": 25
+    },
+    {
+      "key": "same-event-different-exposure",
+      "section": "SAME EVENT, DIFFERENT EXPOSURE",
+      "chapter": "practice",
+      "index": 28,
+      "title": "Which organization is affected by this news?",
+      "note": "Ask the audience before reveal. Export logistics has indirect customer-demand exposure; the seafood exporter has potential goods-market exposure, subject to product and contract checks. Domestic software has no established direct goods-tariff dependency. The first growth objective supports the 12 ? 16 worked example. Hub investment and export concentration can also be linked, with different starting scores. The organization profile and selected objective drive relevance.",
+      "links": [],
+      "originalIndex": 26
+    },
+    {
+      "key": "the-first-human-decision",
+      "section": "THE FIRST HUMAN DECISION",
+      "chapter": "practice",
+      "index": 29,
+      "title": "The alert reaches your risk. You decide whether to capture it.",
+      "note": "Presenter releases Guided case in /admin. Participants open the new signal in Risk Monitoring, read the source, and approve or decline suggested links; capture notes are optional. Capturing does not change the risk score. For digital participants, a justified neglect is the expected valid contrast.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Open Risk Monitoring ↗"
+        }
+      ],
+      "originalIndex": 27
+    },
+    {
+      "key": "reassessment",
+      "section": "REASSESSMENT",
+      "chapter": "practice",
+      "index": 30,
+      "title": "A changed assumption can move the assessment",
+      "note": "For confirmed export-demand dependence without a revalidated downside growth case, consider likelihood 3→4, impact 4 unchanged. This is an illustrative ordinal assessment, not a probability or Kemenkeu official risk matrix. The source alone does not prove a missed target. Open the risk accordion and choose Keep or Update explicitly.",
+      "links": [],
+      "originalIndex": 28
+    },
+    {
+      "key": "a-response-you-can-own",
+      "section": "A RESPONSE YOU CAN OWN",
+      "chapter": "practice",
+      "index": 31,
+      "title": "The action follows the exposed dependency",
+      "note": "After recording the assessment, participants open the suggested response and save a mitigation plan. Multiple plans can be saved. The suggestion is a starting point. Its proposed effect must have a credible link to the dependency. No action is automatically approved by the presenter.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Continue in your workspace ↗"
+        }
+      ],
+      "originalIndex": 29
+    },
+    {
+      "key": "expected-protection",
+      "section": "EXPECTED PROTECTION",
+      "chapter": "practice",
+      "index": 32,
+      "title": "Approval creates a commitment. Effectiveness needs evidence.",
+      "note": "Move the slider to explore 0.5-point mitigation effects. Projection is not measured current risk. Plan approval/completion alone cannot reduce current assessment. Implementation evidence can be captured for a subsequent owner review. Do not convert risk scores into predicted KPI achievement percentages.",
+      "links": [],
+      "originalIndex": 30
+    },
+    {
+      "key": "what-changed",
+      "section": "WHAT CHANGED?",
+      "chapter": "practice",
+      "index": 33,
+      "title": "The dashboard shows decisions and commitments",
+      "note": "Show the outcome of the first guided case before releasing the wider batch. Do not wait for the room to finish or run a group debrief. Display real aggregate progress if useful in the presenter browser. Same-origin /presentation/deck/ allows authenticated owner-only reads. Participant dashboards show current exposure, plans and history, with KPI actuals marked not supplied. Counts do not measure decision quality or achieved performance improvement.",
+      "links": [],
+      "originalIndex": 31
+    },
+    {
+      "key": "a-busier-information-environment",
+      "section": "A BUSIER INFORMATION ENVIRONMENT",
+      "chapter": "practice",
+      "index": 34,
+      "title": "More signals. Better risk decisions.",
+      "note": "Release the wider External and Internal evidence batches from the presenter view and confirm publication before saying the signals are available. Invite participants to keep role-playing as the risk manager while the presentation continues. They may capture or neglect evidence, retain or revise an assessment, and choose a response; no completion gate or waiting period is needed. Explain the intended value of SIGNAL: dynamic assessments, timely response, shared objective/risk context and accountable human decisions. These are design benefits, not measured proof of improved outcomes. Segue to SPIT as Kemenkeu&#39;s institutional direction for integrated control and effective early warning. The next section distinguishes SPIT from its information-system support, SIPT, then explains RP and CMCA. Do not imply SPIT has adopted the SIGNAL brand or that every AI integration is already live.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Continue as risk manager ↗"
+        }
+      ],
+      "originalIndex": 32
+    },
+    {
+      "key": "section-action",
+      "section": "SECTION 05 OF 05",
+      "chapter": "action",
+      "index": 35,
+      "title": "SIPT: Kemenkeu's direction",
+      "note": "Introduce the next section: SIPT: Kemenkeu's direction. How can shared risk context become earlier action in Kemenkeu?",
+      "links": [],
+      "originalIndex": 33
+    },
+    {
+      "key": "back-to-kemenkeu",
+      "section": "BACK TO KEMENKEU",
+      "chapter": "action",
+      "index": 36,
+      "title": "SIPT: connecting control information across Kemenkeu",
+      "note": "SIPT is the information-system support for SPIT, not another name for the framework. The expansion follows BaTii’s published strategy. The next slides explain the intended RP–CMCA direction supplied by the presenter; the public sources cited here do not establish production AI deployment. Participants may keep exploring the released signals while this section proceeds.",
+      "links": [
+        {
+          "url": "https://jdih.kemenkeu.go.id/dok/pmk-83-tahun-2024",
+          "label": "PMK 83/2024 / institutional framework ↗"
+        },
+        {
+          "url": "https://batii.kemenkeu.go.id/api/Medias/68f3f086-ae7c-40c1-8acb-251c0e16dacd",
+          "label": "BaTii strategy 2025–2029 / SIPT definition, printed page 10 ↗"
+        }
+      ],
+      "originalIndex": 34
+    },
+    {
+      "key": "spit-integrated-framework",
+      "section": "SPIT / INTEGRATED CONTROL FRAMEWORK",
+      "chapter": "action",
+      "index": 37,
+      "title": "Integrated Internal Control Framework (SPIT)",
+      "note": "Original standard framework exported directly from the presenter-supplied Framework SPIT.pptx using PowerPoint. Preserve all original labels and layout. Explain the foundation, proactive first line, integrated UKI and Itjen oversight, and system-supported real-time assurance. The application landscape includes Assurance Intelligence System, e-Profiling, CMCA, Risk Platform, Audit Management System and Integrity Platform. Next, focus on RP and CMCA as part of SIPT.",
+      "links": [],
+      "originalIndex": 35
+    },
+    {
+      "key": "risk-platform",
+      "section": "RISK PLATFORM",
+      "chapter": "action",
+      "index": 38,
+      "title": "One risk register. One view of risk.",
+      "note": "Presenter-supplied direction: RP becomes the single source of the risk register to enable one view of risk. Shared references connect evidence and assurance to objectives, risk owners and assessments. A consolidated view does not remove unit ownership or independent assurance. These are intended information relationships, not assertions about the current database schema or completed integrations.",
+      "links": [],
+      "originalIndex": 36
+    },
+    {
+      "key": "cmca-platform",
+      "section": "CMCA PLATFORM",
+      "chapter": "action",
+      "index": 39,
+      "title": "From periodic snapshots to continuous risk evidence",
+      "note": "Presenter-supplied direction: the shared risk repository enables integrated assurance, with CMCA as a mainstream means to monitor risk events continuously. Monitoring checks remain linked to registered risks. Data quality, check scope and confirmation matter. Project-based assurance remains necessary to investigate causes and evaluate control effectiveness; continuous checks do not replace independent assurance.",
+      "links": [],
+      "originalIndex": 37
+    },
+    {
+      "key": "continuous-assurance",
+      "section": "CONTINUOUS ASSURANCE",
+      "chapter": "action",
+      "index": 40,
+      "title": "The review pattern: exception → confirmation → risk decision",
+      "note": "Conceptual CMCA flow: a risk-linked automated check surfaces an exception. Its data quality, rule scope and source records must be examined, then a responsible owner confirms whether the exception indicates meaningful exposure. Confirmed evidence can support risk reassessment; neither an exception nor confirmation automatically changes a risk score or constitutes an audit conclusion. Interfaces for SIPT and its platforms are outside this presentation.",
+      "links": [],
+      "originalIndex": 38
+    },
+    {
+      "key": "internal-evidence",
+      "section": "INTERNAL EVIDENCE",
+      "chapter": "action",
+      "index": 41,
+      "title": "CMCA is one signal stream. Reports and assurance add context.",
+      "note": "Reports, minutes and audit findings complement CMCA in a shared risk context. Several records may corroborate one event; they do not each justify another score increase. Explain conceptual evidence relationships without showing application interfaces.",
+      "links": [],
+      "originalIndex": 39
+    },
+    {
+      "key": "ai-powered-sipt",
+      "section": "AI-POWERED SIPT",
+      "chapter": "action",
+      "index": 42,
+      "title": "AI connects the evidence. People own the decision.",
+      "note": "Target conceptual flow described by the presenter: RP supplies shared objectives, registered risks, owners, assessments and response history. CMCA, internal reports, audit findings and permitted external evidence provide risk-linked signals. AI assists relevance, explanation, prioritization and draft assessment/response suggestions. The accountable owner validates the evidence and approves any assessment or action. Approved changes return to the shared register and inform monitoring. This is an intended architecture, not a claim of completed production AI integration. System interfaces are outside the scope of this presentation.",
+      "links": [],
+      "originalIndex": 40
+    },
+    {
+      "key": "sipt-worked-example",
+      "section": "SIPT / WORKED EXAMPLE",
+      "chapter": "action",
+      "index": 43,
+      "title": "Follow one risk across the information flow",
+      "note": "This is an illustrative scenario, not an actual Kemenkeu incident, official KPI or production check. Do not invent a deployed indicator, threshold or official risk score. The example shows how one registered risk can receive several kinds of evidence, producing a human-approved decision rather than disconnected reports. Corroborating records should be evaluated together.",
+      "links": [],
+      "originalIndex": 41
+    },
+    {
+      "key": "early-warning-system",
+      "section": "EARLY WARNING SYSTEM",
+      "chapter": "action",
+      "index": 44,
+      "title": "A warning is effective when it changes a timely decision",
+      "note": "The DJKN explanation links an effective early-warning system to timely detection, response, current risk profiles and collaboration across the three lines. Here the RP–CMCA–AI flow is the presenter’s intended means to support that direction, not a claim of proven effectiveness. Evaluate whether signals arrive in time, are relevant, reach an owner and lead to verified action. Alert counts alone do not demonstrate better performance.",
+      "links": [
+        {
+          "url": "https://www.djkn.kemenkeu.go.id/kanwil-rsk/baca-artikel/17762/Sistem-Pengendalian-Intern-Terintegrasi-SPIT-Dalam-Rangka-Membangun-Sistem-Peringatan-Dini-EWS-yang-lebih-efektif.html",
+          "label": "DJKN / SPIT and effective early warning, 28 July 2025 ↗"
+        }
+      ],
+      "originalIndex": 42
+    },
+    {
+      "key": "shared-responsibility",
+      "section": "SHARED RESPONSIBILITY",
+      "chapter": "action",
+      "index": 45,
+      "title": "One view of risk. Shared evidence. Owned decisions.",
+      "note": "Close on the institutional contribution, not a generic 30-day pilot or a second audience waiting period. Invite management, UKI, Itjen and technology/data teams to contribute context, usable evidence and response discipline. These role summaries are an explanatory application, not an exhaustive allocation of duties. Participants can continue reviewing their released inbox after the presentation.",
+      "links": [],
+      "originalIndex": 43
+    },
+    {
+      "key": "reference-discussion",
+      "section": "REFERENCE / DISCUSSION",
+      "chapter": "action",
+      "index": 46,
+      "title": "Sources behind the argument",
+      "note": "Sources supporting the research, strategic news exercise and conceptual institutional direction. The research measures perceptions or qualitative mechanisms, not Kemenkeu failure rates. The historical news case uses an 8 April 2025 cutoff. RP and CMCA relationships reflect the presenter-supplied direction. The SIGNAL app is used only in the hands-on section; no SIPT system interface is presented.",
+      "links": [
+        {
+          "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
+          "label": "NC State + AICPA / 2026 risk oversight survey ↗"
+        },
+        {
+          "url": "https://www.pwc.com/gx/en/services/audit-assurance/internal-audit/global-internal-audit-study.html",
+          "label": "PwC / 2023 internal audit study ↗"
+        },
+        {
+          "url": "https://journals.sagepub.com/doi/10.1177/00081256211019801",
+          "label": "Agarwal & Kallapur / risk reporting research (2021) ↗"
+        },
+        {
+          "url": "https://www.oceg.org/ideas/critical-disciplines/",
+          "label": "OCEG / connected GRC disciplines ↗"
+        },
+        {
+          "url": "https://www.coso.org/enterprise-risk-management",
+          "label": "COSO / ERM and performance ↗"
+        },
+        {
+          "url": "https://www.theiia.org/en/resources/statements-of-position",
+          "label": "IIA / Three Lines Model ↗"
+        },
+        {
+          "url": "https://jdih.kemenkeu.go.id/dok/191-pmk-09-2008",
+          "label": "PMK 191/2008: historical risk-management instrument ↗"
+        },
+        {
+          "url": "https://www.djkn.kemenkeu.go.id/berita/baca/5203/Realistisnya-Timeline-Pencapaian-Bantu-Target-Terlampaui.html",
+          "label": "DJKN 2014: e-performance use ↗"
+        },
+        {
+          "url": "https://www.djkn.kemenkeu.go.id/kanwil-aceh/baca-artikel/15808/Manajemen-Kinerja-di-Lingkungan-Kementerian-Keuangan-berdasarkan-KMK-300KMK012022.html",
+          "label": "KMK 300/2022 and the 2014 predecessor ↗"
+        },
+        {
+          "url": "https://jdih.kemenkeu.go.id/api/download/0bba2ab5-08ea-4f7e-8296-cfc5457bfa37/109~PMK.09~2021Per.pdf",
+          "label": "PMK 109/2021: assurance and risk-informed planning ↗"
+        },
+        {
+          "url": "https://jdih.kemenkeu.go.id/dok/pmk-83-tahun-2024",
+          "label": "PMK 83/2024: SPIT ↗"
+        },
+        {
+          "url": "https://djpb.kemenkeu.go.id/kppn/mukomuko/id/data-publikasi/daftar-peraturan/3108-keputusan-menteri-keuangan-republik-indonesia-nomor-1-km-9-2025-tentang-petunjuk-pelaksanaan-sistem-pengendalian-intern-terintegrasi-di-lingkungan-kementerian-keuangan.html",
+          "label": "KMK 1/KM.9/2025: implementation guidance ↗"
+        },
+        {
+          "url": "https://www.djkn.kemenkeu.go.id/kanwil-rsk/baca-artikel/17762/Sistem-Pengendalian-Intern-Terintegrasi-SPIT-Dalam-Rangka-Membangun-Sistem-Peringatan-Dini-EWS-yang-lebih-efektif.html",
+          "label": "Kemenkeu-published discussion: SPIT and early warning ↗"
+        },
+        {
+          "url": "https://batii.kemenkeu.go.id/api/Medias/68f3f086-ae7c-40c1-8acb-251c0e16dacd",
+          "label": "BaTii strategy: SIPT support for SPIT ↗"
+        },
+        {
+          "url": "https://jabar.antaranews.com/berita/594405/indonesia-kena-kenaikan-tarif-as-32-persen",
+          "label": "ANTARA: original US tariff announcement, 3 April 2025 ↗"
+        }
+      ],
+      "originalIndex": 44
+    }
+  ]
+}

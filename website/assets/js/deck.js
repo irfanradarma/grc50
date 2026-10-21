@@ -5,7 +5,7 @@ const slides=[];
 function add(section,title,html,note,type=''){slides.push({section,title,html,note,type});}
 await window.buildSignalSeminar({add});
 
-const outline=await fetch('../assets/data/deck-outline.json').then(r=>r.json());
+const outline=await fetch('../assets/data/deck-outline-legacy.json').then(r=>r.json());
 for(const slide of slides){const item=outline.slides.find(item=>item.section===slide.section);if(!item)throw Error('Slide missing from outline: '+slide.section);Object.assign(slide,{key:item.key,chapter:item.chapter});}
 const chapterMarkup=s=>s.chapter?'<div class="d-chapter-track" aria-label="Presentation sections">'+outline.chapters.map((chapter,i)=>'<button data-jump-chapter="'+chapter.id+'" '+(chapter.id===s.chapter?'aria-current="step"':'')+'><span>0'+(i+1)+'</span>'+chapter.title+'</button>').join('')+'</div>':'';
 const deck=document.getElementById('deck');

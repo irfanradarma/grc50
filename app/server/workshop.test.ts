@@ -82,6 +82,9 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await publish(a,'agenda')).status,404);assert.equal((await publish('','agenda')).status,401);
  assert.equal((await publish(host,'unknown-slide')).status,400);assert.equal((await publish(host,'agenda','old-deck')).status,409);
  assert.equal((await publish(host,'agenda')).status,200);
+ assert.equal((await publish(host,'ai-risk-cycle')).status,200);
+ assert.equal((await publish(host,'automation-is-not-integration')).status,200);
+ assert.equal((await publish(host,'agenda')).status,200);
  assert.equal((await(await liveState()).json()).slideKey,'agenda');
  assert.equal((await publish(host,'the-foundation')).status,200);
  const publicDeck=await(await liveState()).json();assert.equal(publicDeck.slideKey,'the-foundation');assert.equal(publicDeck.published,true);

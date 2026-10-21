@@ -1,5 +1,5 @@
 window.buildSignalSeminar=async function({add}){
- const outline=await fetch('../assets/data/deck-outline.json').then(r=>{if(!r.ok)throw Error('Deck outline unavailable');return r.json();});
+ const outline=await fetch('../assets/data/deck-outline-legacy.json').then(r=>{if(!r.ok)throw Error('Deck outline unavailable');return r.json();});
  const render=add,openedChapters=new Set();
  const chapterQuestions=['What changes when AI becomes part of assurance?','Does evidence change the next management decision?','How does a signal become an accountable action?','You lead the organization. You make the next decision.','How can shared risk context become earlier action in Kemenkeu?'];
  add=(section,title,html,note,type='')=>{

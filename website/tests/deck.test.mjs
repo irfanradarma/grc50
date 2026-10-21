@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {buildSlides,root} from './deck-fixture.mjs';
 
-test('the final seminar retains its story, research and strategic exercise',async()=>{
+test('the archived editorial seminar retains its story, research and strategic exercise',async()=>{
  const slides=await buildSlides();assert.equal(slides.length,44);
  assert.equal(slides[1].section,'YOUR SPEAKERS');
  assert(slides[1].html.indexOf('alt="Reza Rizky Pratama"')<slides[1].html.indexOf('alt="Teuku Raja Irfan Radarma"'));
@@ -38,8 +38,8 @@ test('every local asset used by the final deck exists after cleanup',async()=>{
  assert(checked>20);
 });
 
-test('agenda, chapter outline and live slide keys describe the same deck',async()=>{
- const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline.json'),'utf8'));
+test('archived agenda, chapter outline and slide keys describe the same deck',async()=>{
+ const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline-legacy.json'),'utf8'));
  assert.equal(slides[2].section,'THE ROUTE AHEAD');assert.equal(outline.chapters.length,5);
  assert.equal(outline.chapters[0].id,'ai-assurance');
  for(const section of ['AI AND SUPERVISION','SUPERVISORY TECHNOLOGY','SUPTECH IN PRACTICE','OUR USE CASE / RISK'])assert.equal(outline.slides.find(s=>s.section===section).chapter,'ai-assurance');assert.equal(outline.slides.length,slides.length);
@@ -55,14 +55,14 @@ test('agenda, chapter outline and live slide keys describe the same deck',async(
 
 
 test('each agenda section opens with exactly one dedicated separator',async()=>{
- const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline.json'),'utf8'));
+ const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline-legacy.json'),'utf8'));
  const dividers=slides.filter(slide=>slide.type.includes('d-section-divider'));assert.equal(dividers.length,5);
  for(const chapter of outline.chapters){const first=outline.slides.findIndex(slide=>slide.chapter===chapter.id);assert(slides[first].type.includes('d-section-divider'));assert.equal(slides[first].title,chapter.title);assert.equal(outline.slides[first].key,'section-'+chapter.id);assert.equal(outline.slides[first+1].chapter,chapter.id);}
 });
 
 
 test('release continues directly to SIPT without a timed audience break',async()=>{
- const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline.json'),'utf8'));
+ const slides=await buildSlides(),outline=JSON.parse(fs.readFileSync(path.join(root,'website/assets/data/deck-outline-legacy.json'),'utf8'));
  const release=slides.findIndex(s=>s.section==='A BUSIER INFORMATION ENVIRONMENT');
  assert.equal(slides[release-1].section,'WHAT CHANGED?');assert.equal(slides[release+1].section,'SECTION 05 OF 05');assert.equal(slides[release+2].section,'BACK TO KEMENKEU');
  assert.equal(release,31);
