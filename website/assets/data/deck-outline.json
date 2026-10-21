@@ -59,6 +59,11 @@
       "chapter": "ai-assurance"
     },
     {
+      "key": "bridging-auditing-ai",
+      "section": "AUDITING AI",
+      "chapter": "ai-assurance"
+    },
+    {
       "key": "supervise-ai-risks",
       "section": "SUPERVISE AI / RISKS",
       "chapter": "ai-assurance"
@@ -66,6 +71,11 @@
     {
       "key": "supervise-ai-oversight",
       "section": "SUPERVISE AI / OVERSIGHT",
+      "chapter": "ai-assurance"
+    },
+    {
+      "key": "bridging-audit-with-ai",
+      "section": "AUDIT WITH AI",
       "chapter": "ai-assurance"
     },
     {
@@ -229,13 +239,13 @@
       "chapter": "action"
     },
     {
-      "key": "continuous-assurance",
-      "section": "CONTINUOUS ASSURANCE",
+      "key": "internal-evidence",
+      "section": "INTERNAL EVIDENCE",
       "chapter": "action"
     },
     {
-      "key": "internal-evidence",
-      "section": "INTERNAL EVIDENCE",
+      "key": "continuous-assurance",
+      "section": "CONTINUOUS ASSURANCE",
       "chapter": "action"
     },
     {
