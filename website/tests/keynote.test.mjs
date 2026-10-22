@@ -42,7 +42,7 @@ test('SIPT uses conceptual material only; app screenshots and guides remain conf
  assert(slides['continuous-assurance'].html.includes('Owner confirmation'));
  const keys=Array.from(reference.slides,s=>s.key),cmca=keys.indexOf('cmca-platform');
  assert.deepEqual(keys.slice(cmca,cmca+3),['cmca-platform','continuous-assurance','ai-powered-sipt']);
- for(const text of ['Continuous Monitoring','Continuous Audit','Management tracks','Auditors repeatedly'])assert(slides['cmca-platform'].html.includes(text),text);
+ for(const text of ['Continuous Monitoring','Continuous Audit','test script','Core System','anomalies','Response &amp; Verify','adjust','One shared risk reference. Timely early warning'])assert(slides['cmca-platform'].html.includes(text),text);
  assert(slides['risk-platform'].html.includes('foundation for continuous assurance'));
  assert(!keys.includes('internal-evidence'));assert(!keys.includes('sipt-worked-example'));
 
