@@ -7,7 +7,7 @@ import {buildKeynote} from './keynote-fixture.mjs';
 test('four-section narrative connects the survey evidence to SIGNAL hands-on, AI assurance and SIPT',async()=>{
  const {slides,reference}=await buildKeynote();
  const outline=JSON.parse(fs.readFileSync(new URL('../assets/data/deck-outline.json',import.meta.url),'utf8'));
- assert.equal(reference.slides.length,45);assert.equal(reference.deckId,outline.deckId);
+ assert.equal(reference.slides.length,46);assert.equal(reference.deckId,outline.deckId);
  assert.equal(reference.slides.map(s=>s.key).join('|'),outline.slides.map(s=>s.key).join('|'));
  for(const entry of reference.slides){assert(slides[entry.key],entry.key);assert(!/undefined|NaN|\[object Object\]/.test(slides[entry.key].html),entry.key);}
  const keys=reference.slides.map(s=>s.key),start=keys.indexOf('section-disconnect');
@@ -20,9 +20,14 @@ test('four-section narrative connects the survey evidence to SIGNAL hands-on, AI
  assert(!keys.includes('section-practice'));
  assert(keys.indexOf('what-changed')<keys.indexOf('section-ai-assurance'));
  assert(keys.indexOf('suptech-in-practice')<keys.indexOf('section-action'));
+ assert(!keys.includes('the-practical-test'));
+ const overview=slides['the-solution-framework'].html;
+ assert.equal((overview.match(/<article class="signal-color-/g)||[]).length,6);
+ assert(!overview.includes('data-loop'));assert(!overview.includes('data-phase='));
+ for(const key of ['evidence-risk-management','evidence-assurance','evidence-how-the-gap-happens']){const entry=reference.slides.find(s=>s.key===key);assert(entry.referenceContext);assert(entry.narrativeConnection);}
  const cycle=slides['ai-risk-cycle'].html;
  for(const phase of ['Identify','Assess','Treat','Monitor'])assert(cycle.includes(phase));
- assert(cycle.includes('Human<br>authority.'));assert(cycle.includes('Validate · approve · own'));
+ assert(cycle.includes('Human<br>authority.'));assert(cycle.includes('Validate &#183; approve &#183; own'));assert.equal((cycle.match(/<aside class="cycle-note/g)||[]).length,4);assert(!cycle.includes('data-cycle-loop'));
  assert.equal(reference.slides.filter(s=>slides[s.key].kind==='divider').length,4);
  for(let i=0;i<outline.chapters.length;i++){const entry=reference.slides.find(s=>s.chapter===outline.chapters[i].id);assert.equal(slides[entry.key].kind,'divider');assert(slides[entry.key].html.includes('SECTION 0'+(i+1)+' / 04'));}
 });
@@ -31,7 +36,7 @@ test('SIPT uses conceptual material only; app screenshots and guides remain conf
  const {slides,reference}=await buildKeynote();
  for(const entry of reference.slides){
   if(entry.chapter==='action')assert(!/<iframe|data-guide=|data-src=.*walkthrough/.test(slides[entry.key].html),entry.key);
-  if(slides[entry.key].kind==='demo')assert.equal(entry.chapter,'model',entry.key);
+  if(['demo','still-guide','app-overview'].includes(slides[entry.key].kind))assert.equal(entry.chapter,'model',entry.key);
  }
  assert(slides['spit-integrated-framework'].html.includes('spit-framework-original.png'));
  assert(slides['continuous-assurance'].html.includes('Owner confirmation'));
@@ -48,4 +53,24 @@ test('editorial archive retains its recorded original entry and outline',()=>{
  const manifest=JSON.parse(fs.readFileSync(new URL('../assets/keynote/backup-manifest.json',import.meta.url),'utf8'));
  for(const record of manifest.files){const content=fs.readFileSync(new URL('../'+record.path,import.meta.url),'utf8').replace(/\r\n/g,'\n');assert.equal(createHash('sha256').update(content).digest('hex'),record.sha256,record.path);}
  assert.equal(manifest.commit,'e8195617c56d641e49e0a0d998d45350b3dfef2b');
+});
+
+
+test('orientation precedes the news; the alert opens only after exposure is explained',async()=>{
+ const {slides,reference}=await buildKeynote(),keys=Array.from(reference.slides,s=>s.key);
+ assert.equal(keys[18],'app-overview');
+ assert.deepEqual(keys.slice(19,23),['one-real-event','same-event-different-exposure','your-starting-position','the-first-human-decision']);
+ for(const menu of ['dashboard','monitoring','trigger'])assert(slides['app-overview'].html.includes('overview-'+menu+'.png'));
+ assert(!slides['app-overview'].html.includes('monitoring.png" alt="Open the risk'));
+ for(const key of ['your-starting-position','the-first-human-decision','reassessment','a-response-you-can-own','expected-protection','what-changed']){
+  const html=slides[key].html;assert.equal((html.match(/class="guide-mark gm-/g)||[]).length,3,key);assert(!html.includes('<iframe'),key);
+  const source=html.match(/<image href="([^"]+)"/)[1];assert(fs.existsSync(new URL(source)),key);
+ }
+});
+
+
+test('the second slide explains access, desktop and touch navigation without promising audience presenter tools',async()=>{
+ const {slides,reference}=await buildKeynote();assert.equal(reference.slides[1].key,'using-the-deck');
+ const html=slides['using-the-deck'].html;
+ for(const text of ['s.kemenkeu.go.id/signal','COMPUTER','PHONE OR TABLET','Contents','Fullscreen','Presenter mode:','Return to live','data-details','EN / ID','Bahasa Indonesia'])assert(html.includes(text),text);
 });

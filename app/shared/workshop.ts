@@ -8,10 +8,10 @@ export const c=(en:string,id:string):Copy=>({en,id});
 export const tx=(v:Copy|string|undefined,lang='en')=>typeof v==='string'?v:v?.[lang==='id'?'id':'en']||'';
 export const publishers=[{id:'antara',name:'ANTARA',domain:'antaranews.com'},{id:'detik',name:'detik',domain:'detik.com'},{id:'kompas',name:'Kompas',domain:'kompas.com'},{id:'cnn',name:'CNN Indonesia',domain:'cnnindonesia.com'}];
 export type Goal={id:string;title:Copy;target:Copy;query:string};
-export type Risk={id:string;objectiveId:string;title:Copy;dependency:Copy;effect:Copy;control:Copy;owner:Copy;terms:string[];likelihood:number;impact:number;baseline:number;topic:string;reviewed:string[];responseDeclinedFor?:string;matchGroups?:string[][];response?:Copy;responseDetail?:Copy;evidenceHint?:Copy;reportObservation?:Copy;auditObservation?:Copy;indicator?:{metric:Copy;numerator:number;denominator:number;threshold:number}};
+export type Risk={id:string;objectiveId:string;title:Copy;dependency:Copy;effect:Copy;control:Copy;owner:Copy;terms:string[];likelihood:number;impact:number;baseline:number;topic:string;reviewed:string[];responseDeclinedFor?:string;completedResponses?:string[];matchGroups?:string[][];response?:Copy;responseDetail?:Copy;evidenceHint?:Copy;reportObservation?:Copy;auditObservation?:Copy;indicator?:{metric:Copy;numerator:number;denominator:number;threshold:number}};
 export const stages=['guided','external','internal'] as const;
 export type Stage=typeof stages[number];
-export type Signal={organizationId?:string;id:string;eventId:string;stage:Stage;type:'news'|'social'|'report'|'audit'|'ca';title:Copy|string;summary:Copy|string;sourceId:string;publisher:string;publishedAt:string;receivedAt?:string;url?:string;mode?:string;corroborating?:{title:string;url:string;publisher:string;publishedAt:string}[];document?:string;check?:{value:number;threshold:number;unit:string;records:string[];period:string;numerator?:number;denominator?:number;metric?:Copy};riskIds:string[];reason:Copy;adverse:boolean;stale?:boolean;decision?:'Capture'|'Neglect';notes?:string;decidedAt?:string;actor?:string;confirmation?:string};
+export type Signal={organizationId?:string;id:string;eventId:string;stage:Stage;type:'news'|'social'|'report'|'audit'|'ca';title:Copy|string;summary:Copy|string;sourceId:string;publisher:string;publishedAt:string;receivedAt?:string;url?:string;mode?:string;corroborating?:{title:string;url:string;publisher:string;publishedAt:string}[];document?:string;check?:{value:number;threshold:number;unit:string;records:string[];period:string;numerator?:number;denominator?:number;metric?:Copy};riskIds:string[];reason:Copy;adverse:boolean;stale?:boolean;decision?:'Capture'|'Neglect';riskDecisions?:Record<string,'Capture'|'Neglect'>;notes?:string;decidedAt?:string;actor?:string;confirmation?:string};
 export type Plan={id:string;riskId:string;title:string|Copy;owner:string|Copy;dueDate:string;status:'Open'|'Done';likelihoodReduction:number;impactReduction:number;evidence:string;notes:string;createdAt:string;signalIds:string[]};
 export type Review={id:string;riskId:string;choice:'Keep'|'Update';before:{likelihood:number;impact:number};after:{likelihood:number;impact:number};signalIds:string[];eventIds:string[];notes:string;at:string;actor:string};
 export type Participant={ready:boolean;company:string;organizationId:string;objectiveIds:string[];sourceIds:string[];risks:Risk[];signals:Signal[];plans:Plan[];reviews:Review[];materialized:string[]};
@@ -57,7 +57,8 @@ export function materialize(p:Participant,s:any){
  p.signals.push(...items.map(a=>({...a,id:stage+'-'+a.id,receivedAt:new Date().toISOString()})));p.materialized.push(stage);
  }
 }
-export function pendingFor(p:Participant,riskId:string){return p.signals.filter(s=>s.decision==='Capture'&&s.riskIds.includes(riskId)&&!p.risks.find(r=>r.id===riskId)?.reviewed.includes(s.id));}
+export function decisionForRisk(s:Signal,riskId:string){return s.riskDecisions?s.riskDecisions[riskId]:s.decision;}
+export function pendingFor(p:Participant,riskId:string){return p.signals.filter(s=>decisionForRisk(s,riskId)==='Capture'&&s.riskIds.includes(riskId)&&!p.risks.find(r=>r.id===riskId)?.reviewed.includes(s.id));}
 export function proposed(p:Participant,r:Risk){
  const signals=pendingFor(p,r.id),oldEvents=new Set(p.reviews.filter(v=>v.riskId===r.id).flatMap(v=>v.eventIds)),newAdverse=signals.some(s=>s.adverse&&!oldEvents.has(s.eventId));
  // Absolute review target avoids repeated +1 escalation for corroborating or later evidence.

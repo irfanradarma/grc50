@@ -108,10 +108,24 @@
       "originalIndex": 1
     },
     {
+      "key": "using-the-deck",
+      "section": "HOW TO USE THIS DECK",
+      "chapter": null,
+      "index": 2,
+      "title": "Follow along. Explore freely.",
+      "note": "Open s.kemenkeu.go.id/signal to access the slides. On a computer use arrow keys or Space, C for Contents and F for Fullscreen. Hover near the top, bottom or right edge for controls. On touchscreens use the persistent bottom navigation: arrows, Contents, slide slider and the additional-controls button. Horizontal swipes also navigate; vertical scrolling reads long slides. Referenced slides offer source context and links; screenshot enlargement is available where indicated. Presenter notes are available via N or Notes & sources in presenter mode only. In a session-linked deck, independent navigation pauses following; Return to live in the top status panel resumes the presenter position. In the SIGNAL application, use the EN / ID buttons at the top right to switch between English and Bahasa Indonesia. This changes interface language without changing the workspace or resetting inputs. The application remembers the choice in this browser. Participant-authored entries and original source material retain their original language.",
+      "links": [
+        {
+          "url": "https://s.kemenkeu.go.id/signal",
+          "label": "Open the SIGNAL presentation"
+        }
+      ]
+    },
+    {
       "key": "speakers",
       "section": "YOUR SPEAKERS",
       "chapter": null,
-      "index": 2,
+      "index": 3,
       "title": "Meet your speakers",
       "note": "Introduce Reza Rizky Pratama on the left and Teuku Raja Irfan Radarma on the right. Names are confirmed by the presenter. Both portraits use transparent assets; Reza has a separate background-extracted cutout. No titles or biographies have been inferred.",
       "links": [],
@@ -121,7 +135,7 @@
       "key": "agenda",
       "section": "THE ROUTE AHEAD",
       "chapter": null,
-      "index": 3,
+      "index": 4,
       "title": "Our route from evidence to action",
       "note": "Click a section to jump to its opening. Section markers on subsequent slides keep the audience oriented.",
       "links": [],
@@ -131,7 +145,7 @@
       "key": "section-disconnect",
       "section": "SECTION 01 OF 04",
       "chapter": "disconnect",
-      "index": 4,
+      "index": 5,
       "title": "Rethinking Risk & Assurance",
       "note": "Introduce Rethinking Risk and Assurance. The GRC integration gap: foundations, survey evidence and the opportunity for AI.",
       "links": [],
@@ -141,7 +155,7 @@
       "key": "the-foundation",
       "section": "THE FOUNDATION",
       "chapter": "disconnect",
-      "index": 5,
+      "index": 6,
       "title": "Three disciplines. One purpose.",
       "note": "These are three connected GRC disciplines selected for this seminar, not the expansion of the GRC acronym or an exhaustive list. Compliance and integrity remain foundational. Definitions are concise paraphrases: OCEG connects disciplines; COSO integrates risk with strategy and performance; the IIA distinguishes management responsibility from independent assurance. Balanced Scorecard and KPI practices operationalize performance; no claim that the three are a formal new standard.",
       "links": [
@@ -161,22 +175,12 @@
       "originalIndex": 12
     },
     {
-      "key": "the-practical-test",
-      "section": "THE PRACTICAL TEST",
-      "chapter": "disconnect",
-      "index": 6,
-      "title": "Can evidence cross the boundaries?",
-      "note": "Read left to right: objective, exposure, confidence in protection. Ask participants for the last occasion an audit finding changed a risk assessment and an action protecting a KPI. These questions diagnose practice; they do not establish that every Kemenkeu unit is disconnected.",
-      "links": [],
-      "originalIndex": 13
-    },
-    {
       "key": "our-pain-point",
       "section": "OUR PAIN POINT",
       "chapter": "disconnect",
       "index": 7,
       "title": "Shared goals. Disconnected decisions?",
-      "note": "The moving paths represent the recurring exchange that should take place, not evidence that it already does. Static callouts stay attached to the two relationships. The evidence loop starts automatically; pause it to discuss a relationship. Leaving the slide stops it. The pain point is a weak evidence-to-decision handoff, rather than the absence of systems or professional effort.",
+      "note": "Performance, risk and assurance share an objective but can remain disconnected in practice. Risk-to-goal: an increased exposure should inform whether the target remains achievable. Assurance-to-risk: serious audit evidence should challenge the assessment and the response. These are diagnostic questions, not a claim that the surveys measure Kemenkeu's performance.",
       "links": [],
       "originalIndex": 14
     },
@@ -197,7 +201,9 @@
           "label": "AICPA study release ↗"
         }
       ],
-      "originalIndex": 15
+      "originalIndex": 15,
+      "referenceContext": "The 2026 NC State University ERM Initiative and AICPA survey gathered self-reported views from 331 executives and board-level leaders. Only 11% reported a unique strategic or competitive advantage from risk management; the displayed 89% is its rounded complement.",
+      "narrativeConnection": "The finding distinguishes having a risk process from obtaining strategic value. It supports asking whether risk information actually changes decisions about objectives. It does not establish that 89% of organizations failed at risk management or describe Kemenkeu specifically."
     },
     {
       "key": "evidence-assurance",
@@ -216,7 +222,9 @@
           "label": "Original PDF · page 19 ↗"
         }
       ],
-      "originalIndex": 16
+      "originalIndex": 16,
+      "referenceContext": "PwC's 2023 Global Internal Audit Study examined the views of audit leaders, business and board respondents, and risk/compliance leaders. In the business-executive subgroup, 49% perceived that internal audit lacked strong alignment with other lines on key risks and problems.",
+      "narrativeConnection": "This is evidence of a perceived coordination gap between assurance and other management activities. It relates to whether audit evidence reaches risk owners and informs their response. It is not an audit failure rate, and the full study sample is not the denominator for this subgroup percentage."
     },
     {
       "key": "evidence-how-the-gap-happens",
@@ -235,7 +243,9 @@
           "label": "ISB · author interview (2025) ↗"
         }
       ],
-      "originalIndex": 17
+      "originalIndex": 17,
+      "referenceContext": "Agarwal and Kallapur's 2021 research examines how risk reporting can become disconnected from strategy and performance. Qualitative work in more than 20 large financial institutions identifies reporting practices treated as a compliance obligation rather than an input to management decisions.",
+      "narrativeConnection": "The research provides a mechanism for the gap shown in the preceding surveys: a report can be prepared and filed without changing assumptions, choices or responses. Its relevance is the need to connect risk information to decisions that protect objectives. It does not estimate the prevalence of this problem across all organizations."
     },
     {
       "key": "section-model",
@@ -252,7 +262,7 @@
       "section": "AI ACROSS THE RISK CYCLE",
       "chapter": "model",
       "title": "AI can assist the whole risk cycle.",
-      "note": "AI can assist identification, assessment, treatment and monitoring: reading context, drafting risks, bringing evidence together, proposing scores and responses, and watching change. This is a capability argument, not a claim that the deployed seminar app uses a language model. Human review is mandatory at each material judgment: validate evidence and relevance, authorize the assessment and response, assign ownership, and verify effectiveness. Autonomy must remain within explicitly approved boundaries. The next slide distinguishes task automation from the organizational integration needed to protect objectives.",
+      "note": "All four phases and their explanations are visible at the same time. AI supports identification, assessment, treatment and monitoring; human authority remains central. The diagram distinguishes AI assistance from human validation, authorization and accountability at each phase. It is a capability argument, not a claim that the seminar app currently uses a language model.",
       "links": [
         {
           "url": "https://www.coso.org/enterprise-risk-management",
@@ -297,8 +307,8 @@
       "section": "THE SOLUTION FRAMEWORK",
       "chapter": "model",
       "index": 15,
-      "title": "SIGNAL: from evidence to action",
-      "note": "SIGNAL is our seminar working model: Sense sources, Interpret relevance, Guide the owner, Navigate through human judgment, Act through an owned response, and Learn from effectiveness. A white canvas and six colored arrow segments surround shared objectives, targets, risks and tolerance. The selected phase has a separate explanation panel; no modal obscures the cycle. The cycle advances every 14 seconds. Click or keyboard-select a phase to hold it; Play cycle resumes. Explore the method expands comprehensive details inline and holds playback. AI supports capture, screening and assistance; people remain accountable for all decisions. This workshop demonstrates transparent rules rather than a connected language model. Scores do not predict KPI percentages; projected protection is separate from current risk.",
+      "title": "Signal Framework",
+      "note": "SIGNAL is presented as one complete path. The large acronym aligns with six explanations underneath. S-I-G-N uses AI to prepare evidence and advice; A-L foregrounds human decisions, action and verification. All phases remain visible. Human judgment can challenge relevance, assumptions and proposed actions throughout the path. This is the presenter's working framework, not an external standard.",
       "links": [],
       "originalIndex": 19
     },
@@ -338,12 +348,12 @@
       "originalIndex": 23
     },
     {
-      "key": "your-starting-position",
-      "section": "YOUR STARTING POSITION",
+      "key": "app-overview",
+      "section": "APP OVERVIEW",
       "chapter": "model",
       "index": 19,
-      "title": "The risk and the response are already connected",
-      "note": "Guide participants through all three menus. Initial risk scores, controls, owners, and plans are supplied. Risk Monitoring uses risk rows with expandable detail; mitigation plans have deadlines. Risk Trigger offers publisher activation. Source changes affect future unreleased batches. The shared guided item is shown to all.",
+      "title": "Your workspace. Three views.",
+      "note": "Introduce Dashboard, Risk Monitoring and Risk Trigger using three screenshots before any signal is released. Dashboard shows context and exposure; Risk Monitoring lists risks and mitigation commitments; Risk Trigger configures evidence sources. Do not introduce the alert yet.",
       "links": [
         {
           "url": "http://localhost:5173/audience",
@@ -378,12 +388,27 @@
       "originalIndex": 26
     },
     {
+      "key": "your-starting-position",
+      "section": "YOUR STARTING POSITION",
+      "chapter": "model",
+      "index": 22,
+      "title": "Now, open your alert.",
+      "note": "After discussing the news and which organization is exposed, direct participants to Risk Monitoring. Highlight 1 marks the menu, 2 the new alert count, and 3 the risk row. Click the row or its alert to open the connected response.",
+      "links": [
+        {
+          "url": "http://localhost:5173/audience",
+          "label": "Continue in your workspace ↗"
+        }
+      ],
+      "originalIndex": 24
+    },
+    {
       "key": "the-first-human-decision",
       "section": "THE FIRST HUMAN DECISION",
       "chapter": "model",
-      "index": 22,
+      "index": 23,
       "title": "The alert reaches your risk. You decide whether to capture it.",
-      "note": "Presenter releases Guided case in /admin. Participants open the new signal in Risk Monitoring, read the source, and approve or decline suggested links; capture notes are optional. Capturing does not change the risk score. For digital participants, a justified neglect is the expected valid contrast.",
+      "note": "Use the still image: read the original source and summary, challenge its relevance to the risk and objective, then accept or decline each signal. Decisions are drafts until the connected response is finished.",
       "links": [
         {
           "url": "http://localhost:5173/audience",
@@ -396,9 +421,9 @@
       "key": "reassessment",
       "section": "REASSESSMENT",
       "chapter": "model",
-      "index": 23,
+      "index": 24,
       "title": "A changed assumption can move the assessment",
-      "note": "For confirmed export-demand dependence without a revalidated downside growth case, consider likelihood 3→4, impact 4 unchanged. This is an illustrative ordinal assessment, not a probability or Kemenkeu official risk matrix. The source alone does not prove a missed target. Open the risk accordion and choose Keep or Update explicitly.",
+      "note": "P marks the previous position (likelihood 3, impact 4, score 12). S marks the proposal (likelihood 4, impact 4, score 16). Select a matrix cell, explain a custom or unchanged score, then use Save risk score at bottom right. The adjacent status identifies the choice. The score remains a draft until Finish.",
       "links": [],
       "originalIndex": 28
     },
@@ -406,9 +431,9 @@
       "key": "a-response-you-can-own",
       "section": "A RESPONSE YOU CAN OWN",
       "chapter": "model",
-      "index": 24,
+      "index": 25,
       "title": "The action follows the exposed dependency",
-      "note": "After recording the assessment, participants open the suggested response and save a mitigation plan. Multiple plans can be saved. The suggestion is a starting point. Its proposed effect must have a credible link to the dependency. No action is automatically approved by the presenter.",
+      "note": "Above the example tolerance of 12, a new mitigation is required. Accept the suggested action or create one. Set the owner, due date and expected reductions in likelihood and impact. The projection assumes effective delivery, which must later be verified.",
       "links": [
         {
           "url": "http://localhost:5173/audience",
@@ -421,9 +446,9 @@
       "key": "expected-protection",
       "section": "EXPECTED PROTECTION",
       "chapter": "model",
-      "index": 25,
-      "title": "New evidence. A new risk decision.",
-      "note": "Risk tolerance is the exposure management is prepared to accept. This worked example uses a score threshold of 12 on a 1-25 scale; it is not a universal threshold. The slider sets the proposed reassessed score after new evidence, not the projected benefit of a mitigation. A score above 12 triggers a visible request for a new mitigation plan with an owner, deadline and expected effect. At or below 12, continue monitoring. The accountable owner approves both the assessment and response; neither approval nor completion proves effectiveness.",
+      "index": 26,
+      "title": "16 before. 12 projected after.",
+      "note": "The assessed score is 16 (L4 x I4). A planned likelihood reduction of 1 and impact reduction of 0 produces projected residual 12 (L3 x I4), meeting the example tolerance. Finish saves all decisions together. Residual 12 is conditional on successful mitigation; the assessed 16 remains recorded.",
       "links": [],
       "originalIndex": 30
     },
@@ -431,9 +456,9 @@
       "key": "what-changed",
       "section": "WHAT CHANGED?",
       "chapter": "model",
-      "index": 26,
+      "index": 27,
       "title": "The dashboard shows decisions and commitments",
-      "note": "Show the outcome of the first guided case before releasing the wider batch. Do not wait for the room to finish or run a group debrief. Display real aggregate progress if useful in the presenter browser. Same-origin /presentation/deck/ allows authenticated owner-only reads. Participant dashboards show current exposure, plans and history, with KPI actuals marked not supplied. Counts do not measure decision quality or achieved performance improvement.",
+      "note": "The dashboard and risk list show projected residual exposure. The new mitigation is listed with owner, deadline and expected effect. Decision history preserves the pre-mitigation assessment. Planned protection does not prove actual effectiveness.",
       "links": [],
       "originalIndex": 31
     },
@@ -441,7 +466,7 @@
       "key": "a-busier-information-environment",
       "section": "A BUSIER INFORMATION ENVIRONMENT",
       "chapter": "model",
-      "index": 27,
+      "index": 28,
       "title": "More signals. Better risk decisions.",
       "note": "Release the wider external and internal signal batches. Participants can continue as risk managers while the presentation proceeds. Recap dynamic, responsive, connected and accountable decisions as intended design benefits, not measured outcomes. Transition from AI-assisted risk decisions to AI in assurance: AI helps auditors examine evidence, while auditors retain independent judgment. The SPIT/SIPT institutional direction comes after that assurance section.",
       "links": [
@@ -456,7 +481,7 @@
       "key": "section-ai-assurance",
       "section": "SECTION 03 OF 04",
       "chapter": "ai-assurance",
-      "index": 28,
+      "index": 29,
       "title": "AI in Assurance",
       "note": "Introduce AI in Assurance. AI-assisted assurance, AI oversight and supervisory technology.",
       "links": [],
@@ -466,7 +491,7 @@
       "key": "ai-and-supervision",
       "section": "AI AND SUPERVISION",
       "chapter": "ai-assurance",
-      "index": 29,
+      "index": 30,
       "title": "Two roles for AI in supervision",
       "note": "Bridge before the technical detail. Mengawasi AI means examining AI as a source of risk: intended use, data, validation, fairness, security, access, monitoring, vendor dependencies and a named accountable owner. Mengawasi dengan AI means using AI to assist oversight of activities and risks, including activities that do not use AI. These are complementary roles, not interchangeable terms. An AI supervisory tool itself belongs within AI governance. The next two slides explain the three layers of frontier AI risk and the scope of AI oversight before returning to SupTech.",
       "links": [
@@ -492,13 +517,13 @@
       "title": "Auditing AI",
       "note": "AI as the object of assurance. Introduce the risks of AI systems and the evidence needed to assess their oversight.",
       "links": [],
-      "index": 30
+      "index": 31
     },
     {
       "key": "supervise-ai-risks",
       "section": "SUPERVISE AI / RISKS",
       "chapter": "ai-assurance",
-      "index": 31,
+      "index": 32,
       "title": "Three layers of frontier AI risk",
       "note": "Source: presenter-supplied Understanding Frontier AI - IHT OJK 2026.pptx, displayed slide 26 / 64, Tiga layer risiko frontier AI. This training taxonomy distinguishes model behavior, malicious use of capabilities, and deployment or shared-dependency risk. The layers can overlap: a prompt-injection attack is malicious use that exploits the deployed system. Herding refers to correlated behavior when institutions rely on similar models or signals. This slide explains why AI is an object of oversight. Next: examine purpose, accountability, data, authority and monitoring across the system.",
       "links": [],
@@ -508,7 +533,7 @@
       "key": "supervise-ai-oversight",
       "section": "SUPERVISE AI / OVERSIGHT",
       "chapter": "ai-assurance",
-      "index": 32,
+      "index": 33,
       "title": "Supervise AI: what must we examine?",
       "note": "Source: presenter-supplied Understanding Frontier AI - IHT OJK 2026.pptx, displayed slides 48-50 / 64. This is a training synthesis, not a regulatory checklist. Human-in-the-loop: a person approves each consequential decision. Human-on-the-loop: a person monitors and can override within defined limits. Human-in-command: people set the permitted autonomy, guardrails and stop conditions; this can coexist with the other arrangements. The use-case owner owns outcomes and controls, risk/compliance challenges and monitors, and internal audit independently assesses governance and control effectiveness. Examine the deployed system, including vendor components, rather than model accuracy alone. Transition: AI used for supervision also needs this oversight. Continue to SupTech.",
       "links": [],
@@ -521,13 +546,13 @@
       "title": "Audit with AI",
       "note": "AI as an audit assistant. Transition from assessing AI systems to using AI to support audit work, while auditors retain judgment and accountability.",
       "links": [],
-      "index": 33
+      "index": 34
     },
     {
       "key": "supervisory-technology",
       "section": "SUPERVISORY TECHNOLOGY",
       "chapter": "ai-assurance",
-      "index": 34,
+      "index": 35,
       "title": "SupTech: from more data to focused supervision",
       "note": "Pengawasan menggunakan AI is an AI-enabled part of SupTech, not the definition of all SupTech. Financial authorities use the term for technology supporting supervision, including data collection and analytics; the organizational example here is an illustrative adaptation, not a regulatory classification. Potential uses include document extraction, anomaly detection, thematic analysis and prioritization. Outputs support rather than replace supervisory judgment: a flag is not proof of a violation or an automatic risk-score change. Require traceable sources, permitted data access, validation and monitoring of false positives and missed signals. Transition: what objectives, risks and controls give these signals meaning? That leads into performance, risk and assurance. SIGNAL demonstrates this decision workflow with transparent rules; no language model is connected.",
       "links": [
@@ -546,7 +571,7 @@
       "key": "suptech-in-practice",
       "section": "SUPTECH IN PRACTICE",
       "chapter": "ai-assurance",
-      "index": 35,
+      "index": 36,
       "title": "SupTech in practice: authorities using AI",
       "note": "Five named authorities and their jurisdictions. European Central Bank: Athena document analysis and Heimdall questionnaire reading, in use as reported in November 2023; later generative features are not implied. Bank of England ? Prudential Regulation Authority: cognitive search introduced, as reported in October 2022, Box 3. Financial Conduct Authority: exploratory text analysis, predictive analytics and synthetic data in the same source. Australian Securities and Investments Commission: its official artificial intelligence transparency statement describes current analytics, compliance and fraud detection, and enforcement intelligence uses with human oversight. Swiss Financial Market Supervisory Authority: pre-inspection document analysis remained at proof-of-concept stage in June 2026. Locations describe supervisory jurisdictions, not headquarters. Status labels describe the cited publication, not a claim of universal deployment. Sources checked 21 October 2026. Close the assurance section by connecting AI-assisted evidence review and independent judgment to the earlier SIGNAL risk decisions. Next, explain how Kemenkeu is pursuing integrated control through SPIT and its SIPT information-system support.",
       "links": [
@@ -573,7 +598,7 @@
       "key": "section-action",
       "section": "SECTION 04 OF 04",
       "chapter": "action",
-      "index": 36,
+      "index": 37,
       "title": "SIPT",
       "note": "Bring the two AI applications together: dynamic risk management and AI-assisted assurance. Explain how SPIT and SIPT express Kemenkeu's direction toward integrated control and effective early warning. Distinguish intended RP/CMCA relationships from completed production AI integration.",
       "links": [],
@@ -583,7 +608,7 @@
       "key": "back-to-kemenkeu",
       "section": "BACK TO KEMENKEU",
       "chapter": "action",
-      "index": 37,
+      "index": 38,
       "title": "SIPT: connecting control information across Kemenkeu",
       "note": "SIPT is the information-system support for SPIT, not another name for the framework. The expansion follows BaTii’s published strategy. The next slides explain the intended RP–CMCA direction supplied by the presenter; the public sources cited here do not establish production AI deployment. Participants may keep exploring the released signals while this section proceeds.",
       "links": [
@@ -602,7 +627,7 @@
       "key": "spit-integrated-framework",
       "section": "SPIT / INTEGRATED CONTROL FRAMEWORK",
       "chapter": "action",
-      "index": 38,
+      "index": 39,
       "title": "Integrated Internal Control Framework (SPIT)",
       "note": "Original standard framework exported directly from the presenter-supplied Framework SPIT.pptx using PowerPoint. Preserve all original labels and layout. Explain the foundation, proactive first line, integrated UKI and Itjen oversight, and system-supported real-time assurance. The application landscape includes Assurance Intelligence System, e-Profiling, CMCA, Risk Platform, Audit Management System and Integrity Platform. Next, focus on RP and CMCA as part of SIPT.",
       "links": [],
@@ -612,7 +637,7 @@
       "key": "risk-platform",
       "section": "RISK PLATFORM",
       "chapter": "action",
-      "index": 39,
+      "index": 40,
       "title": "One risk. One reference. Continuous assurance",
       "note": "Presenter-supplied direction: RP becomes the single source of the risk register to enable one view of risk. Shared references connect evidence and assurance to objectives, risk owners and assessments. A consolidated view does not remove unit ownership or independent assurance. These are intended information relationships, not assertions about the current database schema or completed integrations. Shared risk context is the foundation for continuous assurance, not sufficient assurance by itself. The following slides explain monitoring, audit evidence, confirmation, action and verification.",
       "links": [],
@@ -622,7 +647,7 @@
       "key": "cmca-platform",
       "section": "CMCA PLATFORM",
       "chapter": "action",
-      "index": 40,
+      "index": 41,
       "title": "Continuous Monitoring & Continuous Audit",
       "note": "CMCA means Continuous Monitoring & Continuous Audit. This conceptual direction distinguishes management monitoring of risk indicators and control exceptions from repeated auditor testing of evidence and controls for independent assurance. Both use the shared risk reference, while responsibility and independent judgment remain distinct. Continuous checks do not imply every control is tested in real time and do not replace deeper audit work. Next, explain owner confirmation before conclusions. This describes intended roles, not a completed system deployment.",
       "links": [],
@@ -632,7 +657,7 @@
       "key": "continuous-assurance",
       "section": "CONTINUOUS ASSURANCE",
       "chapter": "action",
-      "index": 41,
+      "index": 42,
       "title": "The review pattern: exception → confirmation → risk decision",
       "note": "Conceptual CMCA flow: a risk-linked automated check surfaces an exception. Its data quality, rule scope and source records must be examined, then a responsible owner confirms whether the exception indicates meaningful exposure. Confirmed evidence can support risk reassessment; neither an exception nor confirmation automatically changes a risk score or constitutes an audit conclusion. Interfaces for SIPT and its platforms are outside this presentation. Evaluate risk implications and audit/control implications separately. Management owns risk decisions; auditors retain independent responsibility for assurance conclusions.",
       "links": [],
@@ -642,7 +667,7 @@
       "key": "ai-powered-sipt",
       "section": "AI-POWERED SIPT",
       "chapter": "action",
-      "index": 42,
+      "index": 43,
       "title": "AI connects the evidence. People own the decision.",
       "note": "Target conceptual flow described by the presenter: RP supplies shared objectives, registered risks, owners, assessments and response history. CMCA, internal reports, audit findings and permitted external evidence provide risk-linked signals. AI assists relevance, explanation, prioritization and draft assessment/response suggestions. The accountable owner validates the evidence and approves any assessment or action. Approved changes return to the shared register and inform monitoring. This is an intended architecture, not a claim of completed production AI integration. System interfaces are outside the scope of this presentation.",
       "links": [],
@@ -652,7 +677,7 @@
       "key": "early-warning-system",
       "section": "EARLY WARNING SYSTEM",
       "chapter": "action",
-      "index": 43,
+      "index": 44,
       "title": "A warning is effective when it changes a timely decision",
       "note": "The DJKN explanation links an effective early-warning system to timely detection, response, current risk profiles and collaboration across the three lines. Here the RP–CMCA–AI flow is the presenter’s intended means to support that direction, not a claim of proven effectiveness. Evaluate whether signals arrive in time, are relevant, reach an owner and lead to verified action. Alert counts alone do not demonstrate better performance.",
       "links": [
@@ -667,7 +692,7 @@
       "key": "shared-responsibility",
       "section": "SHARED RESPONSIBILITY",
       "chapter": "action",
-      "index": 44,
+      "index": 45,
       "title": "One view of risk. Shared evidence. Owned decisions.",
       "note": "Close on the institutional contribution, not a generic 30-day pilot or a second audience waiting period. Invite management, UKI, Itjen and technology/data teams to contribute context, usable evidence and response discipline. These role summaries are an explanatory application, not an exhaustive allocation of duties. Participants can continue reviewing their released inbox after the presentation.",
       "links": [],
@@ -677,7 +702,7 @@
       "key": "reference-discussion",
       "section": "REFERENCE / DISCUSSION",
       "chapter": "action",
-      "index": 45,
+      "index": 46,
       "title": "Sources behind the argument",
       "note": "Sources supporting the research, strategic news exercise and conceptual institutional direction. The research measures perceptions or qualitative mechanisms, not Kemenkeu failure rates. The historical news case uses an 8 April 2025 cutoff. RP and CMCA relationships reflect the presenter-supplied direction. The SIGNAL app is used only in the hands-on section; no SIPT system interface is presented.",
       "links": [

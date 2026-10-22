@@ -1,5 +1,6 @@
 # Local extraction and visual review intermediates
 tmp/
+output/
 app/.local/
 app/dist/
 

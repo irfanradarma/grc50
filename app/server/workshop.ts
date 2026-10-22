@@ -6,6 +6,7 @@ import {pool,tenant} from './db.js';
 import strategicNews from '../../website/assets/data/strategic-news.json';
 import {captureNews} from './news.js';
 import {organizations,publishers,featured,c,stages,scenarioVersion,freshParticipant,setupParticipant,materialize,proposed,pendingFor,tx,type Participant} from '../shared/workshop.js';
+import {responseInput,completeRiskResponse} from './riskResponse.js';
 export const workshop=Router();
 const code=z.string().regex(/^[A-Z0-9]{6}$/),text=z.string().trim().min(1).max(1500);
 const sourceIds=z.array(z.enum(['antara','detik','kompas','cnn'])).max(4).refine(a=>new Set(a).size===a.length);
@@ -74,6 +75,7 @@ workshop.post('/workshop/:code/signals/:id/decision',async(req,res)=>{
  Object.assign(signal,{decision:input.decision,notes:input.notes,...(input.decision==='Capture'?{riskIds:[...new Set(input.riskIds)]}:{}),decidedAt:new Date().toISOString(),actor:res.locals.workspace.id,...(signal.type==='ca'?{confirmation:input.confirmed?'Confirmed':'Not confirmed'}:{})});return {saved:true};
  }));
 });
+workshop.post('/workshop/:code/risks/:id/respond',async(req,res)=>{const input=responseInput.parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>completeRiskResponse(p,String(req.params.id),input,res.locals.workspace.id)));});
 workshop.post('/workshop/:code/reassess',async(req,res)=>{
  const input=z.object({riskId:text,choice:z.enum(['Keep','Update']),likelihood:z.number().int().min(1).max(5),impact:z.number().int().min(1).max(5),notes:text}).parse(req.body);
  respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{

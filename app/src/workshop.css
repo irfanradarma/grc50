@@ -104,3 +104,7 @@
 .w-tour-content .w-riskmap{max-width:440px}.w-tour-content .w-matrix button{min-height:48px}.w-tour-content .w-signal p,.w-tour-content .w-explanation p{font-size:16px}
 .w-tour-content .w-plan-form{max-width:900px}.w-tour-content .w-mobile-rows{width:100%}.w-tour-content .w-source-table td{font-size:15px}
 }
+
+/* Language is a visible, reversible choice that preserves the current workspace. */
+.w-language-switch{display:flex;gap:3px;padding:3px;background:#edf3ef;border:1px solid #d1e1d7;border-radius:9px;flex-shrink:0}.workshop .w-language-switch button{padding:7px 11px;min-width:42px;min-height:36px;border:0;background:transparent;font-size:12px;font-weight:800;color:#648171;border-radius:6px}.workshop .w-language-switch button[aria-pressed=true]{background:#176b57;color:white;box-shadow:0 2px 5px #153c2920}.workshop .w-language-switch button:focus-visible{outline:3px solid #82bca8;outline-offset:2px}
+@media(max-width:650px){.workshop .w-language-switch button{min-height:40px;padding:7px 9px;min-width:38px}.w-tools{gap:8px}}

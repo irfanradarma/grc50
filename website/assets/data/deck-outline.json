@@ -30,227 +30,280 @@
     {
       "key": "cover",
       "section": "OPENING",
-      "chapter": null
+      "chapter": null,
+      "index": 1
+    },
+    {
+      "key": "using-the-deck",
+      "section": "HOW TO USE THIS DECK",
+      "chapter": null,
+      "index": 2
     },
     {
       "key": "speakers",
       "section": "YOUR SPEAKERS",
-      "chapter": null
+      "chapter": null,
+      "index": 3
     },
     {
       "key": "agenda",
       "section": "THE ROUTE AHEAD",
-      "chapter": null
+      "chapter": null,
+      "index": 4
     },
     {
       "key": "section-disconnect",
       "section": "SECTION 01 OF 04",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 5
     },
     {
       "key": "the-foundation",
       "section": "THE FOUNDATION",
-      "chapter": "disconnect"
-    },
-    {
-      "key": "the-practical-test",
-      "section": "THE PRACTICAL TEST",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 6
     },
     {
       "key": "our-pain-point",
       "section": "OUR PAIN POINT",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 7
     },
     {
       "key": "evidence-risk-management",
       "section": "EVIDENCE / RISK MANAGEMENT",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 8
     },
     {
       "key": "evidence-assurance",
       "section": "EVIDENCE / ASSURANCE",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 9
     },
     {
       "key": "evidence-how-the-gap-happens",
       "section": "EVIDENCE / HOW THE GAP HAPPENS",
-      "chapter": "disconnect"
+      "chapter": "disconnect",
+      "index": 10
     },
     {
       "key": "section-model",
       "section": "SECTION 02 OF 04",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 11
     },
     {
       "key": "ai-risk-cycle",
       "section": "AI ACROSS THE RISK CYCLE",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 12
     },
     {
       "key": "automation-is-not-integration",
       "section": "AUTOMATION IS NOT INTEGRATION",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 13
     },
     {
       "key": "risk-management-use-case",
       "section": "OUR USE CASE / RISK",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 14
     },
     {
       "key": "the-solution-framework",
       "section": "THE SOLUTION FRAMEWORK",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 15
     },
     {
       "key": "now-you-take-the-decisions",
       "section": "NOW YOU TAKE THE DECISIONS",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 16
     },
     {
       "key": "your-turn",
       "section": "YOUR TURN",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 17
     },
     {
       "key": "choose-your-context",
       "section": "CHOOSE YOUR CONTEXT",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 18
     },
     {
-      "key": "your-starting-position",
-      "section": "YOUR STARTING POSITION",
-      "chapter": "model"
+      "key": "app-overview",
+      "section": "APP OVERVIEW",
+      "chapter": "model",
+      "title": "Your workspace. Three views.",
+      "note": "Introduce Dashboard, Risk Monitoring and Risk Trigger using three screenshots before any signal is released. Dashboard shows context and exposure; Risk Monitoring lists risks and mitigation commitments; Risk Trigger configures evidence sources. Do not introduce the alert yet.",
+      "index": 19
     },
     {
       "key": "one-real-event",
       "section": "ONE REAL EVENT",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 20
     },
     {
       "key": "same-event-different-exposure",
       "section": "SAME EVENT, DIFFERENT EXPOSURE",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 21
+    },
+    {
+      "key": "your-starting-position",
+      "section": "YOUR STARTING POSITION",
+      "chapter": "model",
+      "index": 22
     },
     {
       "key": "the-first-human-decision",
       "section": "THE FIRST HUMAN DECISION",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 23
     },
     {
       "key": "reassessment",
       "section": "REASSESSMENT",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 24
     },
     {
       "key": "a-response-you-can-own",
       "section": "A RESPONSE YOU CAN OWN",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 25
     },
     {
       "key": "expected-protection",
       "section": "EXPECTED PROTECTION",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 26
     },
     {
       "key": "what-changed",
       "section": "WHAT CHANGED?",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 27
     },
     {
       "key": "a-busier-information-environment",
       "section": "A BUSIER INFORMATION ENVIRONMENT",
-      "chapter": "model"
+      "chapter": "model",
+      "index": 28
     },
     {
       "key": "section-ai-assurance",
       "section": "SECTION 03 OF 04",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 29
     },
     {
       "key": "ai-and-supervision",
       "section": "AI AND SUPERVISION",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 30
     },
     {
       "key": "bridging-auditing-ai",
       "section": "AUDITING AI",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 31
     },
     {
       "key": "supervise-ai-risks",
       "section": "SUPERVISE AI / RISKS",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 32
     },
     {
       "key": "supervise-ai-oversight",
       "section": "SUPERVISE AI / OVERSIGHT",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 33
     },
     {
       "key": "bridging-audit-with-ai",
       "section": "AUDIT WITH AI",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 34
     },
     {
       "key": "supervisory-technology",
       "section": "SUPERVISORY TECHNOLOGY",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 35
     },
     {
       "key": "suptech-in-practice",
       "section": "SUPTECH IN PRACTICE",
-      "chapter": "ai-assurance"
+      "chapter": "ai-assurance",
+      "index": 36
     },
     {
       "key": "section-action",
       "section": "SECTION 04 OF 04",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 37
     },
     {
       "key": "back-to-kemenkeu",
       "section": "BACK TO KEMENKEU",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 38
     },
     {
       "key": "spit-integrated-framework",
       "section": "SPIT / INTEGRATED CONTROL FRAMEWORK",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 39
     },
     {
       "key": "risk-platform",
       "section": "RISK PLATFORM",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 40
     },
     {
       "key": "cmca-platform",
       "section": "CMCA PLATFORM",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 41
     },
     {
       "key": "continuous-assurance",
       "section": "CONTINUOUS ASSURANCE",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 42
     },
     {
       "key": "ai-powered-sipt",
       "section": "AI-POWERED SIPT",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 43
     },
     {
       "key": "early-warning-system",
       "section": "EARLY WARNING SYSTEM",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 44
     },
     {
       "key": "shared-responsibility",
       "section": "SHARED RESPONSIBILITY",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 45
     },
     {
       "key": "reference-discussion",
       "section": "REFERENCE / DISCUSSION",
-      "chapter": "action"
+      "chapter": "action",
+      "index": 46
     }
   ]
 }
