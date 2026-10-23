@@ -1,5 +1,20 @@
 {
   "strings": {
+    "Assurance of AI. Assurance with AI.": "Asurans atas AI. Asurans berbantuan AI.",
+    "Assurance of AI": "Asurans atas AI",
+    "of AI": "atas AI",
+    "of AI.": "atas AI.",
+    "One application: AI-assisted supervision.": "Salah satu penerapan: pengawasan berbantuan AI.",
+    "The same principle: connect evidence, retain human judgment.": "Prinsip yang sama: hubungkan bukti, pertahankan pertimbangan manusia.",
+    "Timely": "Tepat waktu",
+    "Actionable": "Dapat ditindaklanjuti",
+    "Verified": "Terverifikasi",
+    "The signal arrives before the objective is affected.": "Sinyal datang sebelum tujuan terganggu.",
+    "A named owner. A clear action and deadline.": "Pemilik yang jelas. Tindakan dan tenggat yang tegas.",
+    "Evidence shows the response is effective.": "Bukti menunjukkan respons berjalan efektif.",
+    "Measure the protection.": "Ukur efektivitas perlindungannya.",
+    "Not just the number of alerts.": "Bukan hanya jumlah peringatan.",
+
     "e.g. hallucination or bias": "mis. halusinasi atau bias",
     "e.g. deepfakes or fraud": "mis. deepfake atau penipuan",
     "e.g. data leakage or vendor concentration": "mis. kebocoran data atau konsentrasi vendor",
@@ -704,7 +719,7 @@
     "cmca-platform": "Continuous Monitoring merupakan pemantauan oleh manajemen atas indikator risiko dan penyimpangan pengendalian. Continuous Audit merupakan pengujian berulang oleh auditor untuk asurans independen. Keduanya menggunakan konteks risiko bersama dengan tanggung jawab yang berbeda, dan melengkapi audit mendalam.",
     "continuous-assurance": "Alur konseptual: deteksi penyimpangan terkait risiko, konfirmasi cakupan serta catatan sumber dan konteks bisnis dengan pemilik, lalu evaluasi implikasinya. Penyimpangan saja tidak membuktikan skor risiko atau kesimpulan audit. Antarmuka sistem tidak dibahas.",
     "ai-powered-sipt": "Dalam arah konseptual RP/CMCA, AI dapat menghubungkan berita, laporan, audit, serta penyimpangan terkonfirmasi ke konteks risiko bersama. Manusia menilai dan menyetujui perubahan yang kembali ke register. SIGNAL menunjukkan pola keputusan; bukan integrasi produksi dengan SIPT.",
-    "early-warning-system": "Peringatan bukan hasil akhir. Rangkaian yang diperlukan adalah deteksi, pemahaman, keputusan, tindakan, serta verifikasi. Ukuran manfaatnya adalah keputusan tepat waktu yang membantu melindungi tujuan.",
+    "early-warning-system": "Peringatan bukan hasil akhir. Ukur apakah sinyal tepat waktu, dapat ditindaklanjuti oleh pemilik dengan tindakan dan tenggat yang jelas, serta responsnya terverifikasi efektif. Jumlah peringatan saja tidak menunjukkan perlindungan tujuan.",
     "shared-responsibility": "Lini pertama memiliki dan mengelola risiko. Lini kedua/UKI mendukung pemantauan yang berguna. Lini ketiga/Itjen memberikan asurans atas efektivitas perlindungan. Setiap unit perlu menyumbangkan bukti berkualitas dan menindaklanjuti keputusan.",
     "reference-discussion": "Sampaikan terima kasih kepada peserta dan buka sesi tanya jawab. Deck dan SIGNAL dapat diakses melalui s.kemenkeu.go.id/signal. Landasan: OCEG, COSO ERM, dan IIA. Penelitian: NC State/AICPA, PwC, serta Agarwal dan Kallapur. Konteks kelembagaan: PMK 83/2024, KMK 1/KM.9/2025, strategi BaTii, dan arah RP/CMCA dari presenter. Kasus berita: ANTARA, 3 April 2025, dengan batas informasi 8 April 2025. Baca sumber asli untuk cakupan dan keterbatasan."
   },

@@ -7,13 +7,13 @@ import {buildKeynote} from './keynote-fixture.mjs';
 test('four-section narrative connects the survey evidence to SIGNAL hands-on, AI assurance and SIPT',async()=>{
  const {slides,reference}=await buildKeynote();
  const outline=JSON.parse(fs.readFileSync(new URL('../assets/data/deck-outline.json',import.meta.url),'utf8'));
- assert.equal(reference.slides.length,46);assert.equal(reference.deckId,outline.deckId);
+ assert.equal(reference.slides.length,45);assert.equal(reference.deckId,outline.deckId);
  assert.equal(reference.slides.map(s=>s.key).join('|'),outline.slides.map(s=>s.key).join('|'));
  for(const entry of reference.slides){assert(slides[entry.key],entry.key);assert(!/undefined|NaN|\[object Object\]/.test(slides[entry.key].html),entry.key);}
  const keys=reference.slides.map(s=>s.key),start=keys.indexOf('section-disconnect');
  assert.equal(keys[start+1],'the-foundation');assert(keys.indexOf('evidence-risk-management')<keys.indexOf('section-model'));assert.equal(keys[10],'section-model');assert.equal(keys[11],'ai-risk-cycle');assert.equal(keys[keys.indexOf('ai-risk-cycle')+1],'automation-is-not-integration');
  assert.deepEqual(Array.from(keys.slice(keys.indexOf('ai-and-supervision'),keys.indexOf('ai-and-supervision')+6)),['ai-and-supervision','bridging-auditing-ai','supervise-ai-risks','supervise-ai-oversight','bridging-audit-with-ai','supervisory-technology']);
- assert(slides['bridging-auditing-ai'].html.includes('Auditing<br>'));
+ assert(slides['bridging-auditing-ai'].html.includes('Assurance<br>'));
  assert(slides['bridging-audit-with-ai'].html.includes('<em class="silver">with AI</em>'));
  reference.slides.forEach((entry,i)=>assert.equal(entry.index,i+1));
  assert.deepEqual(Array.from(reference.chapters,c=>c.id),['disconnect','model','ai-assurance','action']);
@@ -41,7 +41,7 @@ test('SIPT uses conceptual material only; app screenshots and guides remain conf
  assert(slides['spit-integrated-framework'].html.includes('spit-framework-original.png'));
  assert(slides['continuous-assurance'].html.includes('Owner confirmation'));
  const keys=Array.from(reference.slides,s=>s.key),cmca=keys.indexOf('cmca-platform');
- assert.deepEqual(keys.slice(cmca,cmca+3),['cmca-platform','continuous-assurance','ai-powered-sipt']);
+ assert.deepEqual(keys.slice(cmca,cmca+3),['cmca-platform','continuous-assurance','early-warning-system']);
  for(const text of ['Continuous Monitoring','Continuous Audit','test script','Core System','anomalies','Response &amp; Verify','adjust','One shared risk reference. Timely early warning'])assert(slides['cmca-platform'].html.includes(text),text);
  assert(slides['risk-platform'].html.includes('foundation for continuous assurance'));
  assert(!keys.includes('internal-evidence'));assert(!keys.includes('sipt-worked-example'));

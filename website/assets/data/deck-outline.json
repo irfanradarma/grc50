@@ -282,28 +282,22 @@
       "index": 42
     },
     {
-      "key": "ai-powered-sipt",
-      "section": "AI-POWERED SIPT",
-      "chapter": "action",
-      "index": 43
-    },
-    {
       "key": "early-warning-system",
       "section": "EARLY WARNING SYSTEM",
       "chapter": "action",
-      "index": 44
+      "index": 43
     },
     {
       "key": "shared-responsibility",
       "section": "SHARED RESPONSIBILITY",
       "chapter": "action",
-      "index": 45
+      "index": 44
     },
     {
       "key": "reference-discussion",
       "section": "THANK YOU / DISCUSSION",
       "chapter": "action",
-      "index": 46
+      "index": 45
     }
   ]
 }

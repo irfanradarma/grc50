@@ -7,7 +7,7 @@ An English Keynote-style presentation and connected risk-management workshop.
 - [Deck and version backups](docs/deck-versions.md)
 - [Deployment and database isolation](docs/deployment.md)
 - [Presenter and workshop guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: primary 46-slide presentation.
+- `website/deck/index.html`: primary 45-slide presentation.
 - `website/assets/keynote/`: current visual content, styles and source notes.
 - `website/deck-archive/`: archived 44-slide editorial presentation.
 - `app/`: separate Admin and Audience routes, workspace isolation and persistence.

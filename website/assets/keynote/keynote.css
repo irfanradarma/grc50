@@ -402,3 +402,6 @@ html[lang=id] .frame.speakers-slide:not(.cover):not(.stat) .heading h1{font-size
 @media print{.frame:after{display:none}.objective-branches .branch-flow{animation:none!important;stroke-dashoffset:0}}
 
 body:not(.presenter) .deck-instructions .instruction-presenter{display:none}
+
+.warning-measures{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw}.warning-measures>div{border-top:2px solid var(--accent);padding:20px 0}.warning-measures>div>span{font-size:12px;letter-spacing:2px;color:var(--muted)}.warning-measures h2{font-size:clamp(25px,3vw,44px);letter-spacing:-.04em;margin:14px 0}.warning-measures p{font-size:clamp(15px,1.4vw,21px);line-height:1.5;color:var(--muted);margin:0;max-width:330px}.duality h2{font-size:clamp(28px,3.6vw,56px)}
+@media(max-width:650px){.warning-measures{grid-template-columns:1fr;gap:8px}.warning-measures>div{padding:12px 0}.warning-measures h2{margin:8px 0}.warning-measures p{max-width:none}.duality h2{font-size:30px}}
