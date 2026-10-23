@@ -1,6 +1,6 @@
 # SIGNAL seminar: strategic risk hands-on
 
-The 42-slide English deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
+The bilingual deck and three-organization app follow [the seminar plan](seminar-plan.md). Participants challenge growth assumptions, market choices, business models and investment commitments using real news and authored internal evidence. Current risk, projected protection and measured KPI achievement remain separate.
 
 ## Start locally
 
@@ -14,14 +14,13 @@ npm --prefix app run dev
 | Presenter | http://localhost/admin |
 | Audience | http://localhost/audience |
 | Deck | http://localhost/presentation/deck/ |
-| Owned session | /admin/sessions/CODE |
-| Private participant session | /audience/sessions/CODE |
+| Admin password | app/.local/admin-password.txt (local private file) |
 
 Vite listens on LAN and proxies the loopback API and presentation. Phones need the laptop's reachable Wi-Fi address on port 80. No firewall/cloud changes are made automatically.
 
 ## Presenter sequence
 
-1. Create or resume a session in `/admin`. Share its LAN audience link or QR.
+1. Sign in at `/admin` with the admin password. Share the `/audience/` link or QR from **Signals & participants**. No session code is needed.
 2. Introduce AI in audit and assurance, the GRC disconnect and SIGNAL.
 3. Ask participants to choose an organization and objective. Inspect initial risks, plans and source selection.
 4. Show the real ANTARA tariff announcement and compare organizational exposure.
@@ -57,7 +56,7 @@ Slide 5 loops the evidence paths with static handoff questions. Slide 9 presents
 
 ## Persistence and checks
 
-Version-3 `/api/workshop` sessions use local PostgreSQL with owner checks, workspace isolation, row locks, ordered releases and decision history. Existing session records remain in the database; superseded application APIs are not included.
+One shared version-3 seminar uses PostgreSQL with password-protected admin control, participant workspace isolation, row locks, ordered releases and decision history. Existing session records remain in the database; superseded application APIs are not included.
 
 Run `npm --prefix app test` and `npm --prefix app run build`. Checks include strategic relevance, historical dates, uncertain/opportunity signals, denominator reconciliation, owner-only release, source selection, evidence/assessment/plan decisions and tenant isolation. Physical-phone and projected visual checks are still needed in the event environment.
 
@@ -88,14 +87,13 @@ If browser edits belong to an earlier deck structure, they are archived locally 
 
 ## Live slide following
 
-1. In `/admin`, create or resume your session and select the audience-reachable server address.
-2. Under **Live presentation**, open **Presenter deck** in the same browser that owns the session. This link stays on the Admin origin so its authentication cookie works even when audience links use the LAN address.
-3. Share **Audience deck link**. No guest account is needed to view slides. Viewer links include the session code; the plain deck URL remains independent.
-4. The presenter deck broadcasts its active slide. Audience decks follow by default and display the presenter's current slide and title.
-5. Next/previous, contents, chapter buttons or a direct hash change switch that viewer to independent browsing. **Browse independently** also holds the current slide. **Return to live** jumps to the latest presenter slide and resumes following.
-6. The five section markers and numbered slide footer remain visible in fullscreen. The live bar remains visible; presentation navigation stays hidden in fullscreen as before.
+1. Sign in at `/admin`. The **Presentation** tab contains the live deck and Previous/Next/Fullscreen controls.
+2. Other admins sign in with the same admin password in their own browsers. All controllers see the same current slide, including after reload; opening a panel does not reset the deck.
+3. Share the ordinary **Audience deck** link. No guest account or code is needed to view slides. Audience members follow by default and can browse independently or return to live.
+4. Change slides with the panel buttons, the deck's keyboard navigation, Contents or the progress bar. Concurrent Next/Previous requests operate on the latest shared position. An outdated absolute jump restores the latest position rather than overwriting another admin.
+5. Use **Signals & participants** to release evidence and review aggregate progress while the shared deck position remains available.
 
-Updates use short polling, approximately every 1.5 seconds. Disconnects retain the last known slide and indicate interrupted connectivity. Only the session owner can publish; the public endpoint returns only deck ID, slide key, publication state and timestamp. It exposes no participant records or private rationale. New content uses semantic slide keys so adding the agenda does not reinterpret a saved numeric cursor.
+The current position is polled approximately every second. Only authenticated admins can publish. The public endpoint returns slide metadata, revision and timestamp, never participant records or rationale. Passwords and admin tokens never enter deck URLs.
 
 ## Signal review and response
 

@@ -1,29 +1,33 @@
 import {Router} from 'express';
 import {z} from 'zod';
 import {pool} from './db.js';
-import {scenarioVersion} from '../shared/workshop.js';
+import {sharedRoom,roomCode} from './sharedRoom.js';
+import {requireAdmin} from './adminAuth.js';
 import outline from '../../website/assets/data/deck-outline.json';
-
-const sessionCode=z.string().regex(/^[A-Z0-9]{6}$/);
 const slideKeys=new Set(outline.slides.map(slide=>slide.key));
-export const presentationPublic=Router();
-export const presentationHost=Router();
-
-// Read-only viewer state is public by session link. No participant records are returned.
+export const presentationPublic=Router(),presentationHost=Router();
+function state(p:any){const key=slideKeys.has(p?.slideKey)?p.slideKey:'cover';return {deckId:outline.deckId,slideKey:key,slideNumber:outline.slides.findIndex(s=>s.key===key)+1,total:outline.slides.length,revision:p?.revision||0,updatedAt:p?.updatedAt||null,published:!!p};}
+let snapshot:Promise<any>|undefined,snapshotUntil=0;
 presentationPublic.get('/presentation/:code',async(req,res)=>{
- const code=sessionCode.parse(req.params.code);
- const row=(await pool.query("SELECT data->'presentation' AS presentation FROM seminar_sessions WHERE code=$1 AND data->>'version'=$2",[code,String(scenarioVersion)])).rows[0];
- if(!row)return res.status(404).json({error:'Presentation session not found.'});
- res.json({deckId:outline.deckId,slideKey:slideKeys.has(row.presentation?.slideKey)?row.presentation.slideKey:'cover',updatedAt:row.presentation?.updatedAt||null,published:!!row.presentation});
+ if(!['live',roomCode].includes(String(req.params.code)))return res.status(404).json({error:'Presentation not found.'});
+ if(!snapshot||Date.now()>snapshotUntil){snapshotUntil=Date.now()+200;snapshot=sharedRoom().then(room=>state(room.data.presentation)).catch(error=>{snapshot=undefined;throw error;});}
+ res.json(await snapshot);
 });
-
-// Mounted after authentication; the query enforces session ownership independently of UI flags.
-presentationHost.put('/workshop/host/:code/presentation',async(req,res)=>{
- const code=sessionCode.parse(req.params.code);
- const input=z.object({deckId:z.string(),slideKey:z.string().refine(key=>slideKeys.has(key),'Unknown slide')}).parse(req.body);
- if(input.deckId!==outline.deckId)return res.status(409).json({error:'Reload the presentation to use the current deck version.'});
- const presentation={slideKey:input.slideKey,updatedAt:new Date().toISOString()};
- const saved=await pool.query("UPDATE seminar_sessions SET data=jsonb_set(data,'{presentation}',$1::jsonb) WHERE code=$2 AND owner_id=$3 AND data->>'version'=$4 RETURNING id",[JSON.stringify(presentation),code,res.locals.workspace.id,String(scenarioVersion)]);
- if(!saved.rowCount)return res.status(404).json({error:'Presenter session not found in your workspace.'});
- res.json({deckId:outline.deckId,...presentation,published:true});
-});
+async function save(req:any,res:any,navigate=false){
+ const input=navigate?z.object({direction:z.enum(['next','previous'])}).parse(req.body):z.object({deckId:z.string(),slideKey:z.string().refine(key=>slideKeys.has(key),'Unknown slide'),expectedRevision:z.number().int().min(0)}).parse(req.body);
+ if('deckId' in input&&input.deckId!==outline.deckId)return res.status(409).json({error:'Reload the presentation to use the current deck version.'});
+ await sharedRoom();const db=await pool.connect();
+ try{
+  await db.query('BEGIN');
+  const row=(await db.query('SELECT data FROM seminar_sessions WHERE code=$1 FOR UPDATE',[roomCode])).rows[0];
+  const current=state(row.data.presentation);
+  if('expectedRevision' in input&&input.expectedRevision!==current.revision){await db.query('ROLLBACK');return res.status(409).json({error:'Another admin moved the deck. The latest position has been restored.',...current});}
+  const slideKey='direction' in input?outline.slides[Math.max(0,Math.min(outline.slides.length-1,current.slideNumber-1+(input.direction==='next'?1:-1)))].key:input.slideKey;
+  const next={slideKey,revision:current.revision+1,updatedAt:new Date().toISOString()};
+  await db.query("UPDATE seminar_sessions SET data=jsonb_set(data,'{presentation}',$1::jsonb) WHERE code=$2",[JSON.stringify(next),roomCode]);
+  await db.query('COMMIT');snapshot=undefined;res.json(state(next));
+ }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
+}
+presentationHost.put('/admin/presentation',requireAdmin,(req,res)=>save(req,res));
+presentationHost.post('/admin/presentation/navigate',requireAdmin,(req,res)=>save(req,res,true));
+presentationHost.put('/workshop/host/:code/presentation',requireAdmin,(req,res)=>save(req,res));

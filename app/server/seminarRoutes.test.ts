@@ -11,22 +11,22 @@ test('mobile walkthroughs use dedicated read-only routes, separate from session 
 test('admin and audience are separate paths and cannot be switched by query flags',()=>{
  assert.equal(route('/admin?mode=participant&view=dashboard').kind,'admin');
  assert.equal(route('/audience?mode=presenter&view=dashboard').kind,'audience');
- assert.equal(route('/admin/sessions/abc234').canonical,'/admin/sessions/ABC234');
- assert.equal(route('/audience/sessions/ABC234').code,'ABC234');
+ assert.equal(route('/admin/sessions/abc234').canonical,'/admin');
+ assert.equal(route('/audience/sessions/ABC234').code,undefined);
  assert.equal(route('/admin/sessions/bad').kind,'notfound');
  assert.equal(route('/unknown').kind,'notfound');
- assert.equal(sessionPath('audience','abc234'),'/audience/sessions/ABC234');
+ assert.equal(sessionPath('audience','abc234'),'/audience');
 });
 test('root entry uses the audience route; query flags do not open admin controls',()=>{
  assert.equal(route('/').canonical,'/audience');
- assert.equal(route('/?mode=presenter&session=ABC234').canonical,'/audience/sessions/ABC234');
+ assert.equal(route('/?mode=presenter&session=ABC234').canonical,'/audience');
  assert.equal(route('/?view=dashboard').canonical,'/audience');
  assert.equal(route('/join-qr?join=https%3A%2F%2Fexample.com%2Faudience').kind,'qr');
 });
 
-test('presenter links retain Admin cookies while audience links use the reachable LAN host',()=>{
+test('admin and audience links contain no session codes and preserve their configured origins',()=>{
  const links=presentationLinks('http://localhost','http://192.168.0.190','ABC234');
- assert.equal(new URL(links.presenter).origin,'http://localhost');assert.equal(new URL(links.presenter).searchParams.get('present'),'1');
- assert.equal(new URL(links.presenter).searchParams.get('join'),'http://192.168.0.190/audience/sessions/ABC234');
+ assert.equal(new URL(links.presenter).origin,'http://localhost');assert.equal(new URL(links.presenter).pathname,'/admin/');
+ assert.equal(new URL(links.presenter).searchParams.get('session'),null);
  assert.equal(new URL(links.audience).origin,'http://192.168.0.190');assert.equal(new URL(links.audience).searchParams.get('present'),null);
 });

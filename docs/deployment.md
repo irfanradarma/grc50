@@ -26,11 +26,17 @@ Render Free sleeps after inactivity. Open and test the service ahead of the webi
 
 - Admin: `/grc50/admin/`
 - Audience: `/grc50/audience/`
-- Session: `/grc50/audience/?session=ABC234`
+- One shared seminar: no session query or code; older session links canonicalize to the role route.
 - Deck: `/grc50/presentation/deck/` (`/grc50/deck/` remains compatible)
 
-Sessions use random, hashed bearer credentials retained by the participant browser. This avoids dependence on third-party cookies between Pages and Render. Do not share a presenter browser profile or its stored credentials. The API allows only the configured frontend origin, and session ownership is enforced on the server.
+Participant workspaces use random, hashed bearer credentials retained by the participant browser. This avoids dependence on third-party cookies between Pages and Render. Do not share a presenter browser profile or its stored credentials. The API allows only the configured frontend origin, and admin authorization is enforced on the server. Admin login uses a scrypt password hash, rate-limited attempts and individually revocable eight-hour tokens stored only in the browser tab session. A guest token cannot publish slides or release signals.
 
 ## Release checks
 
 Run `npm --prefix app test`, `npm --prefix app run build` and `node app/scripts/build-pages.mjs`. After deployment, verify API health, distinct guest workspaces, presenter session creation, participant joining, source release, relevance review, reassessment, mitigation, internal documents, live slide following and read-only guide playback. Keep Atlas checks read-only; do not apply the local public-schema migration to its database.
+
+## Shared control-room release
+
+Configure `ADMIN_PASSWORD_HASH` in Render before releasing this version. Apply the password in the private `app/.local/admin-password.txt` file using `node app/scripts/configure-admin.mjs`; the password and Render-ready hash are saved in ignored `app/.local/` files. Copy the hash from `admin-password-hash.txt` into Render (not the plaintext password). The script reuses the chosen password and existing hash when unchanged; on first setup it generates a password if no file exists. Password changes invalidate previously issued admin tokens. Restart the API after configuration changes. Missing configuration fails closed with HTTP 503. Do not publish either private file.
+
+The API initializes one SIGNAL room using the existing isolated SIGNAL tables; no schema migration or Atlas changes are needed. Existing historical rooms remain untouched. Release the API before Pages because the frontend now uses `/presentation/live`, `/admin/presentation` and `/admin/presentation/navigate`. All controllers read the same revision. Next/previous operations are serialized in PostgreSQL; an outdated absolute slide jump receives HTTP 409 and the latest position. Signal releases preserve the presentation state.

@@ -1,5 +1,5 @@
 import {installDeckLanguage} from './deck-language.js?v=bilingual-1';
-import {connectLiveDeck} from '../js/deck-live.js?v=keynote-1';
+import {connectLiveDeck} from '../js/deck-live.js?v=shared-room-1';
 const reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
 const assets=new URL('../',import.meta.url).href;
@@ -9,8 +9,8 @@ const guideApp=['localhost','127.0.0.1'].includes(location.hostname)&&location.p
 const presenter=new URLSearchParams(location.search).get('present')==='1';
 document.body.classList.toggle('presenter',presenter);
 document.querySelectorAll('[data-presenter-only]').forEach(element=>element.hidden=!presenter);
-const params=new URLSearchParams(location.search),session=(params.get('session')||'').toUpperCase();
-let joinHref=/^[A-Z0-9]{6}$/.test(session)?app+'/audience/?session='+session:app+'/audience/';
+const params=new URLSearchParams(location.search);
+let joinHref=app+'/audience/';
 try{const supplied=new URL(params.get('join')||joinHref);if(['https:','http:'].includes(supplied.protocol)&&!supplied.username&&!supplied.password)joinHref=supplied.href;}catch{}
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icon=name=>`<img class="icon" src="${assets}icons/${name}.svg" alt="">`;
@@ -101,7 +101,7 @@ const slides={
  'the-solution-framework':{tone:'night',title:'Signal Framework',kind:'framework',html:framework},
 
  'now-you-take-the-decisions':{title:'Same event. Different consequences.',html:`${title(`Same event.<br>${mark('Different consequences.')}`)}${sources()}<p class="anchor">External news + internal evidence → your risk decision.</p>`},
- 'your-turn':{tone:'night',title:'Take the seat.',html:`${title('Take<br><span class="silver">the seat.</span>')}<div class="join-layout"><div class="join-code"><iframe title="Audience join QR" src="${app}/join-qr/?join=${encodeURIComponent(joinHref)}" loading="eager"></iframe><small>SCAN TO OPEN SIGNAL</small></div><div><p class="join-title">You are the risk manager.</p><a class="big-link" href="${app}/audience/" target="_blank" rel="noreferrer">Open SIGNAL ↗</a><p class="subtitle">Use the presenter’s session code.<br>Phone or computer. Your own workspace.</p></div></div><p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>`},
+ 'your-turn':{tone:'night',title:'Take the seat.',html:`${title('Take<br><span class="silver">the seat.</span>')}<div class="join-layout"><div class="join-code"><iframe title="Audience join QR" src="${app}/join-qr/?join=${encodeURIComponent(joinHref)}" loading="eager"></iframe><small>SCAN TO OPEN SIGNAL</small></div><div><p class="join-title">You are the risk manager.</p><a class="big-link" href="${app}/audience/" target="_blank" rel="noreferrer">Open SIGNAL ↗</a><p class="subtitle">No session code needed.<br>Phone or computer. Your own workspace.</p></div></div><p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>`},
  'choose-your-context':{title:'Choose your world.',html:`${title('Choose your world.')}<p class="subtitle">Then choose the objective you want to protect.</p>${orgs()}`},
  'app-overview':{kind:'app-overview',title:'Your workspace. Three views.',html:`${title('Your workspace. Three views.')}<button class="overview-reset" data-overview-reset hidden>All three menus</button><div class="overview-grid">${overviewMenus.map(([file,name,description],i)=>`<article><h2><span>0${i+1}</span>${name}</h2><button class="overview-image" data-overview="${file}" aria-label="Enlarge ${name} screenshot"><img src="${assets}images/walkthrough/overview-${file}.png" alt="${name} before any signals are released"><span>Tap to enlarge</span></button><p>${description}</p></article>`).join('')}</div><p class="micro">Start with the context. Know the risks. Choose the sources.<span>We will review new signals together after the first news example.</span></p>`},
  'your-starting-position':demo('menus','Now, open your alert.','Risks · scores · owners · mitigation'),
@@ -127,8 +127,7 @@ const slides={
 };
 
 slides.cover.html+='<a class="cover-access" href="https://s.kemenkeu.go.id/signal" target="_blank" rel="noreferrer"><span>Access the slides</span><strong>s.kemenkeu.go.id/signal &#8599;</strong></a>';
-slides['your-turn'].html=slides['your-turn'].html.replace('href="'+app+'/audience/"','href="'+esc(joinHref)+'"').replace('<p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>',`<p class="micro">${/^[A-Z0-9]{6}$/.test(session)?'SESSION / '+session:'Join the presenter’s session'}<span>Your organization. Your decisions. Your private workspace.</span></p>`);
-if(/^[A-Z0-9]{6}$/.test(session))slides['your-turn'].html=slides['your-turn'].html.replace('<small>SCAN TO OPEN SIGNAL</small>',`<b>${session}</b><small>SCAN TO JOIN THIS SESSION</small>`);
+slides['your-turn'].html=slides['your-turn'].html.replace('href="'+app+'/audience/"','href="'+esc(joinHref)+'"').replace('<p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>',`<p class="micro">One shared seminar<span>Your organization. Your decisions. Your private workspace.</span></p>`);
 
 const stage=document.getElementById('stage');
 for(const entry of reference.slides)if(!slides[entry.key])throw Error('Missing design for '+entry.key);

@@ -19,7 +19,7 @@ An English Keynote-style presentation and connected risk-management workshop.
 - [Deck](https://irfanradarma.github.io/grc50/presentation/deck/)
 - [Archived deck](https://irfanradarma.github.io/grc50/presentation/deck-archive/)
 
-Create a presenter session in Admin. Its presenter deck leads the audience's session-linked deck; audiences may browse independently and return to live. Top/bottom controls appear near their respective edges. Move near the right edge for section and slide navigation.
+One shared seminar runs at `/audience/`, without join codes. Password-protected `/admin/` contains the deck and signal-release controls. Multiple signed-in admins share the current slide position; audiences may browse independently and return to live. Top/bottom controls appear near their respective edges. Move near the right edge for section and slide navigation.
 
 The deck covers AI in assurance, AI across the full risk cycle with mandatory human authority, the GRC integration gap, SIGNAL, the strategic hands-on case and SIPT's conceptual direction. The SIPT section does not show SIGNAL as a platform interface.
 
@@ -35,10 +35,11 @@ Open `http://127.0.0.1:8090/website/deck/?present=1`. Read-only desktop guides r
 
 ```powershell
 ./app/scripts/start-local-db.ps1
+node app/scripts/configure-admin.mjs # first setup, or after editing the private password file
 npm --prefix app run dev
 ```
 
-Open `http://localhost/admin` and `http://localhost/presentation/deck/`. Keep `.env` and `.local/` private.
+Open `http://localhost/admin` and `http://localhost/presentation/deck/`. The generated local password is in `app/.local/admin-password.txt`. Edit that private file, then run the setup script to regenerate its hash without replacing your chosen password; restart the API afterward. Keep `.env` and `.local/` private. Historical coded sessions are retained in the database but are not used by the shared seminar.
 
 Participants choose an Indonesian organization and objectives, then review news, reports, audit evidence and continuous-assurance exceptions. Capture/neglect, reassessment and mitigation remain explicit human decisions. Current and projected scores stay separate. Relevance uses transparent rules; a language model and social connector are not connected. The ANTARA case replays the 3 April 2025 tariff announcement as of 8 April 2025, not as a current-rate claim.
 

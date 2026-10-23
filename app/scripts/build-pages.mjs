@@ -20,6 +20,6 @@ for(const route of routes){await fs.mkdir(path.join(output,route),{recursive:tru
 const runtime='window.SIGNAL_HOSTING='+JSON.stringify({...config,frontendUrl:config.frontendUrl.replace(/\/$/,'')})+';\n';
 for(const prefix of ['','presentation/'])await fs.writeFile(path.join(output,prefix,'assets/js/hosting-config.js'),runtime);
 // Compatibility for previously shared dynamic session paths. The final app page returns HTTP 200.
-await fs.writeFile(path.join(output,'404.html'),`<!doctype html><meta charset="utf-8"><title>SIGNAL</title><script>const base=${JSON.stringify(base)},p=location.pathname.slice(base.length),m=p.match(/^(admin|audience)\\/sessions\\/([A-Z0-9]{6})\\/?$/i);if(m)location.replace(base+m[1]+'/?session='+m[2]);</script><p>Page not found. <a href="${base}audience/">Open SIGNAL</a></p>`);
+await fs.writeFile(path.join(output,'404.html'),`<!doctype html><meta charset="utf-8"><title>SIGNAL</title><script>const base=${JSON.stringify(base)},p=location.pathname.slice(base.length),m=p.match(/^(admin|audience)\\/sessions\\/([A-Z0-9]{6})\\/?$/i);if(m)location.replace(base+m[1]+'/');</script><p>Page not found. <a href="${base}audience/">Open SIGNAL</a></p>`);
 await fs.writeFile(path.join(output,'.nojekyll'),'');
 console.log('Pages artifact ready: app/.local/pages');

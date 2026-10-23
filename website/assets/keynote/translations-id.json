@@ -14,7 +14,6 @@
     "Evidence shows the response is effective.": "Bukti menunjukkan respons berjalan efektif.",
     "Measure the protection.": "Ukur efektivitas perlindungannya.",
     "Not just the number of alerts.": "Bukan hanya jumlah peringatan.",
-
     "e.g. hallucination or bias": "mis. halusinasi atau bias",
     "e.g. deepfakes or fraud": "mis. deepfake atau penipuan",
     "e.g. data leakage or vendor concentration": "mis. kebocoran data atau konsentrasi vendor",
@@ -673,7 +672,10 @@
     "opens notes.": "membuka catatan.",
     "Explore at your pace.": "Jelajahi sesuai ritme Anda.",
     "brings you back to the presenter.": "membawa Anda kembali ke slide presenter.",
-    "Explore at your pace. Return to live brings you back to the presenter.": "Jelajahi sesuai ritme Anda. Kembali ke siaran membawa Anda kembali ke slide presenter."
+    "Explore at your pace. Return to live brings you back to the presenter.": "Jelajahi sesuai ritme Anda. Kembali ke siaran membawa Anda kembali ke slide presenter.",
+    "No session code needed.": "Tanpa kode sesi.",
+    "Shared admin control": "Kendali admin bersama",
+    "One shared seminar": "Satu seminar bersama"
   },
   "notes": {
     "cover": "Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi. Bagian dari HORI ke-80 Seminar Series, 26 Oktober 2026. Fokus paparan adalah menghubungkan bukti, pertimbangan manusia, dan tindakan melalui SIGNAL.",

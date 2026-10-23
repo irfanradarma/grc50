@@ -6,12 +6,12 @@ export const apiOrigin:string=(env.VITE_API_URL||'').replace(/\/$/,'');
 export function browserPath(path:string){
  if(basePath==='/')return path;
  const match=path.match(/^\/(admin|audience)\/sessions\/([A-Z0-9]{6})$/);
- if(match)return basePath+match[1]+'/?session='+match[2];
+ if(match)return basePath+match[1]+'/';
  return basePath+path.replace(/^\//,'').replace(/^(admin|audience|join-qr)$/,'$1/');
 }
 export function frontendRoute(){const url=new URL(location.href);if(basePath!=='/'&&url.pathname.startsWith(basePath))url.pathname='/'+url.pathname.slice(basePath.length);return resolveSeminarRoute(url);}
 export const publicBase=()=>new URL(basePath,location.origin).href.replace(/\/$/,'');
-export function authHeaders():Record<string,string>{const token=localStorage.getItem('signal-api-session');return token?{Authorization:'Bearer '+token}:{};}
+export function authHeaders(admin=false):Record<string,string>{const token=admin?sessionStorage.getItem('signal-admin-token'):localStorage.getItem('signal-api-session');return token?{Authorization:'Bearer '+token}:{};}
 export function saveApiSession(token?:string){if(token)localStorage.setItem('signal-api-session',token);}
 export async function openDocument(path:string){
  const tab=window.open('about:blank','_blank');if(tab)tab.opener=null;

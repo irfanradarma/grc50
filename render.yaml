@@ -19,5 +19,7 @@ services:
         value: https://irfanradarma.github.io
       - key: PUBLIC_FRONTEND_URL
         value: https://irfanradarma.github.io/grc50
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
       - key: DATABASE_URL
         sync: false

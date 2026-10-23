@@ -1,4 +1,7 @@
 import {test} from 'node:test';
+import {scryptSync} from 'node:crypto';
+const adminPassword='test-only-control-password';
+process.env.ADMIN_PASSWORD_HASH='scrypt$'+'a'.repeat(32)+'$'+scryptSync(adminPassword,'a'.repeat(32),64).toString('hex');
 import assert from 'node:assert/strict';
 import {setupParticipant,guidedSignals,internalEvidence,materialize,proposed,projection,featured,organizations,screenArticle,scenarioVersion} from '../shared/workshop.js';
 process.env.NODE_ENV='test';
@@ -58,7 +61,7 @@ test('three contexts, selected objectives and non-cumulative assessment proposal
 });
 test('complete workshop: private organizations, guided case, mitigation, external/internal evidence, sources and ownership',async()=>{
  const server=app.listen(0,'127.0.0.1');await new Promise<void>(r=>server.once('listening',r));const address=server.address();assert(address&&typeof address==='object');const base='http://127.0.0.1:'+address.port+'/api';const workspaces:string[]=[];let sessionId='';
- async function req(path:string,method='GET',cookie='',body?:unknown){return fetch(base+path,{method,headers:{Cookie:cookie,'x-signal-request':'1','Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});}
+ async function req(path:string,method='GET',cookie='',body?:unknown){return fetch(base+path,{method,headers:{...(cookie.startsWith('Bearer ')?{Authorization:cookie}:{Cookie:cookie}),'x-signal-request':'1','Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});}
  try{
  assert.equal((await req('/auth/me')).status,401);
  assert.equal((await fetch(base+'/auth/guest',{method:'POST'})).status,403);
@@ -67,19 +70,23 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  const legacyCookie=await req('/auth/me','GET',cookies[0].replace('signal_session=','hori_session='));
  assert.equal(legacyCookie.status,200);assert.equal((await legacyCookie.json()).id,workspaces[0]);
  assert(legacyCookie.headers.get('set-cookie')?.startsWith('signal_session='));
- const [host,a,b,d]=cookies;const {code}=await(await req('/workshop/sessions','POST',host)).json();sessionId=(await pool.query('SELECT id FROM seminar_sessions WHERE code=$1',[code])).rows[0].id;
- const original=(await pool.query('SELECT data FROM seminar_sessions WHERE id=$1',[sessionId])).rows[0].data;
- const legacy={...original,version:2};await pool.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[legacy,sessionId]);
- assert.equal((await req('/workshop/join','POST',a,{code})).status,404);
- assert.equal((await req('/workshop/host/'+code,'GET',host)).status,404);
- assert.deepEqual((await pool.query('SELECT data FROM seminar_sessions WHERE id=$1',[sessionId])).rows[0].data,legacy);
- await pool.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[original,sessionId]);
- assert.equal((await req('/workshop/host/'+code,'GET',a)).status,404);
- // Read-only deck viewers need no guest account, but only this session owner can lead.
+ const [,a,b,d]=cookies;
+ assert.equal((await req('/auth/admin/me','GET',a)).status,403);
+ assert.equal((await req('/auth/admin/login','POST','',{password:'wrong'})).status,401);
+ assert.equal((await req('/workshop/sessions','POST',a)).status,403);
+ const login=async()=>{const r=await req('/auth/admin/login','POST','',{password:adminPassword});assert.equal(r.status,200);return 'Bearer '+(await r.json()).token;};
+ const configured=process.env.ADMIN_PASSWORD_HASH;delete process.env.ADMIN_PASSWORD_HASH;assert.equal((await req('/auth/admin/login','POST','',{password:adminPassword})).status,503);process.env.ADMIN_PASSWORD_HASH=configured;
+ const host=await login(),secondAdmin=await login();assert.notEqual(host,secondAdmin);
+ const previousHash=process.env.ADMIN_PASSWORD_HASH;process.env.ADMIN_PASSWORD_HASH='scrypt$'+'b'.repeat(32)+'$'+scryptSync('changed-test-password','b'.repeat(32),64).toString('hex');
+ assert.equal((await req('/auth/admin/me','GET',host)).status,401,'A password change invalidates previously issued admin tokens');process.env.ADMIN_PASSWORD_HASH=previousHash;
+ const {code}=await(await req('/workshop/sessions','POST',host)).json();assert.equal(code,'TSTSIG');sessionId=(await pool.query('SELECT id FROM seminar_sessions WHERE code=$1',[code])).rows[0].id;
+ assert.equal((await req('/workshop/host/'+code,'GET',a)).status,403);
+ assert.equal((await req('/workshop/host/'+code,'GET',secondAdmin)).status,200);assert.equal((await req('/workshop/access','GET',host)).status,200);assert.equal((await req('/workshop/access','GET',a)).status,403);
+ // Public viewers need no account. Both password-authenticated admins share control.
  const liveState=()=>req('/presentation/'+code);
  assert.equal((await liveState()).status,200);assert.equal((await(await liveState()).json()).published,false);
- const publish=(cookie:string,slideKey:string,deckId=deckOutline.deckId)=>req('/workshop/host/'+code+'/presentation','PUT',cookie,{slideKey,deckId});
- assert.equal((await publish(a,'agenda')).status,404);assert.equal((await publish('','agenda')).status,401);
+ const publish=async(cookie:string,slideKey:string,deckId=deckOutline.deckId)=>{const revision=(await(await liveState()).json()).revision;return req('/admin/presentation','PUT',cookie,{slideKey,deckId,expectedRevision:revision});};
+ assert.equal((await publish(a,'agenda')).status,403);assert.equal((await publish('','agenda')).status,401);
  assert.equal((await publish(host,'unknown-slide')).status,400);assert.equal((await publish(host,'agenda','old-deck')).status,409);
  assert.equal((await publish(host,'agenda')).status,200);
  assert.equal((await publish(host,'ai-risk-cycle')).status,200);
@@ -88,15 +95,22 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await(await liveState()).json()).slideKey,'agenda');
  assert.equal((await publish(host,'the-foundation')).status,200);
  const publicDeck=await(await liveState()).json();assert.equal(publicDeck.slideKey,'the-foundation');assert.equal(publicDeck.published,true);
- assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','published','slideKey','updatedAt']);
+ assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','published','revision','slideKey','slideNumber','total','updatedAt']);
+ const stale=publicDeck.revision;
+ const movements=await Promise.all([req('/admin/presentation/navigate','POST',host,{direction:'next'}),req('/admin/presentation/navigate','POST',secondAdmin,{direction:'next'})]);
+ assert(movements.every(r=>r.status===200));const moved=await(await liveState()).json();assert.equal(moved.slideNumber,publicDeck.slideNumber+2);assert.equal(moved.revision,stale+2);
+ const conflict=await req('/admin/presentation','PUT',host,{deckId:deckOutline.deckId,slideKey:'cover',expectedRevision:stale});assert.equal(conflict.status,409);assert.equal((await conflict.json()).slideKey,moved.slideKey);
+ assert.equal((await req('/auth/admin/logout','POST',secondAdmin)).status,200);assert.equal((await req('/admin/presentation/navigate','POST',secondAdmin,{direction:'next'})).status,401);
+ assert.equal((await publish(host,'the-foundation')).status,200);
 
- for(const cookie of [a,b,d])assert.equal((await req('/workshop/join','POST',cookie,{code})).status,200);
+
+ for(const cookie of [a,b,d]){const joined=await req('/workshop/join','POST',cookie);assert.equal(joined.status,200);assert.equal((await joined.json()).code,code);}
  const privateRows=await tenant(workspaces[1],c=>c.query('SELECT workspace_id FROM seminar_participants WHERE session_id=$1',[sessionId]));assert.equal(privateRows.rowCount,1);assert.equal(privateRows.rows[0].workspace_id,workspaces[1]);
  const setup=(cookie:string,organizationId:string,objectiveIds:string[])=>req('/workshop/'+code+'/setup','PUT',cookie,{organizationId,objectiveIds,company:'',sourceIds:['antara','detik','cnn','kompas']});
  assert.equal((await setup(a,'logistics',['P1'])).status,400);
  assert.equal((await setup(a,'logistics',['L1','L2'])).status,200);assert.equal((await setup(b,'food',['P1'])).status,200);assert.equal((await setup(d,'digital',['D1'])).status,200);
  const release=(stage:string,cookie=host)=>req('/workshop/host/'+code+'/release','POST',cookie,{stage});
- assert.equal((await release('guided',a)).status,404);assert.equal((await release('internal')).status,409);assert.equal((await release('guided')).status,200);assert.equal((await release('guided')).status,200);
+ assert.equal((await release('guided',a)).status,403);assert.equal((await release('internal')).status,409);assert.equal((await release('guided')).status,200);assert.equal((await release('guided')).status,200);
  assert.equal((await(await liveState()).json()).slideKey,'the-foundation','Signal releases must preserve live presentation state');
  const state=async(cookie:string)=>(await(await req('/workshop/'+code+'/state','GET',cookie)).json()).participant;
  const pa=await state(a),pb=await state(b),pd=await state(d);assert.equal(pa.signals.length,1);assert.equal(pa.risks.length,4);assert.equal(pb.risks.length,2);assert.deepEqual(pd.signals[0].riskIds,[]);
@@ -120,7 +134,7 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await state(a)).risks[0].likelihood,4);
  assert.equal((await req('/workshop/'+code+'/sources','PUT',a,{sourceIds:['antara']})).status,200);
  await pool.query('UPDATE seminar_sessions SET data=data || $1::jsonb WHERE id=$2',[JSON.stringify({news:[{id:'a1',eventId:'event-1',sourceId:'antara',title:'Tarif AS menekan ekspor Indonesia',summary:'Review the export growth assumptions',publisher:'ANTARA',url:featured.url,publishedAt:new Date().toISOString()},{id:'a2',eventId:'event-1',sourceId:'antara',title:'Corroborating report',summary:'Same event',publisher:'ANTARA',url:featured.url,publishedAt:new Date().toISOString()},{id:'b1',eventId:'event-2',sourceId:'detik',title:'Kebijakan perdagangan berubah',summary:'Source disabled for a',publisher:'detik',url:'https://example.invalid/test',publishedAt:new Date().toISOString()}]}),sessionId]);
- assert.equal((await req('/workshop/host/'+code+'/prepare','POST',a,{mode:'curated'})).status,404);
+ assert.equal((await req('/workshop/host/'+code+'/prepare','POST',a,{mode:'curated'})).status,403);
  const prepared=await req('/workshop/host/'+code+'/prepare','POST',host,{mode:'curated'});assert.equal(prepared.status,200);assert.equal((await prepared.json()).articles,8);
  const pack=await(await req('/workshop/host/'+code,'GET',host)).json();assert.equal(pack.externalMode,'curated');assert.equal(pack.version,scenarioVersion);assert(pack.news.every((n:any)=>Date.parse(n.publishedAt)<=Date.parse(featured.knowledgeCutoff)));assert.equal(pack.sourceHealth.find((v:any)=>v.sourceId==='cnn').count,0);
  // Keep the source-filter/event-grouping fixture for this participant isolation check.
@@ -133,6 +147,9 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/'+code+'/document/'+ca.id,'GET',d)).status,404);
  const stats=await(await req('/workshop/host/'+code,'GET',host)).json();assert.equal(stats.progress.length,3);assert.equal(stats.progress.find((v:any)=>v.organizationId==='logistics').plans,2);assert.equal(stats.preview.length,3);assert(!JSON.stringify(stats.progress).includes('notes'));
  const implementation=(await state(a)).signals.find((v:any)=>v.id.startsWith('implementation-'));assert(implementation);assert.equal((await decide(a,implementation.id,['L1-R1'])).status,200);assert.equal((await reassess(a,'L1-R1','Update',3)).status,200);const replay=await state(a);assert.equal(replay.risks[0].likelihood,3);assert(replay.plans.some((v:any)=>v.status==='Done'));assert(replay.reviews.length>=2);
+ assert.equal((await req('/auth/admin/logout','POST',host)).status,200);
+ for(let attempt=0;attempt<10;attempt++)assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,401);
+ assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,429);
  }finally{
  if(sessionId){for(const w of workspaces)await tenant(w,c=>c.query('DELETE FROM seminar_participants WHERE session_id=$1 AND workspace_id=$2',[sessionId,w]));await pool.query('DELETE FROM seminar_sessions WHERE id=$1',[sessionId]);}
  for(const w of workspaces){await pool.query('DELETE FROM guest_sessions WHERE workspace_id=$1',[w]);await pool.query('DELETE FROM workspaces WHERE id=$1',[w]);}

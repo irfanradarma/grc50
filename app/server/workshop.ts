@@ -3,6 +3,8 @@ import {networkInterfaces} from 'node:os';
 import {randomUUID,randomInt,createHash} from 'node:crypto';
 import {z} from 'zod';
 import {pool,tenant} from './db.js';
+import {sharedRoom,roomCode} from './sharedRoom.js';
+import {requireAdmin} from './adminAuth.js';
 import strategicNews from '../../website/assets/data/strategic-news.json';
 import {captureNews} from './news.js';
 import {organizations,publishers,featured,c,stages,scenarioVersion,freshParticipant,setupParticipant,materialize,proposed,pendingFor,tx,type Participant} from '../shared/workshop.js';
@@ -12,19 +14,17 @@ const code=z.string().regex(/^[A-Z0-9]{6}$/),text=z.string().trim().min(1).max(1
 const sourceIds=z.array(z.enum(['antara','detik','kompas','cnn'])).max(4).refine(a=>new Set(a).size===a.length);
 const active=new Map<string,Promise<any>>();
 const find=async(c:string)=>(await pool.query("SELECT * FROM seminar_sessions WHERE code=$1 AND data->>'version'='3'",[c])).rows[0];
-async function own(c:string,w:string){const s=await find(c);return s?.owner_id===w?s:null;}
+async function own(c:string,w:string){if(c!==roomCode)return null;await sharedRoom();const s=await find(c);return s?.owner_id===w?s:null;}
 async function participant(c:string,w:string,fn:(p:Participant,s:any)=>any){
- const s=await find(c);if(!s)return null;
+ if(c!==roomCode)return null;const s=await find(c);if(!s)return null;
  return tenant(w,async db=>{const row=(await db.query('SELECT data FROM seminar_participants WHERE session_id=$1 AND workspace_id=$2 FOR UPDATE',[s.id,w])).rows[0];if(!row)return null;const before=JSON.stringify(row.data);materialize(row.data,s.data);const result=await fn(row.data,s);if(before!==JSON.stringify(row.data))await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[row.data,s.id,w]);return result;});
 }
 const payload=(p:Participant,s:any)=>({participant:p,session:{code:s.code,released:s.data.released,exerciseDate:s.data.exerciseDate,mode:'Historical case replay',preparedAt:s.data.preparedAt,sourceHealth:s.data.sourceHealth||[],externalMode:s.data.externalMode||'curated'},organizations,publishers,featured});
 const respond=(res:any,out:any)=>!out?res.status(404).json({error:'Session or private workspace not found. Join a current session.'}):res.status(out.error?409:200).json(out);
-workshop.get('/workshop/access',(_req,res)=>res.json({addresses:process.env.PUBLIC_FRONTEND_URL?[process.env.PUBLIC_FRONTEND_URL]:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address)}));
-workshop.post('/workshop/sessions',async(_req,res)=>{
- const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<6;i++)c+=alphabet[randomInt(alphabet.length)];
- await pool.query('INSERT INTO seminar_sessions(id,code,owner_id,data) VALUES($1,$2,$3,$4)',[randomUUID(),c,res.locals.workspace.id,{version:scenarioVersion,title:'Beyond Compliance',exerciseDate:featured.exerciseDate,released:[],news:[],sourceHealth:[]}]);res.status(201).json({code:c});
-});
-workshop.post('/workshop/join',async(req,res)=>{const c=code.parse(String(req.body.code).toUpperCase()),s=await find(c);if(!s)return res.status(404).json({error:'Session not found. Ask the presenter for the current code.'});await tenant(res.locals.workspace.id,db=>db.query('INSERT INTO seminar_participants(session_id,workspace_id,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[s.id,res.locals.workspace.id,freshParticipant()]));res.json({code:c});});
+workshop.get('/workshop/access',requireAdmin,(_req,res)=>res.json({addresses:process.env.PUBLIC_FRONTEND_URL?[process.env.PUBLIC_FRONTEND_URL]:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address)}));
+workshop.use('/workshop/host',requireAdmin);
+workshop.post('/workshop/sessions',requireAdmin,async(_req,res)=>{await sharedRoom();res.status(201).json({code:roomCode});});
+workshop.post('/workshop/join',async(_req,res)=>{const s=await sharedRoom();await tenant(res.locals.workspace.id,db=>db.query('INSERT INTO seminar_participants(session_id,workspace_id,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[s.id,res.locals.workspace.id,freshParticipant()]));res.json({code:roomCode});});
 workshop.get('/workshop/:code/state',async(req,res)=>respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,payload)));
 workshop.put('/workshop/:code/setup',async(req,res)=>{const input=z.object({organizationId:text,objectiveIds:z.array(text).min(1).max(2),company:z.string().trim().max(100),sourceIds}).parse(req.body);let p:Participant;try{p=setupParticipant(input.organizationId,input.objectiveIds,input.company,featured.exerciseDate);}catch{return res.status(400).json({error:'Choose at least one objective from your selected organization.'});}respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,(data,s)=>{if(data.ready)return {error:'Organization already configured. Start another session to change context.'};Object.assign(data,p,{sourceIds:input.sourceIds});materialize(data,s.data);return payload(data,s);}));});
 workshop.put('/workshop/:code/sources',async(req,res)=>{const input=sourceIds.parse(req.body.sourceIds);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{p.sourceIds=input;return {saved:true};}));});
