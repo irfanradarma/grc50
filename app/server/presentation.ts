@@ -3,6 +3,7 @@ import {z} from 'zod';
 import {pool} from './db.js';
 import {sharedRoom,roomCode} from './sharedRoom.js';
 import {requireAdmin} from './adminAuth.js';
+import {demoBroadcast} from './demoBroadcast.js';
 import outline from '../../website/assets/data/deck-outline.json';
 const slideKeys=new Set(outline.slides.map(slide=>slide.key));
 export const presentationPublic=Router(),presentationHost=Router();
@@ -11,9 +12,10 @@ let snapshot:Promise<any>|undefined,snapshotUntil=0;
 presentationPublic.get('/presentation/:code',async(req,res)=>{
  if(!['live',roomCode].includes(String(req.params.code)))return res.status(404).json({error:'Presentation not found.'});
  if(!snapshot||Date.now()>snapshotUntil){snapshotUntil=Date.now()+200;snapshot=sharedRoom().then(room=>state(room.data.presentation)).catch(error=>{snapshot=undefined;throw error;});}
- res.json(await snapshot);
+ res.json({...await snapshot,demo:demoBroadcast.status()});
 });
 async function save(req:any,res:any,navigate=false){
+ if(demoBroadcast.status().active)return res.status(409).json({error:'Hide the live app before changing slides.'});
  const input=navigate?z.object({direction:z.enum(['next','previous'])}).parse(req.body):z.object({deckId:z.string(),slideKey:z.string().refine(key=>slideKeys.has(key),'Unknown slide'),expectedRevision:z.number().int().min(0)}).parse(req.body);
  if('deckId' in input&&input.deckId!==outline.deckId)return res.status(409).json({error:'Reload the presentation to use the current deck version.'});
  await sharedRoom();const db=await pool.connect();

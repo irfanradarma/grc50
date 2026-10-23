@@ -99,6 +99,15 @@ The current position is polled approximately every second. Only authenticated ad
 
 Click a signal summary to expand it. Approve or decline the proposed risk links; capture notes are optional. Capture opens the affected risk assessment. The suggested map cell stays marked while users explore alternatives. Accepting a suggestion records its rationale; custom scores and retained scores require a user rationale. Above-tolerance assessments prompt an owned mitigation proposal. Declines persist for that assessment, and saved actions retain projected protection separately from current exposure.
 
+## Live application demonstration
+
+1. Open **SIGNAL app demo** in the admin panel. Its dedicated workspace uses the same organization setup, dashboard, Risk Monitoring and Risk Trigger as the participant app. Prepare it before broadcasting; its records are excluded from participant totals.
+2. Click **Show app to audience**. Audience decks show the app in a large overlay with the last slide blurred behind it. Cursor movement, clicks, scrolling and form changes are relayed live. Only this demo window is shared, not the admin panel or other browser tabs.
+3. Work inside that window. One admin controls a broadcast at a time; other admins can see its status and stop it. Shared slide navigation pauses during the demonstration to preserve the background slide.
+4. Click **Hide app** to return audience decks to that slide. The demo workspace remains available. A participant can also choose **Back to slides** locally and reopen with **Watch live app** while broadcasting continues.
+
+Both frontend and API must be released for this feature. The relay keeps only a bounded recent DOM snapshot and event buffer in server memory, with no persistent recording or new database tables. A server restart ends the broadcast; a disconnected presenter expires after approximately 20 seconds. Reopen **Show app to audience** after reconnecting. The relay supports the current single backend instance.
+
 ## Opening agenda and guided demonstrations
 
 The five agenda sections are: AI in audit & assurance; The disconnect; The SIGNAL model; Lead the decision; SIPT: Kemenkeu's direction. The four SupTech opening slides belong to the first section; the GRC foundations and research begin the second. Chapter buttons jump to each section and track the active section throughout the deck.

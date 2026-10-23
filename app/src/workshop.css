@@ -119,3 +119,5 @@
 .w-presenter{max-width:1400px}.w-admin-deck-toolbar button{white-space:nowrap}
 
 .w-admin-stage{position:relative;height:clamp(320px,calc(100dvh - 360px),760px);background:#080f12;overflow:hidden}.w-admin-stage iframe{position:absolute;top:0;width:1280px;height:720px;min-height:0;aspect-ratio:auto;transform-origin:top left}.w-admin-stage iframe:fullscreen{width:100vw!important;height:100dvh!important;transform:none!important;left:0!important;top:0}
+
+.w-live-demo{border:1px solid #ccdcd4;border-radius:18px;overflow:hidden;background:white}.w-live-dot.idle{background:#90a69a;box-shadow:none}.w-demo-help{font-size:13px;line-height:1.5;color:#61786a;padding:0 20px}.w-demo-app-stage{position:relative;height:clamp(380px,calc(100dvh - 380px),850px);background:#101c17;overflow:hidden}.w-demo-app-stage iframe{position:absolute;top:0;width:1280px;height:800px;border:0;transform-origin:top left}.workshop .w-demo-stop{background:#fff0ea;border-color:#e9b9a7;color:#9f3e21}

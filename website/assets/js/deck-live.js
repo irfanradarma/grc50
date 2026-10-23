@@ -1,7 +1,9 @@
+import {createLiveDemoOverlay} from './live-demo-overlay.js?v=live-app-1';
 import {createFollowState} from './deck-follow-model.mjs?v=shared-room-1';
 
 export function connectLiveDeck({slides,outline,current,showRemote}){
  const params=new URLSearchParams(location.search),embedded=params.get('embedded')==='1';
+ const overlay=embedded?null:createLiveDemoOverlay();
  const token=embedded?sessionStorage.getItem('signal-admin-token'):null,host=embedded&&!!token;
  const bar=document.querySelector('#liveDeckBar');bar.hidden=false;document.body.classList.add('has-live-deck');
  const label=bar.querySelector('[data-live-label]'),detail=bar.querySelector('[data-live-detail]'),control=bar.querySelector('[data-live-control]');
@@ -17,6 +19,7 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
   control.textContent=model.following?'Browse independently':'Return to live';control.disabled=!connected;
  }
  function receive(data){
+  overlay?.update(data.demo);
   if(data.deckId!==outline.deckId||indexOf(data.slideKey)<0)throw Error('Deck version mismatch');
   if(data.revision<revision)return;
   revision=data.revision;connected=true;hasPublished=data.published;

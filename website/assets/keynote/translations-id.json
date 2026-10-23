@@ -675,7 +675,14 @@
     "Explore at your pace. Return to live brings you back to the presenter.": "Jelajahi sesuai ritme Anda. Kembali ke siaran membawa Anda kembali ke slide presenter.",
     "No session code needed.": "Tanpa kode sesi.",
     "Shared admin control": "Kendali admin bersama",
-    "One shared seminar": "Satu seminar bersama"
+    "One shared seminar": "Satu seminar bersama",
+    "LIVE": "LANGSUNG",
+    "Live SIGNAL demonstration": "Demonstrasi langsung SIGNAL",
+    "Live SIGNAL app (view only)": "Aplikasi SIGNAL langsung (hanya ditonton)",
+    "Back to slides": "Kembali ke slide",
+    "Watch live app": "Tonton demo langsung",
+    "Connecting to the live demonstration...": "Menghubungkan tayangan langsung...",
+    "Unable to connect to the live demonstration.": "Tayangan langsung belum dapat dihubungkan."
   },
   "notes": {
     "cover": "Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi. Bagian dari HORI ke-80 Seminar Series, 26 Oktober 2026. Fokus paparan adalah menghubungkan bukti, pertimbangan manusia, dan tindakan melalui SIGNAL.",

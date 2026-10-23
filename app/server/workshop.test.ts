@@ -95,12 +95,32 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await(await liveState()).json()).slideKey,'agenda');
  assert.equal((await publish(host,'the-foundation')).status,200);
  const publicDeck=await(await liveState()).json();assert.equal(publicDeck.slideKey,'the-foundation');assert.equal(publicDeck.published,true);
- assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','published','revision','slideKey','slideNumber','total','updatedAt']);
+ assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','demo','published','revision','slideKey','slideNumber','total','updatedAt']);
+ assert.equal((await req('/admin/demo/start','POST',a)).status,403);
+ assert.equal((await req('/admin/demo/workspace','POST',a)).status,403);
+ const demoGuest=await(await req('/admin/demo/workspace','POST',host)).json(),demoAuth='Bearer '+demoGuest.token;
+ const demoMe=await req('/auth/me','GET',demoAuth);const demoIdentity=await demoMe.json();workspaces.push(demoIdentity.id);assert.equal(demoMe.headers.get('set-cookie'),null,'The demo must not replace a participant cookie');
+ await req('/workshop/join','POST',demoAuth);
+ const started=await(await req('/admin/demo/start','POST',host)).json();assert(started.active);
+ assert.equal((await req('/admin/demo/start','POST',secondAdmin)).status,409);
+ assert.equal((await req('/admin/presentation/navigate','POST',host,{direction:'next'})).status,409);
+ const events=[{type:4,timestamp:1000,data:{width:1280,height:800}},{type:2,timestamp:1001,data:{node:{type:0,id:1,childNodes:[{type:3,id:2,textContent:'x'.repeat(100_000)}]},initialOffset:{left:0,top:0}}}];
+ assert.equal((await req('/admin/demo/events','POST',secondAdmin,{streamId:started.streamId,events})).status,409);
+ assert.equal((await req('/admin/demo/events','POST',host,{streamId:started.streamId,events})).status,200);
+ const abort=new AbortController(),stream=await fetch(base+'/demo/stream',{signal:abort.signal});const reader=stream.body!.getReader(),decoder=new TextDecoder();let initial='';
+ while(!initial.includes('\n\n')){const chunk=await reader.read();assert(!chunk.done);initial+=decoder.decode(chunk.value,{stream:true});}
+ assert(initial.includes('bootstrap'));assert(initial.includes(started.streamId));assert(!initial.includes(demoGuest.token));
+ assert.equal((await req('/admin/demo/events','POST',host,{streamId:started.streamId,events:[{type:3,timestamp:1002,data:{source:5,text:'live-change-after-large-bootstrap'}}]})).status,200);
+ const update=await reader.read();assert.equal(update.done,false,'Large bootstrap must not close the live connection');assert(decoder.decode(update.value).includes('live-change-after-large-bootstrap'));abort.abort();
+ assert.equal((await(await liveState()).json()).demo.active,true);
+ assert.equal((await req('/admin/demo/stop','POST',secondAdmin)).status,200);
+ const afterDemo=await(await liveState()).json();assert.equal(afterDemo.demo.active,false);assert.equal(afterDemo.slideKey,publicDeck.slideKey);assert.equal(afterDemo.revision,publicDeck.revision);
  const stale=publicDeck.revision;
  const movements=await Promise.all([req('/admin/presentation/navigate','POST',host,{direction:'next'}),req('/admin/presentation/navigate','POST',secondAdmin,{direction:'next'})]);
  assert(movements.every(r=>r.status===200));const moved=await(await liveState()).json();assert.equal(moved.slideNumber,publicDeck.slideNumber+2);assert.equal(moved.revision,stale+2);
  const conflict=await req('/admin/presentation','PUT',host,{deckId:deckOutline.deckId,slideKey:'cover',expectedRevision:stale});assert.equal(conflict.status,409);assert.equal((await conflict.json()).slideKey,moved.slideKey);
- assert.equal((await req('/auth/admin/logout','POST',secondAdmin)).status,200);assert.equal((await req('/admin/presentation/navigate','POST',secondAdmin,{direction:'next'})).status,401);
+ assert.equal((await req('/admin/demo/start','POST',secondAdmin)).status,200);
+ assert.equal((await req('/auth/admin/logout','POST',secondAdmin)).status,200);assert.equal((await(await liveState()).json()).demo.active,false);assert.equal((await req('/admin/presentation/navigate','POST',secondAdmin,{direction:'next'})).status,401);
  assert.equal((await publish(host,'the-foundation')).status,200);
 
 

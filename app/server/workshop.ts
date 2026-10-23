@@ -30,7 +30,7 @@ workshop.put('/workshop/:code/setup',async(req,res)=>{const input=z.object({orga
 workshop.put('/workshop/:code/sources',async(req,res)=>{const input=sourceIds.parse(req.body.sourceIds);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{p.sourceIds=input;return {saved:true};}));});
 workshop.get('/workshop/host/:code',async(req,res)=>{
  const s=await own(code.parse(req.params.code),res.locals.workspace.id);if(!s)return res.status(404).json({error:'Presenter session not found in your workspace.'});
- const rows=await tenant(res.locals.workspace.id,async db=>(await db.query('SELECT data FROM seminar_participants WHERE session_id=$1',[s.id])).rows);
+ const rows=await tenant(res.locals.workspace.id,async db=>(await db.query('SELECT p.data FROM seminar_participants p JOIN workspaces w ON w.id=p.workspace_id WHERE p.session_id=$1 AND w.name<>$2',[s.id,'SIGNAL presenter demonstration'])).rows);
  const progress=rows.map(row=>{const p=row.data as Participant;materialize(p,s.data);return {organizationId:p.organizationId,ready:p.ready,signals:p.signals.length,decided:p.signals.filter(v=>v.decision).length,captured:p.signals.filter(v=>v.decision==='Capture').length,reviews:p.reviews.length,updated:p.reviews.filter(v=>v.choice==='Update').length,plans:p.plans.filter(v=>v.signalIds.length).length};});
  const preview=organizations.map(org=>{const p=setupParticipant(org.id,org.objectives.map(v=>v.id),org.name,s.data.exerciseDate);materialize(p,s.data);return {organizationId:org.id,name:org.name,signals:p.signals.map(v=>({id:v.id,title:v.title,type:v.type,stage:v.stage,riskIds:v.riskIds,reason:v.reason}))};});
  res.json({code:s.code,...s.data,featured,progress,preview});

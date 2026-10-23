@@ -9,6 +9,8 @@ test('mobile walkthroughs use dedicated read-only routes, separate from session 
  assert.equal(route('/audience/walkthrough/unknown').kind,'notfound');
 });
 test('admin and audience are separate paths and cannot be switched by query flags',()=>{
+ assert.equal(route('/admin/demo/').kind,'demo');
+ assert.equal(route('/audience/demo/').kind,'notfound');
  assert.equal(route('/admin?mode=participant&view=dashboard').kind,'admin');
  assert.equal(route('/audience?mode=presenter&view=dashboard').kind,'audience');
  assert.equal(route('/admin/sessions/abc234').canonical,'/admin');

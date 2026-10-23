@@ -21,6 +21,8 @@ An English Keynote-style presentation and connected risk-management workshop.
 
 One shared seminar runs at `/audience/`, without join codes. Password-protected `/admin/` contains the deck and signal-release controls. Multiple signed-in admins share the current slide position; audiences may browse independently and return to live. Top/bottom controls appear near their respective edges. Move near the right edge for section and slide navigation.
 
+The admin's **SIGNAL app demo** tab provides a dedicated participant-style workspace. **Show app to audience** broadcasts that window, cursor and actions over the audience deck; **Hide app** restores the last slide. See the presenter guide for operation and relay limits.
+
 The deck covers AI in assurance, AI across the full risk cycle with mandatory human authority, the GRC integration gap, SIGNAL, the strategic hands-on case and SIPT's conceptual direction. The SIPT section does not show SIGNAL as a platform interface.
 
 ## Local design review

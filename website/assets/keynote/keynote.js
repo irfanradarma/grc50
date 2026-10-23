@@ -1,5 +1,5 @@
 import {installDeckLanguage} from './deck-language.js?v=bilingual-1';
-import {connectLiveDeck} from '../js/deck-live.js?v=shared-room-1';
+import {connectLiveDeck} from '../js/deck-live.js?v=live-app-1';
 const reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
 const assets=new URL('../',import.meta.url).href;
@@ -217,6 +217,7 @@ edgeList.addEventListener('click',event=>{const button=event.target.closest('[da
 document.addEventListener('pointermove',event=>{if(event.pointerType!=='mouse'||touchMode())return;keyboard=false;if(sheet.open)return;if(event.clientX>=innerWidth-28&&event.clientY>64&&event.clientY<innerHeight-54)openNavigation();else if(drawer.contains(event.target))scheduleDrawer();if(event.clientY<32)reveal(chromeGroups[0]);if(event.clientY>innerHeight-32)reveal(chromeGroups[1]);},{passive:true});
 document.addEventListener('pointerdown',event=>{keyboard=false;if(event.pointerType==='touch')document.body.classList.add('touch-navigation');},{passive:true});
 document.addEventListener('keydown',event=>{
+ if(document.body.classList.contains('live-app-visible'))return;
  if(sheet.open||/INPUT|TEXTAREA|SELECT/.test(event.target.tagName))return;
  if(event.key==='Tab'){keyboard=true;chromeGroups.forEach(reveal);return;}
  if(event.key==='Escape'){closeNavigation();return;}
