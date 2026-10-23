@@ -41,7 +41,7 @@
     },
     {
       "key": "speakers",
-      "section": "YOUR SPEAKERS",
+      "section": "SPEAKERS & MODERATOR",
       "chapter": null,
       "index": 3
     },
@@ -301,7 +301,7 @@
     },
     {
       "key": "reference-discussion",
-      "section": "REFERENCE / DISCUSSION",
+      "section": "THANK YOU / DISCUSSION",
       "chapter": "action",
       "index": 46
     }

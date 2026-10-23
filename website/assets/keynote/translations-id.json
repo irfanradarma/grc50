@@ -21,7 +21,6 @@
     "Vendor concentration & herding": "Konsentrasi vendor & perilaku seragam",
     "Across all layers:": "Di seluruh lapisan:",
     "Data quality ? Security & confidentiality ? Human oversight ? Validation ? AI governance": "Kualitas data ? Keamanan & kerahasiaan ? Pengawasan manusia ? Validasi ? Tata kelola AI",
-
     "Access the slides": "Akses slide",
     "Follow along. Explore freely.": "Ikuti paparan. Jelajahi materinya.",
     "OPEN THE SLIDES": "BUKA SLIDE",
@@ -354,7 +353,6 @@
     "Monitoring": "Pemantauan",
     "A named owner. A way to challenge. A way to stop.": "Penanggung jawab jelas. Dapat dipertanyakan. Dapat dihentikan.",
     "Assurance with AI": "Asurans berbantuan AI",
-    "Assurance": "Asurans",
     "ASSURANCE WITH AI": "ASURANS BERBANTUAN AI",
     "Reporting": "Pelaporan",
     "Control testing": "Pengujian pengendalian",
@@ -636,12 +634,36 @@
     "Rethinking Risk<br>& Assurance.": "Meninjau Ulang Risiko<br>& Asurans.",
     "Rethinking Risk& Assurance.": "Meninjau Ulang Risiko& Asurans.",
     "Rethinking Risk & Assurance.": "Meninjau Ulang Risiko & Asurans.",
-    "Deck: try EN / ID here or in the top controls (on a phone, tap the three dots first). App: choose EN / ID at the top right. Your position, workspace and entries stay in place.": "Deck: coba EN / ID di sini atau pada kontrol atas (di ponsel, ketuk tiga titik dahulu). Aplikasi: pilih EN / ID di kanan atas. Posisi, workspace, dan isian Anda tetap."
+    "Deck: try EN / ID here or in the top controls (on a phone, tap the three dots first). App: choose EN / ID at the top right. Your position, workspace and entries stay in place.": "Deck: coba EN / ID di sini atau pada kontrol atas (di ponsel, ketuk tiga titik dahulu). Aplikasi: pilih EN / ID di kanan atas. Posisi, workspace, dan isian Anda tetap.",
+    "Your speakers & moderator.": "Pembicara & moderator.",
+    "SPEAKERS & MODERATOR": "PEMBICARA & MODERATOR",
+    "Speaker": "Pembicara",
+    "Moderator": "Moderator",
+    "Thank you.": "Terima kasih.",
+    "Thank": "Terima",
+    "you.": "kasih.",
+    "THANK YOU / DISCUSSION": "TERIMA KASIH / DISKUSI",
+    "Better signals.": "Sinyal yang lebih relevan.",
+    "More meaningful decisions.": "Keputusan yang lebih bermakna.",
+    "Let's keep the conversation going.": "Mari lanjutkan diskusinya.",
+    "Sources & further reading ↗": "Sumber & bacaan lanjutan ↗",
+    "Press to navigate.": "Tekan untuk berpindah.",
+    "Move to the top, bottom or right edge for controls.": "Arahkan kursor ke tepi atas, bawah, atau kanan untuk membuka kontrol.",
+    "Swipe or tap.": "Geser atau ketuk.",
+    "Swipe to change slides. Tap Contents to jump; ⋯ for more.": "Geser untuk berpindah slide. Ketuk Daftar isi untuk melompat; ⋯ untuk opsi lain.",
+    "03 / EXPLORE": "03 / JELAJAHI",
+    "Choose your language.": "Pilih bahasa Anda.",
+    "EN / ID in the deck and app. English or Bahasa Indonesia.": "EN / ID di deck dan aplikasi. Pilih bahasa Inggris atau Indonesia.",
+    "Notes & sources ↗": "Catatan & sumber ↗",
+    "opens notes.": "membuka catatan.",
+    "Explore at your pace.": "Jelajahi sesuai ritme Anda.",
+    "brings you back to the presenter.": "membawa Anda kembali ke slide presenter.",
+    "Explore at your pace. Return to live brings you back to the presenter.": "Jelajahi sesuai ritme Anda. Kembali ke siaran membawa Anda kembali ke slide presenter."
   },
   "notes": {
     "cover": "Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi. Bagian dari HORI ke-80 Seminar Series, 26 Oktober 2026. Fokus paparan adalah menghubungkan bukti, pertimbangan manusia, dan tindakan melalui SIGNAL.",
     "using-the-deck": "Akses s.kemenkeu.go.id/signal. Pada komputer gunakan panah atau Spasi; C membuka Daftar isi dan F layar penuh. Gerakkan kursor ke tepi atas, bawah, atau kanan untuk membuka kontrol. Pada ponsel gunakan bilah navigasi tetap; geser horizontal untuk berganti slide dan vertikal untuk membaca. Pilih EN / ID pada kontrol deck (di ponsel ketuk tombol tiga titik dahulu). Aplikasi SIGNAL memiliki tombol EN / ID sendiri di kanan atas. Pilihan bahasa diingat browser tanpa mereset posisi atau workspace. Tautan sumber membuka konteks dan rujukan. Mode presenter menyediakan N atau Catatan & sumber. Dalam sesi terhubung, navigasi mandiri menghentikan sementara pengikutan; Kembali ke presenter menyambungkannya lagi. Nama resmi, akronim SIGNAL, dan gambar sumber dipertahankan dalam bahasa aslinya.",
-    "speakers": "Reza Rizky Pratama dan Teuku Raja Irfan Radarma membawakan dua perspektif yang saling melengkapi: AI dalam manajemen risiko dan AI dalam asurans. Foto dan nama mengikuti materi yang diberikan presenter.",
+    "speakers": "Perkenalkan pembicara Reza Rizky Pratama dan Teuku Raja Irfan Radarma pada dua potret utama, serta moderator Ni Putu Bintang Felinia Dewi pada potret yang lebih kecil di sisi kanan. Label peran dan warna aksen membedakan pembicara dari moderator.",
     "agenda": "Alur pembahasan: meninjau ulang risiko dan asurans; AI dalam manajemen risiko melalui SIGNAL dan praktik langsung; AI dalam asurans; lalu arah Kemenkeu melalui SPIT dan SIPT. Klik bagian pada agenda untuk menuju awal bagiannya.",
     "section-disconnect": "Mulai dari tujuan bersama kinerja, risiko, dan asurans. Tantang apakah ketiga sistem ini benar-benar saling memengaruhi keputusan, bukan sekadar menghasilkan dokumen terpisah.",
     "the-foundation": "Tujuan organisasi menjadi acuan bersama. Manajemen kinerja mengukur pencapaian; manajemen risiko mengelola ketidakpastian terhadap tujuan; asurans memberikan keyakinan atas tata kelola, risiko, dan pengendalian. OCEG, COSO ERM, serta Model Tiga Lini IIA mendukung hubungan ini. Penyajian tiga lensa adalah sintesis untuk pembahasan, bukan taksonomi resmi ketiga kerangka.",
@@ -684,7 +706,7 @@
     "ai-powered-sipt": "Dalam arah konseptual RP/CMCA, AI dapat menghubungkan berita, laporan, audit, serta penyimpangan terkonfirmasi ke konteks risiko bersama. Manusia menilai dan menyetujui perubahan yang kembali ke register. SIGNAL menunjukkan pola keputusan; bukan integrasi produksi dengan SIPT.",
     "early-warning-system": "Peringatan bukan hasil akhir. Rangkaian yang diperlukan adalah deteksi, pemahaman, keputusan, tindakan, serta verifikasi. Ukuran manfaatnya adalah keputusan tepat waktu yang membantu melindungi tujuan.",
     "shared-responsibility": "Lini pertama memiliki dan mengelola risiko. Lini kedua/UKI mendukung pemantauan yang berguna. Lini ketiga/Itjen memberikan asurans atas efektivitas perlindungan. Setiap unit perlu menyumbangkan bukti berkualitas dan menindaklanjuti keputusan.",
-    "reference-discussion": "Landasan: OCEG, COSO ERM, dan IIA. Penelitian: NC State/AICPA, PwC, serta Agarwal dan Kallapur. Konteks kelembagaan: PMK 83/2024, KMK 1/KM.9/2025, strategi BaTii, dan arah RP/CMCA dari presenter. Kasus berita: ANTARA, 3 April 2025, dengan batas informasi 8 April 2025. Baca sumber asli untuk cakupan dan keterbatasan."
+    "reference-discussion": "Sampaikan terima kasih kepada peserta dan buka sesi tanya jawab. Deck dan SIGNAL dapat diakses melalui s.kemenkeu.go.id/signal. Landasan: OCEG, COSO ERM, dan IIA. Penelitian: NC State/AICPA, PwC, serta Agarwal dan Kallapur. Konteks kelembagaan: PMK 83/2024, KMK 1/KM.9/2025, strategi BaTii, dan arah RP/CMCA dari presenter. Kasus berita: ANTARA, 3 April 2025, dengan batas informasi 8 April 2025. Baca sumber asli untuk cakupan dan keterbatasan."
   },
   "preserved": [
     "Beyond Compliance",
@@ -751,7 +773,10 @@
     "OCEG · COSO ERM · IIA",
     "NC State + AICPA · PwC",
     "Agarwal & Kallapur",
-    "ANTARA · 3 April 2025"
+    "ANTARA · 3 April 2025",
+    "Ni Putu Bintang",
+    "Felinia Dewi",
+    "Ni Putu Bintang Felinia Dewi"
   ],
   "contexts": {
     "evidence-risk-management": {

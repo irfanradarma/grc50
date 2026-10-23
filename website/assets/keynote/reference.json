@@ -123,11 +123,11 @@
     },
     {
       "key": "speakers",
-      "section": "YOUR SPEAKERS",
+      "section": "SPEAKERS & MODERATOR",
       "chapter": null,
       "index": 3,
-      "title": "Meet your speakers",
-      "note": "Introduce Reza Rizky Pratama on the left and Teuku Raja Irfan Radarma on the right. Names are confirmed by the presenter. Both portraits use transparent assets; Reza has a separate background-extracted cutout. No titles or biographies have been inferred.",
+      "title": "Your speakers & moderator.",
+      "note": "Introduce speakers Reza Rizky Pratama and Teuku Raja Irfan Radarma in the two main portraits, and moderator Ni Putu Bintang Felinia Dewi in the smaller portrait on the right. Role labels and distinct accents distinguish the speakers from the moderator. Names and portraits are supplied by the presenter; no biographies have been inferred.",
       "links": [],
       "originalIndex": 2
     },
@@ -700,11 +700,11 @@
     },
     {
       "key": "reference-discussion",
-      "section": "REFERENCE / DISCUSSION",
+      "section": "THANK YOU / DISCUSSION",
       "chapter": "action",
       "index": 46,
-      "title": "Sources behind the argument",
-      "note": "Sources supporting the research, strategic news exercise and conceptual institutional direction. The research measures perceptions or qualitative mechanisms, not Kemenkeu failure rates. The historical news case uses an 8 April 2025 cutoff. RP and CMCA relationships reflect the presenter-supplied direction. The SIGNAL app is used only in the hands-on section; no SIPT system interface is presented.",
+      "title": "Thank you.",
+      "note": "Thank the audience and invite questions and discussion. Continue exploring the deck and SIGNAL through s.kemenkeu.go.id/signal. Sources supporting the research, strategic news exercise and conceptual institutional direction. The research measures perceptions or qualitative mechanisms, not Kemenkeu failure rates. The historical news case uses an 8 April 2025 cutoff. RP and CMCA relationships reflect the presenter-supplied direction. The SIGNAL app is used only in the hands-on section; no SIPT system interface is presented.",
       "links": [
         {
           "url": "https://erm.ncsu.edu/resource-center/2026-state-of-risk-oversight-enterprise-risk-management-trends-and-key-findings/",
