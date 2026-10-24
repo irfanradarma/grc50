@@ -95,6 +95,8 @@ If browser edits belong to an earlier deck structure, they are archived locally 
 
 The current position is polled approximately every second. Only authenticated admins can publish. The public endpoint returns slide metadata, revision and timestamp, never participant records or rationale. Passwords and admin tokens never enter deck URLs.
 
+When an independently browsing participant is on a different slide, a dialog offers **Go to presenter slide** or **Keep browsing independently**. Choosing to keep browsing (or pressing Escape) postpones the next reminder by 90 seconds. Presenter changes during that period do not restart or bypass the cooldown. Returning to the same slide clears it. Reminders wait while another dialog or the live app demonstration is open, and are not shown to embedded admin controllers. The dialog follows the deck's English/Indonesian language selection.
+
 ## Signal review and response
 
 Click a signal summary to expand it. Approve or decline the proposed risk links; capture notes are optional. Capture opens the affected risk assessment. The suggested map cell stays marked while users explore alternatives. Accepting a suggestion records its rationale; custom scores and retained scores require a user rationale. Above-tolerance assessments prompt an owned mitigation proposal. Declines persist for that assessment, and saved actions retain projected protection separately from current exposure.

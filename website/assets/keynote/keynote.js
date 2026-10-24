@@ -1,5 +1,5 @@
 import {installDeckLanguage} from './deck-language.js?v=bilingual-1';
-import {connectLiveDeck} from '../js/deck-live.js?v=live-app-1';
+import {connectLiveDeck} from '../js/deck-live.js?v=browse-reminder-1';
 const reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
 const assets=new URL('../',import.meta.url).href;

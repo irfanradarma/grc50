@@ -1,5 +1,6 @@
 import {createLiveDemoOverlay} from './live-demo-overlay.js?v=live-app-1';
 import {createFollowState} from './deck-follow-model.mjs?v=shared-room-1';
+import {createBrowseReminder} from './deck-browse-reminder.mjs?v=browse-reminder-1';
 
 export function connectLiveDeck({slides,outline,current,showRemote}){
  const params=new URLSearchParams(location.search),embedded=params.get('embedded')==='1';
@@ -11,12 +12,15 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
  const apiBase=window.SIGNAL_HOSTING?.apiOrigin||'',api=apiBase+'/api/presentation/live';
  let connected=false,hasPublished=false,revision=0,polling=false,sending=false,queued=null,stopped=false;
  const title=slide=>slide.title.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+ const resume=()=>{const target=indexOf(model.resume());if(target>=0)showRemote(target);paint();};
+ const reminder=host?null:createBrowseReminder({resume});
  function paint(){
   bar.dataset.state=connected?'connected':'offline';
   if(host){label.textContent=connected?'Shared admin control':'Connecting';detail.textContent='Slide '+(current()+1)+' / '+title(slides[current()]);control.hidden=true;return;}
   label.textContent=!connected?'Connection interrupted':!hasPublished?'Waiting for presenter':model.following?'Following live':'Exploring independently';
   const at=indexOf(model.presenter);detail.textContent=at<0?'':'Presenter now: '+(at+1)+' / '+title(slides[at]);
   control.textContent=model.following?'Browse independently':'Return to live';control.disabled=!connected;
+  reminder?.update({connected,published:hasPublished,following:model.following,presenter:model.presenter,local:slides[current()].key,number:at+1,title:at<0?'':title(slides[at])});
  }
  function receive(data){
   overlay?.update(data.demo);
@@ -40,7 +44,7 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
    }catch{connected=false;queued=null;}
   }sending=false;paint();
  }
- control.addEventListener('click',()=>{if(model.following)model.browse(slides[current()].key);else{const target=indexOf(model.resume());if(target>=0)showRemote(target);}paint();});
+ control.addEventListener('click',()=>{if(model.following)model.browse(slides[current()].key);else resume();paint();});
  document.addEventListener('signal:slidenavigate',event=>{if(host)void publish(event.detail.key);else{model.browse(event.detail.key);paint();}});
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState!=='hidden')void poll();});
  void poll();setInterval(poll,1000);paint();
