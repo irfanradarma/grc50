@@ -9,6 +9,7 @@ const slideKeys=new Set(outline.slides.map(slide=>slide.key));
 export const presentationPublic=Router(),presentationHost=Router();
 function state(p:any){const key=slideKeys.has(p?.slideKey)?p.slideKey:'cover';return {deckId:outline.deckId,slideKey:key,slideNumber:outline.slides.findIndex(s=>s.key===key)+1,total:outline.slides.length,revision:p?.revision||0,updatedAt:p?.updatedAt||null,published:!!p,presenting:p?.presenting===true};}
 let snapshot:Promise<any>|undefined,snapshotUntil=0;
+export function invalidatePresentation(){snapshot=undefined;}
 presentationPublic.get('/presentation/:code',async(req,res)=>{
  if(!['live',roomCode].includes(String(req.params.code)))return res.status(404).json({error:'Presentation not found.'});
  if(!snapshot||Date.now()>snapshotUntil){snapshotUntil=Date.now()+200;snapshot=sharedRoom().then(room=>state(room.data.presentation)).catch(error=>{snapshot=undefined;throw error;});}

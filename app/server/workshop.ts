@@ -5,6 +5,8 @@ import {z} from 'zod';
 import {pool,tenant} from './db.js';
 import {sharedRoom,roomCode} from './sharedRoom.js';
 import {requireAdmin} from './adminAuth.js';
+import {demoBroadcast} from './demoBroadcast.js';
+import {invalidatePresentation} from './presentation.js';
 import strategicNews from '../../website/assets/data/strategic-news.json';
 import {captureNews} from './news.js';
 import {organizations,publishers,featured,c,stages,scenarioVersion,freshParticipant,setupParticipant,materialize,proposed,pendingFor,tx,type Participant} from '../shared/workshop.js';
@@ -15,19 +17,21 @@ const sourceIds=z.array(z.enum(['antara','detik','kompas','cnn'])).max(4).refine
 const active=new Map<string,Promise<any>>();
 const find=async(c:string)=>(await pool.query("SELECT * FROM seminar_sessions WHERE code=$1 AND data->>'version'='3'",[c])).rows[0];
 async function own(c:string,w:string){if(c!==roomCode)return null;await sharedRoom();const s=await find(c);return s?.owner_id===w?s:null;}
-async function participant(c:string,w:string,fn:(p:Participant,s:any)=>any){
- if(c!==roomCode)return null;const s=await find(c);if(!s)return null;
- return tenant(w,async db=>{const row=(await db.query('SELECT data FROM seminar_participants WHERE session_id=$1 AND workspace_id=$2 FOR UPDATE',[s.id,w])).rows[0];if(!row)return null;const before=JSON.stringify(row.data);materialize(row.data,s.data);const result=await fn(row.data,s);if(before!==JSON.stringify(row.data))await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[row.data,s.id,w]);return result;});
+async function participant(c:string,w:string,epoch:unknown,fn:(p:Participant,s:any)=>any){
+ if(c!==roomCode)return null;
+ return tenant(w,async db=>{const s=(await db.query("SELECT * FROM seminar_sessions WHERE code=$1 AND data->>'version'='3' FOR SHARE",[c])).rows[0];if(!s)return null;
+ if(epoch!==undefined&&(epoch===null?(s.data.resetEpoch||0)>0:Number(epoch)!==(s.data.resetEpoch||0)))return {error:'The seminar was reset. Refresh before continuing.'};
+ const row=(await db.query('SELECT data FROM seminar_participants WHERE session_id=$1 AND workspace_id=$2 FOR UPDATE',[s.id,w])).rows[0];if(!row)return null;const before=JSON.stringify(row.data);materialize(row.data,s.data);const result=await fn(row.data,s);if(before!==JSON.stringify(row.data))await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[row.data,s.id,w]);return result;});
 }
-const payload=(p:Participant,s:any)=>({participant:p,session:{code:s.code,released:s.data.released,exerciseDate:s.data.exerciseDate,mode:'Historical case replay',preparedAt:s.data.preparedAt,sourceHealth:s.data.sourceHealth||[],externalMode:s.data.externalMode||'curated'},organizations,publishers,featured});
+const payload=(p:Participant,s:any)=>({participant:p,session:{resetEpoch:s.data.resetEpoch||0,code:s.code,released:s.data.released,exerciseDate:s.data.exerciseDate,mode:'Historical case replay',preparedAt:s.data.preparedAt,sourceHealth:s.data.sourceHealth||[],externalMode:s.data.externalMode||'curated'},organizations,publishers,featured});
 const respond=(res:any,out:any)=>!out?res.status(404).json({error:'Session or private workspace not found. Join a current session.'}):res.status(out.error?409:200).json(out);
 workshop.get('/workshop/access',requireAdmin,(_req,res)=>res.json({addresses:process.env.PUBLIC_FRONTEND_URL?[process.env.PUBLIC_FRONTEND_URL]:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address)}));
 workshop.use('/workshop/host',requireAdmin);
 workshop.post('/workshop/sessions',requireAdmin,async(_req,res)=>{await sharedRoom();res.status(201).json({code:roomCode});});
 workshop.post('/workshop/join',async(_req,res)=>{const s=await sharedRoom();await tenant(res.locals.workspace.id,db=>db.query('INSERT INTO seminar_participants(session_id,workspace_id,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[s.id,res.locals.workspace.id,freshParticipant()]));res.json({code:roomCode});});
-workshop.get('/workshop/:code/state',async(req,res)=>respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,payload)));
-workshop.put('/workshop/:code/setup',async(req,res)=>{const input=z.object({organizationId:text,objectiveIds:z.array(text).min(1).max(2),company:z.string().trim().max(100),sourceIds}).parse(req.body);let p:Participant;try{p=setupParticipant(input.organizationId,input.objectiveIds,input.company,featured.exerciseDate);}catch{return res.status(400).json({error:'Choose at least one objective from your selected organization.'});}respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,(data,s)=>{if(data.ready)return {error:'Organization already configured. Start another session to change context.'};Object.assign(data,p,{sourceIds:input.sourceIds});materialize(data,s.data);return payload(data,s);}));});
-workshop.put('/workshop/:code/sources',async(req,res)=>{const input=sourceIds.parse(req.body.sourceIds);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{p.sourceIds=input;return {saved:true};}));});
+workshop.get('/workshop/:code/state',async(req,res)=>respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,undefined,payload)));
+workshop.put('/workshop/:code/setup',async(req,res)=>{const input=z.object({organizationId:text,objectiveIds:z.array(text).min(1).max(2),company:z.string().trim().max(100),sourceIds}).parse(req.body);let p:Participant;try{p=setupParticipant(input.organizationId,input.objectiveIds,input.company,featured.exerciseDate);}catch{return res.status(400).json({error:'Choose at least one objective from your selected organization.'});}respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,(data,s)=>{if(data.ready)return {error:'Organization already configured. Start another session to change context.'};Object.assign(data,p,{sourceIds:input.sourceIds});materialize(data,s.data);return payload(data,s);}));});
+workshop.put('/workshop/:code/sources',async(req,res)=>{const input=sourceIds.parse(req.body.sourceIds);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{p.sourceIds=input;return {saved:true};}));});
 workshop.get('/workshop/host/:code',async(req,res)=>{
  const s=await own(code.parse(req.params.code),res.locals.workspace.id);if(!s)return res.status(404).json({error:'Presenter session not found in your workspace.'});
  const rows=await tenant(res.locals.workspace.id,async db=>(await db.query('SELECT p.data FROM seminar_participants p JOIN workspaces w ON w.id=p.workspace_id WHERE p.session_id=$1 AND w.name<>$2',[s.id,'SIGNAL presenter demonstration'])).rows);
@@ -35,11 +39,12 @@ workshop.get('/workshop/host/:code',async(req,res)=>{
  const preview=organizations.map(org=>{const p=setupParticipant(org.id,org.objectives.map(v=>v.id),org.name,s.data.exerciseDate);materialize(p,s.data);return {organizationId:org.id,name:org.name,signals:p.signals.map(v=>({id:v.id,title:v.title,type:v.type,stage:v.stage,riskIds:v.riskIds,reason:v.reason}))};});
  res.json({code:s.code,...s.data,featured,progress,preview});
 });
+async function savePrepared(s:any,data:any){const result=await pool.query("UPDATE seminar_sessions SET data=data || $1::jsonb WHERE id=$2 AND COALESCE((data->>'resetEpoch')::int,0)=$3",[JSON.stringify(data),s.id,s.data.resetEpoch||0]);if(!result.rowCount)throw Error('The seminar was reset while news capture was running. Capture again.');}
 async function prepare(s:any,mode:'curated'|'live'){
  if(mode==='curated'){
   const news=structuredClone(strategicNews);
   const sourceHealth=publishers.map(source=>({organizationId:'all',sourceId:source.id,name:source.name,count:news.filter(item=>item.sourceId===source.id).length,status:news.some(item=>item.sourceId===source.id)?'Case pack ready':'Not in case pack'}));
-  await pool.query('UPDATE seminar_sessions SET data=data || $1::jsonb WHERE id=$2',[JSON.stringify({news,sourceHealth,externalMode:mode,preparedAt:new Date().toISOString()}),s.id]);return {articles:news.length,sourceHealth,mode};
+  await savePrepared(s,{news,sourceHealth,externalMode:mode,preparedAt:new Date().toISOString()});return {articles:news.length,sourceHealth,mode};
  }
 
  const news:any[]=[],sourceHealth:any[]=[];
@@ -54,12 +59,28 @@ async function prepare(s:any,mode:'curated'|'live'){
  // Near-identical headlines share an event ID, preserving each article as evidence without repeated escalation.
  const words=(s:string)=>new Set(s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(w=>w.length>3));
  for(let i=0;i<unique.length;i++)for(let j=0;j<i;j++){const a=words(unique[i].title),b=words(unique[j].title);if([...a].filter(v=>b.has(v)).length/Math.max(1,new Set([...a,...b]).size)>.58){unique[i].eventId=unique[j].eventId;break;}}
- await pool.query("UPDATE seminar_sessions SET data=data || $1::jsonb WHERE id=$2",[JSON.stringify({news:unique,sourceHealth,externalMode:mode,preparedAt:new Date().toISOString()}),s.id]);return {articles:unique.length,sourceHealth};
+ await savePrepared(s,{news:unique,sourceHealth,externalMode:mode,preparedAt:new Date().toISOString()});return {articles:unique.length,sourceHealth};
 }
 workshop.post('/workshop/host/:code/prepare',async(req,res)=>{const c=code.parse(req.params.code),s=await own(c,res.locals.workspace.id);if(!s)return res.status(404).json({error:'Presenter session not found.'});if(s.data.released.includes('external'))return res.status(409).json({error:'The released batch is fixed. Create another session for a new batch.'});const mode=z.enum(['curated','live']).parse(req.body?.mode||'curated');let p=active.get(c);if(!p){p=prepare(s,mode).finally(()=>active.delete(c));active.set(c,p);}res.json(await p);});
+workshop.post('/workshop/host/:code/reset',async(req,res)=>{
+ const c=code.parse(req.params.code),input=z.object({confirmation:z.literal('RESET'),epoch:z.number().int().min(0).optional()}).parse(req.body);
+ if(c!==roomCode)return res.status(404).json({error:'Seminar not found.'});
+ if(active.has(c))return res.status(409).json({error:'Wait for news capture to finish before resetting.'});
+ await sharedRoom();const db=await pool.connect();
+ try{await db.query('BEGIN');await db.query("SELECT set_config('app.workspace_id',$1,true)",[res.locals.workspace.id]);
+ const s=(await db.query('SELECT * FROM seminar_sessions WHERE code=$1 AND owner_id=$2 FOR UPDATE',[c,res.locals.workspace.id])).rows[0];
+ if(!s){await db.query('ROLLBACK');return res.status(404).json({error:'Seminar not found.'});}
+ if((input.epoch??0)!==(s.data.resetEpoch||0)){await db.query('ROLLBACK');return res.status(409).json({error:'Another admin reset the seminar. Refresh before continuing.'});}
+ const participants=(await db.query('SELECT workspace_id FROM seminar_participants WHERE session_id=$1 FOR UPDATE',[s.id])).rows;
+ for(const p of participants){await db.query("SELECT set_config('app.workspace_id',$1,true)",[p.workspace_id]);await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[freshParticipant(),s.id,p.workspace_id]);}
+ const data={version:scenarioVersion,title:'Beyond Compliance',exerciseDate:featured.exerciseDate,released:[],news:[],sourceHealth:[],resetEpoch:(s.data.resetEpoch||0)+1,resetAt:new Date().toISOString(),presentation:{...s.data.presentation,presenting:false,revision:(s.data.presentation?.revision||0)+1,updatedAt:new Date().toISOString()}};
+ await db.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[data,s.id]);await db.query('COMMIT');invalidatePresentation();demoBroadcast.stop();res.json({saved:true,resetEpoch:data.resetEpoch,participants:participants.length});
+ }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
+});
 workshop.post('/workshop/host/:code/release',async(req,res)=>{
  const c=code.parse(req.params.code),stage=z.enum(stages).parse(req.body.stage),db=await pool.connect();
  try{await db.query('BEGIN');const s=(await db.query("SELECT * FROM seminar_sessions WHERE code=$1 AND owner_id=$2 AND data->>'version'='3' FOR UPDATE",[c,res.locals.workspace.id])).rows[0];if(!s){await db.query('ROLLBACK');return res.status(404).json({error:'Presenter session not found.'});}
+ if((req.body?.epoch??0)!==(s.data.resetEpoch||0)){await db.query('ROLLBACK');return res.status(409).json({error:'The seminar was reset. Refresh before releasing signals.'});}
  if(s.data.released.includes(stage)){await db.query('COMMIT');return res.json({saved:true});}
  if(stage!==stages[s.data.released.length]){await db.query('ROLLBACK');return res.status(409).json({error:'Release the guided case, external batch, then internal evidence.'});}
  if(stage==='external'&&(!s.data.news.length||active.has(c))){await db.query('ROLLBACK');return res.status(409).json({error:'Capture and inspect real news before releasing the batch.'});}
@@ -68,17 +89,17 @@ workshop.post('/workshop/host/:code/release',async(req,res)=>{
 });
 workshop.post('/workshop/:code/signals/:id/decision',async(req,res)=>{
  const input=z.object({decision:z.enum(['Capture','Neglect']),riskIds:z.array(text).max(4),notes:z.string().trim().max(1500).optional().default(''),confirmed:z.boolean().optional()}).parse(req.body);
- respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{
+ respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{
  const signal=p.signals.find(s=>s.id===req.params.id);if(!signal||signal.decision)return {error:'Signal unavailable or already decided.'};
  if(input.decision==='Capture'&&(!input.riskIds.length||input.riskIds.some(id=>!p.risks.some(r=>r.id===id)||!signal.riskIds.includes(id))))return {error:'Approve at least one suggested risk link before capture.'};
  if(input.decision==='Capture'&&signal.type==='ca'&&!input.confirmed)return {error:'Confirm the strategic indicator exception before capture.'};
  Object.assign(signal,{decision:input.decision,notes:input.notes,...(input.decision==='Capture'?{riskIds:[...new Set(input.riskIds)]}:{}),decidedAt:new Date().toISOString(),actor:res.locals.workspace.id,...(signal.type==='ca'?{confirmation:input.confirmed?'Confirmed':'Not confirmed'}:{})});return {saved:true};
  }));
 });
-workshop.post('/workshop/:code/risks/:id/respond',async(req,res)=>{const input=responseInput.parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>completeRiskResponse(p,String(req.params.id),input,res.locals.workspace.id)));});
+workshop.post('/workshop/:code/risks/:id/respond',async(req,res)=>{const input=responseInput.parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>completeRiskResponse(p,String(req.params.id),input,res.locals.workspace.id)));});
 workshop.post('/workshop/:code/reassess',async(req,res)=>{
  const input=z.object({riskId:text,choice:z.enum(['Keep','Update']),likelihood:z.number().int().min(1).max(5),impact:z.number().int().min(1).max(5),notes:text}).parse(req.body);
- respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{
+ respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{
  const r=p.risks.find(v=>v.id===input.riskId);if(!r)return {error:'Risk not found.'};const pr=proposed(p,r);
  if(!pr.signalIds.length)return {error:'Capture new evidence before reassessment.'};
  const before={likelihood:r.likelihood,impact:r.impact},after=input.choice==='Update'?{likelihood:input.likelihood,impact:input.impact}:before;
@@ -89,20 +110,20 @@ workshop.post('/workshop/:code/reassess',async(req,res)=>{
 // A declined response proposal is retained against the reviewed evidence, not silently forgotten.
 workshop.post('/workshop/:code/risks/:id/response-decision',async(req,res)=>{
  z.object({choice:z.literal('Decline')}).parse(req.body);
- respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{
+ respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{
   const risk=p.risks.find(r=>r.id===req.params.id),review=p.reviews.filter(v=>v.riskId===req.params.id).at(-1);
   if(!risk||!review||risk.likelihood*risk.impact<=12)return {error:'Review an above-tolerance risk before deciding its response.'};
   risk.responseDeclinedFor=review.id;return {saved:true};
  }));
 });
 const planInput=z.object({riskId:text,title:text,owner:text,dueDate:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=>Number.isFinite(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v),likelihoodReduction:z.number().min(0).max(4).multipleOf(.5),impactReduction:z.number().min(0).max(4).multipleOf(.5),notes:z.string().max(1500)});
-workshop.post('/workshop/:code/plans',async(req,res)=>{const input=planInput.parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{const r=p.risks.find(r=>r.id===input.riskId);if(!r)return {error:'Risk not found.'};if(p.plans.length>=100)return {error:'Maximum 100 plans.'};const signalIds=[...new Set(p.reviews.filter(v=>v.riskId===r.id).flatMap(v=>v.signalIds))];if(!signalIds.length)return {error:'Review captured evidence before adding a response plan.'};if(p.plans.some(v=>v.riskId===r.id&&v.title===input.title))return {error:'This response plan already exists.'};p.plans.push({...input,id:randomUUID(),signalIds,status:'Open',evidence:'',createdAt:new Date().toISOString()});return {saved:true};}));});
-workshop.patch('/workshop/:code/plans/:id',async(req,res)=>{const input=z.object({status:z.enum(['Open','Done']),evidence:z.string().trim().max(1500)}).parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,p=>{const plan=p.plans.find(v=>v.id===req.params.id);if(!plan)return {error:'Plan not found.'};if(input.status==='Done'&&!input.evidence)return {error:'Record implementation and effectiveness evidence before marking done.'};Object.assign(plan,input);
+workshop.post('/workshop/:code/plans',async(req,res)=>{const input=planInput.parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{const r=p.risks.find(r=>r.id===input.riskId);if(!r)return {error:'Risk not found.'};if(p.plans.length>=100)return {error:'Maximum 100 plans.'};const signalIds=[...new Set(p.reviews.filter(v=>v.riskId===r.id).flatMap(v=>v.signalIds))];if(!signalIds.length)return {error:'Review captured evidence before adding a response plan.'};if(p.plans.some(v=>v.riskId===r.id&&v.title===input.title))return {error:'This response plan already exists.'};p.plans.push({...input,id:randomUUID(),signalIds,status:'Open',evidence:'',createdAt:new Date().toISOString()});return {saved:true};}));});
+workshop.patch('/workshop/:code/plans/:id',async(req,res)=>{const input=z.object({status:z.enum(['Open','Done']),evidence:z.string().trim().max(1500)}).parse(req.body);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{const plan=p.plans.find(v=>v.id===req.params.id);if(!plan)return {error:'Plan not found.'};if(input.status==='Done'&&!input.evidence)return {error:'Record implementation and effectiveness evidence before marking done.'};Object.assign(plan,input);
  const evidenceId='implementation-'+plan.id;
  if(input.status==='Done'&&!p.signals.some(v=>v.id===evidenceId))p.signals.push({id:evidenceId,eventId:evidenceId,stage:'internal',type:'report',title:c('Implementation evidence: '+tx(plan.title),'Bukti pelaksanaan: '+tx(plan.title,'id')),summary:input.evidence,publisher:tx(plan.owner),sourceId:'report',publishedAt:new Date().toISOString(),receivedAt:new Date().toISOString(),riskIds:[plan.riskId],adverse:false,reason:c('Management reports completed action. Verify its effectiveness before changing current risk.','Manajemen melaporkan tindakan selesai. Verifikasi efektivitas sebelum mengubah risiko saat ini.'),document:p.company+'\nImplementation evidence\n'+input.evidence+'\nReported by: '+tx(plan.owner)});
  return {saved:true};}));});
 workshop.get('/workshop/:code/document/:id',async(req,res)=>{
- const out=await participant(code.parse(req.params.code),res.locals.workspace.id,p=>p.signals.find(s=>s.id===req.params.id)?.document||null);if(!out)return res.status(404).send('Document not found in your workspace.');
+ const out=await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>p.signals.find(s=>s.id===req.params.id)?.document||null);if(!out)return res.status(404).send('Document not found in your workspace.');
  const escape=(s:string)=>s.replace(/[&<>"']/g,v=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[v]!));
  res.type('html').send('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Evidence document</title><body style="font:18px/1.8 system-ui;max-width:800px;margin:40px auto;padding:20px"><h1>Evidence document</h1><pre style="white-space:pre-wrap;font:inherit">'+escape(out)+'</pre></body></html>');
 });

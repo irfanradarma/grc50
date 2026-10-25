@@ -101,6 +101,12 @@ When an independently browsing participant is on a different slide, a dialog off
 
 Click a signal summary to expand it. Approve or decline the proposed risk links; capture notes are optional. Capture opens the affected risk assessment. The suggested map cell stays marked while users explore alternatives. Accepting a suggestion records its rationale; custom scores and retained scores require a user rationale. Above-tolerance assessments prompt an owned mitigation proposal. Declines persist for that assessment, and saved actions retain projected protection separately from current exposure.
 
+## Reset for a new workshop
+
+In **Signals & participants**, choose **Reset seminar** and type `RESET` to confirm. This clears every participant's selected organization, objectives, risks, decisions, mitigation and evidence history, including the admin demonstration workspace. Released signals, prepared news and source coverage are cleared. Presenting and live app broadcasting stop; the current slide and admin logins remain available. Participants already online return to organization selection on their next refresh (normally within five seconds), while new visitors start there immediately. Language preferences remain local to each browser.
+
+Reset affects only the shared SIGNAL seminar, not Atlas or historical rooms. It is not reversible. The reset is transactional and increases a run counter, so forms from the previous run are rejected. Wait for an ongoing news capture to finish before resetting. Do not exercise this button against production data just to test a deployment; the automated integration test uses the disposable `TSTSIG` room.
+
 ## Live application demonstration
 
 1. Open **SIGNAL app demo** in the admin panel. Its dedicated workspace uses the same organization setup, dashboard, Risk Monitoring and Risk Trigger as the participant app. Prepare it before broadcasting; its records are excluded from participant totals.

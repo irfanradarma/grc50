@@ -178,6 +178,19 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/'+code+'/document/'+ca.id,'GET',d)).status,404);
  const stats=await(await req('/workshop/host/'+code,'GET',host)).json();assert.equal(stats.progress.length,3);assert.equal(stats.progress.find((v:any)=>v.organizationId==='logistics').plans,2);assert.equal(stats.preview.length,3);assert(!JSON.stringify(stats.progress).includes('notes'));
  const implementation=(await state(a)).signals.find((v:any)=>v.id.startsWith('implementation-'));assert(implementation);assert.equal((await decide(a,implementation.id,['L1-R1'])).status,200);assert.equal((await reassess(a,'L1-R1','Update',3)).status,200);const replay=await state(a);assert.equal(replay.risks[0].likelihood,3);assert(replay.plans.some((v:any)=>v.status==='Done'));assert(replay.reviews.length>=2);
+ // Reset is tested only against the disposable TSTSIG fixture, never the live seminar.
+ assert.equal((await req('/workshop/host/'+code+'/reset','POST',a,{confirmation:'RESET'})).status,403);
+ assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'wrong'})).status,400);
+ const beforeReset=await(await liveState()).json();
+ const reset=await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:0});assert.equal(reset.status,200);assert.equal((await reset.json()).resetEpoch,1);
+ for(const cookie of [a,b,d,demoAuth]){const fresh=await state(cookie);assert.equal(fresh.ready,false);assert.equal(fresh.company,'');assert.deepEqual(fresh.objectiveIds,[]);for(const key of ['risks','signals','plans','reviews'])assert.equal(fresh[key].length,0);}
+ const resetHost=await(await req('/workshop/host/'+code,'GET',host)).json();assert.deepEqual(resetHost.released,[]);assert.deepEqual(resetHost.news,[]);assert.deepEqual(resetHost.sourceHealth,[]);assert.equal(resetHost.resetEpoch,1);
+ const resetDeck=await(await liveState()).json();assert.equal(resetDeck.presenting,false);assert.equal(resetDeck.slideKey,beforeReset.slideKey);
+ assert.equal((await setup(a,'logistics',['L1'])).status,409,'Old forms cannot repopulate the reset workshop');
+ assert.equal((await req('/workshop/host/'+code+'/release','POST',host,{stage:'guided',epoch:0})).status,409);
+ assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:0})).status,409,'An old reset cannot erase a newer run');
+ assert.equal((await req('/workshop/'+code+'/setup','PUT',a,{organizationId:'logistics',objectiveIds:['L1'],company:'Fresh run',sourceIds:['antara'],epoch:1})).status,200);
+ assert.equal((await state(a)).ready,true);assert.equal((await state(b)).ready,false);
  assert.equal((await req('/auth/admin/logout','POST',host)).status,200);
  for(let attempt=0;attempt<10;attempt++)assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,401);
  assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,429);

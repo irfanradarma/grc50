@@ -448,3 +448,13 @@ dialog.browse-reminder{position:fixed;inset:0;margin:auto;width:min(540px,calc(1
 }
 @media screen and (max-width:1000px) and (max-height:600px) and (orientation:landscape){.cycle-mobile{max-width:none;grid-template-columns:1fr 1fr}.cycle-mobile-human{grid-column:1/-1;padding:14px 20px}.cycle-mobile-phase:not(:last-child):after{display:none}.cycle-slide .frame-content{padding-top:28px}.cycle-mobile-phase{padding:16px}}
 @media print{.cycle-mobile{display:none!important}}
+/* Phone cycle: one scroll surface, compact readable content in both orientations. */
+@media screen and (max-width:900px) and (orientation:portrait), screen and (max-width:1000px) and (max-height:600px){
+ .cycle-slide .frame-content{padding:24px 20px 38px;gap:18px;min-height:0}
+ .cycle-slide .heading h1{font-size:clamp(27px,5vw,38px)}
+ .cycle-mobile{gap:10px}.cycle-mobile-human{padding:13px 16px;gap:12px;border-radius:14px}.cycle-mobile-human strong{font-size:20px}.cycle-mobile-human small{font-size:12px;margin-top:3px}.cycle-mobile-human>.icon{width:28px;height:28px}
+ .cycle-mobile-phase{padding:13px 15px;border-radius:14px}.cycle-mobile-phase header{gap:9px;margin-bottom:9px}.cycle-mobile-phase header small{display:none}.cycle-mobile-phase h2{font-size:21px}.cycle-mobile-phase header>.icon{width:23px;height:23px}.cycle-mobile-phase b{font-size:14px;line-height:1.45}.cycle-mobile-phase p{font-size:13px;line-height:1.45;margin:6px 0 0}.cycle-mobile-phase:not(:last-child):after{bottom:-12px;font-size:12px}
+}
+@media screen and (max-width:650px){.cycle-slide{overflow:visible}.cycle-slide .frame-foot{margin-bottom:18px}}
+@media screen and (max-width:900px){body{overflow-x:clip}}
+@media screen and (max-width:900px){html{overflow-x:clip}}
