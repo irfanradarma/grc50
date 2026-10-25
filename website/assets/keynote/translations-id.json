@@ -6,7 +6,6 @@
     "Stronger Assurance.": "Asurans Lebih Kuat.",
     "Integrated assurance is not built by technology alone. It is built when every line brings its evidence, takes ownership, and acts on what matters.": "Asurans terintegrasi tidak dibangun oleh teknologi saja. Asurans terwujud ketika setiap lini membawa bukti, mengambil tanggung jawab, dan bertindak atas hal yang penting.",
     "What will your line contribute to make assurance work?": "Apa kontribusi lini Anda untuk mewujudkan asurans yang efektif?",
-
     "Assurance of AI. Assurance with AI.": "Asurans atas AI. Asurans berbantuan AI.",
     "Assurance of AI": "Asurans atas AI",
     "of AI": "atas AI",
@@ -689,7 +688,9 @@
     "Back to slides": "Kembali ke slide",
     "Watch live app": "Tonton demo langsung",
     "Connecting to the live demonstration...": "Menghubungkan tayangan langsung...",
-    "Unable to connect to the live demonstration.": "Tayangan langsung belum dapat dihubungkan."
+    "Unable to connect to the live demonstration.": "Tayangan langsung belum dapat dihubungkan.",
+    "Presentation not started": "Presentasi belum dimulai / dihentikan",
+    "Human authority.": "Kendali manusia."
   },
   "notes": {
     "cover": "Beyond Compliance: Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi. Bagian dari HORI ke-80 Seminar Series, 26 Oktober 2026. Fokus paparan adalah menghubungkan bukti, pertimbangan manusia, dan tindakan melalui SIGNAL.",

@@ -1,4 +1,5 @@
 :root{--ink:#162824;--muted:#71817b;--accent:#087e67;--mint:#9bf3cd;--line:#dce7e1;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color-scheme:light}
+.cycle-mobile{display:none}
 *{box-sizing:border-box}body{margin:0;background:#f8faf9;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow:hidden}button,a,input{-webkit-tap-highlight-color:transparent}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #22ac87;outline-offset:5px}a{color:inherit}button{border:0}button:disabled{opacity:.25;cursor:default}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 #stage{height:100dvh;width:100%;position:relative;overflow:hidden}.frame{position:absolute;inset:0;background:#f8faf9;overflow:hidden}.frame.active{animation:frame-in .55s ease both}.frame-content{height:100%;max-width:1800px;margin:auto;padding:clamp(35px,5dvh,72px) clamp(38px,5vw,100px) 68px;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3dvh,40px);position:relative;z-index:1}.frame-foot{position:absolute;left:3vw;right:3vw;bottom:22px;display:flex;justify-content:space-between;color:#8b9a92;font-size:10px;font-weight:650;letter-spacing:1.5px;z-index:2}.foot-dot{font-size:6px;margin-left:5px;vertical-align:middle;color:var(--accent)}
 .night{background:#080f12;color:#f4f8f6;--ink:#f4f8f6;--muted:#92aaa1;--accent:#9bf3cd;--line:#243b32}.night:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,#153a392e,transparent 65%);pointer-events:none}.night .icon{filter:brightness(0) invert(1);opacity:.9}.night .frame-foot{color:#6f8880}.silver{color:#a0afa8;background:linear-gradient(140deg,#fff 0%,#9bafa6 50%,#72847d);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -423,3 +424,27 @@ dialog.browse-reminder{position:fixed;inset:0;margin:auto;width:min(540px,calc(1
 .shared-assurance-closing .frame-content{gap:clamp(14px,2.2vh,25px)}.shared-assurance-closing .heading h1{font-size:clamp(36px,4.3vw,66px);line-height:1.03}.shared-assurance-closing .closing-lines>div{padding:12px 0}.shared-assurance-closing .closing-lines b{font-size:clamp(22px,2.3vw,35px)}.closing-invitation{max-width:1100px}.closing-invitation>p:first-child{font-size:clamp(14px,1.3vw,20px);line-height:1.5;color:var(--muted);margin:0 0 12px}.shared-assurance-closing .closing-question{font-size:clamp(17px,1.6vw,24px);line-height:1.4}
 @media(max-width:650px){.shared-assurance-closing .heading h1{font-size:36px}.shared-assurance-closing .closing-lines>div{gap:8px}.closing-invitation>p:first-child{font-size:15px}}
 @media(min-width:651px) and (max-height:700px){.shared-assurance-closing .heading h1{font-size:40px}.shared-assurance-closing .frame-content{gap:14px}.shared-assurance-closing .closing-lines>div{padding:9px 0}}
+/* The risk cycle becomes a readable sequence on phones, with the human role beside every phase. */
+@media screen and (max-width:900px) and (orientation:portrait), screen and (max-width:1000px) and (max-height:600px){
+ .cycle-slide{overflow-y:auto;overscroll-behavior-y:contain}
+ .cycle-slide .frame-content{height:auto;min-height:100%;padding:42px 24px 70px;justify-content:flex-start;gap:24px}
+ .cycle-slide .heading h1{font-size:clamp(30px,6vw,44px);max-width:none;line-height:1.1}
+ .cycle-slide .cycle-canvas{display:none}
+ .cycle-mobile{display:grid;gap:14px;width:100%;max-width:680px;margin:0 auto}
+ .cycle-mobile-human{display:flex;gap:16px;align-items:center;background:#173e2e;border-radius:18px;padding:20px;color:white}
+ .cycle-mobile-human>.icon{filter:brightness(0) invert(1);width:34px;height:34px;flex-shrink:0}
+ .cycle-mobile-human strong{display:block;font-size:24px;line-height:1.2}
+ .cycle-mobile-human small{display:block;color:#c1dcca;font-size:13px;margin-top:5px}
+ .cycle-mobile-phase{border:1px solid #c9ded1;background:#fff;border-radius:16px;padding:18px;position:relative}
+ .cycle-mobile-phase:not(:last-child):after{content:'↓';position:absolute;bottom:-15px;left:calc(50% - 12px);width:24px;text-align:center;color:#458767;background:#f8faf9;z-index:2}
+ .cycle-mobile-phase header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+ .cycle-mobile-phase header>span{font-size:13px;font-weight:700;color:#608b73}
+ .cycle-mobile-phase header>.icon{width:28px;height:28px;flex-shrink:0}
+ .cycle-mobile-phase h2{font-size:24px;line-height:1.2;margin:0;color:#195c3d;letter-spacing:-.5px}
+ .cycle-mobile-phase header small{display:block;font-size:12px;line-height:1.4;color:#607d6c;margin-top:4px}
+ .cycle-mobile-phase b{font-size:16px;line-height:1.5;display:block;font-weight:600}
+ .cycle-mobile-phase p{font-size:15px;line-height:1.55;color:#5b7265;margin:8px 0 0}
+ .cycle-slide .frame-foot{position:relative;left:auto;right:auto;bottom:auto;margin:0 24px 22px}
+}
+@media screen and (max-width:1000px) and (max-height:600px) and (orientation:landscape){.cycle-mobile{max-width:none;grid-template-columns:1fr 1fr}.cycle-mobile-human{grid-column:1/-1;padding:14px 20px}.cycle-mobile-phase:not(:last-child):after{display:none}.cycle-slide .frame-content{padding-top:28px}.cycle-mobile-phase{padding:16px}}
+@media print{.cycle-mobile{display:none!important}}

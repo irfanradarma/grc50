@@ -13,6 +13,7 @@ export function createBrowseReminderClock(now=()=>Date.now()){
  };
 }
 
+export function browseReminderNeeded(state){return state.presenting===true&&state.connected&&state.published&&!state.following&&state.number>0&&state.presenter!==state.local;}
 export function createBrowseReminder({resume}){
  const clock=createBrowseReminderClock(),dialog=document.createElement('dialog');
  dialog.className='browse-reminder';dialog.setAttribute('aria-labelledby','browse-reminder-title');
@@ -28,7 +29,7 @@ export function createBrowseReminder({resume}){
  // Dialog keys must not also navigate the background deck.
  dialog.addEventListener('keydown',event=>event.stopPropagation());
  document.addEventListener('signal:languagechange',paint);
- return {update(state){last=state;const diverged=state.connected&&state.published&&!state.following&&state.number>0&&state.presenter!==state.local;
+ return {update(state){last=state;const diverged=browseReminderNeeded(state);
    const available=document.visibilityState!=='hidden'&&!document.body.classList.contains('live-app-visible')&&!document.querySelector('dialog[open]:not(.browse-reminder)');
    if(!diverged||!available)close();
    if(clock.update(diverged,available)){paint();previousFocus=document.activeElement;dialog.showModal();keep.focus();}

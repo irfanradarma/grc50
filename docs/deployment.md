@@ -37,6 +37,8 @@ Run `npm --prefix app test`, `npm --prefix app run build` and `node app/scripts/
 
 ## Shared control-room release
 
+Presentation start/stop is an explicit boolean in the existing shared presentation JSON. Missing values default to stopped, including older rooms. No schema migration is needed. Publish the backend before the frontend when introducing this control, then click **Start presenting** in the admin panel when ready for audience following and browsing reminders.
+
 Configure `ADMIN_PASSWORD_HASH` in Render before releasing this version. Apply the password in the private `app/.local/admin-password.txt` file using `node app/scripts/configure-admin.mjs`; the password and Render-ready hash are saved in ignored `app/.local/` files. Copy the hash from `admin-password-hash.txt` into Render (not the plaintext password). The script reuses the chosen password and existing hash when unchanged; on first setup it generates a password if no file exists. Password changes invalidate previously issued admin tokens. Restart the API after configuration changes. Missing configuration fails closed with HTTP 503. Do not publish either private file.
 
 The API initializes one SIGNAL room using the existing isolated SIGNAL tables; no schema migration or Atlas changes are needed. Existing historical rooms remain untouched. Release the API before Pages because the frontend now uses `/presentation/live`, `/admin/presentation` and `/admin/presentation/navigate`. All controllers read the same revision. Next/previous operations are serialized in PostgreSQL; an outdated absolute slide jump receives HTTP 409 and the latest position. Signal releases preserve the presentation state.

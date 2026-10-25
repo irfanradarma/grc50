@@ -1,6 +1,6 @@
 import {createLiveDemoOverlay} from './live-demo-overlay.js?v=live-app-1';
 import {createFollowState} from './deck-follow-model.mjs?v=shared-room-1';
-import {createBrowseReminder} from './deck-browse-reminder.mjs?v=browse-reminder-1';
+import {createBrowseReminder} from './deck-browse-reminder.mjs?v=presentation-status-1';
 
 export function connectLiveDeck({slides,outline,current,showRemote}){
  const params=new URLSearchParams(location.search),embedded=params.get('embedded')==='1';
@@ -10,25 +10,25 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
  const label=bar.querySelector('[data-live-label]'),detail=bar.querySelector('[data-live-detail]'),control=bar.querySelector('[data-live-control]');
  const model=createFollowState(slides[current()].key),indexOf=key=>slides.findIndex(slide=>slide.key===key);
  const apiBase=window.SIGNAL_HOSTING?.apiOrigin||'',api=apiBase+'/api/presentation/live';
- let connected=false,hasPublished=false,revision=0,polling=false,sending=false,queued=null,stopped=false;
+ let connected=false,hasPublished=false,presenting=false,revision=0,polling=false,sending=false,queued=null,stopped=false;
  const title=slide=>slide.title.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
  const resume=()=>{const target=indexOf(model.resume());if(target>=0)showRemote(target);paint();};
  const reminder=host?null:createBrowseReminder({resume});
  function paint(){
   bar.dataset.state=connected?'connected':'offline';
   if(host){label.textContent=connected?'Shared admin control':'Connecting';detail.textContent='Slide '+(current()+1)+' / '+title(slides[current()]);control.hidden=true;return;}
-  label.textContent=!connected?'Connection interrupted':!hasPublished?'Waiting for presenter':model.following?'Following live':'Exploring independently';
+  label.textContent=!connected?'Connection interrupted':!hasPublished?'Waiting for presenter':!presenting?'Presentation not started':model.following?'Following live':'Exploring independently';
   const at=indexOf(model.presenter);detail.textContent=at<0?'':'Presenter now: '+(at+1)+' / '+title(slides[at]);
   control.textContent=model.following?'Browse independently':'Return to live';control.disabled=!connected;
-  reminder?.update({connected,published:hasPublished,following:model.following,presenter:model.presenter,local:slides[current()].key,number:at+1,title:at<0?'':title(slides[at])});
+  reminder?.update({connected,presenting,published:hasPublished,following:model.following,presenter:model.presenter,local:slides[current()].key,number:at+1,title:at<0?'':title(slides[at])});
  }
  function receive(data){
   overlay?.update(data.demo);
   if(data.deckId!==outline.deckId||indexOf(data.slideKey)<0)throw Error('Deck version mismatch');
   if(data.revision<revision)return;
-  revision=data.revision;connected=true;hasPublished=data.published;
+  revision=data.revision;connected=true;hasPublished=data.published;presenting=data.presenting===true;
   if(host){if(indexOf(data.slideKey)!==current())showRemote(indexOf(data.slideKey));}
-  else{const target=model.receive(data.slideKey);if(data.published&&target&&indexOf(target)!==current())showRemote(indexOf(target));}
+  else{const target=model.receive(data.slideKey);if(data.published&&presenting&&target&&indexOf(target)!==current())showRemote(indexOf(target));}
  }
  async function poll(){
   if(polling||sending||stopped||document.visibilityState==='hidden')return;polling=true;

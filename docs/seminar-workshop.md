@@ -87,9 +87,9 @@ If browser edits belong to an earlier deck structure, they are archived locally 
 
 ## Live slide following
 
-1. Sign in at `/admin`. The **Presentation** tab contains the live deck and Previous/Next/Fullscreen controls.
+1. Sign in at `/admin`. The **Presentation** tab contains the live deck, **Start presenting / Stop presenting**, and Previous/Next/Fullscreen controls. Presenting is off until an admin explicitly starts it; existing saved slide positions do not automatically start a presentation.
 2. Other admins sign in with the same admin password in their own browsers. All controllers see the same current slide, including after reload; opening a panel does not reset the deck.
-3. Share the ordinary **Audience deck** link. No guest account or code is needed to view slides. Audience members follow by default and can browse independently or return to live.
+3. Share the ordinary **Audience deck** link. No guest account or code is needed to view slides. Click **Start presenting** when ready. Audience members follow by default while presenting and can browse independently or return to live. **Stop presenting** pauses automatic slide following and immediately suppresses browsing reminders without resetting the current slide. Any admin may start or stop the shared presentation; the status survives reloads and backend restarts.
 4. Change slides with the panel buttons, the deck's keyboard navigation, Contents or the progress bar. Concurrent Next/Previous requests operate on the latest shared position. An outdated absolute jump restores the latest position rather than overwriting another admin.
 5. Use **Signals & participants** to release evidence and review aggregate progress while the shared deck position remains available.
 
