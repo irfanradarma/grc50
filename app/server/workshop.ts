@@ -73,7 +73,7 @@ workshop.post('/workshop/host/:code/reset',async(req,res)=>{
  if((input.epoch??0)!==(s.data.resetEpoch||0)){await db.query('ROLLBACK');return res.status(409).json({error:'Another admin reset the seminar. Refresh before continuing.'});}
  const participants=(await db.query('SELECT workspace_id FROM seminar_participants WHERE session_id=$1 FOR UPDATE',[s.id])).rows;
  for(const p of participants){await db.query("SELECT set_config('app.workspace_id',$1,true)",[p.workspace_id]);await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[freshParticipant(),s.id,p.workspace_id]);}
- const data={version:scenarioVersion,title:'Beyond Compliance',exerciseDate:featured.exerciseDate,released:[],news:[],sourceHealth:[],resetEpoch:(s.data.resetEpoch||0)+1,resetAt:new Date().toISOString(),presentation:{...s.data.presentation,presenting:false,revision:(s.data.presentation?.revision||0)+1,updatedAt:new Date().toISOString()}};
+ const data={...s.data,version:scenarioVersion,title:'Beyond Compliance',exerciseDate:featured.exerciseDate,released:[],news:[],sourceHealth:[],resetEpoch:(s.data.resetEpoch||0)+1,resetAt:new Date().toISOString(),presentation:{...s.data.presentation,presenting:false,revision:(s.data.presentation?.revision||0)+1,updatedAt:new Date().toISOString()}};
  await db.query('UPDATE seminar_sessions SET data=$1 WHERE id=$2',[data,s.id]);await db.query('COMMIT');invalidatePresentation();demoBroadcast.stop();res.json({saved:true,resetEpoch:data.resetEpoch,participants:participants.length});
  }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
 });

@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {setupParticipant,guidedSignals,internalEvidence,materialize,proposed,projection,featured,organizations,screenArticle,scenarioVersion} from '../shared/workshop.js';
 process.env.NODE_ENV='test';
 import strategicNews from '../../website/assets/data/strategic-news.json';
+import {defaultContent} from '../shared/content.js';
 import deckOutline from '../../website/assets/data/deck-outline.json';
 const {app}=await import('./index.js');
 const {pool,tenant,migrate}=await import('./db.js');
@@ -178,12 +179,33 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/'+code+'/document/'+ca.id,'GET',d)).status,404);
  const stats=await(await req('/workshop/host/'+code,'GET',host)).json();assert.equal(stats.progress.length,3);assert.equal(stats.progress.find((v:any)=>v.organizationId==='logistics').plans,2);assert.equal(stats.preview.length,3);assert(!JSON.stringify(stats.progress).includes('notes'));
  const implementation=(await state(a)).signals.find((v:any)=>v.id.startsWith('implementation-'));assert(implementation);assert.equal((await decide(a,implementation.id,['L1-R1'])).status,200);assert.equal((await reassess(a,'L1-R1','Update',3)).status,200);const replay=await state(a);assert.equal(replay.risks[0].likelihood,3);assert(replay.plans.some((v:any)=>v.status==='Done'));assert(replay.reviews.length>=2);
+ // Content packages persist independently from participant progress and require admin authority.
+ const publicContent=await req('/content');assert.equal(publicContent.status,200);assert.equal((await publicContent.json()).revision,0);
+ assert.equal((await req('/admin/content','GET',a)).status,403);
+ const contentDraft=await(await req('/admin/content','GET',host)).json();
+ const customConfig=structuredClone(defaultContent);customConfig.modules.forEach(m=>m.enabled=m.id==='opening');customConfig.modules[0].slides=customConfig.modules[0].slides.slice(0,1);
+ customConfig.modules.push({id:'custom-practice',title:'Custom practice',description:'Test package',enabled:true,slides:[{key:'custom-practice-slide',enabled:true,title:'Review',body:'Evidence',notes:'Teaching note',layout:'demo',tone:'day'}],demo:{kind:'sandbox',config:{title:'Review app',description:'Simulated',fields:[{id:'case',label:'Case',type:'text',options:[]}],rows:[{case:'Example'}],steps:['Review','Approve']}}});
+ assert.equal((await req('/admin/content','PUT',a,{config:customConfig,expectedRevision:0})).status,403);
+ assert.equal((await req('/admin/content','PUT',host,{config:customConfig,expectedRevision:contentDraft.draftRevision})).status,200);
+ assert.equal((await(await req('/content')).json()).revision,0,'Draft does not change public content');
+ assert.equal((await req('/admin/content','PUT',host,{config:customConfig,expectedRevision:0})).status,409,'Stale draft cannot overwrite another admin');
+ await req('/admin/presentation/presenting','PUT',host,{presenting:true});
+ assert.equal((await req('/admin/content','PUT',host,{config:customConfig,expectedRevision:1,publish:true})).status,409,'Cannot change a live presentation');
+ await req('/admin/presentation/presenting','PUT',host,{presenting:false});
+ assert.equal((await req('/admin/content','PUT',host,{config:customConfig,expectedRevision:1,publish:true})).status,200);
+ const publishedContent=await(await req('/content')).json();assert.equal(publishedContent.revision,1);assert.equal(publishedContent.config.modules.at(-1).demo.config.rows[0].case,'Example');
+ await new Promise(r=>setTimeout(r,220));
+ const customDeck=await(await liveState()).json();assert.equal(customDeck.total,2);assert.equal(customDeck.deckId,deckOutline.deckId+'-content-1');
+ assert.equal((await req('/admin/presentation','PUT',host,{deckId:deckOutline.deckId,slideKey:'cover',expectedRevision:customDeck.revision})).status,409,'Old clients cannot publish a stale deck');
+ const customNav=await req('/admin/presentation/navigate','POST',host,{direction:'next'});assert.equal((await customNav.json()).slideKey,'custom-practice-slide');
+ assert.equal((await state(a)).risks[0].likelihood,3,'Publishing materials preserves participant decisions');
  // Reset is tested only against the disposable TSTSIG fixture, never the live seminar.
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',a,{confirmation:'RESET'})).status,403);
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'wrong'})).status,400);
  const beforeReset=await(await liveState()).json();
  const reset=await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:0});assert.equal(reset.status,200);assert.equal((await reset.json()).resetEpoch,1);
  for(const cookie of [a,b,d,demoAuth]){const fresh=await state(cookie);assert.equal(fresh.ready,false);assert.equal(fresh.company,'');assert.deepEqual(fresh.objectiveIds,[]);for(const key of ['risks','signals','plans','reviews'])assert.equal(fresh[key].length,0);}
+ assert.equal((await(await req('/content')).json()).revision,1,'Workshop reset preserves published materials');
  const resetHost=await(await req('/workshop/host/'+code,'GET',host)).json();assert.deepEqual(resetHost.released,[]);assert.deepEqual(resetHost.news,[]);assert.deepEqual(resetHost.sourceHealth,[]);assert.equal(resetHost.resetEpoch,1);
  const resetDeck=await(await liveState()).json();assert.equal(resetDeck.presenting,false);assert.equal(resetDeck.slideKey,beforeReset.slideKey);
  assert.equal((await setup(a,'logistics',['L1'])).status,409,'Old forms cannot repopulate the reset workshop');

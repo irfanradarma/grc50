@@ -1,6 +1,7 @@
+import {composeModules,loadContentSnapshot} from './content-modules.mjs?v=modules-1';
 import {installDeckLanguage} from './deck-language.js?v=bilingual-1';
 import {connectLiveDeck} from '../js/deck-live.js?v=presentation-status-1';
-const reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
+let reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
 const assets=new URL('../',import.meta.url).href;
 const local=['localhost','127.0.0.1'].includes(location.hostname);
@@ -130,6 +131,17 @@ slides.cover.html+='<a class="cover-access" href="https://s.kemenkeu.go.id/signa
 slides['your-turn'].html=slides['your-turn'].html.replace('href="'+app+'/audience/"','href="'+esc(joinHref)+'"').replace('<p class="micro">Local design study <span>Open the production Admin separately to run a participant session.</span></p>',`<p class="micro">One shared seminar<span>Your organization. Your decisions. Your private workspace.</span></p>`);
 
 const stage=document.getElementById('stage');
+// Resolve published packages before constructing slide navigation or live-follow state.
+let contentSnapshot=null;
+try{contentSnapshot=await loadContentSnapshot();}catch{
+ const warning=document.createElement('aside');warning.className='module-load-warning';warning.textContent='Materi server belum dapat dimuat. Menampilkan materi bawaan; muat ulang untuk susunan terbaru.';document.body.append(warning);
+}
+if(contentSnapshot&&(contentSnapshot.revision>0||contentSnapshot.preview)){
+ const composed=composeModules(contentSnapshot.config,reference,slides,{revision:contentSnapshot.revision,appUrl:app,preview:contentSnapshot.preview});
+ reference=composed.reference;Object.assign(slides,composed.renderers);document.title=contentSnapshot.config.title+' | SIGNAL';
+ if(contentSnapshot.preview){const notice=document.createElement('aside');notice.className='module-load-warning';notice.textContent='PRATINJAU DRAFT ? belum diterbitkan untuk peserta';document.body.append(notice);}
+}
+
 for(const entry of reference.slides)if(!slides[entry.key])throw Error('Missing design for '+entry.key);
 stage.innerHTML=reference.slides.map((entry,i)=>{const s=slides[entry.key],chapterIndex=reference.chapters.findIndex(c=>c.id===entry.chapter);return `<section id="frame-${i+1}" class="frame ${s.tone||'day'} ${s.kind||''}" aria-label="Slide ${i+1}: ${esc(s.title.replace(/<[^>]*>/g,' ').replaceAll('&amp;','&'))}" data-key="${entry.key}" ${i?'hidden':''}><div class="frame-content">${s.html}</div><div class="frame-foot"><span>SIGNAL<span class="foot-dot">●</span>${chapterIndex>=0?`<span class="foot-chapter">0${chapterIndex+1} / ${esc(reference.chapters[chapterIndex].title)}</span>`:''}</span><span>${String(i+1).padStart(2,'0')} / ${reference.slides.length}</span></div></section>`;}).join('');
 const frames=[...stage.querySelectorAll('.frame')],sheet=document.getElementById('sheet'),sheetBody=document.getElementById('sheet-body'),seek=document.getElementById('seek');
@@ -163,7 +175,7 @@ function openSheet(mode='details'){
  if(mode==='contents')sheetBody.innerHTML=`<div class="contents-list">${reference.slides.map((entry,i)=>`<button data-jump="${i}" ${i===current?'aria-current="true"':''}><span>${String(i+1).padStart(2,'0')}</span>${esc(slides[entry.key].title)}</button>`).join('')}</div>`;
  else{
   let more='';if(entry.key.startsWith('evidence-')){const key=entry.key==='evidence-risk-management'?'risk':entry.key==='evidence-assurance'?'audit':'paper';const r=reference.research[key];more=`<h3>Study scope</h3><p>${esc(r.population||r.scope)}. ${esc(r.limits)}</p>`;}
-  sheetBody.innerHTML=`<p class="sheet-section">${esc(entry.section)}</p><h3>${entry.referenceContext?'Reference context':'Context'}</h3><p>${esc(entry.referenceContext||entry.note)}</p>${entry.narrativeConnection?`<h3>How it relates</h3><p>${esc(entry.narrativeConnection)}</p>`:''}${more}<h3>Sources & further reading</h3><ul class="source-list">${entry.links.length?entry.links.map(link=>`<li><a href="${esc(link.url)}" target="_blank" rel="noreferrer">${esc(link.label||new URL(link.url).hostname)} ↗</a></li>`).join(''):'<li>Presenter-supplied explanation and conceptual information flow.</li>'}</ul>${presenter?'<button class="primary" data-original>Open archived slide ↗</button>':''}<p class="sheet-disclaimer">Evidence informs. People decide.</p>`;
+  sheetBody.innerHTML=`<p class="sheet-section">${esc(entry.section)}</p><h3>${entry.referenceContext?'Reference context':'Context'}</h3><p>${esc(entry.referenceContext||entry.note)}</p>${entry.narrativeConnection?`<h3>How it relates</h3><p>${esc(entry.narrativeConnection)}</p>`:''}${presenter?`<h3>Presenter notes</h3><p class="module-slide-body">${esc(entry.note||'')}</p>`:''}${more}<h3>Sources & further reading</h3><ul class="source-list">${entry.links.length?entry.links.map(link=>`<li><a href="${esc(link.url)}" target="_blank" rel="noreferrer">${esc(link.label||new URL(link.url).hostname)} ↗</a></li>`).join(''):'<li>Presenter-supplied explanation and conceptual information flow.</li>'}</ul>${presenter?'<button class="primary" data-original>Open archived slide ↗</button>':''}<p class="sheet-disclaimer">Evidence informs. People decide.</p>`;
  }
  if(!sheet.open)sheet.showModal();
 }
@@ -230,8 +242,8 @@ document.addEventListener('keydown',event=>{
 let start;
 stage.addEventListener('touchstart',event=>{if(event.target.closest('button,a,input,iframe'))return;start={x:event.changedTouches[0].clientX,y:event.changedTouches[0].clientY};},{passive:true});
 stage.addEventListener('touchend',event=>{if(!start)return;const dx=event.changedTouches[0].clientX-start.x,dy=event.changedTouches[0].clientY-start.y;start=null;if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5)show(current+(dx<0?1:-1));},{passive:true});
-const hashIndex=()=>{const match=location.hash.match(/^#(?:slide-)?(\d+)$/);return match?Number(match[1])-1:0;};
+const hashIndex=()=>{const module=location.hash.match(/^#module-([a-z0-9-]+)$/);if(module)return Math.max(0,reference.slides.findIndex(s=>s.chapter===module[1]));const match=location.hash.match(/^#(?:slide-)?(\d+)$/);return match?Number(match[1])-1:0;};
 addEventListener('hashchange',()=>show(hashIndex(),false));show(hashIndex(),false,true);
-connectLiveDeck({slides:reference.slides.map(entry=>({...entry,title:slides[entry.key].title})),outline:reference,current:()=>current,showRemote:index=>{if(index>=0)show(index,true,true);}});
+if(!contentSnapshot?.preview)connectLiveDeck({slides:reference.slides.map(entry=>({...entry,title:slides[entry.key].title})),outline:reference,current:()=>current,showRemote:index=>{if(index>=0)show(index,true,true);}});
 
 installDeckLanguage({catalogue:languageCatalogue,reference});

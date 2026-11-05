@@ -15,7 +15,7 @@ await fs.cp(path.join(root,'website'),path.join(output,'presentation'),{recursiv
 await fs.cp(path.join(root,'app/dist/assets'),path.join(output,'assets'),{recursive:true});
 await fs.copyFile(path.join(root,'app/dist/signal.svg'),path.join(output,'signal.svg'));
 const html=await fs.readFile(path.join(root,'app/dist/index.html'),'utf8');
-const routes=['admin','admin/demo','audience','join-qr',...['context','menus','capture','assessment','mitigation','protection','internal','ca','dashboard'].map(key=>'audience/walkthrough/'+key)];
+const routes=['modules','admin','admin/demo','audience','join-qr',...['context','menus','capture','assessment','mitigation','protection','internal','ca','dashboard'].map(key=>'audience/walkthrough/'+key)];
 for(const route of routes){await fs.mkdir(path.join(output,route),{recursive:true});await fs.writeFile(path.join(output,route,'index.html'),html);}
 const runtime='window.SIGNAL_HOSTING='+JSON.stringify({...config,frontendUrl:config.frontendUrl.replace(/\/$/,'')})+';\n';
 for(const prefix of ['','presentation/'])await fs.writeFile(path.join(output,prefix,'assets/js/hosting-config.js'),runtime);

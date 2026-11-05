@@ -1,6 +1,7 @@
-export type SeminarRoute = {kind:'admin'|'audience'|'qr'|'tour'|'notfound'|'demo';code?:string;canonical?:string};
+export type SeminarRoute = {kind:'admin'|'audience'|'qr'|'tour'|'notfound'|'demo'|'modules';code?:string;canonical?:string};
 export function sessionPath(role:'admin'|'audience',_code?:string){return '/'+role;}
 export function resolveSeminarRoute(url:URL):SeminarRoute{
+ if(/^\/modules\/?$/.test(url.pathname))return {kind:'modules'};
  if(/^\/admin\/demo\/?$/.test(url.pathname))return {kind:'demo'};
  if(/^\/audience\/walkthrough\/(context|menus|capture|assessment|mitigation|protection|internal|ca|dashboard)\/?$/.test(url.pathname))return {kind:'tour'};
  const match=url.pathname.match(/^\/(admin|audience)(?:\/sessions\/([A-Z0-9]{6}))?\/?$/i);

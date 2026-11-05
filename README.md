@@ -4,6 +4,7 @@
 
 An English Keynote-style presentation and connected risk-management workshop.
 
+- [Modul materi dan dummy aplikasi](docs/modul-dan-materi.md)
 - [Deck and version backups](docs/deck-versions.md)
 - [Deployment and database isolation](docs/deployment.md)
 - [Presenter and workshop guide](docs/seminar-workshop.md)

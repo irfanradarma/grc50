@@ -24,7 +24,7 @@ export function connectLiveDeck({slides,outline,current,showRemote}){
  }
  function receive(data){
   overlay?.update(data.demo);
-  if(data.deckId!==outline.deckId||indexOf(data.slideKey)<0)throw Error('Deck version mismatch');
+  if(data.deckId!==outline.deckId){if(outline.deckId.startsWith('signal-beyond-compliance-v4-keynote')&&data.deckId.startsWith('signal-beyond-compliance-v4-keynote')){const last=Number(sessionStorage.getItem('signal-content-reload-at')||0);if(Date.now()-last>15000){sessionStorage.setItem('signal-content-reload-at',String(Date.now()));location.reload();}}throw Error('Deck version mismatch');}if(indexOf(data.slideKey)<0)throw Error('Slide unavailable');
   if(data.revision<revision)return;
   revision=data.revision;connected=true;hasPublished=data.published;presenting=data.presenting===true;
   if(host){if(indexOf(data.slideKey)!==current())showRemote(indexOf(data.slideKey));}
