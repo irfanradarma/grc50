@@ -1,5 +1,6 @@
 import {z} from 'zod';
 import reference from '../../website/assets/keynote/reference.json';
+import auditMaterial from '../../website/assets/keynote/audit-beyond-topic.json';
 
 const id=z.string().regex(/^[a-z][a-z0-9-]{0,79}$/);
 const line=z.string().trim().min(1).max(300);
@@ -15,12 +16,12 @@ export const demoSchema=z.object({
 });
 export const slideSchema=z.object({key:id,enabled:z.boolean(),builtin:z.string().optional(),title:line,body:copy.default(''),notes:copy.default(''),layout:z.enum(['original','title','content','demo']),tone:z.enum(['day','night']).default('day')}).strict();
 export const moduleSchema=z.object({id,title:line,description:copy.default(''),enabled:z.boolean(),slides:z.array(slideSchema).max(100),demo:z.discriminatedUnion('kind',[
- z.object({kind:z.literal('none')}),z.object({kind:z.literal('signal')}),z.object({kind:z.literal('sandbox'),config:demoSchema})
+ z.object({kind:z.literal('none')}),z.object({kind:z.literal('audit-suite')}),z.object({kind:z.literal('signal')}),z.object({kind:z.literal('sandbox'),config:demoSchema})
 ])}).strict();
 export const contentSchema=z.object({schemaVersion:z.literal(1),title:line,modules:z.array(moduleSchema).min(1).max(30)}).strict().superRefine((value,ctx)=>{
  const moduleIds=value.modules.map(m=>m.id),keys=value.modules.flatMap(m=>m.slides.map(s=>s.key));
  if(new Set(moduleIds).size!==moduleIds.length||new Set(keys).size!==keys.length)ctx.addIssue({code:'custom',message:'Module IDs and slide keys must be unique'});
- const builtins=new Set(reference.slides.map(s=>s.key));
+ const builtins=new Set([...reference.slides,...auditMaterial.slides].map(s=>s.key));
  for(const m of value.modules)for(const s of m.slides){
   if(s.builtin&&!builtins.has(s.builtin))ctx.addIssue({code:'custom',message:'Unknown built-in slide: '+s.builtin});
   if(s.layout==='original'&&!s.builtin)ctx.addIssue({code:'custom',message:'Original layout requires a built-in slide'});

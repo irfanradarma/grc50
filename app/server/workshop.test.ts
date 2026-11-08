@@ -1,4 +1,5 @@
 import {test} from 'node:test';
+import {newTopicContent} from '../shared/topics.js';
 import {scryptSync} from 'node:crypto';
 const adminPassword='test-only-control-password';
 process.env.ADMIN_PASSWORD_HASH='scrypt$'+'a'.repeat(32)+'$'+scryptSync(adminPassword,'a'.repeat(32),64).toString('hex');
@@ -198,14 +199,17 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  const customDeck=await(await liveState()).json();assert.equal(customDeck.total,2);assert.equal(customDeck.deckId,deckOutline.deckId+'-content-1');
  assert.equal((await req('/admin/presentation','PUT',host,{deckId:deckOutline.deckId,slideKey:'cover',expectedRevision:customDeck.revision})).status,409,'Old clients cannot publish a stale deck');
  const customNav=await req('/admin/presentation/navigate','POST',host,{direction:'next'});assert.equal((await customNav.json()).slideKey,'custom-practice-slide');
- assert.equal((await state(a)).risks[0].likelihood,3,'Publishing materials preserves participant decisions');
+ assert.equal((await req('/workshop/join','POST',a)).status,409,'Inactive SIGNAL cannot be opened through an old link');
+ assert.equal((await req('/workshop/'+code+'/state','GET',a)).status,409);
+ assert.equal((await req('/admin/content','PUT',host,{config:defaultContent,expectedRevision:2,publish:true})).status,200);
+ assert.equal((await state(a)).risks[0].likelihood,3,'Switching back preserves participant decisions');
  // Reset is tested only against the disposable TSTSIG fixture, never the live seminar.
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',a,{confirmation:'RESET'})).status,403);
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'wrong'})).status,400);
  const beforeReset=await(await liveState()).json();
  const reset=await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:0});assert.equal(reset.status,200);assert.equal((await reset.json()).resetEpoch,1);
  for(const cookie of [a,b,d,demoAuth]){const fresh=await state(cookie);assert.equal(fresh.ready,false);assert.equal(fresh.company,'');assert.deepEqual(fresh.objectiveIds,[]);for(const key of ['risks','signals','plans','reviews'])assert.equal(fresh[key].length,0);}
- assert.equal((await(await req('/content')).json()).revision,1,'Workshop reset preserves published materials');
+ assert.equal((await(await req('/content')).json()).revision,2,'Workshop reset preserves published materials');
  const resetHost=await(await req('/workshop/host/'+code,'GET',host)).json();assert.deepEqual(resetHost.released,[]);assert.deepEqual(resetHost.news,[]);assert.deepEqual(resetHost.sourceHealth,[]);assert.equal(resetHost.resetEpoch,1);
  const resetDeck=await(await liveState()).json();assert.equal(resetDeck.presenting,false);assert.equal(resetDeck.slideKey,beforeReset.slideKey);
  assert.equal((await setup(a,'logistics',['L1'])).status,409,'Old forms cannot repopulate the reset workshop');
@@ -213,6 +217,36 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:0})).status,409,'An old reset cannot erase a newer run');
  assert.equal((await req('/workshop/'+code+'/setup','PUT',a,{organizationId:'logistics',objectiveIds:['L1'],company:'Fresh run',sourceIds:['antara'],epoch:1})).status,200);
  assert.equal((await state(a)).ready,true);assert.equal((await state(b)).ready,false);
+ // A topic is a complete deck + one app, selected once for all audience routes.
+ assert.equal((await req('/admin/topics','GET',a)).status,403);
+ let lib=await(await req('/admin/topics','GET',host)).json();assert.equal(lib.topics.length,2);assert.equal(lib.activeTopicId,'beyond-compliance');assert.equal(lib.topics[0].draft.modules.flatMap((m:any)=>m.slides).length,45);
+ const nextConfig=newTopicContent('Future topic');nextConfig.modules[0].demo={kind:'sandbox',config:{title:'Future practice',description:'Topic-specific',fields:[{id:'item',label:'Item',type:'text',options:[]}],rows:[],steps:['Decide']}};
+ const nextTopic={title:'Future topic',description:'A separate complete presentation',config:nextConfig};
+ assert.equal((await req('/admin/topics','POST',a,{expectedRevision:0,topic:nextTopic})).status,403);
+ let created=await req('/admin/topics','POST',host,{expectedRevision:0,topic:nextTopic});assert.equal(created.status,200);lib=await created.json();const nextId=lib.topics.find((t:any)=>t.title==='Future topic').id;
+ assert.equal((await(await req('/content')).json()).topicId,'beyond-compliance','Saving a topic does not activate it');
+ assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:0})).status,409);
+ await req('/admin/presentation/presenting','PUT',host,{presenting:true});assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:1})).status,409);await req('/admin/presentation/presenting','PUT',host,{presenting:false});
+ assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:1})).status,200);
+ let activeTopic=await(await req('/content')).json();assert.equal(activeTopic.topicId,nextId);assert.equal(activeTopic.application.kind,'sandbox');assert.equal(activeTopic.config.title,'Future topic');const firstAppRevision=activeTopic.applicationRevision;
+ const topicDeck=await(await liveState()).json();assert.equal(topicDeck.total,1);assert.equal(topicDeck.presenting,false);assert.notEqual(topicDeck.deckId,customDeck.deckId);assert.equal((await req('/workshop/join','POST',a)).status,409);
+ nextConfig.title='Edited future topic';assert.equal((await req('/admin/topics/'+nextId,'PUT',host,{expectedRevision:2,topic:{...nextTopic,title:'Edited future topic',description:'Draft only',config:nextConfig}})).status,200);
+ activeTopic=await(await req('/content')).json();assert.equal(activeTopic.topicTitle,'Future topic');assert.equal(activeTopic.description,'A separate complete presentation','Draft descriptions stay private until activated');
+ assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:3})).status,200);
+ activeTopic=await(await req('/content')).json();assert.equal(activeTopic.application.kind,'signal');assert.equal((await(await liveState()).json()).total,45);assert.equal((await state(a)).company,'Fresh run','Topic switching does not erase SIGNAL workspaces');
+ assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:4})).status,200);activeTopic=await(await req('/content')).json();assert.equal(activeTopic.topicTitle,'Edited future topic');assert.equal(activeTopic.applicationRevision,firstAppRevision,'Deck-only edits preserve exercise storage');
+ assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:5})).status,200);
+ assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:1})).status,200);assert.equal((await(await req('/content')).json()).topicId,'beyond-compliance','Workshop reset keeps the topic library');assert.equal((await(await req('/admin/topics','GET',host)).json()).topics.length,3);
+
+ assert.equal((await req('/admin/topics/ai-audit-beyond/activate','POST',host,{expectedRevision:6})).status,200);
+ const auditTopic=await(await req('/content')).json();assert.equal(auditTopic.application.kind,'audit-suite');assert.equal((await(await liveState()).json()).total,53);assert.equal((await req('/workshop/join','POST',a)).status,200);
+ assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:7})).status,200);
+ nextConfig.modules[0].demo.config.title='Updated practice application';
+ assert.equal((await req('/admin/topics/'+nextId,'PUT',host,{expectedRevision:8,topic:{...nextTopic,title:'Edited future topic',config:nextConfig}})).status,200);
+ assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:9})).status,200);
+ assert((await(await req('/content')).json()).applicationRevision>firstAppRevision,'App configuration changes use a new exercise storage version');
+ assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:10})).status,200);
+
  assert.equal((await req('/auth/admin/logout','POST',host)).status,200);
  for(let attempt=0;attempt<10;attempt++)assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,401);
  assert.equal((await req('/auth/admin/login','POST','',{password:'incorrect'})).status,429);

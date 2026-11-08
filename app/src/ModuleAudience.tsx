@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react';
 import {apiOrigin,browserPath} from '../shared/deployment';
 import {contentSchema,type ContentConfig,type DemoConfig} from '../shared/content';
 import './modules.css';
+import AuditSuite from './AuditSuite';
+import {auditTopicContent,auditTopicId} from '../shared/auditTopic';
 
 type Row={id:string;values:Record<string,string>;step:number;notes:string};
 export function GenericSandbox({config,storageKey}:{config:DemoConfig;storageKey:string}){
@@ -14,14 +16,14 @@ export function GenericSandbox({config,storageKey}:{config:DemoConfig;storageKey
 }
 
 export default function ModuleAudience({children,forceHub=false}:{children?:React.ReactNode;forceHub?:boolean}){
- const [snapshot,setSnapshot]=useState<{revision:number;config:ContentConfig}>(),[error,setError]=useState('');
- const selected=new URLSearchParams(location.search).get('module'),embedded=new URLSearchParams(location.search).get('embedded')==='1',preview=new URLSearchParams(location.search).get('preview')==='1';
- useEffect(()=>{let live=true;const token=preview?sessionStorage.getItem('signal-admin-token'):null;fetch(apiOrigin+'/api/'+(preview?'admin/content':'content'),{cache:'no-store',headers:token?{Authorization:'Bearer '+token}:{},signal:AbortSignal.timeout(12000)}).then(async r=>{if(!r.ok)throw Error('Materi belum dapat dimuat.');const data=await r.json(),snapshot=preview?{revision:data.draftRevision,config:data.draft}:data;snapshot.config=contentSchema.parse(snapshot.config);if(live)setSnapshot(snapshot);}).catch(()=>{if(live)setError('Katalog modul belum dapat dimuat. Coba lagi saat koneksi tersedia.');});return()=>{live=false;};},[]);
- if(error)return <main className="loading-screen"><p role="alert">{error}</p><button onClick={()=>location.reload()}>Coba lagi</button></main>;
- if(!snapshot)return <main className="loading-screen">Memuat materi dan latihan…</main>;
- const modules=snapshot.config.modules.filter(m=>m.enabled),exercises=modules.filter(m=>m.demo.kind!=='none'),signal=exercises.find(m=>m.demo.kind==='signal'),custom=exercises.some(m=>m.demo.kind==='sandbox');
- if(!forceHub&&signal&&(!custom||selected==='signal'))return <>{children}</>;
- const module=modules.find(m=>m.id===selected);
- if(module?.demo.kind==='sandbox')return <main className={'module-audience '+(embedded?'embedded':'')}><nav><a href={browserPath('/modules/')}>← Materi & latihan</a><a href={browserPath('/presentation/deck/')}>Buka deck ↗</a></nav><GenericSandbox key={snapshot.revision+'-'+module.id} config={module.demo.config} storageKey={preview?'':'signal-sandbox-v1-'+snapshot.revision+'-'+module.id+(embedded?'-presenter':'')}/></main>;
- return <main className="module-audience"><header><span className="w-kicker">MATERI & LATIHAN</span><h1>{snapshot.config.title}</h1><p>Pilih materi atau aplikasi latihan sesuai sesi yang Anda ikuti.</p><a className="module-primary-link" href={browserPath('/presentation/deck/')}>Buka presentasi →</a></header>{selected&&<p role="status">Modul tersebut tidak tersedia dalam paket aktif. Pilih modul di bawah.</p>}<div className="module-cards">{modules.map(m=><article key={m.id}><small>{m.slides.filter(s=>s.enabled).length} slide</small><h2>{m.title}</h2><p>{m.description}</p>{m.demo.kind==='signal'?<a href={browserPath('/audience/?module=signal')}>Buka latihan SIGNAL →</a>:m.demo.kind==='sandbox'?<a href={browserPath('/modules/?module='+m.id)}>Buka {m.demo.config.title} →</a>:<a href={browserPath('/presentation/deck/#module-'+m.id)}>Buka materi →</a>}</article>)}</div></main>;
+ const [snapshot,setSnapshot]=useState<{revision:number;topicId?:string;topicTitle?:string;description?:string;applicationRevision?:number;config:ContentConfig;application?:ContentConfig['modules'][number]['demo']}>(),[error,setError]=useState('');
+ const params=new URLSearchParams(location.search),embedded=params.get('embedded')==='1',preview=params.get('previewTopic')===auditTopicId;
+ useEffect(()=>{if(preview){setSnapshot({revision:0,topicId:auditTopicId,topicTitle:'AI in Audit and Beyond',config:auditTopicContent(),application:{kind:'audit-suite'}});return;}let live=true,polling=false;async function read(){if(polling)return;polling=true;try{const r=await fetch(apiOrigin+'/api/content',{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error();const data=await r.json();data.config=contentSchema.parse(data.config);if(live){setSnapshot(previous=>previous?.revision===data.revision&&previous?.topicId===data.topicId?previous:data);setError('');}}catch{if(live)setError('Topik aktif belum dapat dimuat. Periksa koneksi lalu coba lagi.');}finally{polling=false;}}void read();const timer=setInterval(()=>void read(),3000);return()=>{live=false;clearInterval(timer);};},[]);
+ if(!snapshot)return <main className="loading-screen"><p role={error?'alert':undefined}>{error||'Memuat topik aktif...'}</p></main>;
+ const topicId=snapshot.topicId||'beyond-compliance',title=snapshot.topicTitle||snapshot.config.title,app=snapshot.application||snapshot.config.modules.find(m=>m.enabled&&m.demo.kind!=='none')?.demo||{kind:'none' as const};
+ const demoRoute=location.pathname.replace(/\/$/,'').endsWith('/admin/demo');
+ if(app.kind==='audit-suite'&&!forceHub)return <AuditSuite key={topicId} preview={preview} storageKey={'audit-suite-v1-'+topicId+'-'+(snapshot.applicationRevision??snapshot.revision)+(demoRoute?'-presenter':'')}>{children}</AuditSuite>;
+ if(app.kind==='signal'&&!forceHub)return <React.Fragment key={topicId}>{children}</React.Fragment>;
+ if(app.kind==='sandbox'&&!forceHub)return <main className={'module-audience '+(embedded?'embedded':'')} key={topicId+'-'+snapshot.revision}><nav><strong>{title}</strong><a href={browserPath('/presentation/deck/')}>Buka deck</a></nav>{error&&<p role="status">{error}</p>}<GenericSandbox config={app.config} storageKey={'signal-topic-app-v1-'+topicId+'-'+(snapshot.applicationRevision??snapshot.revision)+(demoRoute?'-presenter':'')}/></main>;
+ return <main className="topic-audience-empty"><span className="w-kicker">TOPIK AKTIF</span><h1>{title}</h1><p>{snapshot.description}</p><a href={browserPath('/presentation/deck/')}>Buka presentasi</a>{forceHub&&app.kind!=='none'?<p><a href={browserPath('/audience/')}>Buka aplikasi latihan</a></p>:<p>Topik ini tidak memiliki aplikasi latihan. Silakan ikuti materi presentasinya.</p>}<small>Topik presentasi dan aplikasi yang tersedia ditentukan oleh admin.</small></main>;
 }

@@ -1,34 +1,35 @@
-# Mengelola modul materi dan dummy aplikasi
+﻿# Library topik presentasi
 
-Admin mempunyai tab **Modul & materi**. Setiap paket memuat modul berurutan. Modul mempunyai judul, deskripsi, slide, dan pilihan latihan. Paket awal mempertahankan 45 slide serta workspace SIGNAL yang sudah tersedia.
+Platform menyediakan satu library topik yang dikelola admin. **Beyond Compliance adalah satu topik lengkap**, mencakup seluruh 45 slide, empat bagian narasi, dan aplikasi SIGNAL. Bagian seperti AI in Risk Management dan SIPT bukan topik terpisah dan tidak dipilih secara mandiri oleh peserta.
 
-## Menyesuaikan sesi
+## Alur admin
 
-1. Buka `/admin/`, masuk, lalu pilih **Modul & materi**.
-2. Matikan **Aktif** untuk menyembunyikan modul; tombol panah mengubah urutannya. **Copot modul** menghapusnya dari draft. Ekspor modul dahulu jika ingin memasangnya lagi.
-3. Tambah modul atau tambah slide. Setiap slide bisa dinonaktifkan, dipindahkan, dihapus, atau diedit. Pilih **Judul dan isi** untuk mengganti desain bawaan dengan materi yang dapat diedit. **Desain bawaan** mempertahankan artwork, diagram, dan interaksi lama; judul digunakan dalam navigasi dan catatan bisa disunting.
-4. Pilih dummy aplikasi: tanpa latihan, SIGNAL bawaan, atau dummy kustom. Dummy kustom mempunyai label isian, tipe teks/angka/pilihan, data contoh, petunjuk, dan tahapan keputusan yang dapat diubah lewat editor.
-5. **Simpan draft** menyimpan pekerjaan di server. **Pratinjau dummy** mencoba draft tanpa menyimpan hasil latihan. **Pratinjau deck** membuka seluruh susunan draft di tab lain; preview tidak mengontrol tayangan langsung.
-6. Hentikan presentasi dan siaran demo, kemudian **Terbitkan**. Backend menolak publikasi ketika tayangan sedang berlangsung. Deck yang terbuka memuat ulang ketika identitas paket berubah. Susunan baru digunakan oleh navigasi admin dan peserta.
-7. Bagikan `/modules/` untuk katalog seluruh materi/latihan, atau tautan deck biasa. `/audience/` tetap membuka SIGNAL bila itu satu-satunya latihan. Jika ada dummy kustom atau SIGNAL dilepas, halaman peserta menampilkan katalog. Tautan **Materi & latihan** juga tersedia dari aplikasi SIGNAL.
+1. Buka `/admin/` dan pilih **Library topik**. Status **Aktif** menandai satu topik yang sedang digunakan peserta.
+2. **Tambah topik** membuat draft terpisah. Isi nama, deskripsi, deck, dan aplikasi yang menyertainya. Topik baru tidak mengambil slide atau workspace SIGNAL milik Beyond Compliance.
+3. **Kelola** membuka pengaturan sebuah topik. Simpan perubahan sebagai draft; tindakan ini tidak mengganti materi peserta.
+4. Hentikan presentasi dan tayangan aplikasi, lalu pilih **Aktifkan topik**. Untuk perubahan pada topik aktif, pilih **Terbitkan perubahan**. Deck dan aplikasi peserta beralih sebagai satu paket, dan presentasi tetap berhenti sampai admin memulainya.
+5. Peserta tetap memakai tautan yang sama: `/presentation/deck/` dan `/audience/`. Mereka tidak perlu memilih topik atau mencampur bagian materi. Halaman yang sudah terbuka memeriksa topik aktif secara berkala.
 
-Dummy kustom dapat dipasang langsung ke slide melalui tampilan **Dummy aplikasi modul**. Kartu pada katalog juga membuka latihan secara mandiri. SIGNAL mempertahankan kendali pelepasan sinyal dan penyimpanan PostgreSQL yang ada; latihan kustom menyimpan data simulasi hanya dalam browser peserta. Versi paket dan ID modul memisahkan penyimpanan; penerbitan versi baru memulai ruang latihan kustom baru tanpa menghapus versi lama. Dummy tertanam pada deck mempunyai ruang browser tersendiri dari latihan peserta. Dummy kustom tidak menjalankan backend bisnis atau model AI.
+Beyond Compliance mempertahankan desain, interaksi dan urutan deck aslinya. Aplikasi SIGNAL terikat pada topik ini. Topik lain dapat dimulai tanpa aplikasi atau dengan latihan formulir/keputusan, lalu dikembangkan lebih lanjut sesuai kebutuhan materi baru. Satu topik hanya mempunyai satu aplikasi peserta.
 
-## Paket yang dapat dipindahkan
+Perpindahan topik tidak menghapus progres SIGNAL. Saat Beyond Compliance diaktifkan lagi, workspace peserta tetap tersedia. Latihan formulir memiliki penyimpanan browser terpisah berdasarkan ID topik dan versi konfigurasi aplikasinya. Mengganti topik tanpa mengubah konfigurasinya tidak menghapus latihan tersebut. Tombol reset latihan dan pergantian topik adalah dua tindakan berbeda.
 
-**Ekspor paket** menghasilkan JSON berisi seluruh modul dan materi. **Ekspor modul** menghasilkan satu modul beserta konfigurasi dummy-nya. **Impor paket / modul** memvalidasi format sebelum memasukkannya ke draft. Paket penuh mengganti draft; modul tunggal ditambahkan. ID modul dan key slide harus unik. Gunakan **Duplikat modul** bila ingin membuat variasi dalam paket yang sama; editor membuat ID baru otomatis.
+## Penyimpanan dan keamanan
 
-Tidak ada HTML atau JavaScript bebas dalam materi maupun dummy. Teks ditampilkan sebagai teks. Paket harus mempertahankan sedikitnya satu slide aktif; slide demo harus mempunyai dummy yang terpasang. Satu paket hanya dapat mengaktifkan satu workspace SIGNAL. Draft yang disimpan memakai revision check agar admin lain tidak diam-diam menimpa perubahan.
+- Library tersimpan sebagai `topicLibrary` dalam JSONB ruang seminar SIGNAL yang sudah ada; tidak ada tabel atau proyek database baru.
+- Konfigurasi versi sebelumnya dipertahankan dan dibaca sebagai topik Beyond Compliance saat library pertama kali digunakan.
+- API publik `/api/content` hanya mengembalikan deck dan aplikasi dari topik yang telah diaktifkan. Draft dan topik lain hanya tersedia melalui endpoint admin.
+- Setiap perubahan library memeriksa revision agar admin lain tidak menimpa perubahan secara diam-diam.
+- Aktivasi ditolak saat presentasi atau demo aplikasi masih berlangsung. Identitas deck berubah saat aktivasi, sehingga navigasi lama tidak dapat menimpa deck topik baru.
+- Endpoint SIGNAL menolak workspace peserta jika topik aktif bukan SIGNAL; tautan lama tidak membuka latihan topik lain.
 
-## Acuan pengembang
+## Acuan implementasi
 
-- `app/shared/content.ts`: skema versi 1, paket bawaan, template dummy, seleksi slide aktif dan identitas versi deck.
-- `app/server/content.ts`: GET publik `/api/content`; GET/PUT admin `/api/admin/content`; draft dan publikasi disimpan dalam JSONB ruang seminar yang sudah ada, tanpa migrasi tabel baru.
-- `app/src/ContentStudio.tsx`: editor paket dan modul.
-- `app/src/ModuleAudience.tsx`: katalog dan runtime dummy kustom; dapat diperluas dengan jenis runtime baru melalui discriminated union pada skema.
-- `website/assets/keynote/content-modules.mjs`: komposisi renderer slide bawaan dan slide konfigurasi. Built-in key mereferensikan desain pada `keynote.js`; mematikan modul mengeluarkan slide dari urutan dan kontrak live.
-- `app/server/presentation.ts`: urutan berasal dari paket terbit, bukan array slide tetap. Penerbitan memilih slide aktif terdekat yang masih tersedia atau slide pertama, mempertahankan riwayat peserta SIGNAL dan menghentikan tayangan sampai admin memulainya.
+- `app/shared/topics.ts`: model library, topik bawaan, dan pemilihan satu aplikasi per topik.
+- `app/server/topics.ts`: daftar, pembuatan, penyimpanan draft, dan aktivasi topik.
+- `app/server/content.ts`: snapshot publik dari topik aktif dan kontrak deck.
+- `app/src/ContentStudio.tsx`: laman Library topik admin.
+- `app/src/ModuleAudience.tsx`: aplikasi atau laman materi dari topik aktif; `/modules/` dipertahankan sebagai tautan kompatibilitas menuju topik aktif, bukan katalog bagian.
+- `website/assets/keynote/content-modules.mjs`: penyusunan isi deck di dalam satu topik. Struktur internal ini bukan pilihan topik bagi peserta.
 
-Reset latihan SIGNAL mempertahankan konfigurasi materi. Mengembalikan **Paket bawaan** hanya mengubah draft sampai diterbitkan. Perubahan isi organisasi internal SIGNAL tetap merupakan perubahan skenario pada `app/shared/strategicScenario.ts`; untuk skenario latihan baru tanpa mengubah kode, buat dummy kustom.
-
-Rilis backend lebih dahulu, lalu frontend/Pages. Verifikasi tes server/deck, build, paket Pages, akses anonim katalog, larangan publikasi bagi guest, konflik revision, pratinjau draft, serta perubahan urutan dan jumlah slide setelah publikasi. Jangan menjalankan reset seminar produksi sebagai tes deployment.
+Rilis backend sebelum frontend bila perubahan ini dipublikasikan. Pengujian perpindahan topik menggunakan ruang `TSTSIG`; jangan mengganti topik atau mereset progres produksi hanya untuk menguji deployment.

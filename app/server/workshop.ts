@@ -7,6 +7,7 @@ import {sharedRoom,roomCode} from './sharedRoom.js';
 import {requireAdmin} from './adminAuth.js';
 import {demoBroadcast} from './demoBroadcast.js';
 import {invalidatePresentation} from './presentation.js';
+import {publishedContent} from './content.js';
 import strategicNews from '../../website/assets/data/strategic-news.json';
 import {captureNews} from './news.js';
 import {organizations,publishers,featured,c,stages,scenarioVersion,freshParticipant,setupParticipant,materialize,proposed,pendingFor,tx,type Participant} from '../shared/workshop.js';
@@ -19,7 +20,7 @@ const find=async(c:string)=>(await pool.query("SELECT * FROM seminar_sessions WH
 async function own(c:string,w:string){if(c!==roomCode)return null;await sharedRoom();const s=await find(c);return s?.owner_id===w?s:null;}
 async function participant(c:string,w:string,epoch:unknown,fn:(p:Participant,s:any)=>any){
  if(c!==roomCode)return null;
- return tenant(w,async db=>{const s=(await db.query("SELECT * FROM seminar_sessions WHERE code=$1 AND data->>'version'='3' FOR SHARE",[c])).rows[0];if(!s)return null;
+ return tenant(w,async db=>{const s=(await db.query("SELECT * FROM seminar_sessions WHERE code=$1 AND data->>'version'='3' FOR SHARE",[c])).rows[0];if(!s)return null;if(!['signal','audit-suite'].includes(publishedContent(s.data).application?.kind||''))return {error:'Topik aktif tidak menggunakan aplikasi SIGNAL.'};
  if(epoch!==undefined&&(epoch===null?(s.data.resetEpoch||0)>0:Number(epoch)!==(s.data.resetEpoch||0)))return {error:'The seminar was reset. Refresh before continuing.'};
  const row=(await db.query('SELECT data FROM seminar_participants WHERE session_id=$1 AND workspace_id=$2 FOR UPDATE',[s.id,w])).rows[0];if(!row)return null;const before=JSON.stringify(row.data);materialize(row.data,s.data);const result=await fn(row.data,s);if(before!==JSON.stringify(row.data))await db.query('UPDATE seminar_participants SET data=$1,updated_at=now() WHERE session_id=$2 AND workspace_id=$3',[row.data,s.id,w]);return result;});
 }
@@ -28,7 +29,7 @@ const respond=(res:any,out:any)=>!out?res.status(404).json({error:'Session or pr
 workshop.get('/workshop/access',requireAdmin,(_req,res)=>res.json({addresses:process.env.PUBLIC_FRONTEND_URL?[process.env.PUBLIC_FRONTEND_URL]:Object.values(networkInterfaces()).flatMap(v=>v||[]).filter(v=>v.family==='IPv4'&&!v.internal&&!v.address.startsWith('169.254.')).map(v=>'http://'+v.address)}));
 workshop.use('/workshop/host',requireAdmin);
 workshop.post('/workshop/sessions',requireAdmin,async(_req,res)=>{await sharedRoom();res.status(201).json({code:roomCode});});
-workshop.post('/workshop/join',async(_req,res)=>{const s=await sharedRoom();await tenant(res.locals.workspace.id,db=>db.query('INSERT INTO seminar_participants(session_id,workspace_id,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[s.id,res.locals.workspace.id,freshParticipant()]));res.json({code:roomCode});});
+workshop.post('/workshop/join',async(_req,res)=>{const s=await sharedRoom();if(!['signal','audit-suite'].includes(publishedContent(s.data).application?.kind||''))return res.status(409).json({error:'Topik aktif tidak menggunakan aplikasi SIGNAL.'});await tenant(res.locals.workspace.id,db=>db.query('INSERT INTO seminar_participants(session_id,workspace_id,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[s.id,res.locals.workspace.id,freshParticipant()]));res.json({code:roomCode});});
 workshop.get('/workshop/:code/state',async(req,res)=>respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,undefined,payload)));
 workshop.put('/workshop/:code/setup',async(req,res)=>{const input=z.object({organizationId:text,objectiveIds:z.array(text).min(1).max(2),company:z.string().trim().max(100),sourceIds}).parse(req.body);let p:Participant;try{p=setupParticipant(input.organizationId,input.objectiveIds,input.company,featured.exerciseDate);}catch{return res.status(400).json({error:'Choose at least one objective from your selected organization.'});}respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,(data,s)=>{if(data.ready)return {error:'Organization already configured. Start another session to change context.'};Object.assign(data,p,{sourceIds:input.sourceIds});materialize(data,s.data);return payload(data,s);}));});
 workshop.put('/workshop/:code/sources',async(req,res)=>{const input=sourceIds.parse(req.body.sourceIds);respond(res,await participant(code.parse(req.params.code),res.locals.workspace.id,req.method==='GET'?undefined:req.body?.epoch??null,p=>{p.sourceIds=input;return {saved:true};}));});

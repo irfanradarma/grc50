@@ -21,11 +21,12 @@ export function composeModules(config,reference,renderers,{revision=0,appUrl='',
   }
  }
  if(!entries.length)throw Error('No active slides');
- for(const entry of entries){if(entry.layout==='original'&&designs[entry.key]?.kind==='divider'){
+ const intact=entries.length===reference.slides.length&&entries.every((s,i)=>s.builtin===reference.slides[i].key&&s.key===reference.slides[i].key&&s.layout==='original')&&chapters.every(ch=>reference.chapters.some(c=>c.id===ch.id&&c.title===ch.title));
+ for(const entry of entries){if(!intact&&entry.layout==='original'&&designs[entry.key]?.kind==='divider'){
   const index=chapters.findIndex(c=>c.id===entry.chapter),chapter=chapters[index];if(chapter)designs[entry.key]={...designs[entry.key],title:chapter.title,html:`<div class="section-number" aria-hidden="true">${String(index+1).padStart(2,'0')}</div><div class="section-kicker">SECTION ${index+1} / ${chapters.length}</div><div class="heading"><h1>${escape(chapter.title)}</h1><p class="subtitle">${escape(chapter.caption)}</p></div>`};
  }}
  const agenda=entries.find(s=>s.builtin==='agenda'||s.key==='agenda');
- if(agenda&&agenda.layout==='original')designs[agenda.key]={title:'The journey.',html:`<div class="heading"><h1>${escape(config.title)}</h1></div><div class="module-agenda">${chapters.map(c=>`<button data-chapter="${escape(c.id)}"><strong>${escape(c.title)}</strong><span>${escape(c.caption)}</span></button>`).join('')}</div>`};
+ if(!intact&&agenda&&agenda.layout==='original')designs[agenda.key]={title:'The journey.',html:`<div class="heading"><h1>${escape(config.title)}</h1></div><div class="module-agenda">${chapters.map(c=>`<button data-chapter="${escape(c.id)}"><strong>${escape(c.title)}</strong><span>${escape(c.caption)}</span></button>`).join('')}</div>`};
  return {reference:{...reference,deckId:revision?reference.deckId+'-content-'+revision:reference.deckId,chapters,slides:entries},renderers:designs};
 }
 

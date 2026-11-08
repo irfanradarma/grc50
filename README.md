@@ -1,10 +1,10 @@
-# SIGNAL | Beyond Compliance
+# SIGNAL | Presentation platform
 
 **Memaksimalkan Potensi AI dalam Mengawal Strategi dan Risiko Organisasi**
 
-An English Keynote-style presentation and connected risk-management workshop.
+A presentation platform with an admin-managed topic library. Beyond Compliance is the initial complete topic, combining its 45-slide deck and the SIGNAL risk-management workshop.
 
-- [Modul materi dan dummy aplikasi](docs/modul-dan-materi.md)
+- [Library topik presentasi dan aplikasi](docs/modul-dan-materi.md)
 - [Deck and version backups](docs/deck-versions.md)
 - [Deployment and database isolation](docs/deployment.md)
 - [Presenter and workshop guide](docs/seminar-workshop.md)
@@ -57,3 +57,11 @@ node app/scripts/build-pages.mjs
 The manual **Publish SIGNAL app and deck** workflow deploys the frontend and deck to Pages. Render hosts the API; an isolated SIGNAL schema and restricted role in Supabase persist data. See the deployment guide before changing cloud configuration. A new live-deck outline requires releasing the API as well as the frontend.
 
 Retain [photo and icon credits](website/assets/images/CREDITS.md) in published material.
+
+## New topic: AI in Audit and Beyond
+
+A separate 53-slide RSM Indonesia topic presented by Dena Sucianandika and Teuku Raja Irfan Radarma, with primary research, Indonesian presenter notes and an audit workspace demonstration. Open `http://localhost/presentation/deck/?previewTopic=ai-audit-beyond` to preview without changing the active topic. The local AMS preview is at `http://localhost/audience/?previewTopic=ai-audit-beyond`. Activate the topic through **Admin > Library topik** when ready. [Material, source limitations and demonstration scope](docs/topics/ai-audit-and-beyond.md).
+
+The narrative begins with everyday work, then practical AI assistance, checking business AI, a connected audit and risk action. A recurring sales-and-collections example links the sections. [Story and presenter transitions](docs/topics/ai-audit-narrative.md).
+
+Slides 8–13 cover everyday chatbot and CLI-agent use: document disclosure, tool results, account and retention checks, narrow task folders, and an interactive productivity–confidentiality sweet spot. See the [daily-use facilitation guide](docs/topics/ai-data-handling.md).

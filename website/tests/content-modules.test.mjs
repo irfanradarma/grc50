@@ -23,3 +23,10 @@ test('original artwork survives while custom demo references its own module',()=
  assert.equal(result.reference.slides[1].index,2);
  assert.throws(()=>composeModules({modules:[]},reference,designs));
 });
+
+test('the intact original topic keeps its designed agenda and section separators',()=>{
+ const original={deckId:'deck',chapters:[{id:'chapter',title:'Chapter'}],slides:[{key:'agenda',chapter:null,links:[]},{key:'section',chapter:'chapter',links:[]}]};
+ const renderers={agenda:{title:'Agenda',html:'<div>Designed agenda</div>'},section:{title:'Chapter',kind:'divider',html:'<div>Designed separator</div>'}};
+ const config={title:'Beyond Compliance',modules:[{id:'opening',enabled:true,slides:[{key:'agenda',builtin:'agenda',enabled:true,layout:'original',title:'Agenda'}],demo:{kind:'none'}},{id:'chapter',title:'Chapter',enabled:true,slides:[{key:'section',builtin:'section',enabled:true,layout:'original',title:'Chapter'}],demo:{kind:'none'}}]};
+ const result=composeModules(config,original,renderers,{revision:4});assert.equal(result.renderers.agenda.html,renderers.agenda.html);assert.equal(result.renderers.section.html,renderers.section.html);
+});

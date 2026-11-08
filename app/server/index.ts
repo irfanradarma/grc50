@@ -1,3 +1,4 @@
+import {topicAdmin} from './topics.js';
 import express from 'express';
 import {fileURLToPath} from 'node:url';
 import cookieParser from 'cookie-parser';
@@ -33,7 +34,7 @@ app.get('/api/auth/admin/me',requireAdmin,(_req,res)=>res.json({admin:true}));
 app.post('/api/auth/admin/logout',requireAdmin,async(_req,res)=>{demoBroadcast.stop(res.locals.sessionToken);await pool.query('DELETE FROM guest_sessions WHERE token_hash=$1',[hash(res.locals.sessionToken)]);res.json({saved:true});});
 app.use('/api',demoAdmin);
 app.use('/api',presentationHost);
-app.use('/api',contentAdmin);
+app.use('/api',contentAdmin);app.use('/api',topicAdmin);
 app.use('/api',workshop);
 app.use((err:unknown,_req:express.Request,res:express.Response,_next:express.NextFunction)=>{if(err instanceof z.ZodError)return res.status(400).json({error:err.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; ')});if(err instanceof SyntaxError)return res.status(400).json({error:'Invalid JSON request.'});console.error('Request failed:',err instanceof Error?err.name:'Error');res.status(500).json({error:'Unable to complete this request. Check the local database connection.'});});
 if(process.env.NODE_ENV!=='test'){await migrate();app.listen(Number(process.env.PORT||3001),process.env.NODE_ENV==='production'?'0.0.0.0':'127.0.0.1',()=>console.log('SIGNAL API listening'));}
