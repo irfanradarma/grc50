@@ -5,28 +5,28 @@
   "sections": [
     {
       "id": "capability",
-      "title": "Start with everyday work",
-      "caption": "What AI can help with, where information goes, and what you still need to check."
-    },
-    {
-      "id": "assistant",
-      "title": "Use AI for real work",
-      "caption": "Take a familiar report from a question to a checked draft."
+      "title": "AI, briefly",
+      "caption": "Chatbot or agent. Where the information goes. Practical safeguards."
     },
     {
       "id": "audit-object",
-      "title": "When AI influences decisions",
-      "caption": "Ask who is responsible and what shows that the controls work."
+      "title": "Audit the AI",
+      "caption": "Use recognised frameworks to examine trustworthy AI in context."
+    },
+    {
+      "id": "assistant",
+      "title": "Audit with AI",
+      "caption": "Daily assistance, confidential information, human authority and useful applications."
     },
     {
       "id": "ams",
-      "title": "Connect the audit work",
-      "caption": "Keep the question, evidence, review and action together."
+      "title": "An AI-supported AMS",
+      "caption": "Annual planning, fieldwork and reporting in one reviewed workflow."
     },
     {
       "id": "beyond",
-      "title": "Turn evidence into action",
-      "caption": "Use new information to reconsider risk and protect the objective."
+      "title": "Beyond audit",
+      "caption": "Continuous risk assurance using audit results, internal reports and external signals."
     }
   ],
   "sources": {
@@ -183,6 +183,20 @@
       "scope": "Primary product explanation: CLI tools can read local source content and send it to hosted inference. This is specific to cloud-backed Claude Code use, not every local agent or offline model.",
       "type": "Provider documentation",
       "year": 2026
+    },
+    "nist-trust": {
+      "label": "NIST · Trustworthy AI characteristics",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/3-sec-characteristics/",
+      "scope": "AI RMF 1.0 section 3 and Figure 4. Seven interconnected qualities, with validity/reliability as a foundation and accountability/transparency across the others. Context and trade-offs matter; this is not an audit certification checklist.",
+      "type": "Government risk framework",
+      "year": 2023
+    },
+    "api-data": {
+      "label": "OpenAI · API data controls",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "scope": "API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.",
+      "type": "Provider documentation",
+      "year": 2026
     }
   },
   "slides": [
@@ -191,14 +205,15 @@
       "title": "AI in Audit\nand Beyond",
       "kind": "cover",
       "chapter": null,
-      "lead": "From everyday help to better decisions.",
+      "lead": "Audit the AI. Audit with AI. Go beyond audit.",
       "items": [],
-      "notes": "Pembuka dari RSM Indonesia: Dena Sucianandika dan Teuku Raja Irfan Radarma. Fokus sesi adalah pekerjaan dan keputusan yang akrab bagi peserta. Alur dimulai dari penggunaan AI sehari-hari, lalu tugas dengan dokumen nyata yang diizinkan, penilaian AI dalam proses bisnis, workspace audit dan respons risiko. Tidak perlu membuka dengan definisi teknis AI. Bukti riset dijelaskan sesuai populasi, periode dan batas klaimnya.\n\nPertanyaan peserta: What does AI change in our work? Transisi: Meet the two presenters.",
+      "notes": "Pembuka dari RSM Indonesia: Dena Sucianandika dan Teuku Raja Irfan Radarma. Fokus sesi adalah pekerjaan dan keputusan yang akrab bagi peserta. Alur dimulai dari penggunaan AI sehari-hari, lalu tugas dengan dokumen nyata yang diizinkan, penilaian AI dalam proses bisnis, workspace audit dan respons risiko. Tidak perlu membuka dengan definisi teknis AI. Bukti riset dijelaskan sesuai populasi, periode dan batas klaimnya.\n\nPertanyaan: AI in Audit and Beyond Penghubung: Audit the AI. Audit with AI. Go beyond audit.",
       "refs": [],
       "narrative": {
-        "question": "What does AI change in our work?",
-        "transition": "Meet the two presenters."
-      }
+        "question": "AI in Audit and Beyond",
+        "transition": "Audit the AI. Audit with AI. Go beyond audit."
+      },
+      "notesEn": "Introduce the practical question: how can AI help audit and risk decisions while people retain authority over evidence, release and action? Both presenters represent RSM Indonesia."
     },
     {
       "key": "aib-speakers",
@@ -207,500 +222,222 @@
       "chapter": null,
       "lead": "RSM Indonesia",
       "items": [],
-      "notes": "Perkenalkan Dena Sucianandika dan Teuku Raja Irfan Radarma sebagai pembicara dari RSM Indonesia. Jangan menambahkan jabatan, sertifikasi, riwayat klien atau biografi yang belum diberikan. Kedua pembicara membawa perspektif audit, assurance dan manajemen risiko. Setelah pengantar, arahkan peserta pada perubahan cara bekerja dan pengambilan keputusan, bukan pada nama aplikasi.\n\nAlur penyampaian: Who is guiding the discussion? Transisi ke bagian berikut: Show the route from everyday work to risk decisions.",
+      "notes": "Perkenalkan Dena Sucianandika dan Teuku Raja Irfan Radarma sebagai pembicara dari RSM Indonesia. Jangan menambahkan jabatan, sertifikasi, riwayat klien atau biografi yang belum diberikan. Kedua pembicara membawa perspektif audit, assurance dan manajemen risiko. Setelah pengantar, arahkan peserta pada perubahan cara bekerja dan pengambilan keputusan, bukan pada nama aplikasi.\n\nPertanyaan: Your speakers. Penghubung: RSM Indonesia",
       "refs": [],
       "narrative": {
-        "question": "Who is guiding the discussion?",
-        "transition": "Show the route from everyday work to risk decisions."
-      }
+        "question": "Your speakers.",
+        "transition": "RSM Indonesia"
+      },
+      "notesEn": "Dena Sucianandika and Teuku Raja Irfan Radarma both represent RSM Indonesia. Introduce the speakers without adding unverified roles, qualifications or client engagements."
     },
     {
       "key": "aib-journey",
-      "title": "Start with the work.\nFollow the decisions.",
+      "title": "AI in audit.\nAnd what comes after.",
       "kind": "journey",
       "chapter": null,
-      "lead": "Five questions will guide the discussion.",
+      "lead": "A short refresh, two audit perspectives, then one connected idea.",
       "items": [
         [
-          "Start with everyday work",
-          "What AI can help with, where information goes, and what you still need to check."
+          "AI, briefly",
+          "Chatbot or agent. Where the information goes. Practical safeguards."
         ],
         [
-          "Use AI for real work",
-          "Take a familiar report from a question to a checked draft."
+          "Audit the AI",
+          "Use recognised frameworks to examine trustworthy AI in context."
         ],
         [
-          "When AI influences decisions",
-          "Ask who is responsible and what shows that the controls work."
+          "Audit with AI",
+          "Daily assistance, confidential information, human authority and useful applications."
         ],
         [
-          "Connect the audit work",
-          "Keep the question, evidence, review and action together."
+          "An AI-supported AMS",
+          "Annual planning, fieldwork and reporting in one reviewed workflow."
         ],
         [
-          "Turn evidence into action",
-          "Use new information to reconsider risk and protect the objective."
+          "Beyond audit",
+          "Continuous risk assurance using audit results, internal reports and external signals."
         ]
       ],
-      "notes": "Tunjukkan lima bagian sebagai perjalanan, bukan daftar istilah yang harus dipahami sekaligus. Mulai dari penggunaan sehari-hari dan keamanan berbagi dokumen. Lalu lakukan satu tugas praktis: membandingkan aturan dan catatan. Setelah peserta mengenali kebutuhan bukti, perluas ke AI yang memengaruhi keputusan organisasi. Hubungkan proses audit di workspace dan tutup dengan arti temuan bagi objective serta respons risiko. Tiga referensi perpustakaan tetap dapat dibuka melalui contents.\n\nPertanyaan peserta: How will the discussion build? Transisi: Start with a familiar pile of information.",
+      "notes": "Mulai dengan penyegaran singkat tentang chatbot dan agent, perjalanan data, dan pengamanan. Setelah itu dua perspektif audit: mengaudit AI dan menggunakan AI untuk audit. Dari tugas harian, naik ke ide yang berguna dan demonstrasi AMS menyeluruh. Tutup dengan continuous risk assurance: hasil audit, memo internal, dan berita/social media menjadi masukan SIGNAL, sementara keputusan tetap pada manusia.",
       "refs": [],
       "visual": "agenda",
       "narrative": {
-        "question": "How will the discussion build?",
-        "transition": "Start with a familiar pile of information."
-      }
+        "question": "AI in audit. And what comes after.",
+        "transition": "A short refresh, two audit perspectives, then one connected idea."
+      },
+      "notesEn": "The opening is a brief refresher, not tool training. Then distinguish auditing AI from using AI for audit. Move from daily assistance to a connected AMS, and from its findings to ongoing risk decisions."
     },
     {
       "key": "aib-section-capability",
-      "title": "Start with\neveryday work.",
+      "title": "AI, briefly.",
       "kind": "section",
       "chapter": "capability",
-      "lead": "A document to read. A question to answer. A decision to make.",
+      "lead": "Two familiar ways to use it. One question: what happens to our information?",
       "items": [],
-      "notes": "Mulai dengan laporan yang datang, rapat yang selesai dan seseorang yang meminta penjelasan. Semua peserta dapat menghubungkan contoh ini dengan pekerjaannya tanpa pengetahuan khusus AI, risiko atau audit. Ilustrasi meja kerja akan menyiapkan tiga bantuan: membaca, membandingkan dan menyusun draf. Bedakan bantuan tersebut dari tanggung jawab memeriksa hasil.\n\nPertanyaan peserta: A document to read. A question to answer. A decision to make. Transisi: What AI can help with, where information goes, and what you still need to check.",
+      "notes": "Ini hanya penyegaran, bukan pelatihan memakai alat. Kenalkan dua cara yang sudah lazim: chatbot di web dan agent, misalnya melalui CLI. Tampilkan perjalanan informasi dari komputer ke layanan online, lalu tiga pengamanan umum. Setelah itu langsung bedakan Audit the AI dan Audit with AI. Pembahasan dokumen rahasia yang lebih spesifik disimpan untuk konteks audit.",
       "refs": [],
       "narrative": {
-        "question": "A document to read. A question to answer. A decision to make.",
-        "transition": "What AI can help with, where information goes, and what you still need to check."
-      }
+        "question": "AI, briefly.",
+        "transition": "Two familiar ways to use it. One question: what happens to our information?"
+      },
+      "notesEn": "Start with two familiar ways to work: a chatbot and an agent, for example through a CLI. Ask where information goes, then identify practical safeguards before moving to the two audit perspectives."
     },
     {
-      "key": "aib-capabilities",
-      "title": "A normal morning.\nToo much to read.",
-      "kind": "pipeline",
+      "key": "aib-ai-modes",
+      "title": "A chatbot you talk to.\nAn agent you give a task to.",
+      "lead": "A quick refresh—not a tool tutorial.",
       "chapter": "capability",
-      "lead": "A report arrives, a meeting ends, and someone asks: “What needs our attention?”",
-      "items": [
-        [
-          "Read",
-          "Find the important points in a report."
-        ],
-        [
-          "Compare",
-          "Check a list against a rule."
-        ],
-        [
-          "Explain",
-          "Turn findings into a clear message."
-        ]
-      ],
-      "notes": "Mulai dari situasi yang semua peserta kenal: laporan bulanan, daftar transaksi dan catatan rapat. Pertanyaannya bukan definisi AI, melainkan apa yang perlu mendapat perhatian. Orang dari kontrol internal, risiko atau audit dapat mengenali pekerjaan ini, tetapi contoh tidak memerlukan pemahaman jabatan atau standar khusus. Ilustrasi meja kerja merupakan gambar pembelajaran. Kenalkan tiga bantuan sederhana: membaca, membandingkan dan menjelaskan.\n\nPertanyaan peserta: Where does the work begin? Transisi: Turn a familiar need into a specific request.",
+      "kind": "story",
+      "items": [],
       "refs": [
-        "nist",
-        "agents"
+        "agents",
+        "agent-security"
       ],
-      "visual": "desk",
+      "notes": "Pembuka ini sengaja singkat. Chatbot web menerima pertanyaan atau attachment dan mengembalikan jawaban; beberapa chatbot juga mempunyai tools. Agen, misalnya melalui CLI, dapat membaca file dan menjalankan langkah sesuai izin. CLI hanyalah antarmuka; ia tidak otomatis berarti offline atau model lokal. Jangan menganggap kedua kategori terpisah mutlak. Fokus pada tindakan pengguna dan akses yang diberikan, bukan definisi teknis panjang.\n\nPertanyaan: A chatbot you talk to. An agent you give a task to. Penghubung: A quick refresh—not a tool tutorial.",
+      "evidenceNote": "",
+      "visual": "modes",
       "narrative": {
-        "question": "Where does the work begin?",
-        "transition": "Turn a familiar need into a specific request."
-      }
-    },
-    {
-      "key": "aib-agency",
-      "title": "Start with one useful request.",
-      "kind": "agency",
-      "chapter": "capability",
-      "lead": "AI can help you read, compare and prepare a draft. An agent can also use tools.",
-      "items": [
-        [
-          "Read this",
-          "Summarise the issues and the unanswered questions."
-        ],
-        [
-          "Compare these",
-          "Show where the records differ from the rule."
-        ],
-        [
-          "Prepare a draft",
-          "Use the checked facts; leave gaps visible."
-        ]
-      ],
-      "notes": "Gunakan tiga permintaan sehari-hari: rangkum isu dan pertanyaan, bandingkan catatan dengan aturan, lalu siapkan draf dari fakta yang sudah diperiksa. Tidak semua produk memiliki kemampuan atau akses yang sama. Agen berbeda karena dapat memakai tool dalam izin yang diberikan, bukan karena otomatis lebih benar atau lebih mandiri. Jangan mulai dengan istilah workflow, runtime atau otonomi; jelaskan tindakan yang bisa dilihat pengguna.\n\nPertanyaan peserta: What can I ask AI to do? Transisi: Check what research actually supports.",
-      "refs": [
-        "agents"
-      ],
-      "visual": "requests",
-      "narrative": {
-        "question": "What can I ask AI to do?",
-        "transition": "Check what research actually supports."
-      }
-    },
-    {
-      "key": "aib-frontier",
-      "title": "There is evidence\nof useful gains.",
-      "kind": "stats",
-      "chapter": "capability",
-      "lead": "In a study of 758 consultants, benefits depended on the task being suitable for AI.",
-      "items": [
-        [
-          ">25%",
-          "faster task performance"
-        ],
-        [
-          ">40%",
-          "higher human-rated quality"
-        ],
-        [
-          "758",
-          "BCG consultants in the experiment"
-        ]
-      ],
-      "notes": "Studi lapangan HBS/BCG pada 758 konsultan menggunakan GPT-4. Pada tugas yang sesuai kemampuan yang diuji, kinerja tugas lebih cepat dari 25% dan kualitas yang dinilai manusia lebih tinggi dari 40%. Jangan mengartikan angka tersebut sebagai peningkatan akurasi audit, penghematan biaya total engagement atau hasil semua model. Implikasi untuk auditor adalah menilai mutu per tugas dengan kriteria dan bukti, bukan menganggap keluaran lancar pasti benar.\n\nAlur penyampaian: Is there evidence of benefit? Transisi ke bagian berikut: Before sharing a document, follow where it goes.",
-      "refs": [
-        "hbs"
-      ],
-      "evidenceNote": "HBS/BCG, 2023 · GPT-4 knowledge-work experiment · benefits within the tested frontier.",
-      "narrative": {
-        "question": "Is there evidence of benefit?",
-        "transition": "Before sharing a document, follow where it goes."
-      }
+        "question": "A chatbot you talk to. An agent you give a task to.",
+        "transition": "A quick refresh—not a tool tutorial."
+      },
+      "notesEn": "A chatbot receives questions and shared content. An agent can also use files and tools within its permissions. These categories overlap: the important questions are what it can read, send and do.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface."
     },
     {
       "key": "aib-document-journey",
-      "title": "Where does my document go?",
-      "kind": "data-chat-cli",
+      "title": "Where does the information go?",
+      "lead": "The original may stay on your computer while a copy or selected information goes online.",
       "chapter": "capability",
-      "lead": "At chatgpt.com: the original stays on your computer. An uploaded copy goes online.",
+      "kind": "data-routes",
       "items": [],
-      "notes": "Fokus bagian ini adalah perilaku pengguna sehari-hari, bukan pengembangan sistem. Di web chatbot, pengguna memilih berkas atau menempelkan isi; layanan hosted menerima data tersebut. Di agen CLI cloud-backed, file asli dapat tetap berada di laptop, tetapi tool file-read, search dan terminal mengembalikan teks yang dapat masuk ke konteks model hosted. Lokal tempat eksekusi tidak otomatis lokal tempat inference. Klik local folder, context dan hosted model untuk menjelaskan batasnya. Tidak semua produk mengambil seluruh folder atau seluruh halaman; yang perlu diperiksa adalah izin baca aktual dan konten yang dikirim. File dapat diparse, di-OCR atau dibaca sebagai citra tergantung produk. Riwayat dan hasil tool dapat menjadi bagian konteks. Jangan menjanjikan semua halaman dibaca lengkap. Periksa akun, fitur, ketentuan pemrosesan dan pihak penerima sebelum memberikan dokumen. Contoh menunjukkan pola hosted, bukan semua deployment. Main slide sengaja memakai bahasa sehari-hari untuk audiens umum. Ilustrasi browser menunjukkan unggah dokumen di chatgpt.com; ilustrasi folder dan terminal menunjukkan izin akses agen CLI. Jelaskan melalui tindakan pengguna, bukan istilah inference, context, stdout, runtime atau egress. Kualifikasi teknis tetap tersedia di notes ini. Animasi 18 detik berulang: pilih informasi, copy/teks bergerak ke online service, jawaban hijau kembali. Original tetap terlihat sepanjang waktu. Badge cloud menjelaskan copy dapat tetap ada sesuai aturan layanan. Cloud bukan berarti dipublikasikan untuk umum; lokasi negara data tidak dapat disimpulkan dari diagram. Tombol pause/replay tersedia, reduced-motion menghentikan gerakan, dan tampilan print tetap menunjukkan kedua lokasi beserta arah. Animasi menyederhanakan pola hosted; bukan traffic capture atau perilaku semua produk.\n\nAlur penyampaian: Where does an upload go? Transisi ke bagian berikut: Compare this with an agent working on a laptop.",
-      "refs": [
-        "agent-security",
-        "claude-faq",
-        "work-data"
-      ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
-      "narrative": {
-        "question": "Where does an upload go?",
-        "transition": "Compare this with an agent working on a laptop."
-      }
-    },
-    {
-      "key": "aib-inference-storage-training",
-      "title": "On my computer.\nBut is my data staying here?",
-      "kind": "data-agent-loop",
-      "chapter": "capability",
-      "lead": "A CLI agent can work in your folders while sending information to online AI.",
-      "items": [],
-      "notes": "Contoh: agen diminta memeriksa exception pada berkas audit. Ia membaca file, menjalankan pencarian atau perintah, menerima hasil, mengirim konteks ke model dan mengusulkan langkah berikutnya. Tool execution mengikuti permission dan approval. Read-only membatasi penulisan pada cakupannya, tetapi tidak otomatis mencegah isi yang terbaca dikirim ke model. Network restriction pada shell bukan mematikan koneksi inference atau seluruh web search, apps dan MCP. Aturan bergantung pada runtime dan produk. Stdout dapat memuat baris mentah, nama file, identifier dan error trace. Karena itu menjalankan analisis secara lokal lewat agen belum membuktikan data mentah tidak keluar. Jangan menampilkan gitignore atau prompt larangan sebagai access control. Tunjukkan node read-only, shell network dan stdout secara berurutan, kemudian jelaskan bahwa pengguna perlu meninjau cakupan baca dan setiap tool destination. Main slide sengaja memakai bahasa sehari-hari untuk audiens umum. Ilustrasi browser menunjukkan unggah dokumen di chatgpt.com; ilustrasi folder dan terminal menunjukkan izin akses agen CLI. Jelaskan melalui tindakan pengguna, bukan istilah inference, context, stdout, runtime atau egress. Kualifikasi teknis tetap tersedia di notes ini. Animasi 18 detik berulang: pilih informasi, copy/teks bergerak ke online service, jawaban hijau kembali. Original tetap terlihat sepanjang waktu. Badge cloud menjelaskan copy dapat tetap ada sesuai aturan layanan. Cloud bukan berarti dipublikasikan untuk umum; lokasi negara data tidak dapat disimpulkan dari diagram. Tombol pause/replay tersedia, reduced-motion menghentikan gerakan, dan tampilan print tetap menunjukkan kedua lokasi beserta arah. Animasi menyederhanakan pola hosted; bukan traffic capture atau perilaku semua produk.\n\nAlur penyampaian: Does local execution keep data local? Transisi ke bagian berikut: Ask the same simple sharing questions for either tool.",
-      "refs": [
-        "agent-security",
-        "claude-permissions",
-        "claude-faq"
-      ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
-      "narrative": {
-        "question": "Does local execution keep data local?",
-        "transition": "Ask the same simple sharing questions for either tool."
-      }
-    },
-    {
-      "key": "aib-permission-aware-rag",
-      "title": "Six questions\nbefore you share.",
-      "kind": "data-session-checks",
-      "chapter": "capability",
-      "lead": "The same simple checks apply to a chatbot and a CLI agent.",
-      "items": [],
-      "notes": "Checklist penggunaan, bukan checklist arsitektur. Pertama pilih akun yang memang disetujui untuk klien, klasifikasi data dan tujuan tugas. Langganan personal berbayar tidak otomatis sama dengan akun organisasi. Kedua cek penggunaan untuk model improvement dan mekanisme feedback atau share session; jangan menganggap semua produk punya default sama. Claude mendokumentasikan perbedaan consumer dan commercial; gunakan sebagai contoh spesifik, bukan janji vendor lain. Ketiga cek riwayat, uploaded files, memory dan sumber terhubung secara terpisah. Dokumentasi ChatGPT Work Enterprise/Edu menjelaskan siklus retensi fitur yang berbeda; menghapus chat tidak selalu menghapus file Library. Jangan memindahkan aturan API ke akun web pribadi. Keempat tinjau izin file-read, command dan konektor. Kelima periksa link sharing, kolaborator dan penerima lain. Keenam periksa jawaban terhadap bukti dan pastikan tidak membocorkan informasi saat dipindahkan ke laporan atau email. No training bukan no retention atau no processor access; istilah kontrak dan konfigurasi harus dibaca spesifik. Main slide sengaja memakai bahasa sehari-hari untuk audiens umum. Ilustrasi browser menunjukkan unggah dokumen di chatgpt.com; ilustrasi folder dan terminal menunjukkan izin akses agen CLI. Jelaskan melalui tindakan pengguna, bukan istilah inference, context, stdout, runtime atau egress. Kualifikasi teknis tetap tersedia di notes ini.\n\nAlur penyampaian: What should I check before sharing? Transisi ke bagian berikut: Prepare only the information the task needs.",
       "refs": [
         "agent-security",
         "work-data",
-        "claude-data"
+        "claude-faq"
       ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
+      "notes": "Pilih Chatbot atau CLI pada diagram untuk menyegarkan dua pola penggunaan. Animasi biru menunjukkan copy/teks keluar, hijau jawaban kembali; original tetap terlihat. Bukan semua agen memakai hosted inference, namun lokasi CLI tidak membuktikan data tetap lokal. Cloud bukan publik dan diagram tidak menetapkan negara penyimpanan. Inference, retensi dan training merupakan pertanyaan berbeda. Jawaban kembali tidak otomatis menghapus salinan layanan. Tidak perlu menjelaskan token, sandbox, RAG atau stdout kepada audiens umum.\n\nPertanyaan: Where does the information go? Penghubung: The original may stay on your computer while a copy or selected information goes online.",
+      "evidenceNote": "",
       "narrative": {
-        "question": "What should I check before sharing?",
-        "transition": "Prepare only the information the task needs."
-      }
+        "question": "Where does the information go?",
+        "transition": "The original may stay on your computer while a copy or selected information goes online."
+      },
+      "notesEn": "Toggle between chatbot and CLI. The original can remain on the computer while a copy or selected contents go to an online model. Read-only access does not itself prevent disclosure. The drawing makes no promise about storage country.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code user FAQ: Primary product explanation: CLI tools can read local source content and send it to hosted inference. This is specific to cloud-backed Claude Code use, not every local agent or offline model."
     },
     {
-      "key": "aib-processing-boundaries",
-      "title": "Give AI what it needs.\nKeep the rest out of reach.",
-      "kind": "data-task-folder",
+      "key": "aib-general-safeguards",
+      "title": "Share deliberately.\nCheck the account, not just the tool.",
+      "lead": "A model-improvement opt-out is one safeguard. It does not remove the other checks.",
       "chapter": "capability",
-      "lead": "For one task, prepare one small set of approved files.",
+      "kind": "story",
       "items": [],
-      "notes": "Contoh praktis sebelum membuka CLI: pisahkan master archive klien dari task folder. Task folder berisi brief tujuan dan kriteria, schema nama kolom, contoh fiktif dan hanya jika diperlukan extract yang sudah ditinjau dan diizinkan. Jangan membuka agen dengan akses luas pada root folder klien yang memuat payroll, kontrak, secret dan engagement lain. Folder terpisah membantu pemilihan tetapi bukan jaminan isolasi. Terapkan supported read-deny rules atau permission OS/lingkungan terpisah dan uji cakupannya; aturan dapat berbeda antar tool. Working directory tidak selalu merupakan batas baca menyeluruh. Gitignore, label rahasia dan instruksi abaikan file bukan access control. Jangan memusnahkan fakta yang dibutuhkan untuk audit saat pseudonymisation. Key mapping tetap di lingkungan yang disetujui dan identifier tidak langsung juga perlu diperiksa. Menyetujui konteks harus dilakukan sebelum disclosure, bukan menunggu human review pada hasil akhir. Main slide sengaja memakai bahasa sehari-hari untuk audiens umum. Ilustrasi browser menunjukkan unggah dokumen di chatgpt.com; ilustrasi folder dan terminal menunjukkan izin akses agen CLI. Jelaskan melalui tindakan pengguna, bukan istilah inference, context, stdout, runtime atau egress. Kualifikasi teknis tetap tersedia di notes ini.\n\nAlur penyampaian: What should I let the agent open? Transisi ke bagian berikut: Try the balance between useful context and unnecessary sharing.",
       "refs": [
-        "claude-permissions",
-        "agent-security",
-        "data-disclosure"
-      ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
-      "narrative": {
-        "question": "What should I let the agent open?",
-        "transition": "Try the balance between useful context and unnecessary sharing."
-      }
-    },
-    {
-      "key": "aib-productivity-confidentiality",
-      "title": "Useful help.\nLess information shared.",
-      "kind": "data-everyday-sweetspot",
-      "chapter": "capability",
-      "lead": "The sweet spot: give AI enough to help, without giving it everything.",
-      "items": [],
-      "notes": "Interaksi ini tidak menerima dokumen atau menghubungkan model. Mulai dengan Check approval exceptions melalui cloud-backed CLI dan necessary extract. Coba pilih schema: bila model diminta menilai record secara langsung konteks ini tidak cukup. Ubah method menjadi AI writes code / human runs locally: kini schema dan fictitious rows dapat cukup untuk AI merancang metode karena data privat diproses terpisah oleh manusia. Ini perubahan cara kerja, bukan klaim kualitas hasil otomatis. Outline laporan tidak butuh seluruh evidence pack. Finding audit memerlukan fakta dan kriteria yang diizinkan; schema saja tidak membuktikan finding. Original pack pada contoh ini unreviewed, jadi minta pengguna meninjau dan mempersempitnya; bukan larangan universal penggunaan evidence rinci yang telah disetujui. Akun belum diverifikasi atau checks belum lengkap tidak menghasilkan kandidat. Centang authority, terms, access dan review hanya untuk ilustrasi; hijau bukan sertifikat aman atau persetujuan RSM/klien. Posisi grafik kualitatif, bukan benchmark produktivitas atau skor privacy. Main slide sengaja memakai bahasa sehari-hari untuk audiens umum. Ilustrasi browser menunjukkan unggah dokumen di chatgpt.com; ilustrasi folder dan terminal menunjukkan izin akses agen CLI. Jelaskan melalui tindakan pengguna, bukan istilah inference, context, stdout, runtime atau egress. Kualifikasi teknis tetap tersedia di notes ini.\n\nAlur penyampaian: How much information is enough? Transisi ke bagian berikut: Watch the smaller, approved part travel online.",
-      "refs": [
-        "agent-security",
+        "work-data",
         "claude-data",
+        "api-data",
         "data-disclosure"
       ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
+      "notes": "Safeguard umum: pakai akun/layanan yang disetujui, matikan penggunaan untuk model improvement bila tersedia, verifikasi aturan akun yang berlaku, minimalkan dokumen, batasi folder/konektor/penerima, periksa penyimpanan dan penghapusan, serta review hasil. Pengaturan yang digambar merupakan ilustrasi, bukan screenshot atau jaminan nama menu tertentu. Pada layanan yang menawarkan model-improvement opt-out, penolakan training tidak berarti tidak dikirim online, tidak disimpan, atau tidak dapat diakses processor. Ketentuan consumer, workspace bisnis dan API dapat berbeda. OpenAI API tidak memakai data untuk training secara default kecuali opt-in; jangan menerapkan aturan API itu otomatis ke akun chatbot personal. Tidak perlu mengubah setting akun peserta saat presentasi. Jangan upload dokumen terlarang meskipun training off.\n\nPertanyaan: Share deliberately. Check the account, not just the tool. Penghubung: A model-improvement opt-out is one safeguard. It does not remove the other checks.",
+      "evidenceNote": "Illustrative controls. Verify the exact account, feature and organisational rules before sharing.",
+      "visual": "safeguards",
       "narrative": {
-        "question": "How much information is enough?",
-        "transition": "Watch the smaller, approved part travel online."
-      }
-    },
-    {
-      "key": "aib-controlled-assistant",
-      "title": "Keep the full report.\nShare only what is needed.",
-      "kind": "data-local-workflow",
-      "chapter": "capability",
-      "lead": "A smaller, approved part can go online while the rest stays out of AI’s access.",
-      "items": [],
-      "notes": "Contoh ini memperlihatkan lokasi data, bukan proses menulis program. Laporan lengkap tetap pada komputer. Pengguna menyiapkan bagian yang relevan dan diizinkan, menjaga berkas lain di luar akses agen, lalu hanya bagian tersebut dikirim ke layanan AI online. Jawaban kembali tetapi copy yang sudah dikirim tidak otomatis hilang. Ringkasan atau excerpt tetap dapat sensitif, sehingga kewenangan disclosure dan aturan akun harus diperiksa. Nama folder bukan kontrol akses. Jangan menjanjikan semua data hanya di komputer kecuali arsitektur dan konfigurasi benar-benar membuktikannya. Animasi 18 detik berulang: pilih informasi, copy/teks bergerak ke online service, jawaban hijau kembali. Original tetap terlihat sepanjang waktu. Badge cloud menjelaskan copy dapat tetap ada sesuai aturan layanan. Cloud bukan berarti dipublikasikan untuk umum; lokasi negara data tidak dapat disimpulkan dari diagram. Tombol pause/replay tersedia, reduced-motion menghentikan gerakan, dan tampilan print tetap menunjukkan kedua lokasi beserta arah. Animasi menyederhanakan pola hosted; bukan traffic capture atau perilaku semua produk.\n\nAlur penyampaian: Can I share less and still get useful help? Transisi ke bagian berikut: Once the answer arrives, check what it actually establishes.",
-      "refs": [
-        "agent-security",
-        "claude-faq",
-        "data-disclosure"
-      ],
-      "evidenceNote": "Simplified example. Account settings and your organisation’s rules still apply.",
-      "narrative": {
-        "question": "Can I share less and still get useful help?",
-        "transition": "Once the answer arrives, check what it actually establishes."
-      }
-    },
-    {
-      "key": "aib-trust",
-      "title": "A clear answer\nis not yet a checked answer.",
-      "kind": "split",
-      "chapter": "capability",
-      "lead": "A convincing explanation still needs support from the original information.",
-      "items": [
-        [
-          "AI can propose",
-          "A missing approval appears to explain the exception."
-        ],
-        [
-          "The auditor must establish",
-          "Which record proves it? Was the control required? Is there contradictory evidence?"
-        ]
-      ],
-      "notes": "Contoh: AI menyatakan limit kredit dilampaui tanpa persetujuan. Auditor perlu memeriksa kebijakan yang berlaku, tanggal, metadata approval, pengecualian sah dan bukti yang bertentangan. Prinsip skeptisisme profesional dan kualitas bukti tetap relevan ketika memakai AI. Keluaran model merupakan analisis yang harus diuji; ia tidak menjadi bukti baru hanya karena ditulis secara meyakinkan. Referensi GIAS 4.3 dan 14.1 berlaku pada konteks audit internal.\n\nAlur penyampaian: Can a polished answer be wrong? Transisi ke bagian berikut: Personal usefulness is only the first step toward organisational use.",
-      "refs": [
-        "gias",
-        "nist-gen"
-      ],
-      "visual": "evidence",
-      "narrative": {
-        "question": "Can a polished answer be wrong?",
-        "transition": "Personal usefulness is only the first step toward organisational use."
-      }
-    },
-    {
-      "key": "aib-adoption",
-      "title": "Using AI is one step.\nMaking it part of work is another.",
-      "kind": "comparison",
-      "chapter": "capability",
-      "lead": "RSM’s survey shows different levels of integration among organisations already using AI.",
-      "items": [
-        [
-          "86%",
-          "Partly or fully integrated into operations."
-        ],
-        [
-          "36%",
-          "Fully embedded across core processes."
-        ]
-      ],
-      "notes": "RSM Middle Market AI Survey 2026: 1.030 responden, 827 Amerika Serikat dan 203 Kanada, periode 5–16 Maret 2026. Semua organisasi responden telah menggunakan AI, termasuk pilot. Dalam sampel tersebut 86% melaporkan integrasi sebagian atau penuh ke operasi; 36% menyatakan sudah melekat penuh pada proses inti. Ini bukan persentase adopsi seluruh pasar dan bukan survei Indonesia. Pertanyaan berikutnya adalah bagaimana kualitas data, kontrol dan proses kerja mendukung penggunaan yang konsisten.\n\nAlur penyampaian: How does individual use become normal work? Transisi ke bagian berikut: Separate using AI ourselves from checking AI in the business.",
-      "refs": [
-        "rsm",
-        "rsm-method"
-      ],
-      "evidenceNote": "1,030 respondents · U.S. and Canada · organisations already using AI, including pilots · March 2026.",
-      "narrative": {
-        "question": "How does individual use become normal work?",
-        "transition": "Separate using AI ourselves from checking AI in the business."
-      }
+        "question": "Share deliberately. Check the account, not just the tool.",
+        "transition": "A model-improvement opt-out is one safeguard. It does not remove the other checks."
+      },
+      "notesEn": "Use an approved account, restrict the information and permissions, and review the result. Choose an applicable model-improvement opt-out where offered. Training use, transmission, retention and permission to share remain separate questions.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code data usage: Claude Code documentation distinguishes consumer and commercial data use, model-improvement choices and feedback/session-sharing. Conditions depend on the account and feature; not a statement of every provider’s terms.\n\nOpenAI · API data controls: API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.\n\nOWASP · Sensitive data disclosure · 2025: LLM02:2025. Data sanitisation, least privilege, source restriction and disclosure risk. A control in a prompt or a redaction step is not a complete privacy guarantee."
     },
     {
       "key": "aib-two-roles",
-      "title": "Two questions\nfollow from this.",
+      "title": "Two audit perspectives.",
       "kind": "split",
       "chapter": "capability",
-      "lead": "First, how do we use AI well? Then, how do we check the AI our organisation relies on?",
+      "lead": "Audit the AI used by the organisation. Use AI to help perform the audit.",
       "items": [
         [
-          "Our work with AI",
-          "Can we support the answer we are about to use?"
+          "Audit the AI",
+          "Is the AI-supported process trustworthy enough for its intended use?"
         ],
         [
-          "AI in the business",
-          "Can we rely on the process it helps run?"
+          "Audit with AI",
+          "How can AI help the work while people retain authority?"
         ]
       ],
-      "notes": "Setelah mengenali kemampuan, perjalanan data dan kebutuhan memeriksa jawaban, pisahkan dua tanggung jawab: menggunakan AI dalam pekerjaan sendiri dan menilai proses organisasi yang memakai AI. Urutan baru dimulai dari penggunaan pribadi yang konkret sebelum masuk penilaian formal atas AI. Kedua konteks tetap membutuhkan bukti dan manusia yang bertanggung jawab. GIAS berlaku pada audit internal sesuai lingkupnya, bukan semua kegiatan profesional.\n\nPertanyaan peserta: What are the two responsibilities? Transisi: Begin with using AI in our own work.",
+      "notes": "Setelah mengenali kemampuan, perjalanan data dan kebutuhan memeriksa jawaban, pisahkan dua tanggung jawab: menggunakan AI dalam pekerjaan sendiri dan menilai proses organisasi yang memakai AI. Urutan baru dimulai dari penggunaan pribadi yang konkret sebelum masuk penilaian formal atas AI. Kedua konteks tetap membutuhkan bukti dan manusia yang bertanggung jawab. GIAS berlaku pada audit internal sesuai lingkupnya, bukan semua kegiatan profesional.\n\nPertanyaan: Two audit perspectives. Penghubung: Audit the AI used by the organisation. Use AI to help perform the audit.",
       "refs": [
         "iia",
         "gias"
       ],
-      "visual": "two-roles",
+      "visual": "audit-perspectives",
       "narrative": {
-        "question": "What are the two responsibilities?",
-        "transition": "Begin with using AI in our own work."
-      }
-    },
-    {
-      "key": "aib-section-assistant",
-      "title": "Use AI\nfor real work.",
-      "kind": "section",
-      "chapter": "assistant",
-      "lead": "Let’s turn a report into questions, evidence and a checked draft.",
-      "items": [],
-      "notes": "Setelah membahas alat sehari-hari, lokasi data dan kebutuhan memeriksa jawaban, terapkan gagasan itu dalam satu pekerjaan praktis. Belum masuk pembahasan mengaudit AI. Kenalkan Aruna yang ingin penjualan tumbuh dan pembayaran diterima tepat waktu. Pertanyaan tentang approval harus dijawab dari aturan dan catatan, bukan dari dugaan sebab.\n\nPertanyaan peserta: Let’s turn a report into questions, evidence and a checked draft. Transisi: Take a familiar report from a question to a checked draft.",
-      "refs": [],
-      "narrative": {
-        "question": "Let’s turn a report into questions, evidence and a checked draft.",
-        "transition": "Take a familiar report from a question to a checked draft."
-      }
-    },
-    {
-      "key": "aib-branches",
-      "title": "Sales are growing.\nCash is arriving late.",
-      "kind": "split",
-      "chapter": "assistant",
-      "lead": "PT Aruna Distribusi Nusantara: a learning example, not an RSM client.",
-      "items": [
-        [
-          "The goal",
-          "Grow credit sales while collecting on time."
-        ],
-        [
-          "The question",
-          "Are credit-limit changes being approved?"
-        ],
-        [
-          "The task",
-          "Compare the rule with the records before drawing a conclusion."
-        ]
-      ],
-      "notes": "Perkenalkan PT Aruna Distribusi Nusantara sebagai kasus fiktif untuk pembelajaran, bukan klien RSM. Bisnis menjual dengan kredit dan ingin menerima pembayaran tepat waktu. Ada gejala kas datang terlambat; jangan langsung menyebut penyebabnya. Pilih pertanyaan yang bisa diuji: apakah perubahan limit kredit disetujui sesuai aturan? Tujuan ini akan kembali dalam bagian penilaian AI, workspace audit dan diskusi risiko. Hindari menganggap semua keterlambatan pasti disebabkan approval.\n\nPertanyaan peserta: What question would help this business? Transisi: Open the policy and the approval records.",
-      "refs": [],
-      "visual": "business-case",
-      "narrative": {
-        "question": "What question would help this business?",
-        "transition": "Open the policy and the approval records."
+        "question": "Two audit perspectives.",
+        "transition": "Audit the AI used by the organisation. Use AI to help perform the audit."
       },
-      "evidenceNote": ""
-    },
-    {
-      "key": "aib-workspace",
-      "title": "Start with the rule\nand the records.",
-      "kind": "pipeline",
-      "chapter": "assistant",
-      "lead": "Ask AI to compare the two, show its sources and leave missing evidence visible.",
-      "items": [
-        [
-          "The rule",
-          "Credit-limit changes need independent approval."
-        ],
-        [
-          "The records",
-          "The override list and the supporting approvals."
-        ],
-        [
-          "The draft",
-          "Supported points, missing records and questions to follow up."
-        ]
-      ],
-      "notes": "Perlihatkan tiga workpiece: kebijakan E-01, register E-02 dan draf pertanyaan. Semua isinya adalah ilustrasi, bukan dokumen klien. Aturan contoh meminta independent approval untuk perubahan limit. Record yang tidak ada dalam evidence pack harus tetap ditandai sebagai gap. AI diminta membandingkan, menunjukkan rujukan dan memisahkan kontradiksi dari fakta, bukan membuat bukti baru. Auditor atau reviewer perlu menguji sumber dan kebijakan yang tepat.\n\nPertanyaan peserta: Which sources support the answer? Transisi: Write an instruction that keeps missing evidence visible.",
-      "refs": [
-        "pcaob",
-        "gias"
-      ],
-      "visual": "workpapers",
-      "narrative": {
-        "question": "Which sources support the answer?",
-        "transition": "Write an instruction that keeps missing evidence visible."
-      },
-      "evidenceNote": "Illustrative Aruna records."
-    },
-    {
-      "key": "aib-prompt",
-      "title": "Tell AI what to check.\nTell it what not to guess.",
-      "kind": "prompt",
-      "chapter": "assistant",
-      "lead": "A useful request names the question, the sources and the expected answer.",
-      "items": [
-        [
-          "QUESTION",
-          "Compare the approval records against policy CR-04."
-        ],
-        [
-          "SOURCES",
-          "Use E-01 policy and E-02 override register. Cite the row IDs."
-        ],
-        [
-          "ANSWER",
-          "Separate supported points, contradictions and missing evidence."
-        ],
-        [
-          "LIMIT",
-          "Do not invent a cause or assume a missing record proves no approval."
-        ]
-      ],
-      "notes": "Bacakan contoh permintaan yang dapat ditiru peserta: sebut pertanyaan, file yang diizinkan, format hasil dan hal yang tidak boleh ditebak. Minta row ID agar klaim dapat ditelusuri. Instruksi yang baik membantu mutu hasil, tetapi tidak menggantikan access control, kewenangan penggunaan dokumen atau verifikasi keluaran. Tidak perlu memakai istilah evidence contract; cukup jelaskan apa yang harus diperiksa dan bagaimana gap ditampilkan.\n\nPertanyaan peserta: How should I ask for the comparison? Transisi: Check the proposed answer before using it.",
-      "refs": [],
-      "visual": "prompt",
-      "narrative": {
-        "question": "How should I ask for the comparison?",
-        "transition": "Check the proposed answer before using it."
-      }
-    },
-    {
-      "key": "aib-review",
-      "title": "Before using the draft,\ncheck three things.",
-      "kind": "cards",
-      "chapter": "assistant",
-      "lead": "Useful support still needs a person who takes responsibility for the result.",
-      "items": [
-        [
-          "The facts",
-          "Can you trace the important claims to the source?"
-        ],
-        [
-          "The reasoning",
-          "Does the conclusion follow from those facts?"
-        ],
-        [
-          "The release",
-          "Is it ready and authorised to share?"
-        ]
-      ],
-      "notes": "Tiga pertanyaan review berlaku luas: apakah fakta bisa dilacak, apakah penalaran mengikuti fakta, dan apakah hasil boleh digunakan atau dibagikan? Dalam audit internal GIAS memberikan kewajiban profesional yang relevan, tetapi bahasa di layar sengaja dibuat umum. Tanggung jawab tidak berpindah ke AI. Human review dapat menangkap kesalahan hasil, tetapi tidak menghapus disclosure input yang sudah dilakukan.\n\nPertanyaan peserta: What do I verify before release? Transisi: Now apply the same concern to AI used in a business process.",
-      "refs": [
-        "gias",
-        "pcaob"
-      ],
-      "visual": "review",
-      "narrative": {
-        "question": "What do I verify before release?",
-        "transition": "Now apply the same concern to AI used in a business process."
-      }
+      "notesEn": "Audit the AI means examining the AI-supported process the organisation relies on. Audit with AI means using the tool in our own work. Evidence, accountability and protected information matter in both perspectives.\n\nThe IIA - AI Auditing Framework - 2024: Professional guidance. The audit canvas and examples in this deck are teaching syntheses, not a reproduction of the official framework.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
     },
     {
       "key": "aib-section-audit-object",
-      "title": "When AI influences\nbusiness decisions.",
+      "title": "Audit the AI.",
       "kind": "section",
       "chapter": "audit-object",
-      "lead": "The same need for evidence now applies to a whole process.",
+      "lead": "What are we trying to gain confidence in?",
       "items": [],
-      "notes": "Transisi dari menggunakan AI dalam pekerjaan sendiri ke menilai AI yang membantu proses bisnis. Kebutuhan bukti dan tanggung jawab manusia tetap berlaku, tetapi sekarang batas pemeriksaan lebih luas. Mulai dengan kasus nyata chatbot dan akuntabilitas; kemudian kembali ke Aruna yang ingin model merekomendasikan limit kredit. Tidak semua AI perlu diuji dengan cara atau lingkup yang sama.\n\nPertanyaan peserta: The same need for evidence now applies to a whole process. Transisi: Ask who is responsible and what shows that the controls work.",
+      "notes": "Kita beralih dari mengenali alat ke memeriksa proses yang memakai AI. Banyak framework dapat membantu, tetapi tujuan dan lingkupnya berbeda. Gunakan karakteristik trustworthy AI NIST untuk membentuk pertanyaan audit yang mudah dimengerti. Setelah itu gunakan kasus akuntabilitas chatbot dan contoh keputusan kredit Aruna. Internal audit memeriksa; management tetap memiliki proses dan kontrol.",
       "refs": [],
       "narrative": {
-        "question": "The same need for evidence now applies to a whole process.",
-        "transition": "Ask who is responsible and what shows that the controls work."
-      }
+        "question": "Audit the AI.",
+        "transition": "What are we trying to gain confidence in?"
+      },
+      "notesEn": "Define the audit objective before choosing a framework. The IIA, NIST and ISO support different questions. Examine the intended use, affected people, controls and available evidence rather than a generic demonstration."
+    },
+    {
+      "key": "aib-criteria",
+      "title": "Many frameworks.\nDifferent purposes.",
+      "kind": "reference-map",
+      "chapter": "audit-object",
+      "lead": "Use a recognised reference to define the question and scope—not as a universal checklist.",
+      "items": [
+        [
+          "NIST AI RMF",
+          "AI trustworthiness and risk management."
+        ],
+        [
+          "The IIA",
+          "AI assurance and sound internal-audit practice."
+        ],
+        [
+          "ISO/IEC 42001",
+          "The organisation’s AI management system."
+        ]
+      ],
+      "notes": "Pilih kriteria audit sesuai mandat dan konteks. GIAS mengarahkan praktik internal audit; NIST adalah kerangka risiko sukarela; ISO/IEC 42001 menetapkan persyaratan sistem manajemen AI. Ketiganya tidak saling menggantikan. Adopsi ISO atau sertifikasi bukan bukti setiap keluaran model akurat. Konformitas penuh membutuhkan akses persyaratan dan bukti yang memadai, bukan checklist ringkas dari seminar. Peta ini hanya membantu menentukan fungsi referensi.\n\nPertanyaan: Many frameworks. Different purposes. Penghubung: Use a recognised reference to define the question and scope—not as a universal checklist.",
+      "refs": [
+        "gias",
+        "nist",
+        "iso"
+      ],
+      "narrative": {
+        "question": "Many frameworks. Different purposes.",
+        "transition": "Use a recognised reference to define the question and scope—not as a universal checklist."
+      },
+      "notesEn": "The IIA supports internal-audit practice; NIST helps frame AI-specific risks and trustworthy characteristics; ISO/IEC 42001 addresses organisational AI management. These references are not interchangeable or a single certification checklist.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nNIST - AI RMF 1.0 - 2023: Voluntary framework: Govern, Map, Measure, Manage. Use the 1.0 edition explicitly; it is under revision.\n\nISO/IEC 42001 · AI management systems · 2023: Official ISO overview of the AI management system standard. Organisational governance requirements are distinct from proof of a model’s accuracy. No certification or clause-by-clause conformance conclusion is made in this seminar."
+    },
+    {
+      "key": "aib-trustworthy",
+      "title": "What does trustworthy AI\nlook like?",
+      "lead": "NIST AI RMF 1.0: reliability is foundational; accountability and transparency run across the other qualities.",
+      "chapter": "audit-object",
+      "kind": "story",
+      "items": [],
+      "refs": [
+        "nist",
+        "nist-trust"
+      ],
+      "notes": "Gunakan tujuh karakteristik NIST AI RMF 1.0 bagian 3 dan Figure 4: valid and reliable, safe, secure and resilient, accountable and transparent, explainable and interpretable, privacy-enhanced, fair with harmful bias managed. Valid/reliable digambar sebagai fondasi; accountability/transparency lintas seluruh karakteristik. Klik karakteristik untuk melihat pertanyaan audit dan bukti contoh. Diagram adalah adaptasi pembelajaran berwarna RSM, bukan gambar resmi atau checklist sertifikasi. Kualitas saling terkait dan dapat mempunyai trade-off. Kriteria, ambang uji, risiko serta bobotnya perlu sesuai intended use dan pihak terdampak; memeriksa setiap kotak secara terpisah tidak menjamin trustworthiness. NIST RMF sukarela, bukan standar audit wajib.\n\nPertanyaan: What does trustworthy AI look like? Penghubung: NIST AI RMF 1.0: reliability is foundational; accountability and transparency run across the other qualities.",
+      "evidenceNote": "",
+      "visual": "trustworthy",
+      "narrative": {
+        "question": "What does trustworthy AI look like?",
+        "transition": "NIST AI RMF 1.0: reliability is foundational; accountability and transparency run across the other qualities."
+      },
+      "notesEn": "Use NIST AI RMF section 3 and Figure 4. Validity and reliability form the foundation, while accountability and transparency span the other characteristics. Select each quality to see an audit question and evidence examples; context and trade-offs remain important.\n\nNIST - AI RMF 1.0 - 2023: Voluntary framework: Govern, Map, Measure, Manage. Use the 1.0 edition explicitly; it is under revision.\n\nNIST · Trustworthy AI characteristics: AI RMF 1.0 section 3 and Figure 4. Seven interconnected qualities, with validity/reliability as a foundation and accountability/transparency across the others. Context and trade-offs matter; this is not an audit certification checklist."
     },
     {
       "key": "aib-readiness",
@@ -722,442 +459,251 @@
           "The tribunal found the airline responsible for the misleading information."
         ]
       ],
-      "notes": "Kasus nyata: Moffatt v. Air Canada, 2024 BCCRT 149. Informasi chatbot tentang tarif berkabung berbeda dari kebijakan situs. Tribunal mengabulkan tanggung jawab dalam kasus tersebut dan memerintahkan pembayaran total C$812,02 termasuk ganti rugi, bunga dan biaya. Jangan menjadikan nominal kecil sebagai ukuran risiko strategis. Pertanyaan audit: siapa pemilik jawaban pelanggan, bagaimana versi kebijakan disinkronkan dan kapan eskalasi dilakukan? Putusan tidak menetapkan arsitektur LLM; jangan menyebutnya bukti kegagalan generative AI atau aturan universal untuk semua yurisdiksi.\n\nAlur penyampaian: Who answers for bad chatbot guidance? Transisi ke bagian berikut: Make the responsibilities explicit.",
+      "notes": "Kasus nyata: Moffatt v. Air Canada, 2024 BCCRT 149. Informasi chatbot tentang tarif berkabung berbeda dari kebijakan situs. Tribunal mengabulkan tanggung jawab dalam kasus tersebut dan memerintahkan pembayaran total C$812,02 termasuk ganti rugi, bunga dan biaya. Jangan menjadikan nominal kecil sebagai ukuran risiko strategis. Pertanyaan audit: siapa pemilik jawaban pelanggan, bagaimana versi kebijakan disinkronkan dan kapan eskalasi dilakukan? Putusan tidak menetapkan arsitektur LLM; jangan menyebutnya bukti kegagalan generative AI atau aturan universal untuk semua yurisdiksi.\n\nPertanyaan: A chatbot gave the wrong guidance. The company still had to answer. Penghubung: A real customer dispute shows why responsibility cannot be left to the chatbot.",
       "refs": [
         "air-canada"
       ],
       "evidenceNote": "A documented chatbot case. The decision does not establish that the system used an LLM.",
       "visual": "airline",
       "narrative": {
-        "question": "Who answers for bad chatbot guidance?",
-        "transition": "Make the responsibilities explicit."
-      }
+        "question": "A chatbot gave the wrong guidance. The company still had to answer.",
+        "transition": "A real customer dispute shows why responsibility cannot be left to the chatbot."
+      },
+      "notesEn": "The tribunal held Air Canada responsible for misleading chatbot guidance in a specific dispute. The decision does not establish that the chatbot was an LLM. Use the case to discuss ownership of customer-facing advice, not a general AI failure rate.\n\nMoffatt v. Air Canada · 2024 BCCRT 149: BC Civil Resolution Tribunal decision, 14 February 2024; paras. 2, 24–31 and 44. A chatbot gave incorrect fare guidance and the airline was held responsible in this case. The decision does not establish the chatbot’s architecture as an LLM or generative AI."
     },
     {
-      "key": "aib-accountability",
-      "title": "Who is responsible\nwhen AI is involved?",
-      "kind": "responsibility",
-      "chapter": "audit-object",
-      "lead": "Management runs and controls the process. Internal audit provides independent challenge.",
-      "items": [
-        [
-          "Governance",
-          "Set direction, risk boundaries and oversight."
-        ],
-        [
-          "Management",
-          "Build or buy, operate, control and monitor AI."
-        ],
-        [
-          "Internal audit",
-          "Evaluate governance and controls; provide independent assurance and advice."
-        ]
-      ],
-      "notes": "The IIA AI Auditing Framework 2024 memiliki domain Governance, Management dan Internal Audit serta merujuk Three Lines Model. Manajemen mengelola AI dan risikonya; auditor menilai, menantang dan memberi saran dengan menjaga independensi. Bantuan auditor dalam desain tidak berarti auditor menjadi pemilik kontrol yang kelak diaudit. Diagram merupakan ringkasan untuk menjelaskan akuntabilitas, bukan reproduksi grafis resmi atau daftar seluruh persyaratan.\n\nAlur penyampaian: Who operates, oversees and independently checks? Transisi ke bagian berikut: Return to Aruna, now considering AI-supported credit decisions.",
-      "refs": [
-        "iia",
-        "rsm-regional"
-      ],
-      "visual": "responsibility",
-      "narrative": {
-        "question": "Who operates, oversees and independently checks?",
-        "transition": "Return to Aruna, now considering AI-supported credit decisions."
-      }
-    },
-    {
-      "key": "aib-case",
-      "title": "Now Aruna wants AI\nto suggest credit limits.",
-      "kind": "case",
-      "chapter": "audit-object",
-      "lead": "The goal has not changed: grow sales without weakening cash collection.",
-      "items": [
-        [
-          "Customer information",
-          "What do we know about ability to pay?"
-        ],
-        [
-          "AI recommendation",
-          "What limit does the model suggest, and why?"
-        ],
-        [
-          "Human decision",
-          "Who approves or changes the recommendation?"
-        ],
-        [
-          "Follow-up",
-          "Are payments and exceptions being watched?"
-        ]
-      ],
-      "notes": "Kembali ke Aruna. Perubahan dari bagian sebelumnya: perusahaan kini ingin model membantu merekomendasikan limit kredit pelanggan. Tujuan mengembangkan penjualan dan menjaga kolektibilitas tetap sama. Contoh ini tidak menyatakan bahwa perusahaan atau aplikasi nyata telah menerapkan model produksi. Model memberi masukan, pejabat berwenang memutuskan, lalu hasil dan exception dipantau. Jangan menganggap penggunaan model menghapus risiko pada input, persetujuan manusia atau tindak lanjut.\n\nPertanyaan peserta: Which business decision will AI influence? Transisi: Trace a decision end to end.",
+      "key": "aib-section-assistant",
+      "title": "Audit with AI.",
+      "kind": "section",
+      "chapter": "assistant",
+      "lead": "Useful help for the task. Human authority over the result.",
+      "items": [],
+      "notes": "Kita sudah membahas AI sebagai objek audit. Sekarang posisikan AI sebagai bantuan auditor: menyusun laporan dan slide, serta menganalisis data atau dokumen. Periksa dulu kerahasiaan dan jalur penggunaan yang diizinkan. Meskipun AI dapat mengerjakan tugas, manusia tetap memiliki hak dan kemampuan untuk memeriksa, mengubah, menolak dan menghentikan. Dari sini bergerak ke ide yang melampaui pekerjaan harian.",
       "refs": [],
-      "visual": "credit-decision",
       "narrative": {
-        "question": "Which business decision will AI influence?",
-        "transition": "Trace a decision end to end."
+        "question": "Audit with AI.",
+        "transition": "Useful help for the task. Human authority over the result."
       },
-      "evidenceNote": "Illustrative Aruna records."
+      "notesEn": "Now use AI to help the auditor. Reports, slides and analysis can benefit from assistance, but confidentiality and human authority govern the work. The next question is whether the same capability can support a useful repeatable system."
     },
     {
-      "key": "aib-boundary",
-      "title": "Follow a decision\nfrom start to finish.",
-      "kind": "pipeline",
-      "chapter": "audit-object",
-      "lead": "A good model cannot compensate for missing approvals or ignored warning signs.",
+      "key": "aib-daily-tasks",
+      "title": "Reports. Slides.\nData and document analysis.",
+      "lead": "Start with the work you already need to do.",
+      "chapter": "assistant",
+      "kind": "story",
       "items": [
         [
-          "Information",
-          "Is the customer information usable and authorised?"
+          "Prepare a report",
+          "Structure, summarise and improve the wording."
         ],
         [
-          "Recommendation",
-          "Has this model version been tested?"
+          "Build slides",
+          "Turn checked findings into a clear story."
         ],
         [
-          "Approval",
-          "Who may accept or override the limit?"
-        ],
-        [
-          "Follow-up",
-          "Who acts when payments or exceptions worsen?"
+          "Analyse records",
+          "Compare rules, inspect patterns and surface questions."
         ]
       ],
-      "notes": "Tentukan batas audit: unit, proses, model/vendor, periode, keputusan yang dipengaruhi, dan pihak terdampak. Peta aliran data dan keputusan menentukan bukti yang harus tersedia. Model vendor tidak menghapus akuntabilitas organisasi. Kualitas prediksi, hak akses, perlindungan data, dan keputusan manusia semuanya bagian lingkup sesuai materialitas.\n\nAlur penyampaian: What could fail beyond the model? Transisi ke bagian berikut: Organise the control questions using an established framework.",
       "refs": [
-        "iia",
-        "nist"
+        "hbs",
+        "pcaob"
       ],
-      "visual": "decision-chain",
+      "notes": "Bahas umum, bukan tutorial prompt atau mereview 40 file secara panjang. AI dapat membantu draf laporan, presentasi dan analisis data/dokumen. Studi HBS/BCG pada 758 konsultan mendukung manfaat tugas tertentu dalam capability frontier: lebih dari 25 persen lebih cepat dan lebih dari 40 persen kualitas dinilai manusia. Ini bukan bukti akurasi audit atau penghematan semua engagement. PCAOB 2024 adalah observasi historis staff, bukan aturan universal. Pertanyaan berikutnya adalah informasi apa yang boleh dipakai untuk tugas tersebut.\n\nPertanyaan: Reports. Slides. Data and document analysis. Penghubung: Start with the work you already need to do.",
+      "evidenceNote": "HBS/BCG: 758 consultants; task-specific gains within the tested frontier. Not an audit-accuracy benchmark.",
+      "visual": "daily-outputs",
       "narrative": {
-        "question": "What could fail beyond the model?",
-        "transition": "Organise the control questions using an established framework."
-      }
+        "question": "Reports. Slides. Data and document analysis.",
+        "transition": "Start with the work you already need to do."
+      },
+      "notesEn": "AI can help organise a report, turn checked findings into slides, and analyse approved records. A missing approval record is a reason to investigate; it does not prove approval never occurred. Check sources, assumptions and the destination of the output.\n\nHBS / BCG field experiment - 2023: 758 BCG consultants; knowledge-work tasks using GPT-4. Benefits refer to tasks inside the tested capability frontier, not audit accuracy.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements."
     },
     {
-      "key": "aib-govern",
-      "title": "Four useful questions\nfor managing AI.",
-      "kind": "risk-framework",
-      "chapter": "audit-object",
-      "lead": "NIST AI RMF gives these questions a formal structure. GOVERN applies throughout.",
-      "items": [
-        [
-          "GOVERN",
-          "Who is responsible, and what rules apply?"
-        ],
-        [
-          "MAP",
-          "What is the intended use, and who could be affected?"
-        ],
-        [
-          "MEASURE",
-          "How do we test whether it behaves acceptably?"
-        ],
-        [
-          "MANAGE",
-          "What do we do when a problem is found?"
-        ]
-      ],
-      "notes": "NIST AI RMF 1.0 (2023) adalah kerangka sukarela. GOVERN lintas fungsi; MAP, MEASURE dan MANAGE dapat diterapkan secara berulang sesuai konteks. Jangan menggambar GOVERN sebagai gerbang yang selesai lalu ditinggalkan. Diagram adalah penjelasan visual fungsi, bukan model kematangan atau standar sertifikasi. Gunakan tujuan bisnis, dampak dan bukti untuk menentukan pengujian yang proporsional.\n\nAlur penyampaian: Which questions help manage AI? Transisi ke bagian berikut: Use the right reference for each kind of question.",
+      "key": "aib-confidential-work",
+      "title": "Confidential work?\nUse an approved path.",
+      "lead": "A no-training switch alone is not permission to share a client document.",
+      "chapter": "assistant",
+      "kind": "story",
+      "items": [],
       "refs": [
-        "nist"
+        "work-data",
+        "api-data",
+        "data-disclosure",
+        "agent-security"
       ],
+      "notes": "Pola praktik yang disarankan, bukan sebuah standar formal bernama gold standard: kewenangan dan klasifikasi data ditetapkan, tool/account/processor disetujui, ketentuan training/retensi/lokasi/akses sesuai kebutuhan, scope dan informasi diminimalkan, serta output diperiksa. Bila lingkungan belum disetujui untuk raw confidential data, gunakan schema/contoh fiktif untuk meminta metode, rumus atau kode. Orang yang kompeten meninjau dan menguji lalu menjalankannya sendiri pada lingkungan lokal tepercaya, dengan data asli di luar akses agen; hanya ringkasan yang disetujui dibagikan bila diizinkan. Bukan cloud code interpreter atau command agen yang mengirim stdout mentah ke model. Model lokal/offline hanya boleh diklaim jika seluruh alur benar-benar diverifikasi. Redaksi dan agregasi dapat tetap mengungkap informasi. Bila tidak dapat dipenuhi, jangan kirim dokumen tersebut.\n\nPertanyaan: Confidential work? Use an approved path. Penghubung: A no-training switch alone is not permission to share a client document.",
+      "evidenceNote": "",
+      "visual": "confidential",
       "narrative": {
-        "question": "Which questions help manage AI?",
-        "transition": "Use the right reference for each kind of question."
-      }
+        "question": "Confidential work? Use an approved path.",
+        "transition": "A no-training switch alone is not permission to share a client document."
+      },
+      "notesEn": "For confidential work, confirm authority and an approved processing environment with appropriate terms, access and retention controls. If raw records are not approved for upload, request a method using made-up data and run reviewed checks yourself on trusted local tools outside agent access.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nOpenAI · API data controls: API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.\n\nOWASP · Sensitive data disclosure · 2025: LLM02:2025. Data sanitisation, least privilege, source restriction and disclosure risk. A control in a prompt or a redaction step is not a complete privacy guarantee.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface."
     },
     {
-      "key": "aib-criteria",
-      "title": "Use established guidance\nto sharpen the questions.",
-      "kind": "reference-map",
-      "chapter": "audit-object",
-      "lead": "You do not need to memorise three frameworks to understand their different roles.",
-      "items": [
-        [
-          "The IIA",
-          "How do we do sound internal-audit work?"
-        ],
-        [
-          "NIST AI RMF",
-          "Which AI risks should we understand and manage?"
-        ],
-        [
-          "ISO/IEC 42001",
-          "How does the organisation organise and improve its AI management?"
-        ]
-      ],
-      "notes": "Pilih kriteria audit sesuai mandat dan konteks. GIAS mengarahkan praktik internal audit; NIST adalah kerangka risiko sukarela; ISO/IEC 42001 menetapkan persyaratan sistem manajemen AI. Ketiganya tidak saling menggantikan. Adopsi ISO atau sertifikasi bukan bukti setiap keluaran model akurat. Konformitas penuh membutuhkan akses persyaratan dan bukti yang memadai, bukan checklist ringkas dari seminar. Peta ini hanya membantu menentukan fungsi referensi.\n\nAlur penyampaian: How do recognised references help? Transisi ke bagian berikut: Translate the questions into evidence we can inspect.",
+      "key": "aib-human-authority",
+      "title": "AI can do the task.\nPeople keep the authority.",
+      "lead": "Decide what can run automatically, what needs review, and what must stop for approval.",
+      "chapter": "assistant",
+      "kind": "story",
+      "items": [],
       "refs": [
         "gias",
-        "nist",
-        "iso"
+        "nist-gen",
+        "agent-security"
       ],
+      "notes": "Human in the loop bukan sekadar tombol setuju di akhir. Definisikan keputusan, materialitas, kompetensi reviewer, hak mengubah/menolak dan kondisi berhenti. AI bisa menyiapkan langkah atau bahkan menyelesaikan banyak task di dalam izin. Scope audit, penerimaan kriteria, kesimpulan, laporan dan respons risiko tetap memerlukan pihak yang berwenang. Review harus memeriksa bukti, bukan hanya bahasa yang rapi. Jangan menempatkan auditor sebagai pemilik keputusan manajemen. Tunjukkan konsep ini lagi saat approve annual plan, programme, report dan risk review.\n\nPertanyaan: AI can do the task. People keep the authority. Penghubung: Decide what can run automatically, what needs review, and what must stop for approval.",
+      "evidenceNote": "",
+      "visual": "human-authority",
       "narrative": {
-        "question": "How do recognised references help?",
-        "transition": "Translate the questions into evidence we can inspect."
-      }
-    },
-    {
-      "key": "aib-audit-tests",
-      "title": "“It works”\nneeds evidence.",
-      "kind": "audit-table",
-      "chapter": "audit-object",
-      "lead": "For Aruna, select a decision and trace the supporting records.",
-      "items": [
-        [
-          "AI recommendation",
-          "Check the tested model version and the underlying information."
-        ],
-        [
-          "Override approval",
-          "Trace the changed limit to the required approval."
-        ],
-        [
-          "Follow-up",
-          "Inspect whether a warning was noticed and acted on."
-        ]
-      ],
-      "notes": "Ubah pernyataan umum sistem bekerja menjadi tiga bukti: model version yang diuji, approval atas limit yang diubah, dan tindak lanjut terhadap warning. Workpiece menggambarkan pemeriksaan satu decision yang dipilih. Satu bukti tidak membuktikan semuanya; model test tidak membuktikan bahwa setiap override disetujui. Luas pengujian bergantung pada risiko, kriteria dan desain engagement yang disepakati.\n\nPertanyaan peserta: What would prove this control worked? Transisi: For chatbots, also test unreliable answers and inappropriate access.",
-      "refs": [
-        "iia",
-        "gias"
-      ],
-      "visual": "test-file",
-      "narrative": {
-        "question": "What would prove this control worked?",
-        "transition": "For chatbots, also test unreliable answers and inappropriate access."
+        "question": "AI can do the task. People keep the authority.",
+        "transition": "Decide what can run automatically, what needs review, and what must stop for approval."
       },
-      "evidenceNote": "Illustrative Aruna records."
+      "notesEn": "AI may prepare a draft or propose an action. A person must be able to inspect sources, challenge assumptions, change the result, reject it or stop. Approval without time, competence or genuine discretion is not meaningful human authority.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nNIST - Generative AI Profile - 2024: Cross-sector guidance on generative AI risks; not proof that a particular product is safe.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface."
     },
     {
-      "key": "aib-genai-tests",
-      "title": "For a chatbot,\ntry the questions it should resist.",
-      "kind": "audit-table",
-      "chapter": "audit-object",
-      "lead": "Test the answer, the information it may read and the actions it may take.",
-      "items": [
-        [
-          "No reliable answer",
-          "Does it admit uncertainty or invent a policy?"
-        ],
-        [
-          "Private information",
-          "Can one person obtain another person’s records?"
-        ],
-        [
-          "Misleading instructions",
-          "Can a document persuade it to break the rules?"
-        ]
-      ],
-      "notes": "Tambahan untuk AI generatif/RAG: uji klaim dengan sumber, dokumen yang mengandung instruksi jahat, dan pembatasan akses serta tool. Lakukan adversarial testing hanya di lingkungan yang diizinkan dengan data aman. Keberhasilan satu prompt uji tidak membuktikan semua serangan teratasi. Buat set evaluasi, expected behaviour dan pass/fail criteria yang dapat diulang. Pemeriksaan vendor perlu dilengkapi bukti dari implementasi organisasi.\n\nAlur penyampaian: What should the AI refuse or admit it cannot answer? Transisi ke bagian berikut: State the boundary of the conclusion.",
+      "key": "aib-beyond-assistant",
+      "title": "Beyond the daily assistant.",
+      "lead": "The same capability can help build a dashboard, a repeatable programme or a whole application.",
+      "chapter": "assistant",
+      "kind": "story",
+      "items": [],
       "refs": [
-        "nist-gen"
+        "agents",
+        "rsm"
       ],
-      "visual": "chat-tests",
+      "notes": "Pindah dari output sekali pakai ke kapabilitas yang dipakai ulang. Contoh: dashboard yang menyatukan exception, workflow pengumpulan evidence, dan sistem assurance. AI dapat membantu spesifikasi, kode, pengujian, dokumentasi dan antarmuka, tetapi akses data, kualitas, operasional, keamanan dan maintainability tetap pekerjaan nyata. Jangan mengatakan semua ide otomatis layak produksi atau tidak membutuhkan kompetensi manusia.\n\nPertanyaan: Beyond the daily assistant. Penghubung: The same capability can help build a dashboard, a repeatable programme or a whole application.",
+      "evidenceNote": "",
+      "visual": "build-products",
       "narrative": {
-        "question": "What should the AI refuse or admit it cannot answer?",
-        "transition": "State the boundary of the conclusion."
-      }
-    },
-    {
-      "key": "aib-assurance-boundary",
-      "title": "Be clear about\nwhat you checked.",
-      "kind": "split",
-      "chapter": "audit-object",
-      "lead": "A finding about one version and period is not a promise about every future answer.",
-      "items": [
-        [
-          "A supportable conclusion",
-          "Controls operated for the tested system, version, period and scope, subject to documented exceptions."
-        ],
-        [
-          "An unsupported promise",
-          "The AI is always correct, unbiased and safe for every future use."
-        ]
-      ],
-      "notes": "Sebutkan versi model dan aplikasi, periode bukti, populasi, prosedur, kriteria dan keterbatasan. Jangan mengubah audit berbasis sampel menjadi sertifikasi universal keamanan AI. Keandalan berubah ketika data, model, prompt, tool atau konteks bisnis berubah; perlukan pemantauan dan evaluasi ulang yang proporsional. Auditor tetap independen dan tidak mengoperasikan kontrol milik manajemen.\n\nAlur penyampaian: How much does the evidence allow us to conclude? Transisi ke bagian berikut: Apply that discipline to eight missing approval records.",
-      "refs": [
-        "gias",
-        "nist"
-      ],
-      "visual": "scope",
-      "narrative": {
-        "question": "How much does the evidence allow us to conclude?",
-        "transition": "Apply that discipline to eight missing approval records."
-      }
-    },
-    {
-      "key": "aib-finding",
-      "title": "Eight files are missing approval records.\nWhat can we actually conclude?",
-      "kind": "chain",
-      "chapter": "audit-object",
-      "lead": "In this learning example, 8 of 40 sampled overrides lack approval evidence in the pack.",
-      "items": [
-        [
-          "Established",
-          "Eight sampled files do not contain approval records."
-        ],
-        [
-          "Still to confirm",
-          "Were approvals absent, or are the records held elsewhere?"
-        ],
-        [
-          "Why it matters",
-          "Uncontrolled limits could weaken collections."
-        ]
-      ],
-      "notes": "Angka contoh pembelajaran, bukan hasil audit klien. Tidak adanya catatan pada evidence pack belum membuktikan approval tidak pernah terjadi. Cari bukti tambahan dan konfirmasi sebelum menyimpulkan kegagalan pengendalian atau menentukan severity. Pisahkan kondisi yang diketahui, inferensi risiko dan potensi dampak tujuan. Proporsi 8/40 tidak boleh dijadikan estimasi kesalahan populasi, probabilitas gagal bayar atau pemicu skor otomatis.\n\nAlur penyampaian: What is known and what still needs investigation? Transisi ke bagian berikut: Keep this evidence and the review together in an audit workspace.",
-      "refs": [
-        "gias"
-      ],
-      "visual": "sample",
-      "narrative": {
-        "question": "What is known and what still needs investigation?",
-        "transition": "Keep this evidence and the review together in an audit workspace."
+        "question": "Beyond the daily assistant.",
+        "transition": "The same capability can help build a dashboard, a repeatable programme or a whole application."
       },
-      "evidenceNote": "Aruna is a learning example, not an RSM client. Sample results do not establish the position of the full population."
+      "notesEn": "Separate an individual output from a capability people keep using. AI can help create a dashboard, programme or application. Testing, ownership, security, maintenance and adoption remain part of the job.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia."
+    },
+    {
+      "key": "aib-idea-execution-usage",
+      "title": "Building becomes easier.\nUsefulness still has to be earned.",
+      "lead": "AI opens up what we can imagine and build. Actual use is a separate test.",
+      "chapter": "assistant",
+      "kind": "story",
+      "items": [],
+      "refs": [
+        "hbs",
+        "rsm",
+        "rsm-method"
+      ],
+      "notes": "Gunakan ilustrasi kerumunan ini untuk membuka paradoks, bukan membacakan diagram proses. Sebelum AI, sedikit orang menginisiasi ide, lebih banyak orang terlibat dalam eksekusi, dan banyak orang memakai hasilnya. Dengan AI, lebih banyak orang dapat menghasilkan ide serta membangun. Pertanyaan yang sengaja dibuat mencolok: siapa yang benar-benar akan memakai hasilnya? Figur dan distribusinya adalah metafora konseptual, bukan hitungan responden, prediksi penurunan pengguna, atau hasil studi HBS/RSM. Jangan membandingkan jumlah figur sebagai statistik. Gambar terinspirasi arah visual referensi yang diberikan presenter, tetapi digambar ulang khusus untuk deck dengan identitas RSM. Tekankan: eksekusi aman tetap perlu usaha; ide yang berguna, adopsi, dan hasil nyata tetap harus diuji. Survei RSM pada slide berikut memberi bukti terpisah tentang perbedaan integrasi, bukan bukti jumlah figur di sini.",
+      "evidenceNote": "Conceptual metaphor. The figures illustrate a shift in constraints; they are not survey counts or measured before/after results.",
+      "visual": "bottleneck",
+      "narrative": {
+        "question": "Building becomes easier. Usefulness still has to be earned.",
+        "transition": "If more of us can build, how do we choose something people will actually use?"
+      },
+      "notesEn": "The crowds are a conceptual metaphor, not measured populations or before/after research. AI can lower barriers to imagining and building, while useful adoption still needs to be earned. Do not interpret the smaller usage crowd as evidence that AI reduces adoption.\n\nHBS / BCG field experiment - 2023: 758 BCG consultants; knowledge-work tasks using GPT-4. Benefits refer to tasks inside the tested capability frontier, not audit accuracy.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia.\n\nRSM · Survey methodology · 2026: Fieldwork 5–16 March 2026: 827 U.S. and 203 Canadian respondents, management level or above with influence over technology investment. Government and nonprofits excluded. All participating organisations already used AI."
+    },
+    {
+      "key": "aib-adoption",
+      "title": "A working application\nis not yet useful adoption.",
+      "kind": "comparison",
+      "chapter": "assistant",
+      "lead": "RSM’s survey distinguishes partial integration from AI embedded in core processes.",
+      "items": [
+        [
+          "86%",
+          "Partly or fully integrated into operations."
+        ],
+        [
+          "36%",
+          "Fully embedded across core processes."
+        ]
+      ],
+      "notes": "RSM Middle Market AI Survey 2026: 1.030 responden, 827 Amerika Serikat dan 203 Kanada, periode 5–16 Maret 2026. Semua organisasi responden telah menggunakan AI, termasuk pilot. Dalam sampel tersebut 86% melaporkan integrasi sebagian atau penuh ke operasi; 36% menyatakan sudah melekat penuh pada proses inti. Ini bukan persentase adopsi seluruh pasar dan bukan survei Indonesia. Pertanyaan berikutnya adalah bagaimana kualitas data, kontrol dan proses kerja mendukung penggunaan yang konsisten.\n\nPertanyaan: A working application is not yet useful adoption. Penghubung: RSM’s survey distinguishes partial integration from AI embedded in core processes.",
+      "refs": [
+        "rsm",
+        "rsm-method"
+      ],
+      "evidenceNote": "1,030 respondents · U.S. and Canada · organisations already using AI, including pilots · March 2026.",
+      "narrative": {
+        "question": "A working application is not yet useful adoption.",
+        "transition": "RSM’s survey distinguishes partial integration from AI embedded in core processes."
+      },
+      "notesEn": "The RSM survey distinguishes partial integration from AI embedded in core processes among organisations already using AI. The figures are not an adoption rate for all companies or Indonesia. A working application still needs evidence of useful adoption.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia.\n\nRSM · Survey methodology · 2026: Fieldwork 5–16 March 2026: 827 U.S. and 203 Canadian respondents, management level or above with influence over technology investment. Government and nonprofits excluded. All participating organisations already used AI."
     },
     {
       "key": "aib-section-ams",
-      "title": "Connect\nthe audit work.",
+      "title": "An AI-supported AMS.",
       "kind": "section",
       "chapter": "ams",
-      "lead": "The comparison, review and response should not disappear into separate files.",
+      "lead": "One idea to test: an AI-supported assurance system, from annual priorities to a reviewed finding.",
       "items": [],
-      "notes": "Temuan dan sumbernya sudah dipahami. Sekarang tanyakan bagaimana plan, workpaper, review, report dan action dapat tetap terhubung. AMS digunakan untuk mendemonstrasikan alur itu, bukan untuk mengklaim kontrol produksi atau model AI live yang sudah terhubung. Pertahankan pertanyaan siapa menyiapkan, siapa meninjau dan sumber mana yang mendukung.\n\nPertanyaan peserta: The comparison, review and response should not disappear into separate files. Transisi: Keep the question, evidence, review and action together.",
+      "notes": "Satu ide yang akan diuji: AMS untuk PT Aruna Distribusi Nusantara, organisasi contoh yang menjual secara kredit dan perlu menjaga penerimaan kas. Ikuti perencanaan tahunan, fieldwork, dan reporting. Buka aplikasi dari slide perencanaan, kerjakan objek Customer credit & collections, lalu terbitkan temuan sebagai sinyal risiko. Saran berupa contoh tersiap dengan aturan transparan, bukan model live. Human authority berlaku pada rencana, programme, temuan, dan keputusan risiko.",
       "refs": [],
       "narrative": {
-        "question": "The comparison, review and response should not disappear into separate files.",
-        "transition": "Keep the question, evidence, review and action together."
-      }
+        "question": "An AI-supported AMS.",
+        "transition": "From annual priorities to a reviewed report—and a signal for the risk owner."
+      },
+      "notesEn": "Test one idea: an AI-supported AMS for the teaching organisation PT Aruna Distribusi Nusantara, which sells on credit and needs timely cash collection. Follow annual planning, fieldwork and reporting. Suggestions are prepared transparent examples, not live model output."
     },
     {
-      "key": "aib-ams-flow",
-      "title": "Keep the question\nconnected to the evidence.",
-      "kind": "pipeline",
+      "key": "aib-annual-planning",
+      "title": "Start with the audit universe.",
+      "lead": "Aggregate registered risks and other planning parameters; let the accountable person approve the plan.",
       "chapter": "ams",
-      "lead": "AI assistance becomes more useful when the work has one traceable path.",
-      "items": [
-        [
-          "Plan",
-          "Link objective, risk and scope."
-        ],
-        [
-          "Execute",
-          "Programme - evidence - workpaper."
-        ],
-        [
-          "Review",
-          "Challenge findings and approve reporting."
-        ],
-        [
-          "Follow through",
-          "Assign actions; inform the risk owner."
-        ]
-      ],
-      "notes": "Kebutuhan sekarang lebih besar daripada satu draf yang baik. File, percakapan dan review perlu terhubung agar pertanyaan audit tidak terlepas dari bukti dan action. Ilustrasi sebelah kiri menunjukkan dokumen terpisah; sebelah kanan engagement yang menautkan tujuan, risk, programme, evidence, workpaper dan review. Ini arah cara kerja, bukan klaim aplikasi contoh memiliki semua kontrol produksi.\n\nPertanyaan peserta: How can the whole engagement stay connected? Transisi: Check that each handover preserves the evidence.",
-      "refs": [],
-      "visual": "workbench",
-      "narrative": {
-        "question": "How can the whole engagement stay connected?",
-        "transition": "Check that each handover preserves the evidence."
-      }
-    },
-    {
-      "key": "aib-audit-chain",
-      "title": "Each handover\nshould carry its evidence.",
-      "kind": "assurance-chain",
-      "chapter": "ams",
-      "lead": "Plan → workpaper → finding → action. The professional requirements still apply.",
-      "items": [
-        [
-          "13.2",
-          "Assess the engagement risk and define the work."
-        ],
-        [
-          "14.1–14.3",
-          "Obtain dependable evidence; analyse and evaluate findings."
-        ],
-        [
-          "14.4",
-          "Develop recommendations and accountable actions."
-        ],
-        [
-          "15.2",
-          "Confirm implementation and follow through."
-        ]
-      ],
-      "notes": "Jelaskan handover dengan kata kerja: rencanakan, uji sumber, setujui temuan, dan periksa tindak lanjut. Nomor GIAS ditempatkan sebagai rujukan, bukan konsep pertama yang harus dihafal. Rujukan: 13.2 penilaian risiko engagement, 14.1-14.4 informasi dan pengembangan temuan/rekomendasi, 15.2 konfirmasi implementasi. Standar lengkap tetap menjadi otoritas untuk persyaratan dan penerapannya.\n\nPertanyaan peserta: What must travel with the finding? Transisi: Follow the engagement in the audit application.",
+      "kind": "story",
+      "items": [],
       "refs": [
         "gias"
       ],
-      "visual": "trace",
+      "notes": "Demo menggunakan mean skor risiko terdaftar per objek, change, coverage gap dan importance. Bobot default 55/20/15/10 dapat ditinjau dan harus total 100. Formula adalah contoh transparan, bukan metode scoring resmi IIA atau probability model. Mandatory work masuk dahulu; sisa objek dipilih berurutan menurut priority bila sesuai kapasitas hari audit. Tidak mengklaim optimasi matematis. User meninjau parameter, coverage, risiko yang belum terpilih, kapasitas, alasan dan approver. Perubahan asumsi membatalkan approval plan; project yang sudah dibuat tetap terjaga.\n\nPertanyaan: Start with the audit universe. Penghubung: Aggregate registered risks and other planning parameters; let the accountable person approve the plan. Buka workspace dari tombol pada slide ini; usulkan prioritas dan setujui rencana sebelum masuk fieldwork.",
+      "evidenceNote": "",
+      "visual": "annual-planning",
       "narrative": {
-        "question": "What must travel with the finding?",
-        "transition": "Follow the engagement in the audit application."
-      }
+        "question": "Start with the audit universe.",
+        "transition": "Aggregate registered risks and other planning parameters; let the accountable person approve the plan."
+      },
+      "notesEn": "Open the assurance workspace. Inspect the audit universe, visible risk aggregation, other parameters and audit-day capacity. Include mandatory work, prepare the proposal and approve the plan with a reason. Choose Customer credit and collections for the engagement.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
     },
     {
-      "key": "aib-ams-demo",
-      "title": "Let’s follow\none audit project.",
-      "kind": "demo",
+      "key": "aib-fieldwork-flow",
+      "title": "Turn the approved object\ninto fieldwork.",
+      "lead": "Suggest the programme and relevant references, validate the criteria, then assign the auditor in charge.",
       "chapter": "ams",
-      "lead": "Open Aruna’s credit-control engagement and trace it from plan to report.",
-      "items": [
-        [
-          "01",
-          "Review the linked risk and audit programme."
-        ],
-        [
-          "02",
-          "Open a workpaper; inspect evidence and the suggested finding."
-        ],
-        [
-          "03",
-          "Approve the finding; review the report and its risk implication."
-        ]
-      ],
-      "notes": "Buka aplikasi dari panel admin melalui tab Demo aplikasi setelah topik ini diaktifkan, atau gunakan pratinjau AMS lokal. Perlihatkan bahwa workpaper belum otomatis approved karena ada draf saran. Tandai review setelah memeriksa bukti. Saran didesain untuk demo; tidak ada koneksi model atau akses dokumen klien. Jelaskan keterbatasan penyimpanan browser.\n\nAlur penyampaian: Where do we plan, examine and approve? Transisi ke bagian berikut: Inspect the ownership and change history behind the work.",
-      "refs": [],
-      "visual": "audit-demo",
-      "narrative": {
-        "question": "Where do we plan, examine and approve?",
-        "transition": "Inspect the ownership and change history behind the work."
-      }
-    },
-    {
-      "key": "aib-ams-controls",
-      "title": "Know who changed it.\nKnow who approved it.",
-      "kind": "matrix",
-      "chapter": "ams",
-      "lead": "A connected workspace must preserve responsibility as well as speed.",
-      "items": [
-        [
-          "Permissions",
-          "Auditor prepares; reviewer approves."
-        ],
-        [
-          "Provenance",
-          "Source IDs and versions travel with the draft."
-        ],
-        [
-          "Model oversight",
-          "Evaluate prompts, output quality and exceptions."
-        ],
-        [
-          "Change history",
-          "Retain edits, approvals and model/version metadata."
-        ]
-      ],
-      "notes": "Jangan hanya melihat tampilan workspace yang rapi. Tanyakan apakah perubahan, rujukan sumber dan approval dapat ditelusuri. Contoh riwayat menggambarkan reviewer menantang cause yang belum didukung, auditor memperbaiki dan reviewer menyetujui versi akhir. Aplikasi browser mendemonstrasikan alur; tombol approve tidak membuktikan pemisahan peran atau kontrol akses produksi.\n\nPertanyaan peserta: Can we trace who prepared and approved? Transisi: Issuing the report is not the end of the decision.",
+      "kind": "story",
+      "items": [],
       "refs": [
         "gias",
-        "nist-gen"
+        "iia"
       ],
-      "visual": "signoff",
+      "notes": "Engagement dibuat dari objek yang dipilih pada annual plan yang sudah disetujui, bukan daftar tidak terkait. Library internal berisi kebijakan Aruna untuk pembelajaran; external references menyertakan URL dan versi yang harus dibuka serta diuji applicability-nya. Saran AI tidak otomatis merupakan kriteria resmi. Reviewer mengonfirmasi referensi dan assignee perprosedur sebelum programme approved. Bukti, result dan gap direkam dalam workpaper. Perubahan program atau kriteria membatalkan approval programme. Bukti tidak boleh diciptakan hanya untuk melengkapi laporan.\n\nPertanyaan: Turn the approved object into fieldwork. Penghubung: Suggest the programme and relevant references, validate the criteria, then assign the auditor in charge.",
+      "evidenceNote": "",
+      "visual": "fieldwork-flow",
       "narrative": {
-        "question": "Can we trace who prepared and approved?",
-        "transition": "Issuing the report is not the end of the decision."
-      }
+        "question": "Turn the approved object into fieldwork.",
+        "transition": "Suggest the programme and relevant references, validate the criteria, then assign the auditor in charge."
+      },
+      "notesEn": "Create fieldwork from an approved object. Suggest the programme, inspect the original criteria and confirm applicability before approving assignments. Record the evidence and test results, including uncertainty. The reviewer owns the conclusion.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nThe IIA - AI Auditing Framework - 2024: Professional guidance. The audit canvas and examples in this deck are teaching syntheses, not a reproduction of the official framework."
+    },
+    {
+      "key": "aib-reporting-pack",
+      "title": "One reviewed finding.\nTwo useful outputs.",
+      "lead": "Generate the report and presentation from the same approved evidence and management response.",
+      "chapter": "ams",
+      "kind": "story",
+      "items": [],
+      "refs": [
+        "gias",
+        "pcaob"
+      ],
+      "notes": "Fieldwork memisahkan fakta, cause yang belum dikonfirmasi, effect dan tindakan. Setelah reviewer menyetujui finding, sistem menyiapkan laporan markdown dan enam slide HTML dengan logo RSM, keduanya berasal dari data yang sama dan dapat diunduh. Angka 8 dari 40 tetap dibatasi pada sample/evidence pack; tidak menjadi error rate populasi. Perubahan substansi membatalkan approval/output sehingga harus direview kembali. Issue report adalah keputusan terpisah dan mengirim audit signal ke linked risk; planned action tidak membuktikan risiko sudah turun.\n\nPertanyaan: One reviewed finding. Two useful outputs. Penghubung: Generate the report and presentation from the same approved evidence and management response. Setelah report dan slide direview, issue report untuk mengirim sinyal audit. Pertanyaan berikutnya adalah keputusan management setelah laporan diterbitkan.",
+      "evidenceNote": "",
+      "visual": "reporting-pack",
+      "narrative": {
+        "question": "One reviewed finding. Two useful outputs.",
+        "transition": "Generate the report and presentation from the same approved evidence and management response."
+      },
+      "notesEn": "Review the finding, its limitations and management response. Generate the report and presentation from the same facts, inspect both, then issue. In the app, issuing the report creates an audit signal for the linked registered risk.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements."
     },
     {
       "key": "aib-endpoint",
@@ -1175,37 +721,39 @@
           "What does this mean for the objective now?"
         ]
       ],
-      "notes": "Ini jembatan penting ke risiko. Setelah report diterbitkan, tujuan bisnis belum otomatis terlindungi. Seseorang perlu menilai arti finding, memilih respons, menetapkan owner dan memeriksa hasil. Pertanyaan apa yang berubah pada Senin membantu audiens menghubungkan output administratif dengan tindakan nyata. Hindari klaim bahwa skor risiko harus otomatis berubah hanya karena laporan audit terbit.\n\nPertanyaan peserta: What will management do after the report? Transisi: Return to the goal and its risk.",
+      "notes": "Ini jembatan penting ke risiko. Setelah report diterbitkan, tujuan bisnis belum otomatis terlindungi. Seseorang perlu menilai arti finding, memilih respons, menetapkan owner dan memeriksa hasil. Pertanyaan apa yang berubah pada Senin membantu audiens menghubungkan output administratif dengan tindakan nyata. Hindari klaim bahwa skor risiko harus otomatis berubah hanya karena laporan audit terbit.\n\nPertanyaan: The report is issued. What changes on Monday? Penghubung: The finding only becomes useful when someone decides what to do.",
       "refs": [
         "gias",
         "coso"
       ],
       "visual": "handoff",
       "narrative": {
-        "question": "What will management do after the report?",
-        "transition": "Return to the goal and its risk."
-      }
+        "question": "The report is issued. What changes on Monday?",
+        "transition": "The finding only becomes useful when someone decides what to do."
+      },
+      "notesEn": "An issued report is evidence for a management decision, not proof that the goal is protected. Ask what changes after issue: who acts, which risk assumption is challenged, and how the effect of the response is checked.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method."
     },
     {
       "key": "aib-section-beyond",
-      "title": "Turn evidence\ninto action.",
+      "title": "Go beyond audit.",
       "kind": "section",
       "chapter": "beyond",
-      "lead": "Return to the original goal: healthy sales and timely collection.",
+      "lead": "Connect assurance evidence to the objective and the risk decision.",
       "items": [],
-      "notes": "Setelah pertanyaan apa yang berubah setelah laporan terbit, kembali ke tujuan penjualan sehat dan penerimaan kas. Tanyakan apa arti evidence baru bagi exposure saat ini dan respons management. Berita, laporan internal dan warning kontrol memperluas sumber informasi. AI membantu membawa dan menjelaskan sinyal; manusia memeriksa relevansi, menetapkan assessment dan memantau action.\n\nPertanyaan peserta: Return to the original goal: healthy sales and timely collection. Transisi: Use new information to reconsider risk and protect the objective.",
+      "notes": "Setelah pertanyaan apa yang berubah setelah laporan terbit, kembali ke tujuan penjualan sehat dan penerimaan kas. Tanyakan apa arti evidence baru bagi exposure saat ini dan respons management. Berita, laporan internal dan warning kontrol memperluas sumber informasi. AI membantu membawa dan menjelaskan sinyal; manusia memeriksa relevansi, menetapkan assessment dan memantau action.\n\nPertanyaan: Go beyond audit. Penghubung: Connect assurance evidence to the objective and the risk decision.",
       "refs": [],
       "narrative": {
-        "question": "Return to the original goal: healthy sales and timely collection.",
-        "transition": "Use new information to reconsider risk and protect the objective."
-      }
+        "question": "Go beyond audit.",
+        "transition": "Connect assurance evidence to the objective and the risk decision."
+      },
+      "notesEn": "Return to the objective and the risk owner. Audit evidence is useful beyond closing the audit project when it supports reassessment and a response. Other relevant information also arrives between projects."
     },
     {
       "key": "aib-risk-gap",
-      "title": "The risks are changing.\nOur view of them must change too.",
+      "title": "The risk picture changes\nbetween audit projects.",
       "kind": "stats",
       "chapter": "beyond",
-      "lead": "A survey of executives provides context for the need for better risk oversight.",
+      "lead": "New information can challenge yesterday’s assessment.",
       "items": [
         [
           "69%",
@@ -1216,52 +764,23 @@
           "describe risk oversight as mature or robust"
         ]
       ],
-      "notes": "NC State/AICPA 2026 State of Risk Oversight. Dua angka berasal dari pertanyaan berbeda, bukan angka komplementer yang dijumlahkan. Ini persepsi eksekutif dalam survei tersebut, bukan bukti setiap organisasi gagal. Gunakan sebagai pembuka pertanyaan: apakah temuan assurance memperbarui penilaian risiko dan prioritas manajemen secara tepat waktu?\n\nAlur penyampaian: Why should risk oversight keep changing? Transisi ke bagian berikut: Use the business goal to interpret new information.",
+      "notes": "NC State/AICPA 2026 State of Risk Oversight. Dua angka berasal dari pertanyaan berbeda, bukan angka komplementer yang dijumlahkan. Ini persepsi eksekutif dalam survei tersebut, bukan bukti setiap organisasi gagal. Gunakan sebagai pembuka pertanyaan: apakah temuan assurance memperbarui penilaian risiko dan prioritas manajemen secara tepat waktu?\n\nPertanyaan: The risk picture changes between audit projects. Penghubung: New information can challenge yesterday’s assessment.",
       "refs": [
         "erm"
       ],
       "evidenceNote": "NC State/AICPA · 2026 executive survey · different questions, not complementary percentages.",
       "narrative": {
-        "question": "Why should risk oversight keep changing?",
-        "transition": "Use the business goal to interpret new information."
-      }
-    },
-    {
-      "key": "aib-strategy-performance",
-      "title": "Come back to\nthe business goal.",
-      "kind": "strategy",
-      "chapter": "beyond",
-      "lead": "COSO ERM connects risk with strategy and performance.",
-      "items": [
-        [
-          "Goal",
-          "Grow sales and collect on time."
-        ],
-        [
-          "Risk",
-          "Credit decisions could leave too much cash tied up in debt."
-        ],
-        [
-          "Response",
-          "Review limits, improve approvals and monitor collections."
-        ]
-      ],
-      "notes": "Kembali ke tujuan yang sudah dikenal sejak kasus Aruna: penjualan sehat dan pembayaran tepat waktu. Risiko adalah ketidakpastian terhadap hasil tersebut, bukan daftar masalah yang berdiri sendiri. COSO ERM menghubungkan risiko dengan strategy-setting dan performance. Diagram adalah penjelasan pembelajaran, bukan reproduksi framework COSO atau metode scoring resmi. Contoh yang sama dapat diterapkan pada layanan, pengadaan atau perlindungan pelanggan.\n\nPertanyaan peserta: Which goal does the finding affect? Transisi: Connect evidence to the risk owner’s next decision.",
-      "refs": [
-        "coso"
-      ],
-      "visual": "goal",
-      "narrative": {
-        "question": "Which goal does the finding affect?",
-        "transition": "Connect evidence to the risk owner’s next decision."
-      }
+        "question": "The risk picture changes between audit projects.",
+        "transition": "New information can challenge yesterday’s assessment."
+      },
+      "notesEn": "The survey asks separate questions about rising risk complexity and maturity of oversight. Do not subtract one percentage from the other. The point is why a risk assessment needs context and new information between audit projects.\n\nNC State / AICPA - State of Risk Oversight - 2026: Executive survey: 69% report increased risk volume/complexity over five years; 30% describe oversight as mature/robust. These are different questions, not complementary percentages."
     },
     {
       "key": "aib-connect",
-      "title": "The finding is a signal\nabout the goal.",
+      "title": "Risk-based audit\ncan feed continuous risk assurance.",
       "kind": "loop",
       "chapter": "beyond",
-      "lead": "An approval issue matters because of the exposure it may create.",
+      "lead": "A finding is a signal about the objective—not only an item to close.",
       "items": [
         [
           "Objective",
@@ -1276,106 +795,76 @@
           "Override exceptions challenge control effectiveness."
         ]
       ],
-      "notes": "Tujuan menuntun identifikasi risiko; risiko menuntun assurance; assurance mengembalikan bukti ke penilaian risiko dan keputusan tindakan. Tidak semua temuan mengubah skor: manajemen bisa mempertahankannya jika bukti kurang relevan atau kontrol kompensasi efektif. Rekam alasan agar tidak menjadi sekadar ritual update register.\n\nAlur penyampaian: Why is an audit result also a risk signal? Transisi ke bagian berikut: Other sources can provide signals as well.",
+      "notes": "Tujuan menuntun identifikasi risiko; risiko menuntun assurance; assurance mengembalikan bukti ke penilaian risiko dan keputusan tindakan. Tidak semua temuan mengubah skor: manajemen bisa mempertahankannya jika bukti kurang relevan atau kontrol kompensasi efektif. Rekam alasan agar tidak menjadi sekadar ritual update register.\n\nPertanyaan: Risk-based audit can feed continuous risk assurance. Penghubung: A finding is a signal about the objective—not only an item to close.",
       "refs": [
         "coso",
         "gias"
       ],
       "visual": "feedback",
       "narrative": {
-        "question": "Why is an audit result also a risk signal?",
-        "transition": "Other sources can provide signals as well."
-      }
+        "question": "Risk-based audit can feed continuous risk assurance.",
+        "transition": "A finding is a signal about the objective—not only an item to close."
+      },
+      "notesEn": "Connect the reviewed finding to the same business objective and registered risk. Evidence can challenge an earlier assumption, but the risk owner must evaluate relevance, uncertainty, the score and the response.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
     },
     {
-      "key": "aib-signals",
-      "title": "The next warning\nmay come from somewhere else.",
-      "kind": "sources",
+      "key": "aib-three-signals",
+      "title": "Three sources for this demonstration.",
+      "lead": "Audit results. Internal memos and reports. News and social-media leads.",
       "chapter": "beyond",
-      "lead": "A meeting, a customer trend, a news story or another audit can change the picture.",
-      "items": [
-        [
-          "External",
-          "Verified news - regulation - sector developments"
-        ],
-        [
-          "Internal",
-          "Meeting records - performance reports - audit findings"
-        ],
-        [
-          "Continuous assurance",
-          "Control exceptions - trends - confirmed anomalies"
-        ]
+      "kind": "story",
+      "items": [],
+      "refs": [
+        "coso",
+        "gias"
       ],
-      "notes": "Perluas sumber setelah peserta mengerti arti finding. Contoh berita, catatan rapat tentang pembayaran dan exception kontrol adalah ilustrasi informasi yang perlu diperiksa, bukan berita nyata atau bukti klien. Sumber asli, tanggal, reliabilitas dan kaitan terhadap objective harus diuji. Tidak setiap berita atau anomali layak menjadi risk signal yang diterima; false positive dan informasi yang bertentangan harus bisa ditolak atau diinvestigasi.\n\nPertanyaan peserta: Where else might important changes appear? Transisi: Use AI to bring plausible signals to a person for review.",
-      "refs": [],
-      "visual": "sources",
+      "notes": "Demo fokus hanya tiga kelompok. Pertama hasil audit approved/issued dari AMS yang benar-benar terhubung ke registered risk Aruna dalam browser yang sama. Kedua internal memo/report yang merupakan teaching record dengan source content. Ketiga external news memakai artikel ANTARA nyata bertanggal 3 April 2025 sebagai historical replay; link sumber dapat dibuka. Social-media lead merupakan teaching example yang jelas belum diverifikasi, tanpa atribusi ke orang/akun nyata. Tanyakan relevansi ke objective dan konteks; jangan menganggap topik cocok berarti exposure terbukti. Dalam cerita Aruna melayani pelanggan manufaktur ekspor, sehingga dependensi perlu diverifikasi sebelum mengaitkan tarif dengan collection. Continuous assurance dapat memakai sumber lain; tiga ini bukan batas framework.\n\nPertanyaan: Three sources for this demonstration. Penghubung: Audit results. Internal memos and reports. News and social-media leads.",
+      "evidenceNote": "",
+      "visual": "three-signals",
       "narrative": {
-        "question": "Where else might important changes appear?",
-        "transition": "Use AI to bring plausible signals to a person for review."
-      }
+        "question": "Three sources for this demonstration.",
+        "transition": "Audit results. Internal memos and reports. News and social-media leads."
+      },
+      "notesEn": "Use three source groups: a reviewed audit result, an internal memo or report, and news or social-media leads. Different sources have different evidential weight. Inspect dates and originals; an unverified post is a lead, not an established fact.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
     },
     {
       "key": "aib-signal-framework",
-      "title": "AI brings the information.\nPeople decide what it means.",
-      "kind": "pipeline",
+      "title": "SIGNAL",
+      "lead": "AI prepares the evidence and advice. People retain the decision and the follow-through.",
       "chapter": "beyond",
-      "lead": "Capture → check relevance → decide → act.",
-      "items": [
-        [
-          "Source",
-          "Capture the event and its evidence."
-        ],
-        [
-          "Interpret",
-          "Map the plausible link between the objective and the risk."
-        ],
-        [
-          "Evaluate",
-          "Accept or decline; review the proposed score."
-        ],
-        [
-          "Act & learn",
-          "Mitigate, assign ownership, monitor outcomes."
-        ]
-      ],
-      "notes": "Ini ringkasan alur SIGNAL dari materi sebelumnya, bukan standar COSO/IIA baru. Saran relevansi dan skor adalah hipotesis yang harus ditinjau manusia. Penilaian mencakup keparahan, horizon waktu, keandalan bukti dan kondisi pengendalian. Tidak ada skor otomatis hanya berdasarkan banyaknya berita. Versi demo memakai aturan transparan, bukan model live.\n\nAlur penyampaian: How does a signal become an action? Transisi ke bagian berikut: Keep facts separate from assumptions when reassessing.",
-      "refs": [],
-      "visual": "signal-path",
-      "narrative": {
-        "question": "How does a signal become an action?",
-        "transition": "Keep facts separate from assumptions when reassessing."
-      }
-    },
-    {
-      "key": "aib-calibration",
-      "title": "New information can change\nour view of the risk.",
-      "kind": "calibration",
-      "chapter": "beyond",
-      "lead": "Check the facts first. Then reconsider the assessment and record the reason.",
-      "items": [
-        [
-          "Establish",
-          "What changed, how reliable is it, and which objective is exposed?"
-        ],
-        [
-          "Interpret",
-          "Which likelihood, impact or control assumption is challenged?"
-        ],
-        [
-          "Decide",
-          "Apply agreed scales; record the rationale and review date."
-        ]
-      ],
-      "notes": "Penilaian risiko harus membedakan fakta, inferensi dan proyeksi. Sinyal dapat menambah atau mengurangi exposure atau justru belum cukup untuk mengubah skor. Matriks 1–5 bersifat skala penilaian; skor 16 bukan probabilitas 16% atau kerugian uang. AI tidak memiliki dasar menetapkan angka presisi tanpa kalibrasi dan data yang relevan. Gunakan risk criteria organisasi, horizon waktu, kontrol dan keputusan pemilik risiko. Nilai demo merupakan contoh, bukan ketentuan COSO atau hasil estimasi statistik.\n\nAlur penyampaian: What justifies changing the assessment? Transisi ke bagian berikut: If the exposure exceeds tolerance, decide an action.",
+      "kind": "story",
+      "items": [],
       "refs": [
         "coso",
-        "nist"
+        "gias"
       ],
+      "notes": "SIGNAL adalah framework pengajaran dari materi presenter, bukan standar eksternal. S Sense: tangkap sumber beserta asal dan tanggal; I Interpret: kaitkan objective dan registered risk; G Gauge: jelaskan asumsi yang mungkin berubah dan ketidakpastian; N Notify: sampaikan kepada owner yang tepat; A Act: manusia menerima/menolak, merevisi assessment dan memutuskan response; L Learn: periksa pelaksanaan dan efektivitas serta gunakan bukti berikutnya. AI dapat mendukung S I G N; manusia dapat menantang semua tahap dan mempunyai authority pada A L. Jangan membuat notifikasi menjadi auto-update skor tanpa persetujuan. Sistem demo menggunakan prepared examples dan rule transparan, bukan live model atau stream terjadwal.\n\nPertanyaan: SIGNAL Penghubung: AI prepares the evidence and advice. People retain the decision and the follow-through.",
+      "evidenceNote": "",
+      "visual": "signal-six",
       "narrative": {
-        "question": "What justifies changing the assessment?",
-        "transition": "If the exposure exceeds tolerance, decide an action."
-      }
+        "question": "How can sources inform a timely human risk decision?",
+        "transition": "AI prepares the evidence and advice. People retain the decision and the follow-through."
+      },
+      "notesEn": "SIGNAL means Sense, Interpret, Gauge, Notify, Act and Learn. AI supports the first four activities. People can challenge every stage and retain responsibility for relevance, assessment, response and verification of actual effects.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
+    },
+    {
+      "key": "aib-review-signals",
+      "title": "Review the signals\nas one decision sequence.",
+      "lead": "Accept or decline relevance, review the proposed score, and agree a response when exposure exceeds tolerance.",
+      "chapter": "beyond",
+      "kind": "story",
+      "items": [],
+      "refs": [
+        "coso"
+      ],
+      "notes": "Buka alert per risiko dan semua signal yang dipetakan ke risiko itu. Baca summary, why dan source. Accept/decline tiap signal; alasan penolakan tidak dipaksakan peritem. Setelah seluruhnya diputus, analisis saran likelihood/impact berdasarkan evidence yang diterima. Unverified social lead sendiri tidak menyebabkan suggested increase. P, S dan selection manusia terlihat pada risk map. Custom assessment membutuhkan reasoning. Jika assessment baru di atas tolerance, pilih/ubah mitigation beserta owner, due date dan expected likelihood/impact reduction. Finish menyimpan semua keputusan, assessment dan plan sekaligus. Tidak menghitung tiga signal berkorelasi sebagai tiga kenaikan yang dijumlahkan.\n\nPertanyaan: Review the signals as one decision sequence. Penghubung: Accept or decline relevance, review the proposed score, and agree a response when exposure exceeds tolerance.",
+      "evidenceNote": "",
+      "visual": "risk-review-v2",
+      "narrative": {
+        "question": "Review the signals as one decision sequence.",
+        "transition": "Accept or decline relevance, review the proposed score, and agree a response when exposure exceeds tolerance."
+      },
+      "notesEn": "Keep the review in one sequence. Accept or decline each proposed relationship, inspect the score suggestion, choose and explain the assessment, then agree a response if it exceeds tolerance. Save the decisions together.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method."
     },
     {
       "key": "aib-score",
@@ -1397,21 +886,22 @@
           "Projected · Likelihood 3 × impact 4"
         ]
       ],
-      "notes": "Angka contoh, bukan kalibrasi statistik. Tolerance ilustratif 12. Temuan menantang efektivitas kontrol sehingga penilai mengusulkan likelihood 4 dari 3, impact tetap 4. Manajemen dapat menolak dengan alasan. Mitigasi yang direncanakan menurunkan likelihood satu poin; residual 12 hanya proyeksi sampai implementasi dan efektivitasnya diverifikasi. Jangan tampilkan proyeksi sebagai kondisi aktual.\n\nAlur penyampaian: What changes now and what is only projected? Transisi ke bagian berikut: Try the decision in the separate risk workspace.",
+      "notes": "Angka contoh, bukan kalibrasi statistik. Tolerance ilustratif 12. Temuan menantang efektivitas kontrol sehingga penilai mengusulkan likelihood 4 dari 3, impact tetap 4. Manajemen dapat menolak dengan alasan. Mitigasi yang direncanakan menurunkan likelihood satu poin; residual 12 hanya proyeksi sampai implementasi dan efektivitasnya diverifikasi. Jangan tampilkan proyeksi sebagai kondisi aktual.\n\nPertanyaan: If the risk has increased, what action is needed? Penghubung: The action’s expected effect is a plan—not evidence that the risk has already fallen.",
       "refs": [],
       "evidenceNote": "Illustrative 1–5 scales · tolerance 12 · planned residual is a projection, not an achieved reduction.",
       "visual": "score-path",
       "narrative": {
-        "question": "What changes now and what is only projected?",
-        "transition": "Try the decision in the separate risk workspace."
-      }
+        "question": "If the risk has increased, what action is needed?",
+        "transition": "The action’s expected effect is a plan—not evidence that the risk has already fallen."
+      },
+      "notesEn": "The teaching assessment moves from likelihood 3 and impact 4 to likelihood 4 and impact 4: 12 to 16. Tolerance is 12. A planned reduction in likelihood targets 12; the plan does not prove an achieved reduction or a numerical probability."
     },
     {
       "key": "aib-risk-demo",
-      "title": "Now try the\nrisk decision.",
+      "title": "Try the three signal sources.",
       "kind": "demo",
       "chapter": "beyond",
-      "lead": "The separate risk workspace lets you review a signal, reassess and choose an action.",
+      "lead": "Issue an audit result, capture a memo, then inspect the historical news and the unverified lead.",
       "items": [
         [
           "01",
@@ -1426,69 +916,47 @@
           "Save a reasoned score and mitigation; review the dashboard."
         ]
       ],
-      "notes": "Gunakan tab Risk workspace di aplikasi topik ini. Risiko dan sumber berasal dari paket Beyond Compliance sebelumnya, sebagai contoh kedua yang berbeda dari kasus Aruna. Jangan menyebut kasus berita historis sebagai berita hari ini. Selesaikan review sinyal, penyesuaian skor dan rencana mitigasi sebagai satu rangkaian. Dalam versi ini AMS dan workspace risiko adalah dua demo; tidak ada transfer temuan otomatis antar keduanya.\n\nAlur penyampaian: How does the person review, decide and respond? Transisi ke bagian berikut: Look at whether the decisions became better.",
+      "notes": "Gunakan tab Risk workspace di aplikasi topik ini. Risiko dan sumber berasal dari paket Beyond Compliance sebelumnya, sebagai contoh kedua yang berbeda dari kasus Aruna. Jangan menyebut kasus berita historis sebagai berita hari ini. Selesaikan review sinyal, penyesuaian skor dan rencana mitigasi sebagai satu rangkaian. Dalam versi ini AMS dan workspace risiko adalah dua demo; tidak ada transfer temuan otomatis antar keduanya.\n\nPertanyaan: Try the three signal sources. Penghubung: Issue an audit result, capture a memo, then inspect the historical news and the unverified lead.",
       "refs": [],
-      "visual": "risk-demo",
+      "visual": "risk-demo-v2",
       "narrative": {
-        "question": "How does the person review, decide and respond?",
-        "transition": "Look at whether the decisions became better."
-      }
-    },
-    {
-      "key": "aib-value",
-      "title": "Look for a better decision.\nThen check the result.",
-      "kind": "cards",
-      "chapter": "beyond",
-      "lead": "For a pilot, measure whether the new way of working actually helps.",
-      "items": [
-        [
-          "Time to respond",
-          "How long from credible information to a reviewed decision?"
-        ],
-        [
-          "Clear responsibility",
-          "Does the action have an owner and a review date?"
-        ],
-        [
-          "Actual effect",
-          "Did the action work, and is the goal better protected?"
-        ]
-      ],
-      "notes": "Metrik yang diusulkan: waktu dari bukti kredibel sampai keputusan, proporsi sinyal yang berguna, false positives, jejak hubungan temuan ke risiko dan tujuan, serta verifikasi hasil mitigasi. Itu kriteria evaluasi pilot, bukan hasil studi atau bukti aplikasi sudah menurunkan risiko. Perbaikan harus dinilai bersama mutu analisis, biaya review dan konsekuensi kesalahan, bukan hanya jumlah output AI.\n\nAlur penyampaian: How will we know this helped? Transisi ke bagian berikut: Choose one existing task to start with.",
-      "refs": [],
-      "visual": "measures",
-      "narrative": {
-        "question": "How will we know this helped?",
-        "transition": "Choose one existing task to start with."
-      }
+        "question": "Try the three signal sources.",
+        "transition": "Issue an audit result, capture a memo, then inspect the historical news and the unverified lead."
+      },
+      "notesEn": "Issue the reviewed AMS finding, then add the memo and news/social examples. Read the dated historical ANTARA article and verify the unconfirmed social lead. Review a linked risk, choose relevance and the score, and approve or customise the response above tolerance."
     },
     {
       "key": "aib-next",
-      "title": "Start with one task\nyou already need to do.",
+      "title": "Build one idea\nthat somebody will use.",
       "kind": "cards",
       "chapter": "beyond",
-      "lead": "Choose a real question, an approved set of information and a person to review the result.",
+      "lead": "Choose the decision, the user, the evidence and the outcome—not only the application.",
       "items": [
         [
-          "A report to understand",
-          "Summarise key issues and check against the source."
+          "The decision",
+          "What should become better?"
         ],
         [
-          "A rule to test",
-          "Compare the relevant records and investigate the gaps."
+          "The user",
+          "Who will use it and own it?"
         ],
         [
-          "A risk to revisit",
-          "Use a new finding or report to decide whether action is needed."
+          "The evidence",
+          "What may it use, and how is it checked?"
+        ],
+        [
+          "The result",
+          "What improves after people use it?"
         ]
       ],
-      "notes": "Ajak peserta memilih satu pekerjaan yang memang perlu dilakukan: memahami laporan, memeriksa aturan atau meninjau risk karena informasi baru. Tentukan siapa owner, informasi apa yang boleh dipakai dan bagaimana hasil akan diuji. Jangan memulai dari pengadaan platform besar. Bandingkan kualitas, waktu dan hasil terhadap cara kerja saat ini sebelum memperluas. Halaman ini adalah prompt diskusi, bukan formulir yang menyimpan data.\n\nPertanyaan peserta: What practical step can I take next? Transisi: Sources support the discussion; detailed questions are welcome.",
+      "notes": "Kembali ke ide–execution–usage. Pilih satu keputusan yang perlu diperbaiki, calon pengguna yang jelas, informasi yang boleh digunakan, dan hasil yang dapat diperiksa. AI membantu membuat dashboard atau sistem, tetapi aplikasi yang berjalan belum membuktikan manfaat. Uji pada cakupan kecil; bandingkan kualitas, waktu dan dampak keputusan; tentukan owner serta pemelihara sebelum memperluas. Jangan menjadikan jumlah fitur atau jumlah alert sebagai ukuran utama keberhasilan.",
       "refs": [],
-      "visual": "next",
+      "visual": "useful-next",
       "narrative": {
-        "question": "What practical step can I take next?",
-        "transition": "Sources support the discussion; detailed questions are welcome."
-      }
+        "question": "Build one idea that somebody will use.",
+        "transition": "Choose the decision, the user, the evidence and the outcome—not only the application."
+      },
+      "notesEn": "Choose one decision that should improve, a real user, authorised evidence and an outcome you can check. Test on a small scope and compare with current work. Assign ownership and maintenance before expanding a useful application."
     },
     {
       "key": "aib-sources",
@@ -1497,19 +965,21 @@
       "chapter": "beyond",
       "lead": "Professional standards and established frameworks.",
       "items": [],
-      "notes": "Bedakan fungsi sumber: standar profesi, kerangka risiko dan guidance teknis. Diagram pada materi adalah penjelasan yang dirancang untuk seminar, bukan reproduksi grafis resmi. Pilih kriteria engagement yang berlaku; daftar referensi tidak menggantikan pembacaan standar atau penilaian konformitas.\n\nAlur penyampaian: Professional standards and established frameworks. Transisi ke bagian berikut: Use new information to reconsider risk and protect the objective.",
+      "notes": "Bedakan fungsi sumber: standar profesi, kerangka risiko dan guidance teknis. Diagram pada materi adalah penjelasan yang dirancang untuk seminar, bukan reproduksi grafis resmi. Pilih kriteria engagement yang berlaku; daftar referensi tidak menggantikan pembacaan standar atau penilaian konformitas.\n\nPertanyaan: The references behind the framework. Penghubung: Professional standards and established frameworks.",
       "refs": [
         "gias",
         "iia",
         "nist",
+        "nist-trust",
         "nist-gen",
         "iso",
         "coso"
       ],
       "narrative": {
-        "question": "Professional standards and established frameworks.",
-        "transition": "Use new information to reconsider risk and protect the objective."
-      }
+        "question": "The references behind the framework.",
+        "transition": "Professional standards and established frameworks."
+      },
+      "notesEn": "Use these professional standards and established frameworks for their stated purposes. Consult the original versions and requirements. The teaching diagrams and risk matrix are explanatory material rather than official certifications.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nThe IIA - AI Auditing Framework - 2024: Professional guidance. The audit canvas and examples in this deck are teaching syntheses, not a reproduction of the official framework.\n\nNIST - AI RMF 1.0 - 2023: Voluntary framework: Govern, Map, Measure, Manage. Use the 1.0 edition explicitly; it is under revision.\n\nNIST · Trustworthy AI characteristics: AI RMF 1.0 section 3 and Figure 4. Seven interconnected qualities, with validity/reliability as a foundation and accountability/transparency across the others. Context and trade-offs matter; this is not an audit certification checklist.\n\nNIST - Generative AI Profile - 2024: Cross-sector guidance on generative AI risks; not proof that a particular product is safe.\n\nISO/IEC 42001 · AI management systems · 2023: Official ISO overview of the AI management system standard. Organisational governance requirements are distinct from proof of a model’s accuracy. No certification or clause-by-clause conformance conclusion is made in this seminar.\n\nCOSO · ERM: Strategy & Performance · 2017: COSO connects enterprise risk management with strategy setting and performance. The feedback diagram is an RSM seminar explanation of that connection, not a reproduction of COSO’s official framework or an endorsement of a scoring method."
     },
     {
       "key": "aib-research",
@@ -1518,7 +988,7 @@
       "chapter": "beyond",
       "lead": "Study design, population and context matter.",
       "items": [],
-      "notes": "Riset HBS/BCG menunjukkan efek pada tugas yang diuji, bukan akurasi audit. Survei RSM adalah organisasi AI-using Amerika Serikat/Kanada; jangan menggeneralisasi ke seluruh pasar atau Indonesia. NC State/AICPA menilai persepsi eksekutif. PCAOB adalah observasi staff historis. Kasus Air Canada adalah putusan spesifik dan tidak mengidentifikasi LLM. Sumber teknis Anthropic dipakai untuk pembedaan arsitektur, bukan standar assurance.\n\nAlur penyampaian: Study design, population and context matter. Transisi ke bagian berikut: Use new information to reconsider risk and protect the objective.",
+      "notes": "Riset HBS/BCG menunjukkan efek pada tugas yang diuji, bukan akurasi audit. Survei RSM adalah organisasi AI-using Amerika Serikat/Kanada; jangan menggeneralisasi ke seluruh pasar atau Indonesia. NC State/AICPA menilai persepsi eksekutif. PCAOB adalah observasi staff historis. Kasus Air Canada adalah putusan spesifik dan tidak mengidentifikasi LLM. Sumber teknis Anthropic dipakai untuk pembedaan arsitektur, bukan standar assurance.\n\nPertanyaan: The evidence behind the claims. Penghubung: Study design, population and context matter.",
       "refs": [
         "hbs",
         "rsm",
@@ -1530,9 +1000,10 @@
         "rsm-regional"
       ],
       "narrative": {
-        "question": "Study design, population and context matter.",
-        "transition": "Use new information to reconsider risk and protect the objective."
-      }
+        "question": "The evidence behind the claims.",
+        "transition": "Study design, population and context matter."
+      },
+      "notesEn": "Study design, population, dates and limitations determine what a statistic can support. International surveys are not Indonesian market estimates, and task productivity studies do not establish audit accuracy.\n\nHBS / BCG field experiment - 2023: 758 BCG consultants; knowledge-work tasks using GPT-4. Benefits refer to tasks inside the tested capability frontier, not audit accuracy.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia.\n\nRSM · Survey methodology · 2026: Fieldwork 5–16 March 2026: 827 U.S. and 203 Canadian respondents, management level or above with influence over technology investment. Government and nonprofits excluded. All participating organisations already used AI.\n\nNC State / AICPA - State of Risk Oversight - 2026: Executive survey: 69% report increased risk volume/complexity over five years; 30% describe oversight as mature/robust. These are different questions, not complementary percentages.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements.\n\nMoffatt v. Air Canada · 2024 BCCRT 149: BC Civil Resolution Tribunal decision, 14 February 2024; paras. 2, 24–31 and 44. A chatbot gave incorrect fare guidance and the airline was held responsible in this case. The decision does not establish the chatbot’s architecture as an LLM or generative AI.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nRSM · The responsible auditor: RSM regional practitioner discussion with Indonesian participation: AI governance, accountability, human oversight and audit capability. Thought leadership, not a quantitative study."
     },
     {
       "key": "aib-data-technical-references",
@@ -1541,35 +1012,37 @@
       "chapter": "beyond",
       "lead": "Primary product documentation and data-disclosure guidance, reviewed 7 November 2026.",
       "items": [],
-      "notes": "Dokumentasi ini menjelaskan penggunaan sehari-hari pada layanan tertentu. OpenAI agent security menjelaskan permission dan network control; ChatGPT Work enterprise membedakan retensi per fitur. Claude Code membedakan local execution dan remote inference, consumer/commercial data use serta read permissions. OWASP mendukung lensa disclosure dan prompt injection. Jangan menggunakan ketentuan satu produk untuk produk lain atau menyebut ilustrasi sebagai kebijakan RSM. Ketentuan, fitur dan setting harus diverifikasi pada saat penggunaan.\n\nAlur penyampaian: Primary product documentation and data-disclosure guidance, reviewed 7 November 2026. Transisi ke bagian berikut: Use new information to reconsider risk and protect the objective.",
+      "notes": "Dokumentasi ini menjelaskan penggunaan sehari-hari pada layanan tertentu. OpenAI agent security menjelaskan permission dan network control; ChatGPT Work enterprise membedakan retensi per fitur. Claude Code membedakan local execution dan remote inference, consumer/commercial data use serta read permissions. OWASP mendukung lensa disclosure dan prompt injection. Jangan menggunakan ketentuan satu produk untuk produk lain atau menyebut ilustrasi sebagai kebijakan RSM. Ketentuan, fitur dan setting harus diverifikasi pada saat penggunaan.\n\nPertanyaan: The references behind everyday AI use. Penghubung: Primary product documentation and data-disclosure guidance, reviewed 7 November 2026.",
       "refs": [
         "agent-security",
         "work-data",
+        "api-data",
         "claude-data",
         "claude-permissions",
         "claude-faq",
-        "secure-ai",
         "data-disclosure",
         "prompt-injection"
       ],
       "narrative": {
-        "question": "Primary product documentation and data-disclosure guidance, reviewed 7 November 2026.",
-        "transition": "Use new information to reconsider risk and protect the objective."
-      }
+        "question": "The references behind everyday AI use.",
+        "transition": "Primary product documentation and data-disclosure guidance, reviewed 7 November 2026."
+      },
+      "notesEn": "Provider terms depend on the account, feature and service. API training defaults must not be applied to all personal chatbot accounts. Retention, inference location, tools and permission to share remain separate controls.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nOpenAI · API data controls: API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.\n\nAnthropic · Claude Code data usage: Claude Code documentation distinguishes consumer and commercial data use, model-improvement choices and feedback/session-sharing. Conditions depend on the account and feature; not a statement of every provider’s terms.\n\nAnthropic · Claude Code permissions: Supported tool permissions, file-read restrictions and scopes. Read-only, working directory and gitignore are not interchangeable privacy boundaries; verify the actual tool configuration.\n\nAnthropic · Claude Code user FAQ: Primary product explanation: CLI tools can read local source content and send it to hosted inference. This is specific to cloud-backed Claude Code use, not every local agent or offline model.\n\nOWASP · Sensitive data disclosure · 2025: LLM02:2025. Data sanitisation, least privilege, source restriction and disclosure risk. A control in a prompt or a redaction step is not a complete privacy guarantee.\n\nOWASP · Prompt injection · 2025: LLM01:2025. Untrusted content can redirect an LLM application; controls must address the application, tools and permissions rather than relying on a system prompt alone."
     },
     {
       "key": "aib-closing",
-      "title": "What will you do\ndifferently on Monday?",
+      "title": "Useful AI.\nHuman authority.\nBetter decisions.",
       "kind": "closing",
       "chapter": "beyond",
-      "lead": "Thank you. Start small, check the evidence and follow through.",
+      "lead": "Thank you. What will you put to work?",
       "items": [],
-      "notes": "Tutup dengan pertanyaan praktis tentang hal yang akan dilakukan berbeda pada hari kerja berikutnya. Ringkas hubungan bantuan AI, pemeriksaan bukti dan tindakan manusia. Ucapkan terima kasih atas nama Dena Sucianandika dan Teuku Raja Irfan Radarma, RSM Indonesia. Jangan mengklaim semua manfaat sudah terbukti dalam aplikasi contoh; minta peserta memulai satu tugas yang terkontrol dan menilai hasilnya.\n\nPertanyaan peserta: Thank you. Start small, check the evidence and follow through. Transisi: Use new information to reconsider risk and protect the objective.",
+      "notes": "Tutup dengan pertanyaan praktis tentang hal yang akan dilakukan berbeda pada hari kerja berikutnya. Ringkas hubungan bantuan AI, pemeriksaan bukti dan tindakan manusia. Ucapkan terima kasih atas nama Dena Sucianandika dan Teuku Raja Irfan Radarma, RSM Indonesia. Jangan mengklaim semua manfaat sudah terbukti dalam aplikasi contoh; minta peserta memulai satu tugas yang terkontrol dan menilai hasilnya.\n\nPertanyaan: Useful AI. Human authority. Better decisions. Penghubung: Thank you. What will you put to work?",
       "refs": [],
       "narrative": {
-        "question": "Thank you. Start small, check the evidence and follow through.",
-        "transition": "Use new information to reconsider risk and protect the objective."
-      }
+        "question": "Useful AI. Human authority. Better decisions.",
+        "transition": "Thank you. What will you put to work?"
+      },
+      "notesEn": "Thank the audience and return to the practical test: useful AI, human authority and better decisions. Invite one small experiment with an owner, permitted information and an outcome that can be checked."
     }
   ],
   "presenters": [
@@ -1585,7 +1058,7 @@
   "organisation": "RSM Indonesia",
   "researchReviewedAt": "2026-11-07",
   "researchNotes": {
-    "thesis": "Start with familiar information work. Use AI carefully, verify the result, examine the AI-supported business decision, keep assurance evidence connected, and use it to make a timely risk response.",
+    "thesis": "Brief tool refresh and safeguards → Audit the AI → Audit with AI and human authority → useful programmes and systems → integrated AMS → continuous risk assurance through SIGNAL.",
     "replaced": [
       {
         "source": "Wolters Kluwer webinar poll",
@@ -1602,15 +1075,17 @@
       "Air Canada is not described as a proven LLM or generative-AI failure.",
       "NIST, ISO, The IIA and COSO are not interchangeable or a single combined standard.",
       "Case figures and matrix scores remain illustrative.",
-      "The demo does not claim live-model analysis, production control compliance or automatic transfer of AMS findings to the risk workspace.",
       "No-training, retention, processor access, residency and connectors are distinct controls. The sweet-spot chart is an illustrative decision aid, not measured security or RSM policy.",
-      "The first-section data module explains everyday use of web chatbots and CLI agents, not development of an AI platform. Local execution, file-read permissions and hosted inference are separate questions."
+      "The first-section data module explains everyday use of web chatbots and CLI agents, not development of an AI platform. Local execution, file-read permissions and hosted inference are separate questions.",
+      "The local AMS connects issued audit findings to the Aruna risk workspace. Prepared recommendations are not live model output.",
+      "The idea-execution-usage graphic is a conceptual argument, not a quantified before/after study.",
+      "Model-improvement opt-out, retention, processing location and permission to share remain distinct.",
+      "A no-training control is not a sufficient condition for uploading confidential records."
     ]
   },
   "narrative": {
-    "audience": "General knowledge; familiar with reports, records and business decisions. Examples are relevant to internal control, risk and audit without assuming specialist AI vocabulary.",
-    "thread": "Information → checked evidence → accountable decision → action → follow-up.",
-    "case": "Aruna: grow credit sales and collect on time. Missing approval records connect the task, AI-assurance scope, audit workspace and risk discussion.",
-    "limits": "The audit and risk applications are separate demonstrations. The risk workspace uses its established organisations; no automatic transfer of an Aruna finding is implied."
+    "audience": "General knowledge, with practical relevance to internal control, risk management and internal audit.",
+    "thread": "Brief tool refresh and safeguards → Audit the AI → Audit with AI and human authority → useful programmes and systems → integrated AMS → continuous risk assurance through SIGNAL.",
+    "limits": "Teaching assistance uses transparent prepared examples, not a connected live model. Issued AMS findings feed the linked Aruna risk workspace in this browser. Social leads remain unverified until corroborated."
   }
 }

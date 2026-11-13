@@ -1,5 +1,6 @@
 import {auditContent,auditDesigns} from './audit-beyond.mjs';
 import {installDataHandling} from './data-handling.mjs';
+import {installAssuranceStory} from './assurance-story.mjs';
 import {composeModules,loadContentSnapshot} from './content-modules.mjs?v=topics-rsm-20261109';
 import {installDeckLanguage} from './deck-language.js?v=bilingual-1';
 import {connectLiveDeck} from '../js/deck-live.js?v=topics-rsm-20261109';
@@ -140,11 +141,13 @@ try{contentSnapshot=await loadContentSnapshot();}catch{
 }
 const auditPreview=new URLSearchParams(location.search).get('previewTopic')==='ai-audit-beyond';
 if(auditPreview||contentSnapshot?.config?.modules?.some(m=>m.slides.some(s=>s.builtin?.startsWith('aib-')))){
- document.querySelector('.deck-language-switch')?.setAttribute('hidden','');
+ document.querySelector('.deck-language-switch')?.removeAttribute('hidden');
+ const auditLanguage=await fetch(new URL('./audit-translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Audit translations unavailable');return r.json();});
+ Object.assign(languageCatalogue.strings,auditLanguage.strings);Object.assign(languageCatalogue.notes,auditLanguage.notes);Object.assign(languageCatalogue.contexts??={},auditLanguage.contexts);
  const material=await fetch(new URL('./audit-beyond-topic.json',import.meta.url)).then(r=>r.json());
  const designed=auditDesigns(material,{appUrl:app,assetsUrl:assets,preview:auditPreview});
  Object.assign(slides,designed.renderers);reference={...reference,slides:[...reference.slides,...designed.entries]};
- for(const stylesheet of ['./audit-beyond.css','./data-handling.css','./audit-story.css']){const css=document.createElement('link');css.rel='stylesheet';css.href=new URL(stylesheet,import.meta.url);document.head.append(css);}
+ for(const stylesheet of ['./audit-beyond.css','./data-handling.css','./audit-story.css','./rsm-seminar.css']){const css=document.createElement('link');css.rel='stylesheet';css.href=new URL(stylesheet,import.meta.url);document.head.append(css);}
  if(auditPreview)contentSnapshot={revision:0,config:auditContent(material),preview:true,topicId:material.id};
 }
 if(contentSnapshot&&(contentSnapshot.revision>0||contentSnapshot.preview)){
@@ -157,6 +160,7 @@ if(contentSnapshot&&(contentSnapshot.revision>0||contentSnapshot.preview)){
 for(const entry of reference.slides)if(!slides[entry.key])throw Error('Missing design for '+entry.key);
 stage.innerHTML=reference.slides.map((entry,i)=>{const s=slides[entry.key],chapterIndex=reference.chapters.findIndex(c=>c.id===entry.chapter);return `<section id="frame-${i+1}" class="frame ${s.tone||'day'} ${s.kind||''}" aria-label="Slide ${i+1}: ${esc(s.title.replace(/<[^>]*>/g,' ').replaceAll('&amp;','&'))}" data-key="${entry.key}" ${i?'hidden':''}><div class="frame-content">${s.html}</div><div class="frame-foot"><span>${esc(contentSnapshot?.config?.title||'Beyond Compliance')}<span class="foot-dot">●</span>${chapterIndex>=0?`<span class="foot-chapter">0${chapterIndex+1} / ${esc(reference.chapters[chapterIndex].title)}</span>`:''}</span><span>${String(i+1).padStart(2,'0')} / ${reference.slides.length}</span></div></section>`;}).join('');
 installDataHandling(stage);
+installAssuranceStory(stage);
 const frames=[...stage.querySelectorAll('.frame')],sheet=document.getElementById('sheet'),sheetBody=document.getElementById('sheet-body'),seek=document.getElementById('seek');
 let current=0;
 

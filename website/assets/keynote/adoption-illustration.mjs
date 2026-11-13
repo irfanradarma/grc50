@@ -1,0 +1,9 @@
+// The figures are a conceptual metaphor, not observations or population estimates.
+const person=(x,y,i)=>`<g class="as-crowd-person" transform="translate(${x} ${y})" style="--person:${i}"><circle cx="8" cy="4.5" r="3.5"/><path d="M1 23v-5a7 7 0 0 1 14 0v5M5 23v-5M11 23v-5"/></g>`;
+const crowd=(count,column,phase)=>`<g class="as-crowd-${phase}" aria-hidden="true">${Array.from({length:count},(_,i)=>person(39+column*187+(i%5)*23,19+Math.floor(i/5)*29,i)).join('')}</g>`;
+function scene(withAI){
+ const counts=withAI?[45,35,5]:[10,25,45];
+ const names=['idea','execute','use'];
+ return `<figure class="as-crowd-scene ${withAI?'with-ai':'before-ai'}"><header><span>${withAI?'With AI':'Before AI'}</span><i aria-hidden="true"></i></header><div class="as-crowd-labels" aria-hidden="true"><span>Idea</span><span>Execution</span><span>Usage</span></div><svg class="as-crowd-drawing" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 292" role="img" aria-label="${withAI?'Many can imagine and build. A much smaller group illustrates the unresolved question of actual use.':'A small group originates ideas, more people execute them, and a larger group uses the result.'}"><title>${withAI?'Making becomes accessible. Useful adoption still needs to be earned.':'Execution takes scarce time, skills and capacity.'}</title>${withAI?'<ellipse class="as-crowd-focus" cx="466" cy="34" rx="69" ry="32"/><text class="as-crowd-question" x="540" y="51" text-anchor="middle">?</text>':''}${counts.map((n,i)=>crowd(n,i,names[i])).join('')}</svg><figcaption>${withAI?'Who will actually use it?':'Can we build it?'}</figcaption></figure>`;
+}
+export function renderAdoptionIllustration(){return `<div class="as-adoption-contrast" aria-label="Before and with AI: the challenge shifts from execution to useful adoption">${scene(false)}${scene(true)}</div>`;}

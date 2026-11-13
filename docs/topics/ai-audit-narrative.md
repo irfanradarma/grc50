@@ -1,52 +1,40 @@
-# AI in Audit and Beyond: the presentation story
+# AI in Audit and Beyond — narrative
 
-**Presenters:** Dena Sucianandika and Teuku Raja Irfan Radarma, RSM Indonesia.
+RSM Indonesia · Dena Sucianandika and Teuku Raja Irfan Radarma.
 
-The audience can follow the story with ordinary knowledge of reports, records and decisions. Internal control, risk and audit provide relevant examples; the discussion does not assume AI engineering knowledge.
+The 37-slide story asks: **What can AI help us do, who remains accountable, and how can the work change a real decision?**
 
-The thread is **information → checked evidence → accountable decision → action → follow-up**. The deck keeps its 53 stable slide keys, supporting sources, RSM identity and separate application demonstrations.
+| Section | Slides | Purpose |
+|---|---:|---|
+| Opening | 1–3 | Speakers and the journey. |
+| AI, briefly | 4–8 | Chatbot vs agent, information moving between computer and cloud, safeguards, then the two audit perspectives. |
+| Audit the AI | 9–12 | Recognised frameworks, NIST trustworthy-AI characteristics and business accountability. |
+| Audit with AI | 13–19 | Everyday outputs, confidential work, human authority, then useful products and systems. |
+| An AI-supported AMS | 20–24 | Annual planning → programme and criteria → assignments and workpapers → reviewed finding → report and slides → issued risk signal. |
+| Beyond audit | 25–33 | Audit results, internal reports and external developments inform continuous risk assurance through SIGNAL. |
+| References and close | 34–37 | Primary references with limits, then a practical call to action. |
 
-## How the story develops
+## Transitions
 
-| Section | Slides | Audience question | Why the next section follows |
-|---|---|---|---|
-| Start with everyday work | 4–16 | What could AI help me do, where does my information go, and what must I check? | Familiarity makes a practical task easier to follow. |
-| Use AI for real work | 17–21 | Can AI help compare a rule with records and prepare a supported draft? | The need to verify our own AI-assisted work extends to AI used by the organisation. |
-| When AI influences decisions | 22–32 | Who is responsible, what could fail, and what evidence shows a control works? | A finding needs a traceable engagement and review process. |
-| Connect the audit work | 33–38 | How do the question, evidence, review and management response stay together? | An issued report still needs a management decision. |
-| Turn evidence into action | 39–49 | Does new information change the risk to the goal, and what should we do? | End with one useful task the participant can start. |
+The tool is familiar; the accountability question depends on whether we examine an AI-supported process or use AI in our own work. The same concern about trustworthy outputs and protected information applies when the auditor uses the tool. Easier implementation does not prove value: test whether people keep using the application to make a better decision. The idea–execution–usage illustration is conceptual, not measured research.
 
-Slides 1–3 introduce the topic, presenters and route. Slides 50–52 retain the linked reference library. Slide 53 closes with a practical question: **What will you do differently on Monday?**
+An issued finding can challenge an earlier risk assessment. The report starts a management decision rather than ending the work. Useful evidence also arrives from internal observations and external developments between audits. Do not turn headline count into risk probability.
 
-## The recurring example
+## Demonstration
 
-Aruna is an invented distributor used for learning, not an RSM client engagement.
+1. Prepare the annual-plan proposal; inspect weights and capacity; approve with a rationale.
+2. Create **Customer credit & collections** from the approved plan. Suggest the programme, inspect and confirm criteria, then approve assignments.
+3. Load teaching evidence. Eight missing approval records out of forty sampled files do not prove that approval never occurred.
+4. Review the finding; generate the report and presentation from the same facts; issue the report.
+5. Open Continuous risk assurance. The issued finding is an audit signal for linked registered risks. Add the memo and news/social examples.
+6. Accept/decline the proposed relationships, inspect score movement and agree a response above tolerance. Save the whole review together.
+7. Compare assessed exposure with the target after planned action. Verify the effect before treating that target as achieved.
 
-1. Sales grow, but cash arrives late. The useful starting question is whether credit-limit changes are being approved; the cause is not assumed.
-2. A policy and an override register are compared. The AI request asks for sources, contradictions and missing evidence, rather than a confident invented explanation.
-3. A person checks facts, reasoning and release before using the draft.
-4. The same company considers AI-supported credit limits. Trace the customer information, recommendation, authorised human decision and subsequent monitoring.
-5. In the learning sample, eight of forty files lack approval records in the evidence pack. This does not prove no approval occurred, establish a cause, or demonstrate the rate in the full population.
-6. Keep that finding, supporting evidence, review and action together in the audit workspace.
-7. Return to the original objective: healthy sales and timely cash collection. Treat the finding as a reason to reconsider exposure, investigate and decide a response.
+The organisation and internal evidence are teaching examples. Suggestions are prepared rules, with no live model connected. Data is stored in this browser. ANTARA is a dated historical replay; the social post is explicitly unverified.
 
-The separate risk application uses its established organisations. The presentation explicitly avoids claiming an automatic transfer of the Aruna finding from the audit application.
+## Links
 
-## Visual language
-
-- Begin with an ordinary work desk: report, approval records and meeting notes.
-- Use the location animations for sharing information with online AI. The original and the transmitted copy are distinct.
-- Explain evidence through physical-looking policy pages, a register and review marks.
-- Show responsibility through the customer request, AI recommendation, human decision and follow-up.
-- Make the sample tangible: forty numbered files, eight highlighted as missing records.
-- Illustrate the handover from issued report to a management decision.
-- Draw the connection between the goal, finding and risk owner. Use a chart to distinguish current, reassessed and projected exposure.
-- Keep recognised frameworks as supporting structure. Introduce their practical questions before their terminology; retain their detailed scope in the notes and references.
-
-The drawings are teaching illustrations, not screenshots of real customer records, official framework graphics or proof of product behaviour. RSM branding, sources and research limitations remain present.
-
-## Delivery principles
-
-Each slide has an audience question and an explicit transition in its metadata and presenter notes. Start with the practical question, point to the relevant part of the illustration, and state the next question that follows. Avoid introducing all professional terms before people understand the example.
-
-The HBS experiment supports task-specific productivity and human-rated quality effects, not general audit accuracy. RSM survey figures refer to the stated AI-using U.S./Canada sample. The Air Canada decision illustrates accountability in a particular chatbot dispute; it does not establish that the chatbot used an LLM. NIST, The IIA, ISO and COSO retain their separate purposes.
+- [Deck](http://localhost/presentation/deck/?previewTopic=ai-audit-beyond)
+- [Assurance workspace](http://localhost/audience/?previewTopic=ai-audit-beyond&workspace=audit)
+- [Risk workspace](http://localhost/audience/?previewTopic=ai-audit-beyond&workspace=risk)
+- [Data-handling facilitation](ai-data-handling.md)

@@ -2,7 +2,7 @@
 
 ## The argument this deck should establish
 
-Start with familiar information work. Use AI carefully, verify the result, examine the AI-supported business decision, keep assurance evidence connected, and use it to make a timely risk response.
+Brief tool refresh and safeguards → Audit the AI → Audit with AI and human authority → useful programmes and systems → integrated AMS → continuous risk assurance through SIGNAL.
 
 AI is not presented as a substitute for accountability, an automatic increase in audit quality, or a source of objectively correct risk scores. The material follows the decision chain: purpose → evidence → interpretation → review → action → observed result.
 
@@ -35,9 +35,12 @@ AI is not presented as a substitute for accountability, an automatic increase in
 - Air Canada is not described as a proven LLM or generative-AI failure.
 - NIST, ISO, The IIA and COSO are not interchangeable or a single combined standard.
 - Case figures and matrix scores remain illustrative.
-- The demo does not claim live-model analysis, production control compliance or automatic transfer of AMS findings to the risk workspace.
 - No-training, retention, processor access, residency and connectors are distinct controls. The sweet-spot chart is an illustrative decision aid, not measured security or RSM policy.
 - The first-section data module explains everyday use of web chatbots and CLI agents, not development of an AI platform. Local execution, file-read permissions and hosted inference are separate questions.
+- The local AMS connects issued audit findings to the Aruna risk workspace. Prepared recommendations are not live model output.
+- The idea-execution-usage graphic is a conceptual argument, not a quantified before/after study.
+- Model-improvement opt-out, retention, processing location and permission to share remain distinct.
+- A no-training control is not a sufficient condition for uploading confidential records.
 
 ## Primary-record checks
 

@@ -1,11 +1,12 @@
 ﻿const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 import {renderDataHandlingSlide} from './data-handling.mjs';
 import {renderNarrativeSlide} from './audit-story.mjs';
+import {renderAssuranceStory} from './assurance-story.mjs';
 const lines=s=>escape(s).replaceAll('\n','<br>');
 const glyphPaths={person:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',spark:'<path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>',document:'<path d="M6 2h9l4 4v16H6zM14 2v5h5M9 12h7M9 16h7"/>',check:'<path d="m3 12 6 6L21 6"/>',tools:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',shield:'<path d="m12 2 9 4v7c0 5-9 9-9 9s-9-4-9-9V6z"/><path d="m7 12 4 4 6-7"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'};
 const glyph=(name)=>`<svg class="ab-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphPaths[name]||glyphPaths.document}</svg>`;
 const connector='<span class="ab-step-arrow" aria-hidden="true">&#8594;</span>';
-export function auditContent(material){return {schemaVersion:1,title:material.title,modules:[{id:'opening',title:'Opening',description:'The journey'},...material.sections.map(s=>({...s,description:s.caption}))].map(m=>({id:m.id,title:m.title,description:m.description,enabled:true,demo:{kind:m.id==='ams'?'audit-suite':'none'},slides:material.slides.filter(s=>(s.chapter||'opening')===m.id).map(s=>({key:s.key,builtin:s.key,title:s.title,body:'',notes:s.notes,enabled:true,layout:'original',tone:'day'}))}))};}
+export function auditContent(material){return {schemaVersion:1,title:material.title,modules:[{id:'opening',title:'Opening',description:'The journey'},...material.sections.map(s=>({...s,description:s.caption}))].map(m=>({id:m.id,title:m.title,description:m.description,enabled:true,demo:{kind:m.id==='ams'?'audit-suite':'none'},slides:material.slides.filter(s=>(s.chapter||'opening')===m.id).map(s=>({key:s.key,builtin:s.key,title:s.title,body:'',notes:s.notesEn||s.notes,enabled:true,layout:'original',tone:'day'}))}))};}
 export function auditDesigns(material,{appUrl='',assetsUrl='',preview=false}={}){
  const source=s=>s.refs.length?`<div class="ab-evidence">${s.refs.map(id=>`<a href="${escape(material.sources[id].url)}" target="_blank" rel="noreferrer">${escape(material.sources[id].label)} ↗</a>`).join('')}<button data-details>Context & limitations +</button></div>`:`<button class="ab-notes" data-details>Explore the idea +</button>`;
  const node=(items,tag='article')=>items.map(([h,b],i)=>`<${tag} class="ab-node"><span class="ab-index">${String(i+1).padStart(2,'0')}</span><h2>${escape(h)}</h2><p>${escape(b)}</p></${tag}>`).join('');
@@ -18,7 +19,7 @@ export function auditDesigns(material,{appUrl='',assetsUrl='',preview=false}={})
   const header=`<div class="ab-heading"><span class="ab-eyebrow">${section?escape(section.title):'A new perspective on assurance'}</span><h1>${lines(s.title)}</h1><p>${escape(s.lead)}</p></div>`;
   let body='';
   const technical=renderDataHandlingSlide(s);
-  const narrative=renderNarrativeSlide(s,{sections:material.sections,appUrl,preview});
+  const narrative=renderAssuranceStory(s,{sections:material.sections,appUrl,assetsUrl,preview})??renderNarrativeSlide(s,{sections:material.sections,appUrl,preview});
   if(narrative!==null)body=header+narrative;
   else if(technical!==null)body=header+technical;
   else if(s.kind==='cover')body=`<div class="ab-cover-bars" aria-hidden="true"><i></i><i></i><i></i></div><div class="ab-cover-mark"><img src="${logoUrl}" alt="RSM"><span>Indonesia</span></div>${header}<div class="ab-cover-presenters">${identity}<small>RSM Indonesia</small></div>`;
@@ -44,8 +45,8 @@ export function auditDesigns(material,{appUrl='',assetsUrl='',preview=false}={})
   else body=header+`<div class="ab-${s.kind}">${node(s.items)}</div>`+(s.kind==='demo'?`<a class="ab-open-app" href="${escape(appUrl+'/audience/'+(s.key==='aib-ams-demo'?'?workspace=audit'+(preview?'&previewTopic=ai-audit-beyond':''):'?workspace=risk'+(preview?'&previewTopic=ai-audit-beyond':'')))}" target="_blank" rel="noreferrer">Open ${s.key==='aib-ams-demo'?'audit':'risk'} workspace ↗</a>`:'');
   const brand=s.kind==='cover'?'':`<div class="ab-slide-brand"><img src="${logoUrl}" alt="RSM"><span>Indonesia</span></div>`;
   const evidenceNote=s.evidenceNote?`<p class="ab-evidence-note">${escape(s.evidenceNote)}</p>`:'';
-  renderers[s.key]={title:s.title,tone:s.kind==='section'||s.kind==='closing'?'night':'day',kind:'audit-beyond ab-kind-'+s.kind+(s.visual?' ab-story ab-story-'+s.visual:''),html:brand+body+evidenceNote+(!['cover','section','closing','references','speakers'].includes(s.kind)?source(s):'')};
+  renderers[s.key]={title:s.title,tone:['cover','section','closing'].includes(s.kind)||s.key==='aib-journey'?'night':'day',kind:'audit-beyond rsm-template ab-kind-'+s.kind+(s.visual?' ab-story ab-story-'+s.visual:''),html:brand+body+evidenceNote+(!['cover','section','closing','references','speakers'].includes(s.kind)?source(s):'')};
  }
- const entries=material.slides.map((s,i)=>({key:s.key,index:i+1,title:s.title,chapter:s.chapter,section:material.sections.find(c=>c.id===s.chapter)?.title||'Opening',note:s.notes,referenceContext:s.refs.map(id=>material.sources[id].scope).join(' '),links:s.refs.map(id=>material.sources[id])}));
+ const entries=material.slides.map((s,i)=>({key:s.key,index:i+1,title:s.title,chapter:s.chapter,section:material.sections.find(c=>c.id===s.chapter)?.title||'Opening',note:s.notesEn||s.notes,referenceContext:s.refs.map(id=>material.sources[id].scope).join(' '),links:s.refs.map(id=>material.sources[id])}));
  return {renderers,entries};
 }

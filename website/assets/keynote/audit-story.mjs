@@ -34,6 +34,7 @@ const paper=(label,title,body,extra='')=>`<article class="as-paper ${extra}"><sm
 const simplePaper=(label,title,rows,extra='')=>paper(label,title,rows.map(r=>`<p>${esc(r)}</p>`).join(''),extra);
 const footer=t=>`<div class="as-story-note">${esc(t)}</div>`;
 const trail=(labels)=>`<div class="as-trail">${labels.map((s,i)=>`<span><b>${String(i+1).padStart(2,'0')}</b>${esc(s)}</span>`).join('')}</div>`;
+export {icon,rail,svg,text,iAt,footer,paper,simplePaper};
 
 export function renderNarrativeSlide(s,{sections=[],appUrl='',preview=false}={}){
  if(!s.visual)return null;

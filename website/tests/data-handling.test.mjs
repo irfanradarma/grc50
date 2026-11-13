@@ -22,24 +22,18 @@ test('paid personal accounts, unchecked controls and unreviewed packs are not cl
  assert.notEqual(evaluateDataUse({...cleared,task:'exceptions',payload:'excerpt',checks:Object.fromEntries(Object.keys(all).map(k=>[k,'true']))}).state,'candidate');
  assert.doesNotThrow(()=>evaluateDataUse({task:'__proto__',payload:'toString',workflow:'constructor',account:'toString'}));
 });
-test('six daily-use lessons replace system architecture while retaining stable slide links',()=>{
+test('one location lesson refreshes chatbot and CLI use without retaining a six-slide tutorial',()=>{
  const material=JSON.parse(fs.readFileSync(new URL('../assets/keynote/audit-beyond-topic.json',import.meta.url),'utf8'));
- const lessons=material.slides.filter(s=>dataHandlingKinds.includes(s.kind));assert.equal(lessons.length,6);
- assert.deepEqual(material.slides.slice(7,13).map(s=>s.kind),dataHandlingKinds);
- for(const s of lessons){assert.equal(s.chapter,'capability');assert(s.refs.length);const html=renderDataHandlingSlide(s);assert(html);assert(!html.includes('undefined'));}
+ const lessons=material.slides.filter(s=>dataHandlingKinds.includes(s.kind));assert.equal(lessons.length,1);assert.equal(lessons[0].kind,'data-routes');
+ const html=renderDataHandlingSlide(lessons[0]);assert.equal((html.match(/data-dh-route-choice=/g)||[]).length,2);assert(html.includes('data-dh-route-panel="cli" hidden'));assert(html.includes('A copy of your document'));assert(html.includes('Information the agent reads'));assert(html.includes('Original remains on your computer'));
  assert.equal(renderDataHandlingSlide({kind:'unrelated'}),null);
- for(const kind of dataHandlingKinds.filter(k=>!['data-task-folder','data-everyday-sweetspot'].includes(k))){const html=renderDataHandlingSlide(lessons.find(s=>s.kind===kind));assert(html.includes('<svg'));assert(html.includes('data-dh-node'));assert(html.includes('data-dh-title'));assert(html.includes('aria-pressed="true"'));}
- const loop=renderDataHandlingSlide(lessons.find(s=>s.kind==='data-agent-loop'));assert(loop.includes('Information it reads may be sent'));assert(loop.includes('does not automatically keep'));
- const local=renderDataHandlingSlide(lessons.find(s=>s.kind==='data-local-workflow'));assert(local.includes('Other pages stay out of AI'));assert(local.includes('only the selected information goes online')||local.includes('only the selected information'));
- const folder=renderDataHandlingSlide(lessons.find(s=>s.kind==='data-task-folder'));assert(folder.includes('A folder alone is not a lock'));assert(folder.includes('Check which files'));
- const ui=renderDataHandlingSlide(lessons.find(s=>s.kind==='data-everyday-sweetspot'));assert(ui.includes('No document is uploaded'));assert(ui.includes('organisation'));assert(ui.includes('name="workflow"'));assert(ui.includes('name="account"'));
  assert(renderSweetSpotResult({...cleared,task:'exceptions',payload:'excerpt'}).html.includes('A possible sweet spot'));
 });
 
 test('location journeys distinguish the original from online copies and expose movement controls',()=>{
  const material=JSON.parse(fs.readFileSync(new URL('../assets/keynote/audit-beyond-topic.json',import.meta.url),'utf8'));
  for(const kind of ['data-chat-cli','data-agent-loop','data-local-workflow']){
-  const html=renderDataHandlingSlide(material.slides.find(s=>s.kind===kind));
+  const html=renderDataHandlingSlide({kind,key:'test-'+kind});
   for(const label of ['ON YOUR COMPUTER','CLOUD / INTERNET','data-dh-motion-toggle','data-dh-motion-replay','dh-local-file','dh-cloud-copy'])assert(html.includes(label),kind+' '+label);
   assert(html.includes('does not identify a storage country'));
   assert(html.includes('not a public posting'));

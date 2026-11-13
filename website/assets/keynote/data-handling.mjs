@@ -1,5 +1,5 @@
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export const dataHandlingKinds=['data-chat-cli','data-agent-loop','data-session-checks','data-task-folder','data-everyday-sweetspot','data-local-workflow'];
+export const dataHandlingKinds=['data-routes','data-chat-cli','data-agent-loop','data-session-checks','data-task-folder','data-everyday-sweetspot','data-local-workflow'];
 const detail={
  "attach": [
   "The original stays. A copy goes online.",
@@ -187,6 +187,7 @@ export function renderSweetSpotResult(input){const result=evaluateDataUse(input)
 
 export function renderDataHandlingSlide(slide){
  const id=slide.key;let diagram='';
+ if(slide.kind==='data-routes')return `<div class="dh-route-picker" data-dh-routes><div class="dh-route-choices" aria-label="Choose how AI receives information"><button type="button" data-dh-route-choice="chat" aria-pressed="true">Web chatbot</button><button type="button" data-dh-route-choice="cli" aria-pressed="false">CLI agent</button></div><div data-dh-route-panel="chat">${locationJourney({...slide,key:id+'-chat'},'chat')}</div><div data-dh-route-panel="cli" hidden>${locationJourney({...slide,key:id+'-cli'},'cli')}</div></div>`;
  if(slide.kind==='data-chat-cli')return locationJourney(slide,'chat');
  if(slide.kind==='data-agent-loop')return locationJourney(slide,'cli');
  if(slide.kind==='data-session-checks'){
@@ -212,6 +213,7 @@ export function installDataHandling(root){
  const refresh=(container)=>{const form=container.querySelector('form'),data=new FormData(form);const input={task:data.get('task'),payload:data.get('payload'),workflow:data.get('workflow'),account:data.get('account'),checks:Object.fromEntries(['authority','terms','access','review'].map(k=>[k,data.get(k)==='on']))};const rendered=renderSweetSpotResult(input);container.querySelector('[data-dh-result]').innerHTML=rendered.html;container.dataset.decision=rendered.result.state;};
  root.querySelectorAll('[data-dh-map]').forEach(map=>map.querySelectorAll('[data-dh-node]').forEach(node=>{node.classList.toggle('selected',node.dataset.dhNode===map.dataset.dhSelected);node.setAttribute('aria-pressed',String(node.dataset.dhNode===map.dataset.dhSelected));}));
  root.addEventListener('click',event=>{
+  const route=event.target.closest('[data-dh-route-choice]');if(route){const container=route.closest('[data-dh-routes]');container.querySelectorAll('[data-dh-route-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b===route)));container.querySelectorAll('[data-dh-route-panel]').forEach(p=>{p.hidden=p.dataset.dhRoutePanel!==route.dataset.dhRouteChoice;});return;}
   const toggle=event.target.closest('[data-dh-motion-toggle]'),replay=event.target.closest('[data-dh-motion-replay]');
   if(toggle||replay){const container=(toggle||replay).closest('[data-dh-location]');if(!container)return;
    if(toggle){const paused=container.classList.toggle('dh-motion-paused');toggle.setAttribute('aria-pressed',String(paused));toggle.textContent=paused?'Resume movement':'Pause movement';}

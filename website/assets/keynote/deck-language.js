@@ -6,6 +6,21 @@ export function createDeckTranslator(strings) {
   if(language!=='id'||!String(value).trim())return value;
   const key=normal(value),exact=dictionary.get(key)??upper.get(key);
   if(exact!==undefined)return String(value).replace(/\S[\s\S]*\S|\S/,exact);
+  if(String(value).includes('\n'))return String(value).split('\n').map(v=>translate(v,language)).join('\n');
+  const heading=key.match(/^(#{1,6}\s+)(.+)$/);if(heading)return heading[1]+translate(heading[2],language);
+  const units=key.match(/^(\d+) (objects|days|signals to review|accepted|declined)$/);if(units)return units[1]+' '+({objects:'objek',days:'hari','signals to review':'sinyal perlu ditinjau',accepted:'diterima',declined:'ditolak'}[units[2]]);
+  const days=key.match(/^(\d+) \/ (\d+) days$/);if(days)return days[1]+' / '+days[2]+' hari';
+  const events=key.match(/^Decision history \((\d+)\)$/);if(events)return 'Riwayat keputusan ('+events[1]+')';
+  const score=key.match(/^Your score ([\d.]+) exceeds tolerance ([\d.]+)\. Agree a response before finishing\.$/);if(score)return 'Skor Anda '+score[1]+' melampaui toleransi '+score[2]+'. Sepakati respons sebelum menyelesaikan reviu.';
+  const cell=key.match(/^Likelihood ([\d.]+), impact ([\d.]+)$/);if(cell)return 'Kemungkinan '+cell[1]+', dampak '+cell[2];
+  const reduced=key.match(/^Expected reduction: likelihood ([\d.]+), impact ([\d.]+)\. Status: (\w+)\.$/);if(reduced)return 'Pengurangan yang diharapkan: kemungkinan '+reduced[1]+', dampak '+reduced[2]+'. Status: '+translate(reduced[3],language)+'.';
+  const target=key.match(/^Target ([\d.]+)$/);if(target)return 'Target '+target[1].replace('.',',');
+  const metadata=key.match(/^(Owner|Due|Engagement|Status|Criteria):\s*(.*)$/);if(metadata)return translate(metadata[1],language)+': '+translate(metadata[2],language);
+  const version=key.match(/^(.+) \(([^()]*)\)(.*)$/);if(version)return translate(version[1],language)+' ('+translate(version[2],language)+')'+version[3];
+  const approved=key.match(/^Annual plan (\d+) approved by (.+?)\. (.+)$/);if(approved)return 'Rencana tahunan '+approved[1]+' disetujui oleh '+translate(approved[2],language)+'. '+translate(approved[3],language);
+  if(key.includes(' · '))return key.split(' · ').map(p=>translate(p,language)).join(' · ');
+  if(key.includes(' — '))return key.split(' — ').map(p=>translate(p,language)).join(' — ');
+  const record=key.match(/^((?:E|AP)-\d+:?\s*)(.+)$/);if(record)return record[1]+translate(record[2],language);
   const live=key.match(/^(Presenter now: |Slide )(\d+ \/ )(.*)$/);
   if(live)return (live[1]==='Presenter now: '?'Posisi presenter: ':'Slide ')+live[2]+translate(live[3],language);
   const slide=key.match(/^(Slide \d+[.:]?\s*)(.*)$/);
@@ -79,6 +94,7 @@ export function installDeckLanguage({catalogue,reference}) {
   if(url.searchParams.has('lang')){url.searchParams.set('lang',next);history.replaceState(null,'',url);}
   document.querySelectorAll('[data-deck-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.deckLanguage===next)));
   localize();
+  for(const link of document.querySelectorAll('a[href]')){try{const dest=new URL(link.href);if(dest.origin===location.origin&&/\/(audience|modules)\//.test(dest.pathname)){dest.searchParams.set('lang',next);link.href=dest.href;}}catch{}}
   document.dispatchEvent(new CustomEvent('signal:languagechange',{detail:{language:next}}));
  }
  document.querySelectorAll('[data-deck-language]').forEach(button=>button.addEventListener('click',()=>choose(button.dataset.deckLanguage)));
