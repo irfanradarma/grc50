@@ -2,17 +2,17 @@
 
 RSM Indonesia · Dena Sucianandika and Teuku Raja Irfan Radarma.
 
-The 45-slide story asks: **What can AI help us do, who remains accountable, and how can the work change a real decision?**
+The 44-slide story asks: **What can AI help us do, who remains accountable, and how can the work change a real decision?**
 
 | Section | Slides | Purpose |
 |---|---:|---|
 | Opening | 1–4 | Deck guide, speakers and the journey. |
-| AI, briefly | 5–12 | Chatbot/agent, data location, safeguards, on-premises RAG, LLM-first analysis and two audit perspectives. |
-| Audit the AI | 13–17 | Recognised frameworks, NIST, EchoLeak and authorised AI security testing. |
-| Audit with AI | 18–24 | Everyday work, confidentiality, human authority and useful applications. |
-| An AI-supported AMS | 25–32 | Planning and fieldwork concepts, a simpler demo, reporting and assessment services. |
-| Beyond audit | 33–41 | Connected risk decisions, continuous risk assurance and SIGNAL. |
-| References and close | 42–45 | Primary evidence and closing. |
+| General use of AI | 5–11 | Chatbot/agent → AI-led analytics → data exposure → safeguards → on-premises RAG → two audit perspectives. |
+| Auditing AI systems | 12–16 | Audit transition separator, recognised frameworks, NIST, EchoLeak and authorised AI security testing. |
+| Using AI in audit | 17–23 | Everyday work, confidentiality, human authority and useful applications. |
+| AI-supported Assurance Management Systems | 24–31 | Planning and fieldwork concepts, a simpler demo, reporting and assessment services. |
+| Continuous risk assurance | 32–40 | Connected risk decisions and SIGNAL. |
+| References and close | 41–44 | Primary evidence and closing. |
 
 ## Transitions
 

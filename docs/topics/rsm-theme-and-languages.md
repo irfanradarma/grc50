@@ -1,12 +1,12 @@
 # RSM theme, native visuals and languages
 
-The 45-slide topic retains the presenter-supplied RSM Indonesia theme: original generic light/dark master backgrounds, cyan titles, green/cyan rules, Tenorite where available and Arial fallback. Client-specific material from the reference PowerPoint is excluded.
+The 44-slide topic retains the presenter-supplied RSM Indonesia theme: original generic light/dark master backgrounds, cyan titles, green/cyan rules, Tenorite where available and Arial fallback. Client-specific material from the reference PowerPoint is excluded.
 
 Generated AI scene illustrations have been removed from the source and publication package. Native diagrams, the conceptual crowd illustration, workpieces and interactive frameworks are restored. The removed image copies are quarantined in an ignored local archive; they are not deployed.
 
 Five repeated slides were retired: the additional audit-question explanation after NIST, the standalone credit-decision illustration, the second AMS introduction, the AMS recap, and the repeated continuous-loop summary. The risk-oversight evidence now precedes the connection to risk assurance.
 
-The narrative is: a brief chatbot/agent and information-safety refresher → Audit the AI → Audit with AI and human authority → useful systems and a connected AMS → continuous risk assurance through SIGNAL.
+The narrative is: a brief chatbot/agent and information-safety refresher → Auditing AI systems → Using AI in audit and human authority → useful systems and a connected AMS → continuous risk assurance through SIGNAL.
 
 ## English and Bahasa Indonesia
 

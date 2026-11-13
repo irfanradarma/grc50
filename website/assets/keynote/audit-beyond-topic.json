@@ -5,27 +5,27 @@
   "sections": [
     {
       "id": "capability",
-      "title": "AI, briefly",
+      "title": "General use of AI",
       "caption": "Chatbot or agent. Safe data use, on-premises RAG and LLM-first analysis."
     },
     {
       "id": "audit-object",
-      "title": "Audit the AI",
+      "title": "Auditing AI systems",
       "caption": "Use recognised frameworks to examine trustworthy AI in context."
     },
     {
       "id": "assistant",
-      "title": "Audit with AI",
+      "title": "Using AI in audit",
       "caption": "Daily assistance, confidential information, human authority and useful applications."
     },
     {
       "id": "ams",
-      "title": "An AI-supported AMS",
+      "title": "AI-supported Assurance Management Systems",
       "caption": "Annual planning, fieldwork and reporting in one reviewed workflow."
     },
     {
       "id": "beyond",
-      "title": "Beyond audit",
+      "title": "Continuous risk assurance",
       "caption": "Continuous risk assurance using audit results, internal reports and external signals."
     }
   ],
@@ -241,7 +241,7 @@
     },
     {
       "key": "aib-deck-guide",
-      "title": "Make this deck\nyour own.",
+      "title": "Presentation guide",
       "lead": "Navigate, explore the notes and choose your language.",
       "chapter": "opening",
       "kind": "story",
@@ -257,7 +257,7 @@
     },
     {
       "key": "aib-speakers",
-      "title": "Your speakers.",
+      "title": "Speakers",
       "kind": "speakers",
       "chapter": null,
       "lead": "RSM Indonesia",
@@ -272,7 +272,7 @@
     },
     {
       "key": "aib-journey",
-      "title": "AI in audit.\nAnd what comes after.",
+      "title": "Presentation agenda",
       "kind": "journey",
       "chapter": null,
       "lead": "A short refresh, two audit perspectives, then one connected idea.",
@@ -309,7 +309,7 @@
     },
     {
       "key": "aib-section-capability",
-      "title": "AI, briefly.",
+      "title": "General use of AI",
       "kind": "section",
       "chapter": "capability",
       "lead": "Familiar tools. Protected information. A new starting point for analysis.",
@@ -324,7 +324,7 @@
     },
     {
       "key": "aib-ai-modes",
-      "title": "A chatbot you talk to.\nAn agent you give a task to.",
+      "title": "How AI is generally used nowadays",
       "lead": "A quick refresh—not a tool tutorial.",
       "chapter": "capability",
       "kind": "story",
@@ -343,9 +343,28 @@
       "notesEn": "A chatbot receives questions and shared content. An agent can also use files and tools within its permissions. These categories overlap: the important questions are what it can read, send and do.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface."
     },
     {
+      "key": "aib-analytics-disruption",
+      "title": "The impact of AI on data analytics workflows",
+      "lead": "From operating every technical step to giving AI the task.",
+      "kind": "story",
+      "chapter": "capability",
+      "visual": "analytics-disruption",
+      "items": [],
+      "refs": [
+        "ms-analytics",
+        "sklearn-evaluation"
+      ],
+      "notes": "Bandingkan pekerjaan yang terlihat oleh pengguna. Sebelumnya analis menjalankan perumusan tugas, persiapan data, pemilihan model, pelatihan, pengujian dan penyajian. Pada contoh LLM-first, pengguna menjelaskan analisis yang diinginkan lewat prompt dan agent menangani pembacaan, alat, analisis serta visualisasi. Animasi berulang menunjukkan pekerjaan teknis berpindah ke belakang prompt. Ini ilustrasi alur analisis dokumen dan data sehari-hari, bukan klaim bahwa semua pemodelan prediktif menjadi tugas yang sama atau metode teknis tidak diperlukan. Jelaskan pembedaan itu secara lisan tanpa memenuhi slide dengan detail evaluasi model.",
+      "notesEn": "Compare the work visible to the user. Previously the analyst operated task definition, data preparation, model selection, training, testing and presentation. In the LLM-first example, the user describes the desired analysis in a prompt and the agent handles reading, tools, analysis and visualisation. The animation repeats the technical work moving behind the prompt. This is a workflow illustration for everyday document and data analysis, not a claim that all predictive modelling becomes the same task or that technical methods cease to exist. Keep that distinction in the spoken explanation rather than crowding the slide with model-evaluation details.",
+      "narrative": {
+        "question": "The question comes first. The model-building can wait.",
+        "transition": "For many everyday analyses, a pretrained LLM changes the starting point."
+      }
+    },
+    {
       "key": "aib-document-journey",
-      "title": "Where does the information go?",
-      "lead": "The original may stay on your computer while a copy or selected information goes online.",
+      "title": "Data processing in chatbots and AI agents",
+      "lead": "Unapproved sharing can expose confidential information outside your organisation.",
       "chapter": "capability",
       "kind": "data-routes",
       "items": [],
@@ -354,17 +373,17 @@
         "work-data",
         "claude-faq"
       ],
-      "notes": "Pilih Chatbot atau CLI pada diagram untuk menyegarkan dua pola penggunaan. Animasi biru menunjukkan copy/teks keluar, hijau jawaban kembali; original tetap terlihat. Bukan semua agen memakai hosted inference, namun lokasi CLI tidak membuktikan data tetap lokal. Cloud bukan publik dan diagram tidak menetapkan negara penyimpanan. Inference, retensi dan training merupakan pertanyaan berbeda. Jawaban kembali tidak otomatis menghapus salinan layanan. Tidak perlu menjelaskan token, sandbox, RAG atau stdout kepada audiens umum.\n\nPertanyaan: Where does the information go? Penghubung: The original may stay on your computer while a copy or selected information goes online.",
+      "notes": "Pilih Chatbot atau CLI pada diagram untuk menyegarkan dua pola penggunaan. Animasi biru menunjukkan copy/teks keluar, hijau jawaban kembali; original tetap terlihat. Bukan semua agen memakai hosted inference, namun lokasi CLI tidak membuktikan data tetap lokal. Cloud bukan publik dan diagram tidak menetapkan negara penyimpanan. Inference, retensi dan training merupakan pertanyaan berbeda. Jawaban kembali tidak otomatis menghapus salinan layanan. Tidak perlu menjelaskan token, sandbox, RAG atau stdout kepada audiens umum.\n\nPertanyaan: Where does the information go? Penghubung: The original may stay on your computer while a copy or selected information goes online.\n\nTekankan jalur keluar berwarna merah: file asli yang tetap lokal tidak berarti informasinya tetap lokal. Pembagian tanpa izin atas catatan klien, data pribadi atau temuan merupakan risiko pengungkapan. Pemrosesan cloud yang sah bukan dengan sendirinya bukti kebocoran. Periksa unggahan chatbot dan hak akses alat/agent ke folder.",
       "evidenceNote": "",
       "narrative": {
         "question": "Where does the information go?",
         "transition": "The original may stay on your computer while a copy or selected information goes online."
       },
-      "notesEn": "Toggle between chatbot and CLI. The original can remain on the computer while a copy or selected contents go to an online model. Read-only access does not itself prevent disclosure. The drawing makes no promise about storage country.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code user FAQ: Primary product explanation: CLI tools can read local source content and send it to hosted inference. This is specific to cloud-backed Claude Code use, not every local agent or offline model."
+      "notesEn": "Toggle between chatbot and CLI. The original can remain on the computer while a copy or selected contents go to an online model. Read-only access does not itself prevent disclosure. The drawing makes no promise about storage country.\n\nOpenAI · Agent approvals & security: Product-specific guidance on agent permissions, sandboxing and command networking. Shell restrictions do not establish offline model inference or cover every hosted search, app or MCP path. Diagrams simplify these distinctions for general audiences; they do not reproduce the exact interface.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code user FAQ: Primary product explanation: CLI tools can read local source content and send it to hosted inference. This is specific to cloud-backed Claude Code use, not every local agent or offline model.\n\nEmphasise the red outbound path: retaining the local file does not mean its information stays local. Unauthorised sharing of client records, personal details or findings is the disclosure risk. Normal authorised cloud processing is not itself proof of a breach. Check both chatbot uploads and tool/agent access to folders."
     },
     {
       "key": "aib-general-safeguards",
-      "title": "Share deliberately.\nCheck the account, not just the tool.",
+      "title": "Data protection when using AI",
       "lead": "A model-improvement opt-out is one safeguard. It does not remove the other checks.",
       "chapter": "capability",
       "kind": "story",
@@ -386,7 +405,7 @@
     },
     {
       "key": "aib-on-premise",
-      "title": "For sensitive work,\nbring AI inside.",
+      "title": "On-premises AI for sensitive information",
       "lead": "A conservative data-location choice: an entirely on-premises AI workflow.",
       "kind": "story",
       "chapter": "capability",
@@ -395,55 +414,18 @@
       "refs": [
         "nvidia-local"
       ],
-      "notes": "Alur on-premise dapat mempertahankan pemrosesan dalam kendali infrastruktur organisasi dengan antarmuka chatbot atau agent yang tetap familiar. Ini pilihan konservatif untuk lokasi data, bukan klaim bahwa setiap sistem on-premise lebih aman daripada setiap layanan cloud. Jalankan retrieval, embedding, inferensi dan layanan pendukung secara lokal; batasi koneksi keluar serta periksa telemetri, log, konektor, backup dan dukungan jarak jauh. Tinjau kapasitas perangkat, kualitas model, pemeliharaan dan hak akses. Pengunduhan model serta pembaruan dapat dikendalikan terpisah dari pemrosesan dokumen produksi. Sesuai informasi pembicara, RSM Indonesia telah membantu beberapa klien di Indonesia menerapkan AI on-premise. Jangan mengungkap identitas klien atau mengarang hasil terukur.",
-      "notesEn": "An on-premises route can keep processing under the organisation’s infrastructure control while retaining a familiar chatbot or agent interface. This is a conservative data-location choice, not a claim that every on-premises system is more secure than every cloud service. Keep retrieval, embeddings, inference and supporting services local; restrict outbound connections and examine telemetry, logs, connectors, backups and remote support. Check hardware capacity, model quality, maintenance and access rights. Model downloads and updates can be controlled separately from production document processing. The RSM presenters confirm that RSM Indonesia has helped several clients in Indonesia implement on-premises AI. Do not identify clients or invent measurable outcomes.",
+      "notes": "Alur on-premise dapat mempertahankan pemrosesan dalam kendali infrastruktur organisasi dengan antarmuka chatbot atau agent yang tetap familiar. Ini pilihan konservatif untuk lokasi data, bukan klaim bahwa setiap sistem on-premise lebih aman daripada setiap layanan cloud. Jalankan retrieval, embedding, inferensi dan layanan pendukung secara lokal; batasi koneksi keluar serta periksa telemetri, log, konektor, backup dan dukungan jarak jauh. Tinjau kapasitas perangkat, kualitas model, pemeliharaan dan hak akses. Pengunduhan model serta pembaruan dapat dikendalikan terpisah dari pemrosesan dokumen produksi. Sesuai informasi pembicara, RSM Indonesia telah membantu beberapa klien di Indonesia menerapkan AI on-premise. Jangan mengungkap identitas klien atau mengarang hasil terukur.\n\nRAG di dalam alur yang sama:\nJelaskan RAG memakai kebijakan kredit internal. Dokumen berizin diproses dan dibuat indeks pencariannya. Saat ada pertanyaan, retriever menemukan potongan relevan yang boleh diakses pengguna, lalu menambahkannya ke masukan model. Repositori asli tidak digantikan bobot model dan RAG tidak memerlukan pelatihan ulang model dasar atas repositori itu. Namun, model TETAP memproses teks yang diambil saat inferensi. RAG sendiri tidak menjamin nihil retensi vendor atau melarang training berdasarkan kebijakan penggunaan data yang berbeda. Layanan inferensi atau embedding cloud masih dapat menerima teks perusahaan. Alur sepenuhnya lokal harus mencakup embedding, retrieval, inferensi dan proses pendukung, dengan filter akses dan log yang aman. Bedakan dari fine-tuning. Jawaban yang memiliki sitasi tetap diverifikasi ke sumber asli.",
+      "notesEn": "An on-premises route can keep processing under the organisation’s infrastructure control while retaining a familiar chatbot or agent interface. This is a conservative data-location choice, not a claim that every on-premises system is more secure than every cloud service. Keep retrieval, embeddings, inference and supporting services local; restrict outbound connections and examine telemetry, logs, connectors, backups and remote support. Check hardware capacity, model quality, maintenance and access rights. Model downloads and updates can be controlled separately from production document processing. The RSM presenters confirm that RSM Indonesia has helped several clients in Indonesia implement on-premises AI. Do not identify clients or invent measurable outcomes.\n\nRAG within the same workflow:\nExplain RAG using an internal credit policy. First, authorised documents are processed and indexed. At question time, the retriever finds relevant permitted passages, which are added to the model’s input. The original repository is not replaced by model weights and RAG does not require retraining the base model on that repository. However, the model DOES process the retrieved text during inference. RAG alone neither guarantees no provider retention nor prevents training under an unrelated data-use policy. A cloud inference or embedding service can still receive company text. A fully local deployment must include embeddings, retrieval, inference and ancillary processing, with access filtering and secure logs. Distinguish this from fine-tuning. A cited answer still needs verification against the original source.",
       "narrative": {
         "question": "For sensitive work, bring AI inside.",
         "transition": "A conservative data-location choice: an entirely on-premises AI workflow."
       }
     },
     {
-      "key": "aib-rag",
-      "title": "Retrieve the knowledge.\nDo not retrain it into the model.",
-      "lead": "RAG keeps the repository separate; selected passages become answer-time context.",
-      "kind": "story",
-      "chapter": "capability",
-      "visual": "rag-grounding",
-      "items": [],
-      "refs": [
-        "nvidia-local"
-      ],
-      "notes": "Jelaskan RAG memakai kebijakan kredit internal. Dokumen berizin diproses dan dibuat indeks pencariannya. Saat ada pertanyaan, retriever menemukan potongan relevan yang boleh diakses pengguna, lalu menambahkannya ke masukan model. Repositori asli tidak digantikan bobot model dan RAG tidak memerlukan pelatihan ulang model dasar atas repositori itu. Namun, model TETAP memproses teks yang diambil saat inferensi. RAG sendiri tidak menjamin nihil retensi vendor atau melarang training berdasarkan kebijakan penggunaan data yang berbeda. Layanan inferensi atau embedding cloud masih dapat menerima teks perusahaan. Alur sepenuhnya lokal harus mencakup embedding, retrieval, inferensi dan proses pendukung, dengan filter akses dan log yang aman. Bedakan dari fine-tuning. Jawaban yang memiliki sitasi tetap diverifikasi ke sumber asli.",
-      "notesEn": "Explain RAG using an internal credit policy. First, authorised documents are processed and indexed. At question time, the retriever finds relevant permitted passages, which are added to the model’s input. The original repository is not replaced by model weights and RAG does not require retraining the base model on that repository. However, the model DOES process the retrieved text during inference. RAG alone neither guarantees no provider retention nor prevents training under an unrelated data-use policy. A cloud inference or embedding service can still receive company text. A fully local deployment must include embeddings, retrieval, inference and ancillary processing, with access filtering and secure logs. Distinguish this from fine-tuning. A cited answer still needs verification against the original source.",
-      "narrative": {
-        "question": "Retrieve the knowledge. Do not retrain it into the model.",
-        "transition": "RAG keeps the repository separate; selected passages become answer-time context."
-      }
-    },
-    {
-      "key": "aib-analytics-disruption",
-      "title": "The question comes first.\nThe model-building can wait.",
-      "lead": "For many everyday analyses, a pretrained LLM changes the starting point.",
-      "kind": "story",
-      "chapter": "capability",
-      "visual": "analytics-disruption",
-      "items": [],
-      "refs": [
-        "ms-analytics",
-        "sklearn-evaluation"
-      ],
-      "notes": "Perbandingan ini membahas titik awal analis, bukan menyatakan machine learning klasik usang. Proyek prediksi klasifikasi atau regresi mendefinisikan target, menyiapkan fitur, melatih model, menguji pada data yang belum dilihat dan memantau kinerjanya. Untuk banyak tugas ad-hoc—mengelompokkan temuan dokumen, mengeksplorasi spreadsheet atau membuat grafik—mulailah dengan pertanyaan bahasa alami kepada LLM pralatih tanpa membangun model prediksi baru. Agent dapat menulis dan menjalankan kode, kueri atau model konvensional di belakang layar. Tinjau metode, perhitungan, catatan sumber dan ketidakpastian. Klasifikasi berdampak penting, peramalan dan keputusan prediktif berulang tetap memerlukan evaluasi yang sesuai dan sering kali pengujian pada data terpisah; jawaban fasih tidak menggantikannya. Kelompok tugas ini tidak identik. Tetap gunakan pengamanan data rahasia yang dijelaskan sebelumnya.",
-      "notesEn": "The contrast is about the analyst’s starting point, not declaring classical machine learning obsolete. A traditional predictive classification or regression project defines a target, prepares features, fits a model, tests on unseen data and monitors performance. For many ad-hoc tasks—grouping document findings, exploring a spreadsheet or creating charts—start with a natural-language question to a pretrained LLM rather than building a new predictive model. An agent may write and run code, queries or a conventional model behind the scenes. Review the method, calculations, source records and uncertainty. Consequential classification, forecasts and repeatable predictive decisions still need fit-for-purpose evaluation and often held-out testing; a fluent answer cannot replace these. These task families are not identical. Retain the safeguards explained earlier for confidential data.",
-      "narrative": {
-        "question": "The question comes first. The model-building can wait.",
-        "transition": "For many everyday analyses, a pretrained LLM changes the starting point."
-      }
-    },
-    {
       "key": "aib-two-roles",
-      "title": "Two audit perspectives.",
-      "kind": "split",
-      "chapter": "capability",
+      "title": "AI in audit: roles and applications",
+      "kind": "transition",
+      "chapter": "audit-object",
       "lead": "Audit the AI used by the organisation. Use AI to help perform the audit.",
       "items": [
         [
@@ -455,21 +437,20 @@
           "How can AI help the work while people retain authority?"
         ]
       ],
-      "notes": "Setelah mengenali kemampuan, perjalanan data dan kebutuhan memeriksa jawaban, pisahkan dua tanggung jawab: menggunakan AI dalam pekerjaan sendiri dan menilai proses organisasi yang memakai AI. Urutan baru dimulai dari penggunaan pribadi yang konkret sebelum masuk penilaian formal atas AI. Kedua konteks tetap membutuhkan bukti dan manusia yang bertanggung jawab. GIAS berlaku pada audit internal sesuai lingkupnya, bukan semua kegiatan profesional.\n\nPertanyaan: Two audit perspectives. Penghubung: Audit the AI used by the organisation. Use AI to help perform the audit.",
+      "notes": "Slide ini adalah pemisah transisi menuju pembahasan audit, bukan materi di bagian pengenalan AI. Perkenalkan dua jalur: audit atas AI yang digunakan organisasi, dan penggunaan AI dalam pelaksanaan audit. Setelah ini tetap tampilkan pemisah Auditing AI systems untuk masuk ke jalur pertama. Bukti, akuntabilitas dan perlindungan informasi relevan pada kedua jalur.",
       "refs": [
         "iia",
         "gias"
       ],
-      "visual": "audit-perspectives",
       "narrative": {
         "question": "Two audit perspectives.",
         "transition": "Audit the AI used by the organisation. Use AI to help perform the audit."
       },
-      "notesEn": "Audit the AI means examining the AI-supported process the organisation relies on. Audit with AI means using the tool in our own work. Evidence, accountability and protected information matter in both perspectives.\n\nThe IIA - AI Auditing Framework - 2024: Professional guidance. The audit canvas and examples in this deck are teaching syntheses, not a reproduction of the official framework.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements."
+      "notesEn": "This slide is a transition into the audit discussion, not part of the general AI introduction. Introduce the two paths: examining AI used by the organisation and using AI to perform audit work. Keep the following Auditing AI systems separator to enter the first path. Evidence, accountability and protected information matter in both."
     },
     {
       "key": "aib-section-audit-object",
-      "title": "Audit the AI.",
+      "title": "Auditing AI systems",
       "kind": "section",
       "chapter": "audit-object",
       "lead": "What are we trying to gain confidence in?",
@@ -484,7 +465,7 @@
     },
     {
       "key": "aib-criteria",
-      "title": "Many frameworks.\nDifferent purposes.",
+      "title": "AI governance and audit frameworks",
       "kind": "reference-map",
       "chapter": "audit-object",
       "lead": "Use a recognised reference to define the question and scope—not as a universal checklist.",
@@ -516,7 +497,7 @@
     },
     {
       "key": "aib-trustworthy",
-      "title": "What does trustworthy AI\nlook like?",
+      "title": "NIST characteristics of trustworthy AI",
       "lead": "NIST AI RMF 1.0: reliability is foundational; accountability and transparency run across the other qualities.",
       "chapter": "audit-object",
       "kind": "story",
@@ -536,7 +517,7 @@
     },
     {
       "key": "aib-readiness",
-      "title": "An approved AI tool.\nAn untested trust boundary.",
+      "title": "Case study: EchoLeak in Microsoft 365 Copilot",
       "lead": "EchoLeak shows why enterprise AI belongs in the audit universe.",
       "chapter": "audit-object",
       "kind": "story",
@@ -555,7 +536,7 @@
     },
     {
       "key": "aib-ai-security-testing",
-      "title": "Test the AI workflow.\nNot only the infrastructure.",
+      "title": "Security testing of AI-enabled systems",
       "lead": "Business assurance and adversarial testing answer complementary questions.",
       "chapter": "audit-object",
       "kind": "story",
@@ -574,7 +555,7 @@
     },
     {
       "key": "aib-section-assistant",
-      "title": "Audit with AI.",
+      "title": "Using AI in audit",
       "kind": "section",
       "chapter": "assistant",
       "lead": "Useful help for the task. Human authority over the result.",
@@ -589,7 +570,7 @@
     },
     {
       "key": "aib-daily-tasks",
-      "title": "Reports. Slides.\nData and document analysis.",
+      "title": "AI for reports, presentations and data analysis",
       "lead": "Start with the work you already need to do.",
       "chapter": "assistant",
       "kind": "story",
@@ -622,7 +603,7 @@
     },
     {
       "key": "aib-confidential-work",
-      "title": "Confidential work?\nUse an approved path.",
+      "title": "Confidential data in AI-assisted audit work",
       "lead": "A no-training switch alone is not permission to share a client document.",
       "chapter": "assistant",
       "kind": "story",
@@ -644,7 +625,7 @@
     },
     {
       "key": "aib-human-authority",
-      "title": "AI can do the task.\nPeople keep the authority.",
+      "title": "Human authority and human-in-the-loop controls",
       "lead": "Decide what can run automatically, what needs review, and what must stop for approval.",
       "chapter": "assistant",
       "kind": "story",
@@ -665,7 +646,7 @@
     },
     {
       "key": "aib-beyond-assistant",
-      "title": "Beyond the daily assistant.",
+      "title": "AI for repeatable workflows and applications",
       "lead": "The same capability can help build a dashboard, a repeatable programme or a whole application.",
       "chapter": "assistant",
       "kind": "story",
@@ -685,7 +666,7 @@
     },
     {
       "key": "aib-idea-execution-usage",
-      "title": "Building becomes easier.\nUsefulness still has to be earned.",
+      "title": "AI and the idea–execution–usage gap",
       "lead": "AI opens up what we can imagine and build. Actual use is a separate test.",
       "chapter": "assistant",
       "kind": "story",
@@ -706,7 +687,7 @@
     },
     {
       "key": "aib-adoption",
-      "title": "A working application\nis not yet useful adoption.",
+      "title": "AI adoption and organisational integration",
       "kind": "comparison",
       "chapter": "assistant",
       "lead": "RSM’s survey distinguishes partial integration from AI embedded in core processes.",
@@ -734,7 +715,7 @@
     },
     {
       "key": "aib-section-ams",
-      "title": "An AI-supported AMS.",
+      "title": "AI-supported Assurance Management Systems",
       "kind": "section",
       "chapter": "ams",
       "lead": "One idea to test: an AI-supported assurance system, from annual priorities to a reviewed finding.",
@@ -749,7 +730,7 @@
     },
     {
       "key": "aib-planning-concept",
-      "title": "Plan for coverage.\nExplain the choices.",
+      "title": "AI in annual audit planning",
       "lead": "AI connects risk evidence to the audit universe; people approve the portfolio.",
       "chapter": "ams",
       "kind": "story",
@@ -767,7 +748,7 @@
     },
     {
       "key": "aib-fieldwork-concept",
-      "title": "From a risk question\nto defensible evidence.",
+      "title": "AI in audit fieldwork",
       "lead": "AI connects the work; auditors validate the criteria, evidence and conclusion.",
       "chapter": "ams",
       "kind": "story",
@@ -785,7 +766,7 @@
     },
     {
       "key": "aib-annual-planning",
-      "title": "Start with the audit universe.",
+      "title": "Demo: risk-based annual audit planning",
       "lead": "Aggregate registered risks and other planning parameters; let the accountable person approve the plan.",
       "chapter": "ams",
       "kind": "story",
@@ -804,7 +785,7 @@
     },
     {
       "key": "aib-fieldwork-flow",
-      "title": "Turn the approved object\ninto fieldwork.",
+      "title": "Demo: audit programmes and workpapers",
       "lead": "Suggest the programme and relevant references, validate the criteria, then assign the auditor in charge.",
       "chapter": "ams",
       "kind": "story",
@@ -824,7 +805,7 @@
     },
     {
       "key": "aib-reporting-pack",
-      "title": "One reviewed finding.\nTwo useful outputs.",
+      "title": "AI-supported audit reporting",
       "lead": "Generate the report and presentation from the same approved evidence and management response.",
       "chapter": "ams",
       "kind": "story",
@@ -844,7 +825,7 @@
     },
     {
       "key": "aib-rsm-assessment",
-      "title": "Redesign the process.\nReuse the assessment capability.",
+      "title": "RSM Indonesia: audit transformation and AI-supported assessment",
       "lead": "RSM Indonesia supports internal audit transformation and AI-supported assessment.",
       "chapter": "ams",
       "kind": "story",
@@ -863,7 +844,7 @@
     },
     {
       "key": "aib-endpoint",
-      "title": "The report is issued.\nWhat changes on Monday?",
+      "title": "Audit reporting and management follow-up",
       "kind": "question",
       "chapter": "ams",
       "lead": "The finding only becomes useful when someone decides what to do.",
@@ -891,7 +872,7 @@
     },
     {
       "key": "aib-section-beyond",
-      "title": "Go beyond audit.",
+      "title": "Continuous risk assurance",
       "kind": "section",
       "chapter": "beyond",
       "lead": "Connect assurance evidence to the objective and the risk decision.",
@@ -906,7 +887,7 @@
     },
     {
       "key": "aib-risk-gap",
-      "title": "The risk picture changes\nbetween audit projects.",
+      "title": "Risk oversight between audit projects",
       "kind": "stats",
       "chapter": "beyond",
       "lead": "New information can challenge yesterday’s assessment.",
@@ -933,7 +914,7 @@
     },
     {
       "key": "aib-connect",
-      "title": "Risk-based audit.\nContinuous risk assurance.",
+      "title": "Connecting risk-based audit and continuous risk assurance",
       "kind": "loop",
       "chapter": "beyond",
       "lead": "Connect the finding, the risk decision and the objective.",
@@ -965,7 +946,7 @@
     },
     {
       "key": "aib-three-signals",
-      "title": "Three sources for this demonstration.",
+      "title": "Signal sources for continuous risk assurance",
       "lead": "Audit results. Internal memos and reports. News and social-media leads.",
       "chapter": "beyond",
       "kind": "story",
@@ -1005,7 +986,7 @@
     },
     {
       "key": "aib-review-signals",
-      "title": "Review the signals\nas one decision sequence.",
+      "title": "Signal review and risk-response workflow",
       "lead": "Accept or decline relevance, review the proposed score, and agree a response when exposure exceeds tolerance.",
       "chapter": "beyond",
       "kind": "story",
@@ -1024,7 +1005,7 @@
     },
     {
       "key": "aib-score",
-      "title": "If the risk has increased,\nwhat action is needed?",
+      "title": "Risk scoring, tolerance and mitigation",
       "kind": "score",
       "chapter": "beyond",
       "lead": "The action’s expected effect is a plan—not evidence that the risk has already fallen.",
@@ -1054,7 +1035,7 @@
     },
     {
       "key": "aib-risk-demo",
-      "title": "Try the three signal sources.",
+      "title": "Demo: audit, internal and external risk signals",
       "kind": "demo",
       "chapter": "beyond",
       "lead": "Issue an audit result, capture a memo, then inspect the historical news and the unverified lead.",
@@ -1083,7 +1064,7 @@
     },
     {
       "key": "aib-next",
-      "title": "Build one idea\nthat somebody will use.",
+      "title": "Implementation priorities and next steps",
       "kind": "cards",
       "chapter": "beyond",
       "lead": "Choose the decision, the user, the evidence and the outcome—not only the application.",
@@ -1116,7 +1097,7 @@
     },
     {
       "key": "aib-sources",
-      "title": "The references\nbehind the framework.",
+      "title": "Framework and professional references",
       "kind": "references",
       "chapter": "beyond",
       "lead": "Professional standards and established frameworks.",
@@ -1141,7 +1122,7 @@
     },
     {
       "key": "aib-research",
-      "title": "The evidence\nbehind the claims.",
+      "title": "Research and case references",
       "kind": "references",
       "chapter": "beyond",
       "lead": "Study design, population and context matter.",
@@ -1166,7 +1147,7 @@
     },
     {
       "key": "aib-data-technical-references",
-      "title": "The references\nbehind everyday AI use.",
+      "title": "Technical references for AI use and data protection",
       "kind": "references",
       "chapter": "beyond",
       "lead": "Primary product documentation and data-disclosure guidance, reviewed 7 November 2026.",
@@ -1191,7 +1172,7 @@
     },
     {
       "key": "aib-closing",
-      "title": "Useful AI.\nHuman authority.\nBetter decisions.",
+      "title": "Thank you",
       "kind": "closing",
       "chapter": "beyond",
       "lead": "Thank you. What will you put to work?",

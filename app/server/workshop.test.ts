@@ -239,7 +239,7 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:1})).status,200);assert.equal((await(await req('/content')).json()).topicId,'beyond-compliance','Workshop reset keeps the topic library');assert.equal((await(await req('/admin/topics','GET',host)).json()).topics.length,3);
 
  assert.equal((await req('/admin/topics/ai-audit-beyond/activate','POST',host,{expectedRevision:6})).status,200);
- const auditTopic=await(await req('/content')).json();assert.equal(auditTopic.application.kind,'audit-suite');assert.equal((await(await liveState()).json()).total,45);assert.equal((await req('/workshop/join','POST',a)).status,200);
+ const auditTopic=await(await req('/content')).json();assert.equal(auditTopic.application.kind,'audit-suite');assert.equal((await(await liveState()).json()).total,44);assert.equal((await req('/workshop/join','POST',a)).status,200);
  assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:7})).status,200);
  nextConfig.modules[0].demo.config.title='Updated practice application';
  assert.equal((await req('/admin/topics/'+nextId,'PUT',host,{expectedRevision:8,topic:{...nextTopic,title:'Edited future topic',config:nextConfig}})).status,200);

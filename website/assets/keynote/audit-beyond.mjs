@@ -1,7 +1,7 @@
 ﻿const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-import {renderDataHandlingSlide} from './data-handling.mjs?v=rsm-private-ai-20261113';
-import {renderNarrativeSlide} from './audit-story.mjs?v=rsm-private-ai-20261113';
-import {renderAssuranceStory} from './assurance-story.mjs?v=rsm-private-ai-20261113';
+import {renderDataHandlingSlide} from './data-handling.mjs?v=rsm-visual-flow-20261113';
+import {renderNarrativeSlide} from './audit-story.mjs?v=rsm-visual-flow-20261113';
+import {renderAssuranceStory} from './assurance-story.mjs?v=rsm-visual-flow-20261113';
 const lines=s=>escape(s).replaceAll('\n','<br>');
 const glyphPaths={person:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',spark:'<path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>',document:'<path d="M6 2h9l4 4v16H6zM14 2v5h5M9 12h7M9 16h7"/>',check:'<path d="m3 12 6 6L21 6"/>',tools:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',shield:'<path d="m12 2 9 4v7c0 5-9 9-9 9s-9-4-9-9V6z"/><path d="m7 12 4 4 6-7"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'};
 const glyph=(name)=>`<svg class="ab-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphPaths[name]||glyphPaths.document}</svg>`;
@@ -24,6 +24,7 @@ export function auditDesigns(material,{appUrl='',assetsUrl='',preview=false}={})
   else if(technical!==null)body=header+technical;
   else if(s.kind==='cover')body=`<div class="ab-cover-bars" aria-hidden="true"><i></i><i></i><i></i></div><div class="ab-cover-mark"><img src="${logoUrl}" alt="RSM"><span>Indonesia</span></div>${header}<div class="ab-cover-presenters">${identity}<small>RSM Indonesia</small></div>`;
   else if(s.kind==='speakers')body=header+`<div class="ab-speakers ab-speakers-portraits">${presenters.map((p,i)=>{const portrait={'Dena Sucianandika':'dena-sucianandika-portrait.png','Teuku Raja Irfan Radarma':'teuku-raja-irfan-radarma-batik.png'}[p.name];return `<article>${portrait?`<div class="ab-speaker-photo"><span aria-hidden="true"></span><img src="${escape(assetsUrl+'images/'+portrait)}" alt="${escape(p.name)}" decoding="async"></div>`:''}<div class="ab-speaker-identity"><span class="ab-speaker-rule"></span><small>SPEAKER ${String(i+1).padStart(2,'0')}</small><h2>${escape(p.name)}</h2><p>${escape(p.organisation)}</p></div></article>`;}).join('')}</div><p class="ab-speaker-focus">Audit & assurance <span>•</span> AI governance <span>•</span> Risk management</p>`;
+  else if(s.kind==='transition')body=header+`<div class="ab-transition-paths">${s.items.map(([name,copy])=>`<article><h2>${escape(name)}</h2><p>${escape(copy)}</p></article>`).join('')}</div>`;
   else if(s.kind==='section')body=`<div class="ab-section-num">${String(index+1).padStart(2,'0')}</div>${header}<div class="ab-section-road">${material.sections.map((c,i)=>`<span class="${i===index?'selected':''}">${String(i+1).padStart(2,'0')} · ${escape(c.title)}</span>`).join('')}</div>`;
   else if(s.kind==='journey')body=header+`<div class="ab-journey">${node(s.items)}</div><nav class="ab-agenda">${material.sections.map((c,i)=>`<button data-chapter="${c.id}"><b>${String(i+1).padStart(2,'0')}</b>${escape(c.title)}</button>`).join('')}</nav>`;
   else if(s.kind==='stats'||s.kind==='stat')body=header+`<div class="ab-stats">${s.items.map(([n,b])=>`<article><strong>${escape(n)}</strong><p>${escape(b)}</p><div class="ab-stat-line"></div></article>`).join('')}</div>`;
@@ -45,7 +46,7 @@ export function auditDesigns(material,{appUrl='',assetsUrl='',preview=false}={})
   else body=header+`<div class="ab-${s.kind}">${node(s.items)}</div>`+(s.kind==='demo'?`<a class="ab-open-app" href="${escape(appUrl+'/audience/'+(s.key==='aib-ams-demo'?'?workspace=audit'+(preview?'&previewTopic=ai-audit-beyond':''):'?workspace=risk'+(preview?'&previewTopic=ai-audit-beyond':'')))}" target="_blank" rel="noreferrer">Open ${s.key==='aib-ams-demo'?'audit':'risk'} workspace ↗</a>`:'');
   const brand=s.kind==='cover'?'':`<div class="ab-slide-brand"><img src="${logoUrl}" alt="RSM"><span>Indonesia</span></div>`;
   const evidenceNote=s.evidenceNote?`<p class="ab-evidence-note">${escape(s.evidenceNote)}</p>`:'';
-  renderers[s.key]={title:s.title,tone:['cover','section','closing'].includes(s.kind)||s.key==='aib-journey'?'night':'day',kind:'audit-beyond rsm-template ab-kind-'+s.kind+(s.visual?' ab-story ab-story-'+s.visual:''),html:brand+body+evidenceNote+(!['cover','section','closing','references','speakers'].includes(s.kind)?source(s):'')};
+  renderers[s.key]={title:s.title,tone:['cover','section','transition','closing'].includes(s.kind)||s.key==='aib-journey'?'night':'day',kind:'audit-beyond rsm-template ab-kind-'+s.kind+(s.visual?' ab-story ab-story-'+s.visual:''),html:brand+body+evidenceNote+(!['cover','section','transition','closing','references','speakers'].includes(s.kind)?source(s):'')};
  }
  const entries=material.slides.map((s,i)=>({key:s.key,index:i+1,title:s.title,chapter:s.chapter,section:material.sections.find(c=>c.id===s.chapter)?.title||'Opening',note:s.notesEn||s.notes,referenceContext:s.refs.map(id=>material.sources[id].scope).join(' '),links:s.refs.map(id=>material.sources[id])}));
  return {renderers,entries};

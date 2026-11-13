@@ -1,56 +1,55 @@
 # AI in Audit and Beyond
 
-45 slides, English and Bahasa Indonesia. RSM Indonesia. Updated 13 November 2026.
+44 slides, English and Bahasa Indonesia. RSM Indonesia. Updated 13 November 2026.
 
 ## Slide map
 
 | # | Slide | Section |
 |---|---|---|
 | 1 | AI in Audit / and Beyond | None |
-| 2 | Make this deck / your own. | opening |
-| 3 | Your speakers. | None |
-| 4 | AI in audit. / And what comes after. | None |
-| 5 | AI, briefly. | capability |
-| 6 | A chatbot you talk to. / An agent you give a task to. | capability |
-| 7 | Where does the information go? | capability |
-| 8 | Share deliberately. / Check the account, not just the tool. | capability |
-| 9 | For sensitive work, / bring AI inside. | capability |
-| 10 | Retrieve the knowledge. / Do not retrain it into the model. | capability |
-| 11 | The question comes first. / The model-building can wait. | capability |
-| 12 | Two audit perspectives. | capability |
-| 13 | Audit the AI. | audit-object |
-| 14 | Many frameworks. / Different purposes. | audit-object |
-| 15 | What does trustworthy AI / look like? | audit-object |
-| 16 | An approved AI tool. / An untested trust boundary. | audit-object |
-| 17 | Test the AI workflow. / Not only the infrastructure. | audit-object |
-| 18 | Audit with AI. | assistant |
-| 19 | Reports. Slides. / Data and document analysis. | assistant |
-| 20 | Confidential work? / Use an approved path. | assistant |
-| 21 | AI can do the task. / People keep the authority. | assistant |
-| 22 | Beyond the daily assistant. | assistant |
-| 23 | Building becomes easier. / Usefulness still has to be earned. | assistant |
-| 24 | A working application / is not yet useful adoption. | assistant |
-| 25 | An AI-supported AMS. | ams |
-| 26 | Plan for coverage. / Explain the choices. | ams |
-| 27 | From a risk question / to defensible evidence. | ams |
-| 28 | Start with the audit universe. | ams |
-| 29 | Turn the approved object / into fieldwork. | ams |
-| 30 | One reviewed finding. / Two useful outputs. | ams |
-| 31 | Redesign the process. / Reuse the assessment capability. | ams |
-| 32 | The report is issued. / What changes on Monday? | ams |
-| 33 | Go beyond audit. | beyond |
-| 34 | The risk picture changes / between audit projects. | beyond |
-| 35 | Risk-based audit. / Continuous risk assurance. | beyond |
-| 36 | Three sources for this demonstration. | beyond |
-| 37 | SIGNAL Framework | beyond |
-| 38 | Review the signals / as one decision sequence. | beyond |
-| 39 | If the risk has increased, / what action is needed? | beyond |
-| 40 | Try the three signal sources. | beyond |
-| 41 | Build one idea / that somebody will use. | beyond |
-| 42 | The references / behind the framework. | beyond |
-| 43 | The evidence / behind the claims. | beyond |
-| 44 | The references / behind everyday AI use. | beyond |
-| 45 | Useful AI. / Human authority. / Better decisions. | beyond |
+| 2 | Presentation guide | opening |
+| 3 | Speakers | None |
+| 4 | Presentation agenda | None |
+| 5 | General use of AI | capability |
+| 6 | How AI is generally used nowadays | capability |
+| 7 | The impact of AI on data analytics workflows | capability |
+| 8 | Data processing in chatbots and AI agents | capability |
+| 9 | Data protection when using AI | capability |
+| 10 | On-premises AI for sensitive information | capability |
+| 11 | AI in audit: roles and applications | audit-object |
+| 12 | Auditing AI systems | audit-object |
+| 13 | AI governance and audit frameworks | audit-object |
+| 14 | NIST characteristics of trustworthy AI | audit-object |
+| 15 | Case study: EchoLeak in Microsoft 365 Copilot | audit-object |
+| 16 | Security testing of AI-enabled systems | audit-object |
+| 17 | Using AI in audit | assistant |
+| 18 | AI for reports, presentations and data analysis | assistant |
+| 19 | Confidential data in AI-assisted audit work | assistant |
+| 20 | Human authority and human-in-the-loop controls | assistant |
+| 21 | AI for repeatable workflows and applications | assistant |
+| 22 | AI and the idea–execution–usage gap | assistant |
+| 23 | AI adoption and organisational integration | assistant |
+| 24 | AI-supported Assurance Management Systems | ams |
+| 25 | AI in annual audit planning | ams |
+| 26 | AI in audit fieldwork | ams |
+| 27 | Demo: risk-based annual audit planning | ams |
+| 28 | Demo: audit programmes and workpapers | ams |
+| 29 | AI-supported audit reporting | ams |
+| 30 | RSM Indonesia: audit transformation and AI-supported assessment | ams |
+| 31 | Audit reporting and management follow-up | ams |
+| 32 | Continuous risk assurance | beyond |
+| 33 | Risk oversight between audit projects | beyond |
+| 34 | Connecting risk-based audit and continuous risk assurance | beyond |
+| 35 | Signal sources for continuous risk assurance | beyond |
+| 36 | SIGNAL Framework | beyond |
+| 37 | Signal review and risk-response workflow | beyond |
+| 38 | Risk scoring, tolerance and mitigation | beyond |
+| 39 | Demo: audit, internal and external risk signals | beyond |
+| 40 | Implementation priorities and next steps | beyond |
+| 41 | Framework and professional references | beyond |
+| 42 | Research and case references | beyond |
+| 43 | Technical references for AI use and data protection | beyond |
+| 44 | Thank you | beyond |
 
 ## Evidence and limits
 

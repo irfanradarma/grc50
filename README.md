@@ -8,7 +8,7 @@ A presentation platform with an admin-managed topic library. Beyond Compliance i
 - [Deck and version backups](docs/deck-versions.md)
 - [Deployment and database isolation](docs/deployment.md)
 - [Presenter and workshop guide](docs/seminar-workshop.md)
-- `website/deck/index.html`: primary 45-slide presentation.
+- `website/deck/index.html`: topic-driven presentation entry point.
 - `website/assets/keynote/`: current visual content, styles and source notes.
 - `website/deck-archive/`: archived 44-slide editorial presentation.
 - `app/`: separate Admin and Audience routes, workspace isolation and persistence.
@@ -60,7 +60,7 @@ Retain [photo and icon credits](website/assets/images/CREDITS.md) in published m
 
 ## New topic: AI in Audit and Beyond
 
-A separate 45-slide RSM Indonesia topic presented by Dena Sucianandika and Teuku Raja Irfan Radarma, with primary research, English/Bahasa Indonesia content and presenter notes, and an audit workspace demonstration. Open `http://localhost/presentation/deck/?previewTopic=ai-audit-beyond` to preview without changing the active topic. The local AMS preview is at `http://localhost/audience/?previewTopic=ai-audit-beyond`. Activate the topic through **Admin > Library topik** when ready. [Material, source limitations and demonstration scope](docs/topics/ai-audit-and-beyond.md).
+A separate 44-slide RSM Indonesia topic presented by Dena Sucianandika and Teuku Raja Irfan Radarma, with primary research, English/Bahasa Indonesia content and presenter notes, and an audit workspace demonstration. Open `http://localhost/presentation/deck/?previewTopic=ai-audit-beyond` to preview without changing the active topic. The local AMS preview is at `http://localhost/audience/?previewTopic=ai-audit-beyond`. Activate the topic through **Admin > Library topik** when ready. [Material, source limitations and demonstration scope](docs/topics/ai-audit-and-beyond.md).
 
 The narrative follows a brief chatbot/agent refresher and safeguards → Audit the AI → Audit with AI → useful applications → an integrated AMS → continuous risk assurance. A recurring sales-and-collections example links the sections. [Story and presenter transitions](docs/topics/ai-audit-narrative.md).
 
