@@ -1,5 +1,6 @@
-import {icon,rail,footer,simplePaper} from './audit-story.mjs?v=rsm-bilingual-20261113';
-import {renderAdoptionIllustration} from './adoption-illustration.mjs?v=rsm-bilingual-20261113';
+import {icon,rail,footer,simplePaper} from './audit-story.mjs?v=rsm-private-ai-20261113';
+import {renderAdoptionIllustration} from './adoption-illustration.mjs?v=rsm-private-ai-20261113';
+import {renderRsmFramework} from './rsm-frameworks.mjs?v=rsm-private-ai-20261113';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const trustQualities=[
  ['Valid & reliable','Does it work for the intended use?','Inspect relevant test data, acceptance thresholds and failures under expected conditions.','model'],
@@ -12,6 +13,7 @@ export const trustQualities=[
 ];
 const trustPanel=i=>`<aside class="as-trust-detail" aria-live="polite"><h2 data-trust-question>${trustQualities[i][1]}</h2><p data-trust-evidence>${trustQualities[i][2]}</p></aside>`;
 export function renderAssuranceStory(s,options={}){
+ const revised=renderRsmFramework(s,options);if(revised!==null)return revised;
  const {appUrl='',preview=false}=options;
  const link=kind=>`<a class="ab-open-app" href="${esc(appUrl+'/audience/?workspace='+kind+(preview?'&previewTopic=ai-audit-beyond':''))}" target="_blank" rel="noreferrer">Open ${kind==='audit'?'assurance':'risk'} workspace ↗</a>`;
  switch(s.visual){

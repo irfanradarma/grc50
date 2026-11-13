@@ -2,17 +2,17 @@
 
 RSM Indonesia · Dena Sucianandika and Teuku Raja Irfan Radarma.
 
-The 37-slide story asks: **What can AI help us do, who remains accountable, and how can the work change a real decision?**
+The 45-slide story asks: **What can AI help us do, who remains accountable, and how can the work change a real decision?**
 
 | Section | Slides | Purpose |
 |---|---:|---|
-| Opening | 1–3 | Speakers and the journey. |
-| AI, briefly | 4–8 | Chatbot vs agent, information moving between computer and cloud, safeguards, then the two audit perspectives. |
-| Audit the AI | 9–12 | Recognised frameworks, NIST trustworthy-AI characteristics and business accountability. |
-| Audit with AI | 13–19 | Everyday outputs, confidential work, human authority, then useful products and systems. |
-| An AI-supported AMS | 20–24 | Annual planning → programme and criteria → assignments and workpapers → reviewed finding → report and slides → issued risk signal. |
-| Beyond audit | 25–33 | Audit results, internal reports and external developments inform continuous risk assurance through SIGNAL. |
-| References and close | 34–37 | Primary references with limits, then a practical call to action. |
+| Opening | 1–4 | Deck guide, speakers and the journey. |
+| AI, briefly | 5–12 | Chatbot/agent, data location, safeguards, on-premises RAG, LLM-first analysis and two audit perspectives. |
+| Audit the AI | 13–17 | Recognised frameworks, NIST, EchoLeak and authorised AI security testing. |
+| Audit with AI | 18–24 | Everyday work, confidentiality, human authority and useful applications. |
+| An AI-supported AMS | 25–32 | Planning and fieldwork concepts, a simpler demo, reporting and assessment services. |
+| Beyond audit | 33–41 | Connected risk decisions, continuous risk assurance and SIGNAL. |
+| References and close | 42–45 | Primary evidence and closing. |
 
 ## Transitions
 

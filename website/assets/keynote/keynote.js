@@ -1,8 +1,8 @@
-import {auditContent,auditDesigns} from './audit-beyond.mjs?v=rsm-bilingual-20261113';
-import {installDataHandling} from './data-handling.mjs?v=rsm-bilingual-20261113';
-import {installAssuranceStory} from './assurance-story.mjs?v=rsm-bilingual-20261113';
+import {auditContent,auditDesigns} from './audit-beyond.mjs?v=rsm-private-ai-20261113';
+import {installDataHandling} from './data-handling.mjs?v=rsm-private-ai-20261113';
+import {installAssuranceStory} from './assurance-story.mjs?v=rsm-private-ai-20261113';
 import {composeModules,loadContentSnapshot} from './content-modules.mjs?v=topics-rsm-20261109';
-import {installDeckLanguage} from './deck-language.js?v=rsm-bilingual-20261113';
+import {installDeckLanguage} from './deck-language.js?v=rsm-private-ai-20261113';
 import {connectLiveDeck} from '../js/deck-live.js?v=topics-rsm-20261109';
 let reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
@@ -142,12 +142,12 @@ try{contentSnapshot=await loadContentSnapshot();}catch{
 const auditPreview=new URLSearchParams(location.search).get('previewTopic')==='ai-audit-beyond';
 if(auditPreview||contentSnapshot?.config?.modules?.some(m=>m.slides.some(s=>s.builtin?.startsWith('aib-')))){
  document.querySelector('.deck-language-switch')?.removeAttribute('hidden');
- const auditLanguage=await fetch(new URL('./audit-translations-id.json?v=rsm-bilingual-20261113',import.meta.url)).then(r=>{if(!r.ok)throw Error('Audit translations unavailable');return r.json();});
+ const auditLanguage=await fetch(new URL('./audit-translations-id.json?v=rsm-private-ai-20261113',import.meta.url)).then(r=>{if(!r.ok)throw Error('Audit translations unavailable');return r.json();});
  Object.assign(languageCatalogue.strings,auditLanguage.strings);Object.assign(languageCatalogue.notes,auditLanguage.notes);Object.assign(languageCatalogue.contexts??={},auditLanguage.contexts);
- const material=await fetch(new URL('./audit-beyond-topic.json?v=rsm-bilingual-20261113',import.meta.url)).then(r=>r.json());
+ const material=await fetch(new URL('./audit-beyond-topic.json?v=rsm-private-ai-20261113',import.meta.url)).then(r=>r.json());
  const designed=auditDesigns(material,{appUrl:app,assetsUrl:assets,preview:auditPreview});
  Object.assign(slides,designed.renderers);reference={...reference,slides:[...reference.slides,...designed.entries]};
- for(const stylesheet of ['./audit-beyond.css','./data-handling.css','./audit-story.css','./rsm-seminar.css']){const css=document.createElement('link');css.rel='stylesheet';const url=new URL(stylesheet,import.meta.url);url.searchParams.set('v','rsm-bilingual-20261113');css.href=url;document.head.append(css);}
+ for(const stylesheet of ['./audit-beyond.css','./data-handling.css','./audit-story.css','./rsm-seminar.css']){const css=document.createElement('link');css.rel='stylesheet';const url=new URL(stylesheet,import.meta.url);url.searchParams.set('v','rsm-private-ai-20261113');css.href=url;document.head.append(css);}
  if(auditPreview)contentSnapshot={revision:0,config:auditContent(material),preview:true,topicId:material.id};
 }
 if(contentSnapshot&&(contentSnapshot.revision>0||contentSnapshot.preview)){

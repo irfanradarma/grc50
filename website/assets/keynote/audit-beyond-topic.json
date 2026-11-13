@@ -6,7 +6,7 @@
     {
       "id": "capability",
       "title": "AI, briefly",
-      "caption": "Chatbot or agent. Where the information goes. Practical safeguards."
+      "caption": "Chatbot or agent. Safe data use, on-premises RAG and LLM-first analysis."
     },
     {
       "id": "audit-object",
@@ -114,13 +114,6 @@
       "type": "Regulatory staff observations",
       "year": 2024
     },
-    "air-canada": {
-      "label": "Moffatt v. Air Canada · 2024 BCCRT 149",
-      "url": "https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do",
-      "scope": "BC Civil Resolution Tribunal decision, 14 February 2024; paras. 2, 24–31 and 44. A chatbot gave incorrect fare guidance and the airline was held responsible in this case. The decision does not establish the chatbot’s architecture as an LLM or generative AI.",
-      "type": "Primary case record",
-      "year": 2024
-    },
     "rsm-regional": {
       "label": "RSM · The responsible auditor",
       "url": "https://www.rsm.global/singapore/responsible-auditor-governing-ai-delivering-trust",
@@ -197,6 +190,37 @@
       "scope": "API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.",
       "type": "Provider documentation",
       "year": 2026
+    },
+    "echoleak": {
+      "label": "Microsoft MSRC — CVE-2025-32711",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711",
+      "scope": "Vendor advisory for a resolved M365 Copilot information-disclosure vulnerability. This case establishes a real AI attack surface, not evidence of a confirmed customer breach.",
+      "type": "Vendor security advisory",
+      "year": 2025
+    },
+    "rsm-ia": {
+      "label": "RSM Indonesia — Internal Audit",
+      "url": "https://www.rsm.global/indonesia/sites/default/files/media/services/Internal%20Audit.pdf",
+      "scope": "Public RSM Indonesia internal-audit service information. Specific AI penetration-testing and AI-supported assessment capabilities are supplied by the RSM presenters, not independently demonstrated by this brochure.",
+      "type": "Service information"
+    },
+    "nvidia-local": {
+      "label": "NVIDIA — Self-hosted RAG Blueprint",
+      "url": "https://docs.nvidia.com/rag/latest/deploy-docker-self-hosted.html",
+      "scope": "Technical deployment reference for self-hosted, on-premises RAG components. The location diagram is a teaching architecture, not a security certification or a claim that RAG prevents retention or training.",
+      "type": "Technical documentation"
+    },
+    "ms-analytics": {
+      "label": "Microsoft Research — Natural-language data analytics",
+      "url": "https://www.microsoft.com/en-us/research/project/conversational-data-analytics/",
+      "scope": "Research into turning natural-language questions into analysis programs. Supports a changed interaction model, not a claim that LLMs eliminate statistical testing or are accurate on every analytical task.",
+      "type": "Research project"
+    },
+    "sklearn-evaluation": {
+      "label": "scikit-learn — Cross-validation and model evaluation",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "scope": "Documentation on evaluating models with held-out data and cross-validation. Supports the distinction between exploratory LLM assistance and validated predictive modelling.",
+      "type": "Technical documentation"
     }
   },
   "slides": [
@@ -214,6 +238,22 @@
         "transition": "Audit the AI. Audit with AI. Go beyond audit."
       },
       "notesEn": "Introduce the practical question: how can AI help audit and risk decisions while people retain authority over evidence, release and action? Both presenters represent RSM Indonesia."
+    },
+    {
+      "key": "aib-deck-guide",
+      "title": "Make this deck\nyour own.",
+      "lead": "Navigate, explore the notes and choose your language.",
+      "chapter": "opening",
+      "kind": "story",
+      "visual": "deck-guide",
+      "items": [],
+      "refs": [],
+      "notes": "Buka tautan yang dibagikan penyelenggara. Di komputer gunakan panah kiri/kanan atau Space; arahkan kursor ke tepi layar untuk kontrol. Di ponsel geser atau gunakan tombol sentuh. Daftar isi untuk berpindah bagian, EN / ID untuk bahasa, Catatan & sumber untuk penjelasan. Kembali ke presenter mengikuti posisi presenter ketika presentasi aktif.",
+      "notesEn": "Open the deck using the organiser’s shared link. On desktop use left/right arrows or Space and move toward the edges to reveal controls. On a phone use swipe or the touch controls. Contents jumps to a section. EN / ID changes language; Notes & sources opens supporting explanation. Return to live restores the presenter’s position when presenting is active.",
+      "narrative": {
+        "question": "Make this deck your own.",
+        "transition": "Navigate, explore the notes and choose your language."
+      }
     },
     {
       "key": "aib-speakers",
@@ -272,7 +312,7 @@
       "title": "AI, briefly.",
       "kind": "section",
       "chapter": "capability",
-      "lead": "Two familiar ways to use it. One question: what happens to our information?",
+      "lead": "Familiar tools. Protected information. A new starting point for analysis.",
       "items": [],
       "notes": "Ini hanya penyegaran, bukan pelatihan memakai alat. Kenalkan dua cara yang sudah lazim: chatbot di web dan agent, misalnya melalui CLI. Tampilkan perjalanan informasi dari komputer ke layanan online, lalu tiga pengamanan umum. Setelah itu langsung bedakan Audit the AI dan Audit with AI. Pembahasan dokumen rahasia yang lebih spesifik disimpan untuk konteks audit.",
       "refs": [],
@@ -335,14 +375,69 @@
         "api-data",
         "data-disclosure"
       ],
-      "notes": "Safeguard umum: pakai akun/layanan yang disetujui, matikan penggunaan untuk model improvement bila tersedia, verifikasi aturan akun yang berlaku, minimalkan dokumen, batasi folder/konektor/penerima, periksa penyimpanan dan penghapusan, serta review hasil. Pengaturan yang digambar merupakan ilustrasi, bukan screenshot atau jaminan nama menu tertentu. Pada layanan yang menawarkan model-improvement opt-out, penolakan training tidak berarti tidak dikirim online, tidak disimpan, atau tidak dapat diakses processor. Ketentuan consumer, workspace bisnis dan API dapat berbeda. OpenAI API tidak memakai data untuk training secara default kecuali opt-in; jangan menerapkan aturan API itu otomatis ke akun chatbot personal. Tidak perlu mengubah setting akun peserta saat presentasi. Jangan upload dokumen terlarang meskipun training off.\n\nPertanyaan: Share deliberately. Check the account, not just the tool. Penghubung: A model-improvement opt-out is one safeguard. It does not remove the other checks.",
+      "notes": "Safeguard umum: pakai akun/layanan yang disetujui, matikan penggunaan untuk model improvement bila tersedia, verifikasi aturan akun yang berlaku, minimalkan dokumen, batasi folder/konektor/penerima, periksa penyimpanan dan penghapusan, serta review hasil. Pengaturan yang digambar merupakan ilustrasi, bukan screenshot atau jaminan nama menu tertentu. Pada layanan yang menawarkan model-improvement opt-out, penolakan training tidak berarti tidak dikirim online, tidak disimpan, atau tidak dapat diakses processor. Ketentuan consumer, workspace bisnis dan API dapat berbeda. OpenAI API tidak memakai data untuk training secara default kecuali opt-in; jangan menerapkan aturan API itu otomatis ke akun chatbot personal. Tidak perlu mengubah setting akun peserta saat presentasi. Jangan upload dokumen terlarang meskipun training off.\n\nPertanyaan: Share deliberately. Check the account, not just the tool. Penghubung: A model-improvement opt-out is one safeguard. It does not remove the other checks.\n\nUntuk tugas sensitif, slide berikut membahas deployment sepenuhnya on-premise dan batas kemampuan RAG.",
       "evidenceNote": "Illustrative controls. Verify the exact account, feature and organisational rules before sharing.",
       "visual": "safeguards",
       "narrative": {
         "question": "Share deliberately. Check the account, not just the tool.",
         "transition": "A model-improvement opt-out is one safeguard. It does not remove the other checks."
       },
-      "notesEn": "Use an approved account, restrict the information and permissions, and review the result. Choose an applicable model-improvement opt-out where offered. Training use, transmission, retention and permission to share remain separate questions.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code data usage: Claude Code documentation distinguishes consumer and commercial data use, model-improvement choices and feedback/session-sharing. Conditions depend on the account and feature; not a statement of every provider’s terms.\n\nOpenAI · API data controls: API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.\n\nOWASP · Sensitive data disclosure · 2025: LLM02:2025. Data sanitisation, least privilege, source restriction and disclosure risk. A control in a prompt or a redaction step is not a complete privacy guarantee."
+      "notesEn": "Use an approved account, restrict the information and permissions, and review the result. Choose an applicable model-improvement opt-out where offered. Training use, transmission, retention and permission to share remain separate questions.\n\nOpenAI · ChatGPT Work enterprise overview: Enterprise/Edu Work documentation: conversations, uploaded files, memory and connected sources can have distinct retention and deletion lifecycles. Not a universal consumer ChatGPT or API policy.\n\nAnthropic · Claude Code data usage: Claude Code documentation distinguishes consumer and commercial data use, model-improvement choices and feedback/session-sharing. Conditions depend on the account and feature; not a statement of every provider’s terms.\n\nOpenAI · API data controls: API-specific documentation reviewed 13 November 2026: API data is not used for training by default unless opted in. Retention and processing controls are separate. Do not apply this statement to every personal chatbot account or feature.\n\nOWASP · Sensitive data disclosure · 2025: LLM02:2025. Data sanitisation, least privilege, source restriction and disclosure risk. A control in a prompt or a redaction step is not a complete privacy guarantee.\n\nFor sensitive tasks, the next slides examine an entirely on-premises deployment and explain what RAG does and does not do."
+    },
+    {
+      "key": "aib-on-premise",
+      "title": "For sensitive work,\nbring AI inside.",
+      "lead": "A conservative data-location choice: an entirely on-premises AI workflow.",
+      "kind": "story",
+      "chapter": "capability",
+      "visual": "on-premise",
+      "items": [],
+      "refs": [
+        "nvidia-local"
+      ],
+      "notes": "Alur on-premise dapat mempertahankan pemrosesan dalam kendali infrastruktur organisasi dengan antarmuka chatbot atau agent yang tetap familiar. Ini pilihan konservatif untuk lokasi data, bukan klaim bahwa setiap sistem on-premise lebih aman daripada setiap layanan cloud. Jalankan retrieval, embedding, inferensi dan layanan pendukung secara lokal; batasi koneksi keluar serta periksa telemetri, log, konektor, backup dan dukungan jarak jauh. Tinjau kapasitas perangkat, kualitas model, pemeliharaan dan hak akses. Pengunduhan model serta pembaruan dapat dikendalikan terpisah dari pemrosesan dokumen produksi. Sesuai informasi pembicara, RSM Indonesia telah membantu beberapa klien di Indonesia menerapkan AI on-premise. Jangan mengungkap identitas klien atau mengarang hasil terukur.",
+      "notesEn": "An on-premises route can keep processing under the organisation’s infrastructure control while retaining a familiar chatbot or agent interface. This is a conservative data-location choice, not a claim that every on-premises system is more secure than every cloud service. Keep retrieval, embeddings, inference and supporting services local; restrict outbound connections and examine telemetry, logs, connectors, backups and remote support. Check hardware capacity, model quality, maintenance and access rights. Model downloads and updates can be controlled separately from production document processing. The RSM presenters confirm that RSM Indonesia has helped several clients in Indonesia implement on-premises AI. Do not identify clients or invent measurable outcomes.",
+      "narrative": {
+        "question": "For sensitive work, bring AI inside.",
+        "transition": "A conservative data-location choice: an entirely on-premises AI workflow."
+      }
+    },
+    {
+      "key": "aib-rag",
+      "title": "Retrieve the knowledge.\nDo not retrain it into the model.",
+      "lead": "RAG keeps the repository separate; selected passages become answer-time context.",
+      "kind": "story",
+      "chapter": "capability",
+      "visual": "rag-grounding",
+      "items": [],
+      "refs": [
+        "nvidia-local"
+      ],
+      "notes": "Jelaskan RAG memakai kebijakan kredit internal. Dokumen berizin diproses dan dibuat indeks pencariannya. Saat ada pertanyaan, retriever menemukan potongan relevan yang boleh diakses pengguna, lalu menambahkannya ke masukan model. Repositori asli tidak digantikan bobot model dan RAG tidak memerlukan pelatihan ulang model dasar atas repositori itu. Namun, model TETAP memproses teks yang diambil saat inferensi. RAG sendiri tidak menjamin nihil retensi vendor atau melarang training berdasarkan kebijakan penggunaan data yang berbeda. Layanan inferensi atau embedding cloud masih dapat menerima teks perusahaan. Alur sepenuhnya lokal harus mencakup embedding, retrieval, inferensi dan proses pendukung, dengan filter akses dan log yang aman. Bedakan dari fine-tuning. Jawaban yang memiliki sitasi tetap diverifikasi ke sumber asli.",
+      "notesEn": "Explain RAG using an internal credit policy. First, authorised documents are processed and indexed. At question time, the retriever finds relevant permitted passages, which are added to the model’s input. The original repository is not replaced by model weights and RAG does not require retraining the base model on that repository. However, the model DOES process the retrieved text during inference. RAG alone neither guarantees no provider retention nor prevents training under an unrelated data-use policy. A cloud inference or embedding service can still receive company text. A fully local deployment must include embeddings, retrieval, inference and ancillary processing, with access filtering and secure logs. Distinguish this from fine-tuning. A cited answer still needs verification against the original source.",
+      "narrative": {
+        "question": "Retrieve the knowledge. Do not retrain it into the model.",
+        "transition": "RAG keeps the repository separate; selected passages become answer-time context."
+      }
+    },
+    {
+      "key": "aib-analytics-disruption",
+      "title": "The question comes first.\nThe model-building can wait.",
+      "lead": "For many everyday analyses, a pretrained LLM changes the starting point.",
+      "kind": "story",
+      "chapter": "capability",
+      "visual": "analytics-disruption",
+      "items": [],
+      "refs": [
+        "ms-analytics",
+        "sklearn-evaluation"
+      ],
+      "notes": "Perbandingan ini membahas titik awal analis, bukan menyatakan machine learning klasik usang. Proyek prediksi klasifikasi atau regresi mendefinisikan target, menyiapkan fitur, melatih model, menguji pada data yang belum dilihat dan memantau kinerjanya. Untuk banyak tugas ad-hoc—mengelompokkan temuan dokumen, mengeksplorasi spreadsheet atau membuat grafik—mulailah dengan pertanyaan bahasa alami kepada LLM pralatih tanpa membangun model prediksi baru. Agent dapat menulis dan menjalankan kode, kueri atau model konvensional di belakang layar. Tinjau metode, perhitungan, catatan sumber dan ketidakpastian. Klasifikasi berdampak penting, peramalan dan keputusan prediktif berulang tetap memerlukan evaluasi yang sesuai dan sering kali pengujian pada data terpisah; jawaban fasih tidak menggantikannya. Kelompok tugas ini tidak identik. Tetap gunakan pengamanan data rahasia yang dijelaskan sebelumnya.",
+      "notesEn": "The contrast is about the analyst’s starting point, not declaring classical machine learning obsolete. A traditional predictive classification or regression project defines a target, prepares features, fits a model, tests on unseen data and monitors performance. For many ad-hoc tasks—grouping document findings, exploring a spreadsheet or creating charts—start with a natural-language question to a pretrained LLM rather than building a new predictive model. An agent may write and run code, queries or a conventional model behind the scenes. Review the method, calculations, source records and uncertainty. Consequential classification, forecasts and repeatable predictive decisions still need fit-for-purpose evaluation and often held-out testing; a fluent answer cannot replace these. These task families are not identical. Retain the safeguards explained earlier for confidential data.",
+      "narrative": {
+        "question": "The question comes first. The model-building can wait.",
+        "transition": "For many everyday analyses, a pretrained LLM changes the starting point."
+      }
     },
     {
       "key": "aib-two-roles",
@@ -441,35 +536,41 @@
     },
     {
       "key": "aib-readiness",
-      "title": "A chatbot gave the wrong guidance.\nThe company still had to answer.",
-      "kind": "case-record",
+      "title": "An approved AI tool.\nAn untested trust boundary.",
+      "lead": "EchoLeak shows why enterprise AI belongs in the audit universe.",
       "chapter": "audit-object",
-      "lead": "A real customer dispute shows why responsibility cannot be left to the chatbot.",
-      "items": [
-        [
-          "Representation",
-          "The website chatbot described a retroactive bereavement-fare option."
-        ],
-        [
-          "Conflict",
-          "The airline’s policy did not allow that option."
-        ],
-        [
-          "Decision",
-          "The tribunal found the airline responsible for the misleading information."
-        ]
-      ],
-      "notes": "Kasus nyata: Moffatt v. Air Canada, 2024 BCCRT 149. Informasi chatbot tentang tarif berkabung berbeda dari kebijakan situs. Tribunal mengabulkan tanggung jawab dalam kasus tersebut dan memerintahkan pembayaran total C$812,02 termasuk ganti rugi, bunga dan biaya. Jangan menjadikan nominal kecil sebagai ukuran risiko strategis. Pertanyaan audit: siapa pemilik jawaban pelanggan, bagaimana versi kebijakan disinkronkan dan kapan eskalasi dilakukan? Putusan tidak menetapkan arsitektur LLM; jangan menyebutnya bukti kegagalan generative AI atau aturan universal untuk semua yurisdiksi.\n\nPertanyaan: A chatbot gave the wrong guidance. The company still had to answer. Penghubung: A real customer dispute shows why responsibility cannot be left to the chatbot.",
+      "kind": "story",
+      "visual": "echoleak",
+      "items": [],
       "refs": [
-        "air-canada"
+        "echoleak"
       ],
-      "evidenceNote": "A documented chatbot case. The decision does not establish that the system used an LLM.",
-      "visual": "airline",
+      "notes": "EchoLeak, CVE-2025-32711, adalah kerentanan nyata pada M365 Copilot yang diungkap dan ditangani pada 2025. Email eksternal yang dirancang khusus dapat memengaruhi pemrosesan konteks internal dan membuka jalur pengungkapan informasi. Ini kasus kerentanan, bukan klaim kebocoran pelanggan terkonfirmasi. Implikasi audit adalah sintesis materi: inventarisasi AI yang terhubung, periksa kepercayaan sumber, batas izin, tindakan keluar, log dan pengujian adversarial. Persetujuan produk tidak menggantikan pengawasan atas penggunaannya dalam proses bisnis.",
+      "notesEn": "EchoLeak, CVE-2025-32711, is a real vulnerability in M365 Copilot, disclosed and remediated in 2025. A crafted external email could influence processing of internal context and enable information disclosure. It is a documented security vulnerability, not a claim of a confirmed customer breach. The audit implication is our synthesis: inventory connected AI, inspect source trust, permission boundaries, outbound actions, logs and adversarial testing. An approved product does not remove the need to examine its configured business use.",
       "narrative": {
-        "question": "A chatbot gave the wrong guidance. The company still had to answer.",
-        "transition": "A real customer dispute shows why responsibility cannot be left to the chatbot."
+        "question": "An approved AI tool. An untested trust boundary.",
+        "transition": "EchoLeak shows why enterprise AI belongs in the audit universe."
       },
-      "notesEn": "The tribunal held Air Canada responsible for misleading chatbot guidance in a specific dispute. The decision does not establish that the chatbot was an LLM. Use the case to discuss ownership of customer-facing advice, not a general AI failure rate.\n\nMoffatt v. Air Canada · 2024 BCCRT 149: BC Civil Resolution Tribunal decision, 14 February 2024; paras. 2, 24–31 and 44. A chatbot gave incorrect fare guidance and the airline was held responsible in this case. The decision does not establish the chatbot’s architecture as an LLM or generative AI."
+      "evidenceNote": "Resolved vulnerability; this case does not establish a confirmed customer breach."
+    },
+    {
+      "key": "aib-ai-security-testing",
+      "title": "Test the AI workflow.\nNot only the infrastructure.",
+      "lead": "Business assurance and adversarial testing answer complementary questions.",
+      "chapter": "audit-object",
+      "kind": "story",
+      "visual": "ai-security-testing",
+      "items": [],
+      "refs": [
+        "nist",
+        "rsm-ia"
+      ],
+      "notes": "Audit internal memeriksa tujuan, tata kelola, hasil dan efektivitas kontrol. Pentest AI yang berizin menguji ketahanan batas tersebut terhadap masukan adversarial. Sesuai informasi pembicara, RSM Indonesia memiliki kapabilitas pentest sistem AI dengan pengalaman eksploitasi prompt injection yang telah diuji. Jangan menyatakan RSM menemukan EchoLeak, menyebut klien atau mengarang tingkat keberhasilan. Tetapkan ruang lingkup, izin, akun uji, pengelolaan bukti dan pengujian ulang.",
+      "notesEn": "Internal audit examines purpose, governance, outcomes and control effectiveness. Authorised AI penetration testing probes whether those boundaries hold against adversarial inputs. RSM Indonesia has an AI-system penetration-testing capability with demonstrated prompt-injection exploitation experience, as supplied by the presenters. Do not imply that RSM discovered EchoLeak, name a client, or invent a success rate. Agree scope, permissions, test accounts, evidence handling and retesting before testing.",
+      "narrative": {
+        "question": "Test the AI workflow. Not only the infrastructure.",
+        "transition": "Business assurance and adversarial testing answer complementary questions."
+      }
     },
     {
       "key": "aib-section-assistant",
@@ -647,6 +748,42 @@
       "notesEn": "Test one idea: an AI-supported AMS for the teaching organisation PT Aruna Distribusi Nusantara, which sells on credit and needs timely cash collection. Follow annual planning, fieldwork and reporting. Suggestions are prepared transparent examples, not live model output."
     },
     {
+      "key": "aib-planning-concept",
+      "title": "Plan for coverage.\nExplain the choices.",
+      "lead": "AI connects risk evidence to the audit universe; people approve the portfolio.",
+      "chapter": "ams",
+      "kind": "story",
+      "visual": "planning-concept",
+      "items": [],
+      "refs": [
+        "gias"
+      ],
+      "notes": "Konsep sebelum demo. Mulai dari strategi dan objek audit, lalu agregasikan risiko, perubahan, bukti kontrol dan kesenjangan cakupan. AI dapat mengekstrak dan mengaitkan bukti, mengusulkan prioritas yang dapat ditelusuri serta alternatif portofolio dengan batas kompetensi dan kapasitas. Bobot 40/20/20/20 dan prioritas 86/72/58 adalah asumsi pembelajaran, bukan hasil riset atau formula IIA. Sisihkan sepuluh dari enam puluh hari untuk pekerjaan wajib; tiga puluh ditambah dua puluh hari menggunakan kapasitas sisanya. Jelaskan penundaan audit cabang dan pantau kesenjangan cakupan. Validasi kualitas sumber dan informasi yang belum tersedia sebelum persetujuan; perbarui saat ada perubahan material. Konsep ini lebih luas daripada demo yang sengaja disederhanakan.",
+      "notesEn": "Concept before the demonstration. Begin with strategy and auditable objects, then aggregate risk, change, control evidence and coverage gaps. AI can extract and relate evidence, propose a traceable priority and suggest alternative portfolios under skill and capacity limits. The displayed 40/20/20/20 weights and 86/72/58 priorities are teaching assumptions, not calculated research or an IIA formula. Reserve ten of sixty days for mandatory work; thirty plus twenty days then fits the remaining capacity. Explain why a branch review is deferred and monitor the residual coverage gap. Validate source quality and missing information before approval; refresh after material changes. This concept is broader than the deliberately simple demonstration.",
+      "narrative": {
+        "question": "Plan for coverage. Explain the choices.",
+        "transition": "AI connects risk evidence to the audit universe; people approve the portfolio."
+      }
+    },
+    {
+      "key": "aib-fieldwork-concept",
+      "title": "From a risk question\nto defensible evidence.",
+      "lead": "AI connects the work; auditors validate the criteria, evidence and conclusion.",
+      "chapter": "ams",
+      "kind": "story",
+      "visual": "fieldwork-concept",
+      "items": [],
+      "refs": [
+        "gias"
+      ],
+      "notes": "Bawa tujuan dan risiko yang telah disetujui ke penugasan. AI mengusulkan program, sumber kriteria, permintaan bukti dan penugasan auditor. Reviewer memvalidasi versi referensi dan relevansinya sebelum pengujian. Dalam contoh audit kredit ini diperiksa 1.240 pesanan; 18 catatan tidak memiliki lampiran persetujuan. Auditor menelusuri dan menemukan bukti sah untuk enam catatan, sehingga tersisa dua belas pengecualian terkonfirmasi. Flag dari model belum menjadi temuan. Rekam metode, populasi, tautan bukti dan keterbatasan; telusuri akar sebab dan konfirmasi respons manajemen. Laporan dan slide hanya disusun dari fakta yang telah direviu. Ini bukan penugasan klien atau klaim tingkat kejadian. Demo berikut mewakili logika ini dengan lebih sedikit objek dan catatan.",
+      "notesEn": "Carry the approved objective and risk into the engagement. AI proposes a programme, source criteria, evidence requests and auditor assignments. Reviewers validate reference versions and relevance before testing. In this illustrative credit audit, 1,240 orders are examined; 18 records lack attached approval evidence. The auditor investigates and locates valid evidence for six, leaving twelve confirmed exceptions. The model’s flags are therefore not findings. Record the method, population, evidence links and limitations; investigate root cause and confirm management responses. Generate the report and slides only from reviewed facts. The example is not a client engagement and does not claim a prevalence rate. The following demo represents this logic with fewer objects and records.",
+      "narrative": {
+        "question": "From a risk question to defensible evidence.",
+        "transition": "AI connects the work; auditors validate the criteria, evidence and conclusion."
+      }
+    },
+    {
       "key": "aib-annual-planning",
       "title": "Start with the audit universe.",
       "lead": "Aggregate registered risks and other planning parameters; let the accountable person approve the plan.",
@@ -704,6 +841,25 @@
         "transition": "Generate the report and presentation from the same approved evidence and management response."
       },
       "notesEn": "Review the finding, its limitations and management response. Generate the report and presentation from the same facts, inspect both, then issue. In the app, issuing the report creates an audit signal for the linked registered risk.\n\nThe IIA · Global Internal Audit Standards · 2024: 2024 edition, effective January 2025. References include Standards 4.3, 11.5, 13.2, 14.1–14.4 and 15.2. The deck paraphrases selected implications for internal audit; it does not replace the Standards or prescribe financial-statement audit requirements.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements."
+    },
+    {
+      "key": "aib-rsm-assessment",
+      "title": "Redesign the process.\nReuse the assessment capability.",
+      "lead": "RSM Indonesia supports internal audit transformation and AI-supported assessment.",
+      "chapter": "ams",
+      "kind": "story",
+      "visual": "rsm-assessment",
+      "items": [],
+      "refs": [
+        "rsm-ia",
+        "gias"
+      ],
+      "notes": "RSM Indonesia menyediakan business process reengineering audit internal: memperjelas keputusan, peran, bukti dan gerbang reviu sebelum digitalisasi. Pembicara juga menyampaikan bahwa sistem asesmen COBIT berbantuan AI sudah dikembangkan. Jelaskan pemetaan kriteria, pengorganisasian bukti, usulan simpulan dan reviu yang bertanggung jawab. Ini dapat diperluas ke ISO dan kepatuhan regulasi rutin dengan menyesuaikan kriteria, lisensi, metodologi serta validasinya. Implementasi COBIT tidak otomatis memenuhi ISO atau regulasi. Demo merupakan alur kecil yang representatif, bukan klaim sebagai platform operasional klien RSM.",
+      "notesEn": "RSM Indonesia offers business process reengineering for internal audit: clarify decisions, roles, evidence and review gates before digitising the workflow. The presenters also confirm development of AI-supported COBIT assessment systems. Explain criteria mapping, evidence organisation, suggested conclusions and accountable review. This can be expanded to ISO and recurring regulatory compliance assessments, provided each criteria set, licence, methodology and validation requirement is addressed. It does not mean one COBIT implementation automatically satisfies ISO or regulation. The demonstration is a small representative workflow, not a claim that it is an operational RSM client platform.",
+      "narrative": {
+        "question": "Redesign the process. Reuse the assessment capability.",
+        "transition": "RSM Indonesia supports internal audit transformation and AI-supported assessment."
+      }
     },
     {
       "key": "aib-endpoint",
@@ -777,10 +933,10 @@
     },
     {
       "key": "aib-connect",
-      "title": "Risk-based audit\ncan feed continuous risk assurance.",
+      "title": "Risk-based audit.\nContinuous risk assurance.",
       "kind": "loop",
       "chapter": "beyond",
-      "lead": "A finding is a signal about the objective—not only an item to close.",
+      "lead": "Connect the finding, the risk decision and the objective.",
       "items": [
         [
           "Objective",
@@ -800,7 +956,7 @@
         "coso",
         "gias"
       ],
-      "visual": "feedback",
+      "visual": "risk-feedback-balanced",
       "narrative": {
         "question": "Risk-based audit can feed continuous risk assurance.",
         "transition": "A finding is a signal about the objective—not only an item to close."
@@ -829,8 +985,8 @@
     },
     {
       "key": "aib-signal-framework",
-      "title": "SIGNAL",
-      "lead": "AI prepares the evidence and advice. People retain the decision and the follow-through.",
+      "title": "SIGNAL Framework",
+      "lead": "A framework for continuous risk assurance.",
       "chapter": "beyond",
       "kind": "story",
       "items": [],
@@ -973,7 +1129,9 @@
         "nist-trust",
         "nist-gen",
         "iso",
-        "coso"
+        "coso",
+        "echoleak",
+        "rsm-ia"
       ],
       "narrative": {
         "question": "The references behind the framework.",
@@ -988,22 +1146,23 @@
       "chapter": "beyond",
       "lead": "Study design, population and context matter.",
       "items": [],
-      "notes": "Riset HBS/BCG menunjukkan efek pada tugas yang diuji, bukan akurasi audit. Survei RSM adalah organisasi AI-using Amerika Serikat/Kanada; jangan menggeneralisasi ke seluruh pasar atau Indonesia. NC State/AICPA menilai persepsi eksekutif. PCAOB adalah observasi staff historis. Kasus Air Canada adalah putusan spesifik dan tidak mengidentifikasi LLM. Sumber teknis Anthropic dipakai untuk pembedaan arsitektur, bukan standar assurance.\n\nPertanyaan: The evidence behind the claims. Penghubung: Study design, population and context matter.",
+      "notes": "Riset HBS/BCG menunjukkan efek pada tugas yang diuji, bukan akurasi audit. Survei RSM adalah organisasi AI-using Amerika Serikat/Kanada; jangan menggeneralisasi ke seluruh pasar atau Indonesia. NC State/AICPA menilai persepsi eksekutif. PCAOB adalah observasi staff historis. Sumber teknis Anthropic dipakai untuk pembedaan arsitektur, bukan standar assurance.\n\nPertanyaan: The evidence behind the claims. Penghubung: Study design, population and context matter.",
       "refs": [
         "hbs",
         "rsm",
         "rsm-method",
         "erm",
         "pcaob",
-        "air-canada",
         "agents",
-        "rsm-regional"
+        "rsm-regional",
+        "ms-analytics",
+        "sklearn-evaluation"
       ],
       "narrative": {
         "question": "The evidence behind the claims.",
         "transition": "Study design, population and context matter."
       },
-      "notesEn": "Study design, population, dates and limitations determine what a statistic can support. International surveys are not Indonesian market estimates, and task productivity studies do not establish audit accuracy.\n\nHBS / BCG field experiment - 2023: 758 BCG consultants; knowledge-work tasks using GPT-4. Benefits refer to tasks inside the tested capability frontier, not audit accuracy.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia.\n\nRSM · Survey methodology · 2026: Fieldwork 5–16 March 2026: 827 U.S. and 203 Canadian respondents, management level or above with influence over technology investment. Government and nonprofits excluded. All participating organisations already used AI.\n\nNC State / AICPA - State of Risk Oversight - 2026: Executive survey: 69% report increased risk volume/complexity over five years; 30% describe oversight as mature/robust. These are different questions, not complementary percentages.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements.\n\nMoffatt v. Air Canada · 2024 BCCRT 149: BC Civil Resolution Tribunal decision, 14 February 2024; paras. 2, 24–31 and 44. A chatbot gave incorrect fare guidance and the airline was held responsible in this case. The decision does not establish the chatbot’s architecture as an LLM or generative AI.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nRSM · The responsible auditor: RSM regional practitioner discussion with Indonesian participation: AI governance, accountability, human oversight and audit capability. Thought leadership, not a quantitative study."
+      "notesEn": "Study design, population, dates and limitations determine what a statistic can support. International surveys are not Indonesian market estimates, and task productivity studies do not establish audit accuracy.\n\nHBS / BCG field experiment - 2023: 758 BCG consultants; knowledge-work tasks using GPT-4. Benefits refer to tasks inside the tested capability frontier, not audit accuracy.\n\nRSM · Middle Market AI Survey · 2026: U.S./Canada study: 1,030 respondents from organisations already using AI, including pilots. The 86% integration and 36% fully-embedded figures describe this sample; they do not measure adoption across all businesses or in Indonesia.\n\nRSM · Survey methodology · 2026: Fieldwork 5–16 March 2026: 827 U.S. and 203 Canadian respondents, management level or above with influence over technology investment. Government and nonprofits excluded. All participating organisations already used AI.\n\nNC State / AICPA - State of Risk Oversight - 2026: Executive survey: 69% report increased risk volume/complexity over five years; 30% describe oversight as mature/robust. These are different questions, not complementary percentages.\n\nPCAOB staff · GenAI outreach · 2024: July 2024 staff observations from limited U.S. audit-firm and preparer outreach, especially pp. 4–5. Historical practice evidence, not a Board rule, a current adoption survey, or Indonesian audit requirements.\n\nAnthropic · Building effective agents · 2024: Engineering guidance distinguishing predefined workflows from model-directed tool use. Used for the architectural distinction, not a benchmark, audit standard or claim that autonomy is always preferable.\n\nRSM · The responsible auditor: RSM regional practitioner discussion with Indonesian participation: AI governance, accountability, human oversight and audit capability. Thought leadership, not a quantitative study."
     },
     {
       "key": "aib-data-technical-references",
@@ -1021,7 +1180,8 @@
         "claude-permissions",
         "claude-faq",
         "data-disclosure",
-        "prompt-injection"
+        "prompt-injection",
+        "nvidia-local"
       ],
       "narrative": {
         "question": "The references behind everyday AI use.",
@@ -1072,7 +1232,6 @@
     "boundaries": [
       "No study is presented as proof that AI improves audit accuracy.",
       "International surveys are not described as Indonesian market estimates.",
-      "Air Canada is not described as a proven LLM or generative-AI failure.",
       "NIST, ISO, The IIA and COSO are not interchangeable or a single combined standard.",
       "Case figures and matrix scores remain illustrative.",
       "No-training, retention, processor access, residency and connectors are distinct controls. The sweet-spot chart is an illustrative decision aid, not measured security or RSM policy.",
@@ -1080,7 +1239,11 @@
       "The local AMS connects issued audit findings to the Aruna risk workspace. Prepared recommendations are not live model output.",
       "The idea-execution-usage graphic is a conceptual argument, not a quantified before/after study.",
       "Model-improvement opt-out, retention, processing location and permission to share remain distinct.",
-      "A no-training control is not a sufficient condition for uploading confidential records."
+      "A no-training control is not a sufficient condition for uploading confidential records.",
+      "EchoLeak is a remediated vulnerability, not proof of a confirmed customer breach. RSM-specific capabilities are supplied by the presenters; no client engagement or success rate is asserted.",
+      "On-premises is a conservative data-location design, not automatic security. RAG retrieves context for inference; it does not mean the model never reads company data.",
+      "LLM-first exploration can avoid building a task-specific model. It does not eliminate evaluation for predictive or consequential decisions.",
+      "RSM on-premises implementation experience is supplied by the presenters; no client names or outcomes are asserted."
     ]
   },
   "narrative": {

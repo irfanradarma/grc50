@@ -7,12 +7,12 @@ import {renderAssuranceStory,trustQualities} from '../assets/keynote/assurance-s
 import {renderNarrativeSlide} from '../assets/keynote/audit-story.mjs';
 const material=JSON.parse(fs.readFileSync(new URL('../assets/keynote/audit-beyond-topic.json',import.meta.url),'utf8'));
 test('audit topic follows familiar work, practical assistance, business AI assurance, connected AMS, then risk action',()=>{
- assert.equal(material.slides.length,37);
+ assert.equal(material.slides.length,45);
  assert.deepEqual(material.sections.map(s=>s.id),['capability','audit-object','assistant','ams','beyond']);
  const designs=auditDesigns(material,{appUrl:'https://example.test/grc50',assetsUrl:'https://example.test/assets/',preview:true});
  const original=JSON.parse(fs.readFileSync(new URL('../assets/keynote/reference.json',import.meta.url),'utf8'));
  const built=composeModules(auditContent(material),{...original,slides:[...original.slides,...designs.entries]},designs.renderers,{revision:8});
- assert.equal(built.reference.slides.length,37);assert(!built.reference.slides.some(s=>s.key==='cover'));
+ assert.equal(built.reference.slides.length,45);assert(!built.reference.slides.some(s=>s.key==='cover'));
  for(const entry of built.reference.slides){const design=built.renderers[entry.key];assert(design.kind.includes('audit-beyond'));assert(!/undefined|NaN|\[object Object\]/.test(design.html),entry.key);assert(entry.note.length>80,entry.key);assert(design.html.includes('brand/rsm/logo.png'),entry.key);assert(design.html.includes('alt="RSM"'),entry.key);}
  for(const section of material.sections)assert.equal(material.slides.filter(s=>s.chapter===section.id&&s.kind==='section').length,1);
  assert(designs.renderers['aib-annual-planning'].html.includes('workspace=audit&amp;previewTopic=ai-audit-beyond'));
@@ -22,7 +22,7 @@ test('audit topic follows familiar work, practical assistance, business AI assur
 test('the concise refresher leads into auditing AI, using AI, useful products and continuous risk assurance',()=>{
  const pos=key=>material.slides.findIndex(s=>s.key===key);
  for(const [a,b] of [['aib-ai-modes','aib-document-journey'],['aib-general-safeguards','aib-section-audit-object'],['aib-trustworthy','aib-section-assistant'],['aib-human-authority','aib-idea-execution-usage'],['aib-annual-planning','aib-fieldwork-flow'],['aib-fieldwork-flow','aib-reporting-pack'],['aib-reporting-pack','aib-three-signals'],['aib-three-signals','aib-risk-demo']])assert(pos(a)>=0&&pos(a)<pos(b),a+' ? '+b);
- assert.equal(material.slides.filter(s=>s.chapter==='capability'&&s.kind!=='section').length,4);
+ assert.equal(material.slides.filter(s=>s.chapter==='capability'&&s.kind!=='section').length,7);
  for(const s of material.slides){assert(s.narrative.question.length>10,s.key);assert(s.narrative.transition.length>10,s.key);}
  assert.deepEqual(auditContent(material).modules.slice(1).map(m=>m.id),material.sections.map(s=>s.id));
 });
@@ -62,7 +62,7 @@ test('RSM speakers, recognised authorities and limits are integral to the narrat
  const {renderers}=auditDesigns(material,{assetsUrl:'https://example.test/assets/'});
  assert.deepEqual(material.presenters.map(p=>p.name),['Dena Sucianandika','Teuku Raja Irfan Radarma']);
  for(const p of material.presenters){assert.equal(p.organisation,'RSM Indonesia');assert(renderers['aib-cover'].html.includes(p.name));assert(renderers['aib-speakers'].html.includes(p.name));assert(renderers['aib-closing'].html.includes(p.name));}
- for(const id of ['rsm','rsm-method','hbs','iia','gias','nist','iso','coso','pcaob','air-canada'])assert(material.slides.some(s=>s.refs.includes(id)),id);
+ for(const id of ['rsm','rsm-method','hbs','iia','gias','nist','iso','coso','pcaob','echoleak','rsm-ia'])assert(material.slides.some(s=>s.refs.includes(id)),id);
  assert(material.slides.find(s=>s.key==='aib-trustworthy').refs.includes('nist-trust'));
  assert(material.slides.find(s=>s.key==='aib-readiness').evidenceNote.includes('does not establish'));
 

@@ -1,6 +1,6 @@
 # RSM theme, native visuals and languages
 
-The 37-slide topic retains the presenter-supplied RSM Indonesia theme: original generic light/dark master backgrounds, cyan titles, green/cyan rules, Tenorite where available and Arial fallback. Client-specific material from the reference PowerPoint is excluded.
+The 45-slide topic retains the presenter-supplied RSM Indonesia theme: original generic light/dark master backgrounds, cyan titles, green/cyan rules, Tenorite where available and Arial fallback. Client-specific material from the reference PowerPoint is excluded.
 
 Generated AI scene illustrations have been removed from the source and publication package. Native diagrams, the conceptual crowd illustration, workpieces and interactive frameworks are restored. The removed image copies are quarantined in an ignored local archive; they are not deployed.
 
