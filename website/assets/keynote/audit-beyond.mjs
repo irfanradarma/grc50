@@ -1,7 +1,7 @@
 ﻿const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-import {renderDataHandlingSlide} from './data-handling.mjs';
-import {renderNarrativeSlide} from './audit-story.mjs';
-import {renderAssuranceStory} from './assurance-story.mjs';
+import {renderDataHandlingSlide} from './data-handling.mjs?v=rsm-bilingual-20261113';
+import {renderNarrativeSlide} from './audit-story.mjs?v=rsm-bilingual-20261113';
+import {renderAssuranceStory} from './assurance-story.mjs?v=rsm-bilingual-20261113';
 const lines=s=>escape(s).replaceAll('\n','<br>');
 const glyphPaths={person:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',spark:'<path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>',document:'<path d="M6 2h9l4 4v16H6zM14 2v5h5M9 12h7M9 16h7"/>',check:'<path d="m3 12 6 6L21 6"/>',tools:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',shield:'<path d="m12 2 9 4v7c0 5-9 9-9 9s-9-4-9-9V6z"/><path d="m7 12 4 4 6-7"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'};
 const glyph=(name)=>`<svg class="ab-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyphPaths[name]||glyphPaths.document}</svg>`;

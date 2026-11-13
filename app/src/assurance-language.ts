@@ -15,7 +15,7 @@ export function useAssuranceLanguage(){
  }
  for(const el of target.querySelectorAll('[placeholder],[title],[aria-label],[alt]')){if(el.closest('[data-language-fixed]'))continue;const records=attrs.current.get(el)||{};for(const key of ['placeholder','title','aria-label','alt']){const value=el.getAttribute(key);if(!value)continue;let item=records[key];if(!item||value!==item.last)item={original:value,last:value};const next=translate(item.original,current.current);if(value!==next)el.setAttribute(key,next);item.last=next;records[key]=item;}attrs.current.set(el,records);}
  }
- useLayoutEffect(()=>{localize();document.documentElement.lang=language;try{localStorage.setItem('signal-language-v2',language);}catch{}},[language]);
+ useLayoutEffect(()=>{localize();document.documentElement.lang=language;try{localStorage.setItem('signal-language-v2',language);const url=new URL(location.href);if(url.searchParams.has('lang')){url.searchParams.set('lang',language);history.replaceState(null,'',url);}}catch{}},[language]);
  useEffect(()=>{const observer=new MutationObserver(localize);if(root.current)observer.observe(root.current,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','title','aria-label','alt']});return()=>observer.disconnect();},[]);
  return {root,language,setLanguage,copy:(value:string)=>translate(value,language)};
 }

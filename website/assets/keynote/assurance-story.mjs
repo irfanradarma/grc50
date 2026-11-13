@@ -1,5 +1,5 @@
-import {icon,rail,footer,simplePaper} from './audit-story.mjs';
-import {renderAdoptionIllustration} from './adoption-illustration.mjs';
+import {icon,rail,footer,simplePaper} from './audit-story.mjs?v=rsm-bilingual-20261113';
+import {renderAdoptionIllustration} from './adoption-illustration.mjs?v=rsm-bilingual-20261113';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const trustQualities=[
  ['Valid & reliable','Does it work for the intended use?','Inspect relevant test data, acceptance thresholds and failures under expected conditions.','model'],
