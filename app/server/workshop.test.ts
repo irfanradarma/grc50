@@ -112,7 +112,10 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/admin/hitl/start','POST',a)).status,403);
  const game=await(await req('/admin/hitl/start','POST',host)).json();assert(game.open);
  assert.equal((await req('/hitl/join','POST',a,{sessionId:game.id,name:'Reviewer'})).status,200);
- assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[1],[],[1],[],[1]]})).status,200);
+ assert.equal((await(await req('/hitl','GET',a)).json()).targets,undefined);
+ assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[{page:2,x:1.1,y:.5}],[],[],[],[]]})).status,400);
+ assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[{page:1,x:.5,y:.5}],[],[],[],[]]})).status,400);
+ assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[{page:0,x:.5,y:.63}],[{page:1,x:.5,y:.63}],[{page:0,x:.5,y:.28}],[],[]]})).status,200);
  assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[],[],[],[],[]]})).status,409);
  assert.equal((await(await req('/hitl','GET',b)).json()).leaderboard,undefined);
  const closed=await(await req('/admin/hitl/close','POST',host)).json();assert.equal(closed.leaderboard[0].score,100);assert.equal(closed.leaderboard[0].name,'Reviewer');assert(closed.leaderboard[0].elapsed>=0);
@@ -121,6 +124,11 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/admin/demo/workspace','POST',a)).status,403);
  const demoGuest=await(await req('/admin/demo/workspace','POST',host)).json(),demoAuth='Bearer '+demoGuest.token;
  const demoMe=await req('/auth/me','GET',demoAuth);const demoIdentity=await demoMe.json();workspaces.push(demoIdentity.id);assert.equal(demoMe.headers.get('set-cookie'),null,'The demo must not replace a participant cookie');
+ const walkthrough=await(await req('/admin/hitl/start','POST',host)).json();
+ assert.equal((await req('/hitl/join','POST',demoAuth,{sessionId:walkthrough.id,name:'Presenter walkthrough'})).status,200);
+ assert.equal((await req('/admin/hitl/close','POST',demoAuth)).status,403);
+ assert.equal((await req('/hitl/finish','POST',demoAuth,{sessionId:walkthrough.id,answers:[[],[],[],[],[]]})).status,200);
+ const demoClosed=await(await req('/admin/hitl/close','POST',host)).json();assert.equal(demoClosed.leaderboard.length,0);assert.equal(demoClosed.joined,0);assert.equal(demoClosed.finished,0);
  await req('/workshop/join','POST',demoAuth);
  assert.equal((await req('/admin/demo/start','POST',host,{appId:'unknown'})).status,400);
  for(const appId of ['ams','continuous-risk']){

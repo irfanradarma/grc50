@@ -652,14 +652,14 @@
       "kind": "story",
       "items": [],
       "refs": [],
-      "notes": "Presenter: buka Admin ? Demo aplikasi ? Human-in-the-loop. Klik Buka sesi baru, lalu Tayangkan aplikasi. Peserta membuka tautan pada modal, mengisi nama, memeriksa lima konten dan menekan Finish. Tiga konten bermasalah, dua benar. Setiap konten tepat bernilai 20; durasi server menjadi pemecah seri. Tutup sesi untuk menampilkan leaderboard dan pembahasan. Nama panggilan diperbolehkan. Sesi baru mengganti hasil sesi sebelumnya.",
+      "notes": "Presenter: buka Admin > Signals & participants untuk membuka sesi human-in-the-loop. Kemudian buka Demo aplikasi > Human-in-the-loop dan tayangkan walkthrough yang sama dengan alur peserta: isi nama, periksa dokumen, pasang penanda, lalu Finish. Lima konten meliputi slide strategi, report audit tiga halaman, dashboard, memo, dan brief. Tiga konten mengandung slop. Periksa semua halaman report. Nilai maksimal 20 per konten; penanda salah atau berulang mengurangi 5, minimum nol. Hasil walkthrough tidak masuk leaderboard. Tutup sesi dari Signals & participants untuk menampilkan peringkat dan pembahasan.",
       "evidenceNote": "",
       "visual": "hitl-practice",
       "narrative": {
         "question": "Can you spot what needs a human challenge?",
         "transition": "Read the source. Mark the unsupported output. Keep sound work unmarked."
       },
-      "notesEn": "Open the Human-in-the-loop app from Admin Demo, open a session and broadcast it. Participants enter a display name, inspect five outputs, mark unsupported content and finish. Three outputs contain slop; two are correct. Close the session to reveal explanations and ranking. Accuracy ranks first; server elapsed time breaks ties."
+      "notesEn": "Open the human-in-the-loop session from Admin > Signals & participants. Then broadcast the participant walkthrough from Demo Aplikasi. Enter a display name, inspect the strategy slide, three-page audit report, dashboard, memo and brief, place pins and finish. Three artifacts contain slop. Review every report page. Each artifact earns up to 20 points; wrong or duplicate pins cost 5 points, minimum zero. Presenter walkthrough attempts are excluded from the leaderboard. Close the session from Signals & participants to reveal results."
     },
     {
       "key": "aib-beyond-assistant",

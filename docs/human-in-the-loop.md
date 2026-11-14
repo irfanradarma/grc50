@@ -1,9 +1,9 @@
-# Human-in-the-loop practice
+# Human-in-the-loop: document review (v2)
 
-In Admin → Demo Aplikasi choose Human-in-the-loop, open a session, then broadcast. Participants use the modal's new-tab link, enter a public display name and review five fictional outputs. Three contain unsupported claims or incorrect figures; two are sound. Clicking a block toggles its flag. Previous/Next retain answers; Finish submits once.
+Session controls are in Admin > Signals & participants. Open or close a session there. The Human-in-the-loop iframe in Demo Aplikasi renders the participant game, including name entry and Finish; it contains no session controls. It authenticates with an isolated presenter guest workspace. Presenter attempts are excluded from participant counts and the leaderboard.
 
-Each entirely correct card earns 20 points. Marking extra blocks loses that card's points. Server elapsed time starts at joining and ends at submission. Ranking uses score descending, then duration ascending. This is a teaching exercise, not a controlled examination; devices and connections can affect timing.
+Five teaching documents: strategy slide, three-page credit-limit audit report, receivables dashboard, data policy memo, and management brief. The first three contain unsupported or incorrect content; the latter two are sound. Each document is rendered as a work artifact with page navigation and zoom. Participants click exact locations to place numbered pins, and can remove any pin before Finish. Coordinates are normalized to the document bounds so scoring is independent of zoom. Keyboard arrows move a cursor and Enter places a pin. All pages and pins persist while moving between contents.
 
-Close the session to reveal the leaderboard and explanations. Unfinished participants are excluded. Opening a new session replaces previous results after confirmation. Session data persists under the shared seminar room's `hitl` JSON field, with row locking; no database migration is required. Deploy both API and Pages.
+Only the API contains answer rectangles. It validates five answer arrays, page bounds, normalized finite coordinates and a maximum of 12 pins per artifact. Each artifact is worth 20 points; wrong or duplicate pins cost 5 points, with a floor of zero. Sound artifacts earn full credit when unmarked. Duration is measured on the server; score ranks before elapsed time. This is a teaching exercise, not a controlled examination.
 
-The new built-in slide is inserted after `aib-human-authority`, including stored copies of this built-in topic that retain that anchor. Other topic edits are preserved.
+A v2 session must be opened after deployment. Old block-selection sessions cannot accept coordinate submissions. New sessions replace previous results after confirmation. Data remains in the shared seminar room JSON field; no database migration is required. Deploy API then Pages. Reopen the demo iframe after deploying both.
