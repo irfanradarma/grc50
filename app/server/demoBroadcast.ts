@@ -3,15 +3,16 @@ import {Router} from 'express';
 import {z} from 'zod';
 import {requireAdmin} from './adminAuth.js';
 import {pool} from './db.js';
+import {demoAppIds,type DemoAppId} from '../../website/assets/js/demo-apps.mjs';
 export type DemoEvent={type:number;timestamp:number;data:any};
 const ownerKey=(token:string)=>createHash('sha256').update(token).digest('hex');
 export class DemoBroadcast{
  private room:any=null;private meta:DemoEvent|null=null;private events:DemoEvent[]=[];private bytes=0;
  private listeners=new Set<(data:any)=>void>();
  constructor(private now=()=>Date.now()){}
- status(){if(this.room&&this.now()-this.room.heartbeat>20_000)this.stop();return this.room?{active:true,streamId:this.room.id,width:this.room.width,height:this.room.height}:{active:false,streamId:null};}
+ status(){if(this.room&&this.now()-this.room.heartbeat>20_000)this.stop();return this.room?{active:true,streamId:this.room.id,appId:this.room.appId,width:this.room.width,height:this.room.height}:{active:false,streamId:null,appId:null};}
  mine(token:string){return !!this.room&&this.room.owner===ownerKey(token);}
- start(token:string){this.status();if(this.room&&!this.mine(token))return null;if(this.room)return this.status();this.room={id:randomUUID(),owner:ownerKey(token),width:1280,height:800,heartbeat:this.now()};this.meta=null;this.events=[];this.bytes=0;this.emit({kind:'start',...this.status()});return this.status();}
+ start(token:string,appId:DemoAppId='signal'){this.status();if(this.room&&(!this.mine(token)||this.room.appId!==appId))return null;if(this.room)return this.status();this.room={id:randomUUID(),appId,owner:ownerKey(token),width:1280,height:800,heartbeat:this.now()};this.meta=null;this.events=[];this.bytes=0;this.emit({kind:'start',...this.status()});return this.status();}
  stop(token?:string){if(token&&!this.mine(token))return;this.room=null;this.meta=null;this.events=[];this.bytes=0;this.emit({kind:'stop'});}
  append(token:string,id:string,events:DemoEvent[]){this.status();if(!this.room||!this.mine(token)||id!==this.room.id)return false;this.room.heartbeat=this.now();
   for(const event of events){if(event.type===4){this.meta=event;this.room.width=Math.max(320,Math.min(3840,Number(event.data?.width)||1280));this.room.height=Math.max(240,Math.min(2160,Number(event.data?.height)||800));}
@@ -37,7 +38,7 @@ demoPublic.get('/demo/stream',(req,res)=>{
  res.on('close',()=>{clearInterval(timer);unsubscribe();});
 });
 demoAdmin.get('/admin/demo/status',requireAdmin,(_req,res)=>res.json({...demoBroadcast.status(),mine:demoBroadcast.mine(res.locals.sessionToken)}));
-demoAdmin.post('/admin/demo/start',requireAdmin,(_req,res)=>{const result=demoBroadcast.start(res.locals.sessionToken);if(!result)return res.status(409).json({error:'Another admin is presenting. Stop the current demo before starting yours.'});res.json({...result,mine:true});});
+demoAdmin.post('/admin/demo/start',requireAdmin,(req,res)=>{const input=z.object({appId:z.enum(demoAppIds).default('signal')}).strict().parse(req.body||{});const result=demoBroadcast.start(res.locals.sessionToken,input.appId);if(!result)return res.status(409).json({error:'A demonstration is already active. Stop it before switching applications or presenters.'});res.json({...result,mine:true});});
 demoAdmin.post('/admin/demo/stop',requireAdmin,(req,res)=>{const input=z.object({streamId:z.string().uuid().optional()}).parse(req.body||{});if(input.streamId&&input.streamId!==demoBroadcast.status().streamId)return res.status(409).json({error:'This demonstration has already ended.'});demoBroadcast.stop();res.json({active:false});});
 const event=z.object({type:z.number().int().min(0).max(6),timestamp:z.number().finite(),data:z.any()}).passthrough();
 demoAdmin.post('/admin/demo/events',requireAdmin,(req,res)=>{const input=z.object({streamId:z.string().uuid(),events:z.array(event).max(1000)}).parse(req.body);if(!demoBroadcast.append(res.locals.sessionToken,input.streamId,input.events as DemoEvent[]))return res.status(409).json({error:'Demo broadcast ended or belongs to another admin.'});res.json({saved:true});});

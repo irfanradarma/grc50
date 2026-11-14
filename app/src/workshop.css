@@ -126,3 +126,4 @@ dialog.w-reset-dialog{margin:auto;border:1px solid #d6e1da;color:#173d2b}dialog.
 
 /* The topic leads; the platform is a supporting tool. */
 .w-header .w-brand{font-size:14px;letter-spacing:0;font-weight:600;gap:7px;color:#75807c}.w-header .w-brand>span.w-tool-name{background:none;width:auto;height:auto;color:inherit;border-radius:0}.w-header .w-brand-caption{font-size:12px;letter-spacing:0;color:#626f69}.w-footer{font-size:10px;opacity:.8}
+.w-demo-picker{display:flex;align-items:end;gap:20px;flex-wrap:wrap;padding:18px 20px;background:#f5f8f6;border-bottom:1px solid #d5e2db}.w-demo-picker label{display:grid;gap:8px;flex:1;min-width:240px;font-size:13px;font-weight:600;margin:0}.w-demo-picker select{width:100%;padding:10px;border:1px solid #ccdfd3;border-radius:8px;background:white;color:#153d2b}.w-demo-picker>a{font-size:13px;margin-bottom:10px;color:#176948}.w-live-demo .w-admin-deck-toolbar small{display:block;font-size:12px;font-weight:400;margin-top:6px}

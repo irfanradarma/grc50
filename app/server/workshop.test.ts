@@ -114,7 +114,14 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  const demoGuest=await(await req('/admin/demo/workspace','POST',host)).json(),demoAuth='Bearer '+demoGuest.token;
  const demoMe=await req('/auth/me','GET',demoAuth);const demoIdentity=await demoMe.json();workspaces.push(demoIdentity.id);assert.equal(demoMe.headers.get('set-cookie'),null,'The demo must not replace a participant cookie');
  await req('/workshop/join','POST',demoAuth);
- const started=await(await req('/admin/demo/start','POST',host)).json();assert(started.active);
+ assert.equal((await req('/admin/demo/start','POST',host,{appId:'unknown'})).status,400);
+ for(const appId of ['ams','continuous-risk']){
+  const chosen=await(await req('/admin/demo/start','POST',host,{appId})).json();assert.equal(chosen.appId,appId);
+  assert.equal((await(await liveState()).json()).demo.appId,appId);
+  assert.equal((await req('/admin/demo/start','POST',host,{appId:'signal'})).status,409);
+  await req('/admin/demo/stop','POST',host,{streamId:chosen.streamId});
+ }
+ const started=await(await req('/admin/demo/start','POST',host)).json();assert(started.active);assert.equal(started.appId,'signal');
  assert.equal((await req('/admin/demo/start','POST',secondAdmin)).status,409);
  assert.equal((await req('/admin/presentation/navigate','POST',host,{direction:'next'})).status,409);
  const events=[{type:4,timestamp:1000,data:{width:1280,height:800}},{type:2,timestamp:1001,data:{node:{type:0,id:1,childNodes:[{type:3,id:2,textContent:'x'.repeat(100_000)}]},initialOffset:{left:0,top:0}}}];
@@ -122,7 +129,7 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/admin/demo/events','POST',host,{streamId:started.streamId,events})).status,200);
  const abort=new AbortController(),stream=await fetch(base+'/demo/stream',{signal:abort.signal});const reader=stream.body!.getReader(),decoder=new TextDecoder();let initial='';
  while(!initial.includes('\n\n')){const chunk=await reader.read();assert(!chunk.done);initial+=decoder.decode(chunk.value,{stream:true});}
- assert(initial.includes('bootstrap'));assert(initial.includes(started.streamId));assert(!initial.includes(demoGuest.token));
+ assert(initial.includes('\"appId\":\"signal\"'));assert(initial.includes('bootstrap'));assert(initial.includes(started.streamId));assert(!initial.includes(demoGuest.token));
  assert.equal((await req('/admin/demo/events','POST',host,{streamId:started.streamId,events:[{type:3,timestamp:1002,data:{source:5,text:'live-change-after-large-bootstrap'}}]})).status,200);
  const update=await reader.read();assert.equal(update.done,false,'Large bootstrap must not close the live connection');assert(decoder.decode(update.value).includes('live-change-after-large-bootstrap'));abort.abort();
  assert.equal((await(await liveState()).json()).demo.active,true);
@@ -230,6 +237,9 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/admin/topics/'+nextId+'/activate','POST',host,{expectedRevision:1})).status,200);
  let activeTopic=await(await req('/content')).json();assert.equal(activeTopic.topicId,nextId);assert.equal(activeTopic.application.kind,'sandbox');assert.equal(activeTopic.config.title,'Future topic');const firstAppRevision=activeTopic.applicationRevision;
  const topicDeck=await(await liveState()).json();assert.equal(topicDeck.total,1);assert.equal(topicDeck.presenting,false);assert.notEqual(topicDeck.deckId,customDeck.deckId);assert.equal((await req('/workshop/join','POST',a)).status,409);
+ assert.equal((await req('/workshop/join?demoApp=signal','POST',a)).status,200,'Explicit SIGNAL remains available independently of the active topic');
+ assert.equal((await req('/workshop/'+code+'/state?demoApp=signal','GET',a)).status,200);
+ assert.equal((await req('/workshop/join?demoApp=unknown','POST',a)).status,409);
  nextConfig.title='Edited future topic';assert.equal((await req('/admin/topics/'+nextId,'PUT',host,{expectedRevision:2,topic:{...nextTopic,title:'Edited future topic',description:'Draft only',config:nextConfig}})).status,200);
  activeTopic=await(await req('/content')).json();assert.equal(activeTopic.topicTitle,'Future topic');assert.equal(activeTopic.description,'A separate complete presentation','Draft descriptions stay private until activated');
  assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:3})).status,200);

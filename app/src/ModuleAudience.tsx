@@ -4,6 +4,7 @@ import {contentSchema,type ContentConfig,type DemoConfig} from '../shared/conten
 import './modules.css';
 import AuditSuite from './AuditSuite';
 import {auditTopicContent,auditTopicId} from '../shared/auditTopic';
+import {demoAppIds,getDemoApp} from '../../website/assets/js/demo-apps.mjs';
 
 type Row={id:string;values:Record<string,string>;step:number;notes:string};
 export function GenericSandbox({config,storageKey}:{config:DemoConfig;storageKey:string}){
@@ -18,10 +19,13 @@ export function GenericSandbox({config,storageKey}:{config:DemoConfig;storageKey
 export default function ModuleAudience({children,forceHub=false}:{children?:React.ReactNode;forceHub?:boolean}){
  const [snapshot,setSnapshot]=useState<{revision:number;topicId?:string;topicTitle?:string;description?:string;applicationRevision?:number;config:ContentConfig;application?:ContentConfig['modules'][number]['demo']}>(),[error,setError]=useState('');
  const params=new URLSearchParams(location.search),embedded=params.get('embedded')==='1',preview=params.get('previewTopic')===auditTopicId;
- useEffect(()=>{if(preview){setSnapshot({revision:0,topicId:auditTopicId,topicTitle:'AI in Audit and Beyond',config:auditTopicContent(),application:{kind:'audit-suite'}});return;}let live=true,polling=false;async function read(){if(polling)return;polling=true;try{const r=await fetch(apiOrigin+'/api/content',{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error();const data=await r.json();data.config=contentSchema.parse(data.config);if(live){setSnapshot(previous=>previous?.revision===data.revision&&previous?.topicId===data.topicId?previous:data);setError('');}}catch{if(live)setError('Topik aktif belum dapat dimuat. Periksa koneksi lalu coba lagi.');}finally{polling=false;}}void read();const timer=setInterval(()=>void read(),3000);return()=>{live=false;clearInterval(timer);};},[]);
+ const requestedApp=params.get('demoApp'),explicitApp=demoAppIds.some(id=>id===requestedApp)?getDemoApp(requestedApp):null;
+ const demoRoute=location.pathname.replace(/\/$/,'').endsWith('/admin/demo');
+ useEffect(()=>{if(explicitApp)return;if(preview){setSnapshot({revision:0,topicId:auditTopicId,topicTitle:'AI in Audit and Beyond',config:auditTopicContent(),application:{kind:'audit-suite'}});return;}let live=true,polling=false;async function read(){if(polling)return;polling=true;try{const r=await fetch(apiOrigin+'/api/content',{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error();const data=await r.json();data.config=contentSchema.parse(data.config);if(live){setSnapshot(previous=>previous?.revision===data.revision&&previous?.topicId===data.topicId?previous:data);setError('');}}catch{if(live)setError('Topik aktif belum dapat dimuat. Periksa koneksi lalu coba lagi.');}finally{polling=false;}}void read();const timer=setInterval(()=>void read(),3000);return()=>{live=false;clearInterval(timer);};},[]);
+ if(explicitApp?.id==='signal')return <>{children}</>;
+ if(explicitApp?.workspace)return <AuditSuite key="explicit-audit-suite" preview storageKey={'audit-suite-v1-explicit'+(demoRoute?'-presenter':'')} fixedWorkspace={explicitApp.workspace}/>;
  if(!snapshot)return <main className="loading-screen"><p role={error?'alert':undefined}>{error||'Memuat topik aktif...'}</p></main>;
  const topicId=snapshot.topicId||'beyond-compliance',title=snapshot.topicTitle||snapshot.config.title,app=snapshot.application||snapshot.config.modules.find(m=>m.enabled&&m.demo.kind!=='none')?.demo||{kind:'none' as const};
- const demoRoute=location.pathname.replace(/\/$/,'').endsWith('/admin/demo');
  if(app.kind==='audit-suite'&&!forceHub)return <AuditSuite key={topicId} preview={preview} storageKey={'audit-suite-v1-'+topicId+'-'+(snapshot.applicationRevision??snapshot.revision)+(demoRoute?'-presenter':'')}>{children}</AuditSuite>;
  if(app.kind==='signal'&&!forceHub)return <React.Fragment key={topicId}>{children}</React.Fragment>;
  if(app.kind==='sandbox'&&!forceHub)return <main className={'module-audience '+(embedded?'embedded':'')} key={topicId+'-'+snapshot.revision}><nav><strong>{title}</strong><a href={browserPath('/presentation/deck/')}>Buka deck</a></nav>{error&&<p role="status">{error}</p>}<GenericSandbox config={app.config} storageKey={'signal-topic-app-v1-'+topicId+'-'+(snapshot.applicationRevision??snapshot.revision)+(demoRoute?'-presenter':'')}/></main>;

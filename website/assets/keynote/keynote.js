@@ -3,7 +3,7 @@ import {installDataHandling} from './data-handling.mjs?v=rsm-natural-portrait-20
 import {installAssuranceStory} from './assurance-story.mjs?v=rsm-natural-portrait-20261114';
 import {composeModules,loadContentSnapshot} from './content-modules.mjs?v=topics-rsm-20261109';
 import {installDeckLanguage} from './deck-language.js?v=rsm-natural-portrait-20261114';
-import {connectLiveDeck} from '../js/deck-live.js?v=topics-rsm-20261109';
+import {connectLiveDeck} from '../js/deck-live.js?v=three-apps-1';
 let reference=await fetch(new URL('./reference.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Reference unavailable');return r.json();});
 const languageCatalogue=await fetch(new URL('./translations-id.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Translations unavailable');return r.json();});
 const assets=new URL('../',import.meta.url).href;

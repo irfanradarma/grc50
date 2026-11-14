@@ -15,7 +15,10 @@ export function authHeaders(admin=false):Record<string,string>{const token=admin
 export function saveApiSession(token?:string){if(token)localStorage.setItem('signal-api-session',token);}
 export async function openDocument(path:string){
  const tab=window.open('about:blank','_blank');if(tab)tab.opener=null;
- try{const response=await fetch(apiOrigin+'/api'+path,{headers:authHeaders()});if(!response.ok)throw Error('Document unavailable');
+ const selectedSignal=new URLSearchParams(location.search).get('demoApp')==='signal';
+ const documentPath=path+(selectedSignal?(path.includes('?')?'&':'?')+'demoApp=signal':'');
+ const headers=frontendRoute().kind==='demo'?{Authorization:'Bearer '+(sessionStorage.getItem('signal-demo-token')||'')}:authHeaders();
+ try{const response=await fetch(apiOrigin+'/api'+documentPath,{headers});if(!response.ok)throw Error('Document unavailable');
   const url=URL.createObjectURL(new Blob([await response.text()],{type:'text/html'}));if(tab)tab.location.href=url;setTimeout(()=>URL.revokeObjectURL(url),60000);
  }catch{if(tab)tab.document.body.textContent='Unable to open this document. Return to your workspace and try again.';}
 }
