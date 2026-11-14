@@ -1,4 +1,5 @@
 import {hitl} from './hitl.js';
+import {checkDatabase} from './startup.js';
 import {topicAdmin} from './topics.js';
 import express from 'express';
 import {fileURLToPath} from 'node:url';
@@ -39,4 +40,10 @@ app.use('/api',presentationHost);
 app.use('/api',contentAdmin);app.use('/api',topicAdmin);
 app.use('/api',workshop);
 app.use((err:unknown,_req:express.Request,res:express.Response,_next:express.NextFunction)=>{if(err instanceof z.ZodError)return res.status(400).json({error:err.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; ')});if(err instanceof SyntaxError)return res.status(400).json({error:'Invalid JSON request.'});console.error('Request failed:',err instanceof Error?err.name:'Error');res.status(500).json({error:'Unable to complete this request. Check the local database connection.'});});
-if(process.env.NODE_ENV!=='test'){await migrate();app.listen(Number(process.env.PORT||3001),process.env.NODE_ENV==='production'?'0.0.0.0':'127.0.0.1',()=>console.log('SIGNAL API listening'));}
+if(process.env.NODE_ENV!=='test'){
+ await checkDatabase(migrate);
+ const server=app.listen(Number(process.env.PORT||3001),process.env.NODE_ENV==='production'?'0.0.0.0':'127.0.0.1',()=>console.log('SIGNAL API listening'));
+ let stopping=false;
+ const shutdown=()=>{if(stopping)return;stopping=true;demoBroadcast.stop();const force=setTimeout(()=>{server.closeAllConnections();},10000);force.unref();server.close(()=>{clearTimeout(force);void pool.end();});};
+ process.on('SIGTERM',shutdown);process.on('SIGINT',shutdown);
+}

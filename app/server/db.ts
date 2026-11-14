@@ -14,7 +14,12 @@ if(process.env.NODE_ENV==='production'){
  uri.searchParams.set('sslrootcert',fileURLToPath(new URL('./certs/supabase-prod-ca-2021.crt',import.meta.url)));
  connectionString=uri.toString();
 }
-const rawPool=new pg.Pool({connectionString,max:Number(process.env.DB_POOL_MAX||3),connectionTimeoutMillis:15000,idleTimeoutMillis:30000});
+// signal_app has a role-wide limit of three connections. Reserve capacity for
+// Render's overlapping old/new processes and deployment health checks.
+const requestedPoolMax=Number(process.env.DB_POOL_MAX||1);
+const poolMax=process.env.NODE_ENV==='production'?1:requestedPoolMax;
+const rawPool=new pg.Pool({connectionString,max:poolMax,connectionTimeoutMillis:15000,idleTimeoutMillis:5000});
+rawPool.on('error',error=>console.error('Idle database connection failed:',error.name));
 // Set an explicit, non-public search path before handing out every connection.
 // Production uses Supabase's session pooler; no session can fall back to Atlas public tables.
 export const pool={

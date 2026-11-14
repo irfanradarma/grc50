@@ -14,7 +14,7 @@ services:
       - key: DATABASE_SCHEMA
         value: signal
       - key: DB_POOL_MAX
-        value: 3
+        value: 1
       - key: FRONTEND_ORIGINS
         value: https://irfanradarma.github.io
       - key: PUBLIC_FRONTEND_URL
