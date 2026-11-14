@@ -231,13 +231,13 @@
       "chapter": null,
       "lead": "Audit the AI. Audit with AI. Go beyond audit.",
       "items": [],
-      "notes": "Pembuka dari RSM Indonesia: Dena Sucianandika dan Teuku Raja Irfan Radarma. Fokus sesi adalah pekerjaan dan keputusan yang akrab bagi peserta. Alur dimulai dari penggunaan AI sehari-hari, lalu tugas dengan dokumen nyata yang diizinkan, penilaian AI dalam proses bisnis, workspace audit dan respons risiko. Tidak perlu membuka dengan definisi teknis AI. Bukti riset dijelaskan sesuai populasi, periode dan batas klaimnya.\n\nPertanyaan: AI in Audit and Beyond Penghubung: Audit the AI. Audit with AI. Go beyond audit.",
+      "notes": "Akses materi: tinyurl.com/rsm-ai-audit.\n\nPembuka dari RSM Indonesia: Dena Sucianandika dan Teuku Raja Irfan Radarma. Fokus sesi adalah pekerjaan dan keputusan yang akrab bagi peserta. Alur dimulai dari penggunaan AI sehari-hari, lalu tugas dengan dokumen nyata yang diizinkan, penilaian AI dalam proses bisnis, workspace audit dan respons risiko. Tidak perlu membuka dengan definisi teknis AI. Bukti riset dijelaskan sesuai populasi, periode dan batas klaimnya.\n\nPertanyaan: AI in Audit and Beyond Penghubung: Audit the AI. Audit with AI. Go beyond audit.",
       "refs": [],
       "narrative": {
         "question": "AI in Audit and Beyond",
         "transition": "Audit the AI. Audit with AI. Go beyond audit."
       },
-      "notesEn": "Introduce the practical question: how can AI help audit and risk decisions while people retain authority over evidence, release and action? Both presenters represent RSM Indonesia."
+      "notesEn": "Access the slides at tinyurl.com/rsm-ai-audit.\n\nIntroduce the practical question: how can AI help audit and risk decisions while people retain authority over evidence, release and action? Both presenters represent RSM Indonesia."
     },
     {
       "key": "aib-deck-guide",
@@ -248,8 +248,8 @@
       "visual": "deck-guide",
       "items": [],
       "refs": [],
-      "notes": "Buka tautan yang dibagikan penyelenggara. Di komputer gunakan panah kiri/kanan atau Space; arahkan kursor ke tepi layar untuk kontrol. Di ponsel geser atau gunakan tombol sentuh. Daftar isi untuk berpindah bagian, EN / ID untuk bahasa, Catatan & sumber untuk penjelasan. Kembali ke presenter mengikuti posisi presenter ketika presentasi aktif.",
-      "notesEn": "Open the deck using the organiser’s shared link. On desktop use left/right arrows or Space and move toward the edges to reveal controls. On a phone use swipe or the touch controls. Contents jumps to a section. EN / ID changes language; Notes & sources opens supporting explanation. Return to live restores the presenter’s position when presenting is active.",
+      "notes": "Akses materi: tinyurl.com/rsm-ai-audit.\n\nBuka tautan yang dibagikan penyelenggara. Di komputer gunakan panah kiri/kanan atau Space; arahkan kursor ke tepi layar untuk kontrol. Di ponsel geser atau gunakan tombol sentuh. Daftar isi untuk berpindah bagian, EN / ID untuk bahasa, Catatan & sumber untuk penjelasan. Kembali ke presenter mengikuti posisi presenter ketika presentasi aktif.",
+      "notesEn": "Access the slides at tinyurl.com/rsm-ai-audit.\n\nOpen the deck using the organiser’s shared link. On desktop use left/right arrows or Space and move toward the edges to reveal controls. On a phone use swipe or the touch controls. Contents jumps to a section. EN / ID changes language; Notes & sources opens supporting explanation. Return to live restores the presenter’s position when presenting is active.",
       "narrative": {
         "question": "Make this deck your own.",
         "transition": "Navigate, explore the notes and choose your language."
@@ -262,13 +262,13 @@
       "chapter": null,
       "lead": "RSM Indonesia",
       "items": [],
-      "notes": "Perkenalkan Dena Sucianandika dan Teuku Raja Irfan Radarma sebagai pembicara dari RSM Indonesia. Jangan menambahkan jabatan, sertifikasi, riwayat klien atau biografi yang belum diberikan. Kedua pembicara membawa perspektif audit, assurance dan manajemen risiko. Setelah pengantar, arahkan peserta pada perubahan cara bekerja dan pengambilan keputusan, bukan pada nama aplikasi.\n\nPertanyaan: Your speakers. Penghubung: RSM Indonesia",
+      "notes": "Dena Sucianandika dan Teuku Raja Irfan Radarma merupakan Technology Consulting Manager dari RSM Indonesia. Jabatan dan kredensial pada slide diberikan oleh pembicara.\n\nDena Sucianandika: Certified Information System Auditor (CISA); Certified Information Privacy Manager (CIPM); ISO 27001:2022 Information Security Management Systems Lead Auditor; COBIT 2019 Foundation; Project Management Essentials Certified.\n\nTeuku Raja Irfan Radarma: Certified Information System Auditor (CISA); Certified Data Management Professional (CDMP); Certified Risk Management Professional (CRMP); COBIT 2019 Foundation; CompTIA Security+.",
       "refs": [],
       "narrative": {
         "question": "Your speakers.",
         "transition": "RSM Indonesia"
       },
-      "notesEn": "Dena Sucianandika and Teuku Raja Irfan Radarma both represent RSM Indonesia. Introduce the speakers without adding unverified roles, qualifications or client engagements."
+      "notesEn": "Dena Sucianandika and Teuku Raja Irfan Radarma are Technology Consulting Managers at RSM Indonesia. Roles and credentials shown on this slide were supplied by the speakers.\n\nDena Sucianandika: Certified Information System Auditor (CISA); Certified Information Privacy Manager (CIPM); ISO 27001:2022 Information Security Management Systems Lead Auditor; COBIT 2019 Foundation; Project Management Essentials Certified.\n\nTeuku Raja Irfan Radarma: Certified Information System Auditor (CISA); Certified Data Management Professional (CDMP); Certified Risk Management Professional (CRMP); COBIT 2019 Foundation; CompTIA Security+."
     },
     {
       "key": "aib-journey",
@@ -1189,11 +1189,28 @@
   "presenters": [
     {
       "name": "Dena Sucianandika",
-      "organisation": "RSM Indonesia"
+      "organisation": "RSM Indonesia",
+      "role": "Technology Consulting Manager",
+      "credentials": [
+        "Certified Information System Auditor (CISA)",
+        "Certified Information Privacy Manager (CIPM)",
+        "ISO 27001:2022 Information Security Management Systems Lead Auditor",
+        "COBIT 2019 Foundation",
+        "Project Management Essentials Certified"
+      ]
     },
     {
       "name": "Teuku Raja Irfan Radarma",
-      "organisation": "RSM Indonesia"
+      "organisation": "RSM Indonesia",
+      "role": "Technology Consulting Manager",
+      "credentials": [
+        "Certified Information System Auditor (CISA)",
+        "Certified Data Management Professional (CDMP)",
+        "Certified Risk Management Professional (CRMP)",
+        "COBIT 2019 Foundation",
+        "CompTIA Security+"
+      ],
+      "portrait": "teuku-raja-irfan-radarma-batik-smooth.png"
     }
   ],
   "organisation": "RSM Indonesia",
@@ -1231,5 +1248,6 @@
     "audience": "General knowledge, with practical relevance to internal control, risk management and internal audit.",
     "thread": "Brief tool refresh and safeguards → Audit the AI → Audit with AI and human authority → useful programmes and systems → integrated AMS → continuous risk assurance through SIGNAL.",
     "limits": "Teaching assistance uses transparent prepared examples, not a connected live model. Issued AMS findings feed the linked Aruna risk workspace in this browser. Social leads remain unverified until corroborated."
-  }
+  },
+  "accessUrl": "https://tinyurl.com/rsm-ai-audit"
 }
