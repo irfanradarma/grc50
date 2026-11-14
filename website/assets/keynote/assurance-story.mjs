@@ -1,6 +1,6 @@
-import {icon,rail,footer,simplePaper} from './audit-story.mjs?v=rsm-speakers-access-20261114';
-import {renderAdoptionIllustration} from './adoption-illustration.mjs?v=rsm-speakers-access-20261114';
-import {renderRsmFramework} from './rsm-frameworks.mjs?v=rsm-speakers-access-20261114';
+import {icon,rail,footer,simplePaper} from './audit-story.mjs?v=rsm-natural-portrait-20261114';
+import {renderAdoptionIllustration} from './adoption-illustration.mjs?v=rsm-natural-portrait-20261114';
+import {renderRsmFramework} from './rsm-frameworks.mjs?v=rsm-natural-portrait-20261114';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const trustQualities=[
  ['Valid & reliable','Does it work for the intended use?','Inspect relevant test data, acceptance thresholds and failures under expected conditions.','model'],

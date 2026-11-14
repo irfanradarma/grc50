@@ -16,6 +16,14 @@ Final smoothing prompt used with the built-in ImageGen tool, using Irfan as the 
 
 ## Final prompts
 
+### Replacement from original photo 14 November 2026
+
+The speaker slide now uses `website/assets/images/teuku-raja-irfan-radarma-batik-natural-left.png`, replacing the smoothed derivative. Built-in ImageGen used the original suit photograph supplied in chat, rather than either earlier generated portrait. The result retains the arms-down stance, replaces the suit with navy/brown batik, removes the background and mirrors the subject to face left. No skin-smoothing treatment was requested. Earlier assets remain available but are not referenced by this speaker slide.
+
+Final prompt:
+
+> Edit the attached ORIGINAL photograph of Irfan in a navy suit standing with his arms naturally down in front of a window. Use this photograph as the sole identity and pose reference. Produce a faithful photographic cutout, not a newly imagined portrait. Preserve the original face exactly: same facial proportions, natural skin texture, forehead, clear glasses, eyes, nose, facial hair, smile and teeth, hairline and hair. NO facial beautification, no smoothing, no stylization, no embossed skin, no artificial enhancement, no change in age or identity. Keep the original natural photographic lighting and skin tone. Remove the entire window, city and all background to genuine transparent alpha with clean natural edges. Replace ONLY the navy suit, white shirt and tie with a realistic formal long-sleeved Indonesian batik shirt, tasteful dark navy and warm brown traditional batik, buttoned conventional collar, natural fabric folds consistent with the original upright stance and arms hanging down. Do NOT cross his arms or invent a different pose. Horizontally mirror the complete person so the original rightward body pose now faces toward the LEFT of the image. Keep complete head, shoulders, torso and visible arms/hands within the crop. Minimize all changes outside clothing and background; the face should look like the original camera photo, merely horizontally mirrored. Single Irfan cutout, no background, no text, no logo.
+
 ### Teuku Raja Irfan Radarma
 
 Identity-preserve photo edit for professional speaker portrait. This is Teuku Raja Irfan Radarma. Preserve his exact face, skin tone, clear glasses, hairstyle, smile, body proportions and crossed-arm pose. Replace ONLY navy business suit, shirt and tie with an elegant long-sleeved Indonesian brown and navy batik shirt, conventional formal batik collar, tasteful authentic batik motifs similar to the other speaker's brown batik. Remove existing background entirely to genuine transparent alpha. Crisp studio portrait, realistic photographic texture, waist-up with both elbows and complete head inside frame, no text, no logo. Do not beautify or change his identity. Output a single person only.
