@@ -148,7 +148,7 @@
 .rsm-template .ab-speakers-credentials article{display:grid;grid-template-columns:minmax(110px,.4fr) minmax(0,.6fr);gap:18px 18px;align-items:center}
 .rsm-template .ab-speakers-credentials .ab-speaker-photo{height:clamp(155px,24vh,215px);width:100%;align-self:end}
 .rsm-template .ab-speakers-credentials article:first-child .ab-speaker-photo img{height:100%;width:100%;object-fit:contain;object-position:center bottom;margin:0}
-.rsm-template .ab-speakers-credentials article:nth-child(2) .ab-speaker-photo img{height:190%;width:100%;object-fit:contain;object-position:center top;max-width:100%;margin:0}
+.rsm-template .ab-speakers-credentials article:nth-child(2) .ab-speaker-photo img{height:240%;width:100%;object-fit:cover;object-position:center top;max-width:100%;margin:0}
 .rsm-template .ab-speakers-credentials .ab-speaker-identity{padding:0}
 .rsm-template .ab-speakers-credentials .ab-speaker-identity h2{font-size:clamp(24px,2.4vw,36px);line-height:1.1;margin:10px 0 13px}
 .rsm-template .ab-speakers-credentials .ab-speaker-role{font-size:18px;line-height:1.35;color:#00153d;margin:0 0 6px}

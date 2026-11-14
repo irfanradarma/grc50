@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {demoAppIds,demoApps,demoAppPath,audienceDemoUrl} from './demo-apps.mjs';
 test('all three demo applications have stable, separate participant and presenter routes',()=>{
- assert.deepEqual(demoAppIds,['signal','ams','continuous-risk']);
+ assert.deepEqual(demoAppIds,['signal','ams','continuous-risk','hitl']);
  for(const app of demoApps){
   const participant=new URL(audienceDemoUrl(app.id,'https://example.test/grc50'));
   assert.equal(participant.pathname,'/grc50/audience/');

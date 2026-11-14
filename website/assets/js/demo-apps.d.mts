@@ -1,6 +1,6 @@
-export type DemoAppId='signal'|'ams'|'continuous-risk';
+export type DemoAppId='signal'|'ams'|'continuous-risk'|'hitl';
 export type DemoApp={id:DemoAppId;label:{en:string;id:string};workspace:'audit'|'risk'|null};
-export const demoAppIds:readonly ['signal','ams','continuous-risk'];
+export const demoAppIds:readonly ['signal','ams','continuous-risk','hitl'];
 export const demoApps:DemoApp[];
 export function getDemoApp(id:unknown):DemoApp;
 export function demoAppPath(id:unknown,role?:'admin'|'audience'):string;

@@ -1,3 +1,4 @@
+import HitlGame from './HitlGame';
 import React,{useEffect,useState} from 'react';
 import {apiOrigin,browserPath} from '../shared/deployment';
 import {contentSchema,type ContentConfig,type DemoConfig} from '../shared/content';
@@ -22,6 +23,7 @@ export default function ModuleAudience({children,forceHub=false}:{children?:Reac
  const requestedApp=params.get('demoApp'),explicitApp=demoAppIds.some(id=>id===requestedApp)?getDemoApp(requestedApp):null;
  const demoRoute=location.pathname.replace(/\/$/,'').endsWith('/admin/demo');
  useEffect(()=>{if(explicitApp)return;if(preview){setSnapshot({revision:0,topicId:auditTopicId,topicTitle:'AI in Audit and Beyond',config:auditTopicContent(),application:{kind:'audit-suite'}});return;}let live=true,polling=false;async function read(){if(polling)return;polling=true;try{const r=await fetch(apiOrigin+'/api/content',{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error();const data=await r.json();data.config=contentSchema.parse(data.config);if(live){setSnapshot(previous=>previous?.revision===data.revision&&previous?.topicId===data.topicId?previous:data);setError('');}}catch{if(live)setError('Topik aktif belum dapat dimuat. Periksa koneksi lalu coba lagi.');}finally{polling=false;}}void read();const timer=setInterval(()=>void read(),3000);return()=>{live=false;clearInterval(timer);};},[]);
+ if(explicitApp?.id==='hitl')return <HitlGame/>;
  if(explicitApp?.id==='signal')return <>{children}</>;
  if(explicitApp?.workspace)return <AuditSuite key="explicit-audit-suite" preview storageKey={'audit-suite-v1-explicit'+(demoRoute?'-presenter':'')} fixedWorkspace={explicitApp.workspace}/>;
  if(!snapshot)return <main className="loading-screen"><p role={error?'alert':undefined}>{error||'Memuat topik aktif...'}</p></main>;

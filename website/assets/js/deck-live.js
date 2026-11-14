@@ -1,4 +1,4 @@
-import {createLiveDemoOverlay} from './live-demo-overlay.js?v=three-apps-1';
+import {createLiveDemoOverlay} from './live-demo-overlay.js?v=hitl-1';
 import {createFollowState} from './deck-follow-model.mjs?v=shared-room-1';
 import {createBrowseReminder} from './deck-browse-reminder.mjs?v=presentation-status-1';
 

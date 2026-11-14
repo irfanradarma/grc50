@@ -1,5 +1,5 @@
 import {mountLiveDemo} from './live-demo-player.js?v=live-app-1';
-import {audienceDemoUrl,getDemoApp} from './demo-apps.mjs?v=three-apps-1';
+import {audienceDemoUrl,getDemoApp} from './demo-apps.mjs?v=hitl-1';
 export function createLiveDemoOverlay(){
  const dialog=document.createElement('dialog');dialog.className='live-app-overlay';dialog.setAttribute('aria-label','Live application demonstration');
  const header=document.createElement('header'),badge=document.createElement('b'),heading=document.createElement('span'),openApp=document.createElement('a'),back=document.createElement('button');badge.textContent='LIVE';heading.textContent='Live application demonstration';back.textContent='Back to slides';back.type='button';openApp.className='live-app-open';openApp.textContent='Open app in new tab';openApp.target='_blank';openApp.rel='noopener noreferrer';header.append(badge,heading,openApp,back);

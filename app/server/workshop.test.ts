@@ -109,6 +109,14 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/admin/presentation/presenting','PUT',host,{presenting:true})).status,200);
  const publicDeck=await(await liveState()).json();assert.equal(publicDeck.slideKey,'the-foundation');assert.equal(publicDeck.published,true);
  assert.deepEqual(Object.keys(publicDeck).sort(),['deckId','demo','presenting','published','revision','slideKey','slideNumber','total','updatedAt']);
+ assert.equal((await req('/admin/hitl/start','POST',a)).status,403);
+ const game=await(await req('/admin/hitl/start','POST',host)).json();assert(game.open);
+ assert.equal((await req('/hitl/join','POST',a,{sessionId:game.id,name:'Reviewer'})).status,200);
+ assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[1],[],[1],[],[1]]})).status,200);
+ assert.equal((await req('/hitl/finish','POST',a,{sessionId:game.id,answers:[[],[],[],[],[]]})).status,409);
+ assert.equal((await(await req('/hitl','GET',b)).json()).leaderboard,undefined);
+ const closed=await(await req('/admin/hitl/close','POST',host)).json();assert.equal(closed.leaderboard[0].score,100);assert.equal(closed.leaderboard[0].name,'Reviewer');assert(closed.leaderboard[0].elapsed>=0);
+ assert.equal((await req('/hitl/join','POST',b,{sessionId:game.id,name:'Late'})).status,409);
  assert.equal((await req('/admin/demo/start','POST',a)).status,403);
  assert.equal((await req('/admin/demo/workspace','POST',a)).status,403);
  const demoGuest=await(await req('/admin/demo/workspace','POST',host)).json(),demoAuth='Bearer '+demoGuest.token;
@@ -249,7 +257,7 @@ test('complete workshop: private organizations, guided case, mitigation, externa
  assert.equal((await req('/workshop/host/'+code+'/reset','POST',host,{confirmation:'RESET',epoch:1})).status,200);assert.equal((await(await req('/content')).json()).topicId,'beyond-compliance','Workshop reset keeps the topic library');assert.equal((await(await req('/admin/topics','GET',host)).json()).topics.length,3);
 
  assert.equal((await req('/admin/topics/ai-audit-beyond/activate','POST',host,{expectedRevision:6})).status,200);
- const auditTopic=await(await req('/content')).json();assert.equal(auditTopic.application.kind,'audit-suite');assert.equal((await(await liveState()).json()).total,44);assert.equal((await req('/workshop/join','POST',a)).status,200);
+ const auditTopic=await(await req('/content')).json();assert.equal(auditTopic.application.kind,'audit-suite');assert.equal((await(await liveState()).json()).total,45);assert.equal((await req('/workshop/join','POST',a)).status,200);
  assert.equal((await req('/admin/topics/beyond-compliance/activate','POST',host,{expectedRevision:7})).status,200);
  nextConfig.modules[0].demo.config.title='Updated practice application';
  assert.equal((await req('/admin/topics/'+nextId,'PUT',host,{expectedRevision:8,topic:{...nextTopic,title:'Edited future topic',config:nextConfig}})).status,200);

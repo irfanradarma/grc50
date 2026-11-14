@@ -1,3 +1,4 @@
+import {hitl} from './hitl.js';
 import {topicAdmin} from './topics.js';
 import express from 'express';
 import {fileURLToPath} from 'node:url';
@@ -32,6 +33,7 @@ app.get('/api/auth/me',(_req,res)=>res.json(res.locals.workspace));
 app.post('/api/auth/logout',async(req,res)=>{await pool.query('DELETE FROM guest_sessions WHERE token_hash=$1',[hash(res.locals.sessionToken)]);res.clearCookie('signal_session',{path:'/'});res.clearCookie('hori_session',{path:'/'});res.status(204).end();});
 app.get('/api/auth/admin/me',requireAdmin,(_req,res)=>res.json({admin:true}));
 app.post('/api/auth/admin/logout',requireAdmin,async(_req,res)=>{demoBroadcast.stop(res.locals.sessionToken);await pool.query('DELETE FROM guest_sessions WHERE token_hash=$1',[hash(res.locals.sessionToken)]);res.json({saved:true});});
+app.use('/api',hitl);
 app.use('/api',demoAdmin);
 app.use('/api',presentationHost);
 app.use('/api',contentAdmin);app.use('/api',topicAdmin);
